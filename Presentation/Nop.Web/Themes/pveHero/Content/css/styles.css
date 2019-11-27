@@ -64,11 +64,11 @@ script {
 
 
 body {
-  max-width: 100%;
-  overflow-x: hidden;
-  background-color: #fff;
-  font: normal 14px Arial, Helvetica, sans-serif;
-  color: #777;
+    max-width: 100%;
+    overflow-x: hidden;
+    background-color: #fff;
+    font: normal 14px 'Open Sans', sans-serif;
+    color: #777;
 }
 h1,h2,h3,h4,h5,h6 {
 	color: #444;
@@ -89,15 +89,17 @@ input[type="email"],
 input[type="tel"],
 input[type="password"],
 textarea, select {
-    height: 36px; /*safari padding fix*/
-    border: 1px solid #ddd;
-    padding: 8px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
     vertical-align: middle;
+    border-radius: .5rem;
+    background: rgba(255, 255, 255, 0.1);
 }
 input, textarea, select, button {
-	font-size: 14px;
-	font-family: Arial, Helvetica, sans-serif;
-	color: #777;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    color: #777;
 }
 textarea {
 	min-height: 150px;
@@ -754,7 +756,6 @@ label, label + * {
 .header-upper {
 	position: relative;
 	z-index: 1;
-	border-bottom: 1px solid #ddd;
 }
 
 .header-selectors-wrapper {
@@ -832,9 +833,9 @@ label, label + * {
 }
 
 .header-lower {
-	position: relative;
-	z-index: 0;
-	padding: 35px 0;
+    position: relative;
+    z-index: 0;
+    padding: 1.5rem 0;
 }
 
 .header-logo {
@@ -875,6 +876,7 @@ label, label + * {
 	text-align: center;
 	color: #fff;
 	text-transform: uppercase;
+    display: none;
 }
 .search-box .search-box-button:hover {
 	background-color: #248ece;
@@ -1552,15 +1554,19 @@ label, label + * {
 	vertical-align: middle;
 }
 .item-box .product-box-add-to-cart-button {
-	width: 60%;
-	background-color: #4ab2f1;
-	text-align: center;
-	font-size: 15px;
-	color: #fff;
-	text-transform: uppercase;
+    width: 60%;
+    background: #0087f7;
+    background: -moz-linear-gradient(-45deg, #0087f7 25%, #006cec 125%);
+    background: -webkit-linear-gradient(-45deg, #0087f7 25%,#006cec 125%);
+    background: linear-gradient(135deg, #0087f7 25%,#006cec 125%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0087f7', endColorstr='#006cec',GradientType=1 );
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
 }
 .item-box .product-box-add-to-cart-button:hover {
-	background-color: #248ece;
+    background: #248ece;
 }
 .item-box .add-to-compare-list-button,
 .item-box .add-to-wishlist-button {
@@ -5412,10 +5418,10 @@ pre {
     margin: 10px auto;
 }
 .search-box input.search-box-text {
-	width: 280px;
+	width: 350px;
 }
 .ui-autocomplete {
-	width: 280px !important;
+	width: 350px !important;
 }
 .ui-autocomplete img {
 	display: inline;
