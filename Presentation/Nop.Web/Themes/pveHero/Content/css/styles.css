@@ -1275,8 +1275,6 @@ label, label + * {
 
 .breadcrumb {
 	margin: 0 0 50px;
-	background-color: #f6f6f6;
-	padding: 5px 10px;
 }
 .breadcrumb ul {
 	font-size: 0;
@@ -5290,22 +5288,27 @@ pre {
 	margin: 0 auto 40px;
 }
 .menu-toggle {
-	background: #4ab2f1 url('../images/menu-icon.png') right center no-repeat;
-	padding: 15px;
-	font-size: 15px;
-	font-weight: bold;
-	color: #fff;
-	text-transform: uppercase;
-	cursor: pointer;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: .5rem;
+    position: relative;
 }
-
+.menu-toggle .icon {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
 .top-menu {
 	display: none;
 }
 .top-menu > li {
 	position: relative;
 	margin: 1px 0;
-	background-color: #f6f6f6;
 }
 .top-menu > li > a {
 	display: block;
@@ -5327,6 +5330,11 @@ pre {
 	display: block;
 	padding: 15px 18px;
 	font-size: 15px;
+}
+.top-menu.mobile {
+    margin-top: .5rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: .5rem;
 }
 
 .sublist-toggle {
@@ -6430,7 +6438,7 @@ pre {
 	margin: 0 auto 30px;
 	border-top: 1px solid #ddd;
 	border-bottom: 1px solid #ddd;
-	padding: 25px 0;
+	padding: 1rem 0;
 	text-align: center;
 }
 .menu-toggle,

@@ -97,9 +97,10 @@
 .accent-color {
   color: #0087f7; }
 
-.search-box {
+.search-box form {
   position: relative; }
-  .search-box .icon {
-    position: absolute;
-    right: 0.6rem;
-    top: 1.35rem; }
+
+.search-box .icon {
+  position: absolute;
+  right: 0.6rem;
+  top: 0.7rem; }

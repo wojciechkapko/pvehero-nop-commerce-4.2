@@ -120,11 +120,12 @@ body {
 }
 
 .search-box {
-    position: relative;
-
+    form {
+        position: relative;
+    }
     .icon {
         position: absolute;
         right: 0.6rem;
-        top: 1.35rem;
+        top: 0.7rem;
     }
 }
