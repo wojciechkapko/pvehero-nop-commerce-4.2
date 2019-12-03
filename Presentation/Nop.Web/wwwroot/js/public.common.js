@@ -192,3 +192,33 @@ function addAntiForgeryToken(data) {
     }
     return data;
 };
+
+var selectList = (function () {
+    var initSelect2 = function () {
+
+        [].forEach.call(document.querySelectorAll("select:not(.w-100)"), function (el) {
+            $(el).dropdown();
+        });
+
+        [].forEach.call(document.querySelectorAll("select.w-100"), function (el) {
+            $(el).dropdown({
+                customClass: 'w-100'
+            });
+        });
+
+    };
+
+    var initDropdowns = function () {
+
+        [].forEach.call(document.querySelectorAll('.dropdown-toggle'), function (el) {
+            new Dropdown(el);
+        });
+    };
+
+
+    return {
+        initSelect2: initSelect2,
+        initDropdowns: initDropdowns
+    };
+
+})();

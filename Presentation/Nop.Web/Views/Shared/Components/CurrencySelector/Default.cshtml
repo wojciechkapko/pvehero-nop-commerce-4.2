@@ -1,19 +1,49 @@
 ﻿@model CurrencySelectorModel
-
-@inject Nop.Core.IWebHelper webHelper
-
+@using Microsoft.AspNetCore.Http
+@using System.Net
+@using Nop.Core
+@inject IWebHelper webHelper
+@inject IHttpContextAccessor httpContextAccessor
 @if (Model.AvailableCurrencies.Count > 1)
 {
-    <div class="currency-selector">
-        @{
-            var returnUrl = webHelper.GetRawUrl(Context.Request);
-            var currencies = Model.AvailableCurrencies.Select(x => new SelectListItem
+
+
+
+    <div class="currency-selector dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+            @switch (Model.CurrentCurrencyId)
             {
-                Text = x.Name,
-                Value = Url.RouteUrl("ChangeCurrency", new { customercurrency = x.Id, returnUrl }, webHelper.CurrentRequestProtocol),
-                Selected = x.Id.Equals(Model.CurrentCurrencyId)
-            });
-            <select id="customerCurrency" name="customerCurrency" asp-items="@currencies" onchange="setLocation(this.value);" aria-label="@T("Currency.Selector.Label")"></select>
-        }
+                case 1:
+                    <img title='USD' alt='USD' src="@Url.Content("~/images/flags/us.png")" />
+                    <span class="ml-1">USD</span>
+                    break;
+                case 6:
+                    <img title='EUR' alt='EUR' src="@Url.Content("~/images/flags/europeanunion.png")" />
+                    <span class="ml-1">EUR</span>
+                    break;
+            }
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @foreach (var curr in Model.AvailableCurrencies)
+            {
+
+                <a class="dropdown-item @(curr.Id == Model.CurrentCurrencyId ? "selected" : null)" href="@webHelper.ModifyQueryString(Url.RouteUrl("ChangeCurrency", new { customercurrency = curr.Id }), "returnurl=" + WebUtility.UrlEncode(webHelper.GetRawUrl(httpContextAccessor.HttpContext.Request)), "")" title="@curr.Name">
+                    @if (curr.Name == "USD")
+                    {
+                        <img title='@curr.Name' alt='@curr.Name' class='mr-1'
+                             src="@Url.Content("~/images/flags/us.png")" />
+
+                    }
+                    @if (curr.Name == "EUR")
+                    {
+                        <img title='@curr.Name' alt='@curr.Name' class='mr-1'
+                             src="@Url.Content("~/images/flags/europeanunion.png")" />
+
+                    }
+                    @curr.Name
+                </a>
+            }
+        </div>
     </div>
 }

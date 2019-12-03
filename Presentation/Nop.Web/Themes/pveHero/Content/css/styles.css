@@ -749,13 +749,15 @@ label, label + * {
 .header {
 	position: relative;
 	z-index: 10;
-	width: 95%;
-	margin: auto;
+	width: 100%;
 	text-align: center;
 }
+.header-upper, .header-lower {
+    margin: auto;
+}
 .header-upper {
-	position: relative;
-	z-index: 1;
+    position: relative;
+    z-index: 1;
 }
 
 .header-selectors-wrapper {
@@ -6259,10 +6261,9 @@ pre {
 
 /*** HEADER ***/
 
-
-.header {
-	width: 980px;
-	margin: auto;
+.header-upper, .header-lower {
+    width: 980px;
+    margin: auto;
 }
 .header-upper:after {
 	content: "";
@@ -6409,7 +6410,6 @@ pre {
 
 .header-lower {
 	display: table;
-	width: 100%;
 }
 .header-logo {
 	display: table-cell;
@@ -6972,8 +6972,8 @@ pre {
 /*** HEADER ***/
 
 
-.header {
-	width: 1200px;
+.header-upper, .header-lower {
+    width: 1200px;
 }
 
 

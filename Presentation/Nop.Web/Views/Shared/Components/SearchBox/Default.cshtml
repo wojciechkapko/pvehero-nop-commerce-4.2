@@ -1,7 +1,7 @@
 ﻿@model SearchBoxModel
 <form asp-route="ProductSearch" method="get" id="small-search-box-form">
     <input type="text" class="search-box-text" id="small-searchterms" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Tooltip")" aria-label="@T("Search.SearchBox.Text.Label")" />
-    <svg class="icon size-1x accent-color"><use href="#search"></use></svg>
+    <svg class="icon size-1x white"><use href="#search"></use></svg>
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.SearchBoxBeforeSearchButton })
     <input type="submit" class="button-1 search-box-button" value="@T("Search.Button")" />
     @if (Model.SearchTermMinimumLength > 0)

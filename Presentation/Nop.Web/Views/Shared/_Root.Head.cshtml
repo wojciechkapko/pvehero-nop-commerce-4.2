@@ -17,6 +17,7 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.countryselect.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.common.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     //when jQuery migrate script logging is active you will see the log in the browser console
     //if (commonSettings.JqueryMigrateScriptLoggingActive)
     //{
@@ -27,10 +28,16 @@
     //    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-migrate/jquery-migrate-3.0.1.min.js");
     //}
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/loadicons.min.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/bootstrap-native/bootstrap-native-v4.min.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/velocity/velocity.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/velocity/velocity.ui.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-ui/jquery-ui-1.12.1.custom/jquery-ui.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-validate/jquery.validate.unobtrusive-v3.2.10/jquery.validate.unobtrusive.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-validate/jquery.validate-v1.17.0/jquery.validate.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery/jquery-3.3.1.min.js");
+    Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+
     //X-UA-Compatible tag
     if (commonSettings.RenderXuaCompatible)
     {
@@ -79,5 +86,10 @@
     @Html.NopCssFiles(ResourceLocation.Footer)
     @Html.NopScripts(ResourceLocation.Footer)
     @Html.NopInlineScripts(ResourceLocation.Footer)
+    <script type="text/javascript">
+        $(document).ready(function () {
+            selectList.initSelect2();
+        });
+    </script>
 </body>
 </html>

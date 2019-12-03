@@ -104,6 +104,7 @@
 
   <ItemGroup>
     <Folder Include="Plugins\" />
+    <Folder Include="Themes\pveHero\Content\lib\" />
   </ItemGroup>
 
   <ItemGroup>

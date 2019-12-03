@@ -1,6 +1,7 @@
-﻿<div class="header-wrapper mb-4">
-    <div class="header">
+﻿<div class="header mb-4">
+    <div class="header-upper-wrapper ">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderBefore })
+
         <div class="header-upper">
             <div class="header-selectors-wrapper">
                 @await Component.InvokeAsync("TaxTypeSelector")
@@ -13,6 +14,8 @@
                 @await Component.InvokeAsync("FlyoutShoppingCart")
             </div>
         </div>
+    </div>
+    <div class="header-lower-wrapper ">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMiddle })
         <div class="header-lower">
             <div class="header-logo">
