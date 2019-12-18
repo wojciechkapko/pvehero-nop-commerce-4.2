@@ -1,5 +1,0 @@
-﻿{
-  "DataProvider": "sqlserver",
-  "DataConnectionString": "Data Source=VESP-HOME\\SQLEXPRESS;Initial Catalog=pvehero4.2;Integrated Security=True;Persist Security Info=False",
-  "RawDataSettings": {}
-}
