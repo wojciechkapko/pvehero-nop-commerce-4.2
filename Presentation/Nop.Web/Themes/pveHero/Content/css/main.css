@@ -5,6 +5,23 @@
   background-color: rgba(0, 0, 0, 0.2);
   text-align: center; }
 
+.master-wrapper-page::before {
+  content: "";
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  top: 0;
+  width: 100%;
+  height: 48rem;
+  z-index: -1; }
+
+.webp .master-wrapper-page::before {
+  background-image: url(/images/bg-test3.webp); }
+
+.no-webp .master-wrapper-page::before {
+  background-image: url(/images/bg-test3.jpg); }
+
 .button-1 {
   background: #0087f7;
   background: -moz-linear-gradient(-45deg, #0087f7 25%, #006cec 125%);
