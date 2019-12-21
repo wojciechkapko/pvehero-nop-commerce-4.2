@@ -90,6 +90,9 @@
   .icon.size-1-75x {
     font-size: 1.75rem !important; }
 
+.mr-1, .mx-1 {
+  margin-right: .25rem !important; }
+
 .mr-2, .mx-2 {
   margin-right: .5rem !important; }
 
@@ -262,3 +265,17 @@ input.search-box-text::placeholder {
   font-size: 1.25rem;
   font-weight: 600;
   color: #bba0ff; }
+
+.cart-qty {
+  margin: 0 .25rem;
+  background: #c52c8d;
+  display: inline !important;
+  align-items: center;
+  font-family: 'Open Sans',sans-serif;
+  color: #fff !important;
+  font-size: 12px !important;
+  padding: .2rem .5rem;
+  border-radius: .25rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap; }

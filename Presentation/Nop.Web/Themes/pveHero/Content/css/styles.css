@@ -814,7 +814,8 @@ label, label + * {
 .header-links span,
 .header-links a {
 	display: inline-block;
-	font-size: 12px; /*reset zeroing*/
+	font-size: 14px; /*reset zeroing*/
+    color: #fff;
 	line-height: 36px;
 	text-transform: uppercase;
 }
@@ -826,12 +827,7 @@ label, label + * {
 	width: 70%;
 	max-width: 400px;
 	margin: 10px auto 0;
-	background-color: #f6f6f6;
 	padding: 0 20px;
-}
-#topcartlink a {
-	background: url('../images/shopping-bag.png') left center no-repeat;
-	padding: 0 0 0 20px;
 }
 
 .header-lower {

@@ -25,7 +25,7 @@
                 </a>
             </li>
         }
-        @if (Model.WishlistEnabled)
+        @if (false)
         {
             <li>
                 <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
@@ -37,7 +37,8 @@
         @if (Model.ShoppingCartEnabled)
         {
             <li id="topcartlink">
-                <a href="@Url.RouteUrl("ShoppingCart")" class="ico-cart">
+                <a href="@Url.RouteUrl("ShoppingCart")">
+                    <svg class='icon white size-1-25x mr-1'><use href='#shopping-bag'></use></svg>
                     <span class="cart-label">@T("ShoppingCart")</span>
                     <span class="cart-qty">@T("ShoppingCart.HeaderQuantity", Model.ShoppingCartItems)</span>
                 </a>
