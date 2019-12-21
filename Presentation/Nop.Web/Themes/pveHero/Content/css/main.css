@@ -246,3 +246,19 @@
   width: 400px;
   display: inline-block;
   vertical-align: middle; }
+
+input.search-box-text {
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  font-size: 1.25rem;
+  color: #fff;
+  font-weight: 500;
+  border-radius: .5rem; }
+  input.search-box-text:focus {
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff; }
+
+input.search-box-text::placeholder {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #bba0ff; }
