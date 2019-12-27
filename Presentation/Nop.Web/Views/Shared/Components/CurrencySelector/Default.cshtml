@@ -6,9 +6,6 @@
 @inject IHttpContextAccessor httpContextAccessor
 @if (Model.AvailableCurrencies.Count > 1)
 {
-
-
-
     <div class="currency-selector dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
@@ -25,10 +22,13 @@
             }
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
             @foreach (var curr in Model.AvailableCurrencies)
             {
+                var returnUrl = webHelper.GetRawUrl(Context.Request);
+                var value = Url.RouteUrl("ChangeCurrency", new { customercurrency = curr.Id, returnUrl }, webHelper.CurrentRequestProtocol);
 
-                <a class="dropdown-item @(curr.Id == Model.CurrentCurrencyId ? "selected" : null)" href="@webHelper.ModifyQueryString(Url.RouteUrl("ChangeCurrency", new { customercurrency = curr.Id }), "returnurl=" + WebUtility.UrlEncode(webHelper.GetRawUrl(httpContextAccessor.HttpContext.Request)), "")" title="@curr.Name">
+                <a class="dropdown-item @(curr.Id == Model.CurrentCurrencyId ? "selected" : null)" href="@value" title="@curr.Name">
                     @if (curr.Name == "USD")
                     {
                         <img title='@curr.Name' alt='@curr.Name' class='mr-1'
