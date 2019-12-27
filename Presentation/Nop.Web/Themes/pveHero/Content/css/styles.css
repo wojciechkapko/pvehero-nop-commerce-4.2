@@ -68,10 +68,10 @@ body {
     overflow-x: hidden;
     background-color: #fff;
     font: normal 14px 'Cabin',Helvetica,sans-serif;
-    color: #777;
+    color: #fff;
 }
 h1,h2,h3,h4,h5,h6 {
-	color: #444;
+	color: #fff;
 }
 a {
 	color: inherit;
@@ -124,8 +124,33 @@ input[type="radio"] + * {
 	vertical-align: middle;
 }
 input[type="button"], input[type="submit"],
-button, .button-1, .button-2 {
-	cursor: pointer;
+button, .btn, .button-1, .button-2 {
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    display: inline-flex !important;
+    line-height: 1.5;
+    font-size: .875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .025em;
+    border: 1px transparent;
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+    box-shadow: 0 3px 5px rgba(0,0,0,.2);
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    text-shadow: 0.0625em 0.0625em 0.0625em #333;
+    white-space: nowrap;
+    justify-content: center;
+    align-items: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 label, label + * {
 	vertical-align: middle;
@@ -1281,13 +1306,12 @@ label, label + * {
 	display: inline-block;
 }
 .breadcrumb li * {
-	display: inline-block;
-	margin: 0 5px;
-	font-size: 14px; /*reset zeroing*/
-	line-height: 32px;
-}
-.breadcrumb strong {
-	font-weight: normal;
+    display: inline-block;
+    margin: 0 3px;
+    font-size: 15px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #fff;
 }
 .breadcrumb a:hover {
 	color: #4ab2f1;
@@ -1450,7 +1474,6 @@ label, label + * {
 .item-box .picture {
 	z-index: 1;
 	overflow: hidden;
-	background-color: #fff;
     margin: 0 0 20px;
 }
 .item-box .picture a {
@@ -1739,15 +1762,13 @@ label, label + * {
 .gallery .picture:before {
 	content: "";
 	display: block;
-	padding-top: 100%;
+	padding-top: 400px;
 }
 .gallery .picture img,
 .gallery .picture-thumbs img,
 .variant-picture img {
 	position: absolute;
 	top: 0;
-	right: 0;
-	bottom: 0;
 	left: 0;
 	max-width: 100%;
 	max-height: 100%;
@@ -1797,11 +1818,6 @@ label, label + * {
 	color: #666;
 }
 
-.product-no-reviews,
-.product-reviews-overview {
-	margin: 0 0 25px;
-	color: #444;
-}
 .product-no-reviews a {
 	text-decoration: underline;
 }
@@ -1942,12 +1958,7 @@ label, label + * {
 
 .overview .prices,
 .variant-overview .prices {
-	margin: 0 0 10px;
 	overflow: hidden;
-}
-.overview .prices > div,
-.variant-overview .prices > div {
-	margin: 0 0 5px;
 }
 .overview .prices > div > span,
 .variant-overview .prices > div > span {
@@ -1963,9 +1974,8 @@ label, label + * {
 }
 .overview .product-price,
 .variant-overview .product-price {
-	font-size: 20px;
-	font-weight: bold;
-	color: #444;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 .overview .tax-shipping-info a,
 .variant-overview .tax-shipping-info a {
@@ -2013,10 +2023,6 @@ label, label + * {
 	background-color: #f9f9f9;
 	font-size: 16px;
 	color: #e4434b;
-}
-
-.overview .add-to-cart {
-	margin: 0 0 20px;
 }
 .overview .add-to-cart-panel,
 .variant-overview .add-to-cart-panel {
@@ -2067,8 +2073,9 @@ label, label + * {
     overflow: hidden;
 }
 .full-description {
-	clear: both;
-	line-height: 24px;
+    clear: both;
+    line-height: 24px;
+    padding: 1rem 2rem;
 }
 
 .product-collateral {
@@ -2155,7 +2162,6 @@ label, label + * {
 	margin: 20px 0;
 }
 .attributes dl {
-	overflow: hidden; 
     padding: 0 2px; /* fix for Chrome in Mac, the checkboxes get cut off */
 }
 .attributes dt,
@@ -5753,10 +5759,6 @@ pre {
 
 /*** PRODUCT PAGE ***/
 
-
-.gallery {
-	width: 550px;
-}
 .variant-picture {
 	float: left;
 }
@@ -6650,14 +6652,15 @@ pre {
 
 .gallery {
 	float: left;
-	width: 46%;
+	width: 400px;
 }
 .gallery .picture {
 	width: auto;
 }
 .overview {
-	float: right;
+	float: left;
 	width: 52%;
+    margin-left: 3rem;
 }
 .rental-attributes {
 	overflow: hidden;

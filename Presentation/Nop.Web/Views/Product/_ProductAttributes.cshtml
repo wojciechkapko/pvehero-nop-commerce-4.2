@@ -14,7 +14,7 @@
             {
                 var controlId = $"{NopAttributePrefixDefaults.Product}{attribute.Id}";
                 var textPrompt = !string.IsNullOrEmpty(attribute.TextPrompt) ? attribute.TextPrompt : attribute.Name;
-                <dt id="@($"{NopAttributePrefixDefaults.Product}label_{attribute.Id}")">
+                <dt id="@($"{NopAttributePrefixDefaults.Product}label_{attribute.Id}")" class="@(attribute.HasCondition ? "d-none" : "")">
                     <label class="text-prompt">
                         @textPrompt
                     </label>
@@ -411,49 +411,34 @@
         //render scripts
         //almost the same implementation is used in the \Views\Product\_RentalInfo.cshtml file
         <script asp-location="Footer">
-            function @(attributeChangeHandlerFuncName)() {
+            function @(attributeChangeHandlerFuncName)(reload) {
+                if (!reload === true) {
+                    utility.addSpinnerWithBg('summary', 10);
+                }
+
                 $.ajax({
                     cache: false,
                     url: "@Html.Raw(Url.Action("productdetails_attributechange", "shoppingcart", new {productId = productId, validateAttributeConditions = attributesHaveConditions, loadPicture = attributesHaveAssociatedPictures }))",
                     data: $('#product-details-form').serialize(),
                     type: "POST",
                     success: function (data, textStatus, jqXHR) {
+                        utility.removeSpinner('summary');
                         if (data.price) {
                             $('.price-value-@productId').text(data.price);
                         }
-                        if (data.basepricepangv) {
-                            $('#base-price-pangv-@productId').text(data.basepricepangv);
-                        } else {
-                            $('#base-price-pangv-@productId').hide();
-                        }
-                        if (data.sku) {
-                            $('#sku-@productId').text(data.sku).parent(".sku").show();
-                        } else {
-                            $('#sku-@productId').parent(".sku").hide();
-                        }
-                        if (data.mpn) {
-                            $('#mpn-@productId').text(data.mpn).parent(".manufacturer-part-number").show();
-                        } else {
-                            $('#mpn-@productId').parent(".manufacturer-part-number").hide();
-                        }
-                        if (data.gtin) {
-                            $('#gtin-@productId').text(data.gtin).parent(".gtin").show();
-                        } else {
-                            $('#gtin-@productId').parent(".gtin").hide();
-                        }
-                        if (data.stockAvailability) {
-                            $('#stock-availability-value-@productId').text(data.stockAvailability);
+                        if (data.notdiscountedprice) {
+                            $('.non-discounted-price.@productId span').text(data.notdiscountedprice);
                         }
                         if (data.enabledattributemappingids) {
                             for (var i = 0; i < data.enabledattributemappingids.length; i++) {
-                                $('#@(NopAttributePrefixDefaults.Product)label_' + data.enabledattributemappingids[i]).show();
-                                $('#@(NopAttributePrefixDefaults.Product)input_' + data.enabledattributemappingids[i]).show();
+                                $('#@(NopAttributePrefixDefaults.Product)label_' + data.enabledattributemappingids[i]).removeClass("d-none");
+                                $('#@(NopAttributePrefixDefaults.Product)input_' + data.enabledattributemappingids[i]).removeClass("d-none");
                             }
                         }
                         if (data.disabledattributemappingids) {
                             for (var i = 0; i < data.disabledattributemappingids.length; i++) {
-                                $('#@(NopAttributePrefixDefaults.Product)label_' + data.disabledattributemappingids[i]).hide();
-                                $('#@(NopAttributePrefixDefaults.Product)input_' + data.disabledattributemappingids[i]).hide();
+                                $('#@(NopAttributePrefixDefaults.Product)label_' + data.disabledattributemappingids[i]).addClass("d-none");
+                                $('#@(NopAttributePrefixDefaults.Product)input_' + data.disabledattributemappingids[i]).addClass("d-none");
                             }
                         }
                         if (data.pictureDefaultSizeUrl) {
@@ -470,7 +455,10 @@
                 });
             }
             $(document).ready(function() {
-                @(attributeChangeHandlerFuncName)();
+                $("input[type=radio]:checked").each(function () {
+                    @(attributeChangeHandlerFuncName)(true);
+                    $(this).parent().addClass("active");
+                });
                 @Html.Raw(attributeChangeScriptsBuilder.ToString())
             });
         </script>
