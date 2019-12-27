@@ -193,6 +193,68 @@ function addAntiForgeryToken(data) {
     return data;
 };
 
+var utility = (function () {
+
+    var ScrolltoElement = function (el, offset) {
+        $(el).velocity('scroll', {
+            duration: 500,
+            offset: offset,
+            easing: 'ease-in-out'
+        });
+    };
+
+    var addSpinner = function (id, zindex) {
+        var top = $("#" + id).offset().top + $("#" + id).outerHeight() / 2 - 50;
+        var left = $("#" + id).offset().left + $("#" + id).outerWidth() / 2 - 50;
+
+        $('body').append("<div class='spinner-wrapper' id='" + id + "_spinner' style='top: " + top + "px; left: " + left + "px; position: absolute;' ><div class='spinner'></div></div>");
+        if (zindex) { $('#' + id + '_spinner').css('z-index', zindex); }
+    };
+
+    var addSpinnerWithBg = function (id, zindex) {
+        var height = $("#" + id).outerHeight();
+        var width = $("#" + id).outerWidth();
+        var top = $("#" + id).offset().top;
+        var left = $("#" + id).offset().left;
+
+
+        $('body').append("<div id='" + id + "_spinner_bg' class='spinner-bg' style='width:" + width + "px; height:" + height + "px; top: " + top + "px; left: " + left + "px; position: absolute;'></div>");
+        if (zindex) { $('#' + id + '_spinner_bg').css('z-index', zindex); }
+        utility.addSpinner(id);
+    };
+
+    var removeSpinner = function (id) {
+        $("#" + id + "_spinner_bg").remove();
+        $("#" + id + "_spinner").remove();
+    };
+
+    var addButtonSpinner = function (el, zindex) {
+        el.css("width", el.css("width")).css("height", el.css("height"));
+        el.html("<div class='spinner-wrapper'><div class='spinner small'></div></div>");
+        if (zindex) { el.children('.spinner-wrapper').css('z-index', zindex); }
+    }
+
+    var isInViewport = function (id) {
+
+        var elementTop = $('#' + id).offset().top;
+        var elementBottom = elementTop + $('#' + id).outerHeight();
+
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+
+        return elementBottom > viewportTop && elementTop < viewportBottom;
+    };
+
+    return {
+        ScrolltoElement: ScrolltoElement,
+        addSpinner: addSpinner,
+        addButtonSpinner: addButtonSpinner,
+        addSpinnerWithBg: addSpinnerWithBg,
+        removeSpinner: removeSpinner,
+        isInViewport: isInViewport
+    };
+})();
+
 var selectList = (function () {
     var initSelect2 = function () {
 
@@ -221,4 +283,37 @@ var selectList = (function () {
         initDropdowns: initDropdowns
     };
 
+})();
+
+var loader = (function () {
+    var reloadContent = function (attributes) {
+        var element = $("#" + attributes.id);
+        var url = attributes.url;
+        if (url === undefined) {
+            url = document.location;
+        }
+
+        element.load(url + ' #' + attributes.id + ' > *', function () {
+            $('#' + attributes.id + '_spinner').remove();
+            $("#" + attributes.id + '_spinner_bg').remove();
+            if (attributes.callback) {
+                attributes.callback();
+            }
+        });
+    };
+
+    var loadModal = function (id) {
+        if (id == null) {
+            id = 'modal-container';
+        }
+        if (!$('#' + id).hasClass('loaded')) {
+            $('#' + id).velocity("transition.fadeIn", { duration: 250 }).addClass('loaded');
+            utility.removeSpinner(id);
+        }
+    };
+
+    return {
+        reloadContent: reloadContent,
+        loadModal: loadModal
+    };
 })();
