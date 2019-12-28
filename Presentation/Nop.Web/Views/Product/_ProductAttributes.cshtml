@@ -20,7 +20,7 @@
                 </label>
                 @if (!string.IsNullOrEmpty(attribute.Description))
                 {
-                    <div class="attribute-desc-tooltip ml-1" data-toggle="tooltip" title="@attribute.Description"><svg class="icon size-0-85x"><use href="#question"></use></svg></div>
+                    <div class="attribute-desc-tooltip ml-2" data-toggle="tooltip" title="@attribute.Description"><svg class="icon size-0-85x"><use href="#question"></use></svg></div>
                 }
             </dt>
                 <dd id="@($"{NopAttributePrefixDefaults.Product}input_{attribute.Id}")">

@@ -126,6 +126,10 @@ body {
         vertical-align: -.125em;
     }
 
+    &.size-0-85x {
+        font-size: .85rem !important;
+    }
+
     &.size-1x {
         font-size: 1rem !important;
     }
@@ -155,6 +159,10 @@ body {
 
 .header-upper-wrapper {
     background: rgba(0, 0, 0, 0.4);
+}
+
+.mb-0, .mx-0 {
+    margin-bottom: 0 !important;
 }
 
 .mb-3, .my-3 {
@@ -331,6 +339,10 @@ button, .btn, .button-1, .button-2 {
 
 .ml-1, .mx-1 {
     margin-left: .25rem !important;
+}
+
+.ml-2, .mx-2 {
+    margin-left: .5rem !important;
 }
 
 .ml-3, .mx-3 {
@@ -537,6 +549,13 @@ input.search-box-text::placeholder {
     white-space: nowrap;
     border: 0;
 }
+
+.attributes {
+    label {
+        vertical-align: initial;
+    }
+}
+
 
 .attributes dt, .attribute-label, .title strong {
     display: block;
