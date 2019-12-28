@@ -14,17 +14,15 @@
             {
                 var controlId = $"{NopAttributePrefixDefaults.Product}{attribute.Id}";
                 var textPrompt = !string.IsNullOrEmpty(attribute.TextPrompt) ? attribute.TextPrompt : attribute.Name;
-                <dt id="@($"{NopAttributePrefixDefaults.Product}label_{attribute.Id}")" class="@(attribute.HasCondition ? "d-none" : "")">
-                    <label class="text-prompt">
-                        @textPrompt
-                    </label>
-                    @if (!string.IsNullOrEmpty(attribute.Description))
-                    {
-                        <div class="attribute-description">
-                            @Html.Raw(attribute.Description)
-                        </div>
-                    }
-                </dt>
+            <dt id="@($"{NopAttributePrefixDefaults.Product}label_{attribute.Id}")" class="@(attribute.HasCondition ? "d-none" : "")">
+                <label class="text-prompt">
+                    @textPrompt
+                </label>
+                @if (!string.IsNullOrEmpty(attribute.Description))
+                {
+                    <div class="attribute-desc-tooltip ml-1" data-toggle="tooltip" title="@attribute.Description"><svg class="icon size-0-85x"><use href="#question"></use></svg></div>
+                }
+            </dt>
                 <dd id="@($"{NopAttributePrefixDefaults.Product}input_{attribute.Id}")">
                     @switch (attribute.AttributeControlType)
                     {

@@ -2147,17 +2147,9 @@ label, label + * {
 .attributes dl {
     padding: 0 2px; /* fix for Chrome in Mac, the checkboxes get cut off */
 }
-.attributes dt,
-.attribute-label {
-	display: block;
-	margin: 0 0 5px;
-	white-space: nowrap; 
-	font-weight: bold;
-	color: #444;
-}
 .attributes dd,
 .attribute-data {
-	margin: 0 0 10px;
+	margin: 0 0 20px;
 }
 .attributes li {
 	margin: 8px 0 12px;
@@ -2419,13 +2411,6 @@ label, label + * {
 }
 .write-review .fieldset {
 	margin: 0 0 30px;
-}
-
-.tooltip {    
-    position: initial;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-    color: #444;
 }
 
 .tooltip .tooltiptext {
