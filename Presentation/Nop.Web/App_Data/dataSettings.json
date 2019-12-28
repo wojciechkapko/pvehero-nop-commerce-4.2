@@ -1,6 +1,6 @@
 ﻿{
   "DataProvider": "sqlserver",
   "DataConnectionString": "Data Source=VESP-HOME\\SQLEXPRESS;Initial Catalog=pvehero4.2;Integrated Security=True;Persist Security Info=False",
-  //"DataConnectionString": "Data Source=SQL6007.site4now.net;Initial Catalog=DB_A3DE36_pvehero42;User Id=DB_A3DE36_pvehero42_admin;Password=#5K7xGLWV3pF";
+  //"DataConnectionString": "Data Source=SQL6007.site4now.net;Initial Catalog=DB_A3DE36_pveheroTemp;User Id=DB_A3DE36_pveheroTemp_admin;Password=ziemniak33;",
   "RawDataSettings": {}
 }
