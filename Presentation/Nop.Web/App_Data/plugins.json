@@ -1,6 +1,7 @@
 ﻿{
   "InstalledPluginNames": [
-    "Payments.PayPalStandard"
+    "Payments.PayPalStandard",
+    "FoxNetSoft.StripeDirect"
   ],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],

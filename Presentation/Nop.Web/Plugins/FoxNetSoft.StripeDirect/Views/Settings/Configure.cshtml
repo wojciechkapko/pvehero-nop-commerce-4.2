@@ -1,0 +1,318 @@
+﻿@model FoxNetSoft.Plugin.Payments.StripeDirect.Models.ConfigurationModel
+@{
+    Layout = "_ConfigurePlugin";
+}
+@inject Nop.Core.IWebHelper _webHelper
+@await Component.InvokeAsync("StoreScopeConfiguration")
+<form asp-controller="StripePaymentSettings" asp-action="Configure" method="post">
+    <script>
+        $(document).ready(function () {
+            $("#showDebugInfo").click(toggleshowDebugInfo);
+            $("#@Html.IdFor(model => model.EnableConnectedStripeAccount)").change(toggleEnableConnectedStripeAccount);
+
+            toggleEnableConnectedStripeAccount();
+            toggleshowDebugInfo();
+        });
+
+        function toggleEnableConnectedStripeAccount() {
+            if ($("#@Html.IdFor(model => model.EnableConnectedStripeAccount)").is(':checked')) {
+                $('#pnlConnectedStripeAccountId, #pnlConnectedStripeAccountPercent').show();
+            }
+            else {
+                $('#pnlConnectedStripeAccountId, #pnlConnectedStripeAccountPercent').hide();
+            }
+        }
+
+        function toggleshowDebugInfo() {
+            if ($('#showDebugInfo').is(':checked')) {
+                $('#pnlclearlogfile, #pnlgetlogfile').show();
+            }
+            else {
+                $('#pnlclearlogfile, #pnlgetlogfile').hide();
+            }
+        }
+    </script>
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    @if (Model.IsRegisted == true)
+                    {
+                        @T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.IsRegisted")
+                    }
+                    else
+                    {
+                        @T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.IsNoRegisted")
+                        <br />
+                        <a href="https://www.foxnetsoft.com/nopstripedirectpayment" target="blank">Buy It Now</a>
+                    }
+                </p>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="PublishableKey_OverrideForStore" asp-input="PublishableKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="PublishableKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="PublishableKey" />
+                        <span asp-validation-for="PublishableKey"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="SecretKey_OverrideForStore" asp-input="SecretKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="SecretKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="SecretKey" />
+                        <span asp-validation-for="SecretKey"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="UseSandbox_OverrideForStore" asp-input="UseSandbox" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="UseSandbox" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="UseSandbox" />
+                        <span asp-validation-for="UseSandbox"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="TransactModeId_OverrideForStore" asp-input="TransactModeId" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="TransactModeId" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-select asp-for="TransactModeId" asp-items="Model.TransactModeValues" />
+                        <span asp-validation-for="TransactModeId"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="SupportMultiCurrency_OverrideForStore" asp-input="SupportMultiCurrency" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="SupportMultiCurrency" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="SupportMultiCurrency" />
+                        <span asp-validation-for="SupportMultiCurrency"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="HidePostalCode_OverrideForStore" asp-input="HidePostalCode" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="HidePostalCode" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="HidePostalCode" />
+                        <span asp-validation-for="HidePostalCode"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="EnableEmailReceipts_OverrideForStore" asp-input="EnableEmailReceipts" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="EnableEmailReceipts" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="EnableEmailReceipts" />
+                        <span asp-validation-for="EnableEmailReceipts"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Description_OverrideForStore" asp-input="Description" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Description" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Description" />
+                        <span asp-validation-for="Description"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    @T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.ConnectedStripeAccount")
+                </p>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="EnableConnectedStripeAccount_OverrideForStore" asp-input="EnableConnectedStripeAccount" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="EnableConnectedStripeAccount" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="EnableConnectedStripeAccount" />
+                        <span asp-validation-for="EnableConnectedStripeAccount"></span>
+                    </div>
+                </div>
+                <nop-nested-setting asp-for="EnableConnectedStripeAccount">
+                    <div class="form-group" id="pnlConnectedStripeAccountId">
+                        <div class="col-md-3">
+                            <nop-override-store-checkbox asp-for="ConnectedStripeAccountId_OverrideForStore" asp-input="ConnectedStripeAccountId" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                            <nop-label asp-for="ConnectedStripeAccountId" />
+                        </div>
+                        <div class="col-md-9">
+                            <nop-editor asp-for="ConnectedStripeAccountId" />
+                            <span asp-validation-for="ConnectedStripeAccountId"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" id="pnlConnectedStripeAccountPercent">
+                        <div class="col-md-3">
+                            <nop-override-store-checkbox asp-for="ConnectedStripeAccountPercent_OverrideForStore" asp-input="ConnectedStripeAccountPercent" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                            <nop-label asp-for="ConnectedStripeAccountPercent" />
+                        </div>
+                        <div class="col-md-9">
+                            <nop-editor asp-for="ConnectedStripeAccountPercent" />
+                            <span asp-validation-for="ConnectedStripeAccountPercent"></span>
+                        </div>
+                    </div>
+                </nop-nested-setting>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    @T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookDescription")
+                </p>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="WebhookId" />
+                    </div>
+                    <div class="col-md-9">
+                        @if (_webHelper.IsLocalRequest(this.Context.Request))
+                        {
+                            <input class="form-control text-box single-line" id="WebhookId" name="WebhookId" value="@Model.WebhookId" type="text" readonly="readonly">
+                        }
+                        else
+                        {
+                            <div class="input-group">
+                                <input class="form-control text-box single-line" id="WebhookId" name="WebhookId" value="@Model.WebhookId" type="text" readonly="readonly">
+                                <div class="input-group-btn">
+                                    @if (string.IsNullOrWhiteSpace(Model.WebhookId))
+                                    {
+                                        <button type="submit" name="createwebhook" class="btn btn-info">
+                                            @T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookCreate")
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <button type="submit" name="removewebhook" class="btn btn-info">
+                                            @T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookRemove")
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+                        }
+                        <span asp-validation-for="WebhookId"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="SigningSecretKey_OverrideForStore" asp-input="SigningSecretKey" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="SigningSecretKey" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="SigningSecretKey" />
+                        <span asp-validation-for="SigningSecretKey"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    @T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.EnablePaymentRequestButton.Hint")
+                </p>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="EnablePaymentRequestButton_OverrideForStore" asp-input="EnablePaymentRequestButton" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="EnablePaymentRequestButton" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="EnablePaymentRequestButton" />
+                        <span asp-validation-for="EnablePaymentRequestButton"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="AdditionalFee_OverrideForStore" asp-input="AdditionalFee" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="AdditionalFee" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AdditionalFee" />
+                        <span asp-validation-for="AdditionalFee"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="AdditionalFeePercentage_OverrideForStore" asp-input="AdditionalFeePercentage" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="AdditionalFeePercentage" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AdditionalFeePercentage" />
+                        <span asp-validation-for="AdditionalFeePercentage"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="showDebugInfo" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="showDebugInfo" />
+                        <span asp-validation-for="showDebugInfo"></span>
+                        <div id="pnlclearlogfile">
+                            <a href="@Url.Action("ClearLogFile")" class="k-button">@T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.ClearLogFile")</a>
+                        </div>
+                        <div id="pnlgetlogfile">
+                            <a href="@Url.Action("GetLogFile")" class="k-button">@T("Admin.FoxNetSoft.Plugin.Payments.StripeDirect.GetLogFile")</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="StoreUrl" />
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control text-box single-line" id="StoreUrl" name="StoreUrl" value="@Model.StoreUrl" type="text" readonly="readonly">
+                        <span asp-validation-for="StoreUrl"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="SerialNumber" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="SerialNumber" />
+                        <span asp-validation-for="SerialNumber"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <input type="submit" name="save" class="btn bg-primary" value="@T("Admin.Common.Save")" />
+                    </div>
+                </div>
+                <p>
+                    Installation and configuring plug-in at Youtube <a href="https://www.youtube.com/foxnetsoft" target="blank">www.youtube.com/foxnetsoft</a>
+                    <br />
+                    Installation and configuring plug-in at our site <a href="https://www.foxnetsoft.com/documentation-nopstripedirectpayment" target="blank">https://www.foxnetsoft.com/documentation-nopstripedirectpayment</a>
+                    <br />
+                    <a href="http://www.foxnetsoft.com" target="blank">www.foxnetsoft.com</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</form>
+
+

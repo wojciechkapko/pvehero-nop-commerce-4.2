@@ -1,0 +1,192 @@
+﻿@model FoxNetSoft.Plugin.Payments.StripeDirect.Models.PaymentInfoModel
+@{
+    Layout = "";
+}
+<style>
+    #stripe-confirm-form-card-errors {
+        color: red;
+        padding: 10px;
+    }
+</style>
+@if (Model.Warnings.Any())
+{
+    <div class="message-error">
+        <ul>
+            @foreach (var warning in Model.Warnings)
+            {
+                <li>@warning</li>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    <div id="stripe-payment-confirm-form">
+        <div id="stripe-confirm-form-card-errors" role="alert"></div>
+    </div>
+    <script>
+        var hasstripedirectcardpaymentconfirm = false;
+        @if (!Model.OnePageCheckoutPlugin)
+        {
+            <text>
+            var stripe;
+            if (typeof scriptpaypalproconfirm === 'undefined') {
+                var scriptpaypalproconfirm;
+            }
+            function stripeStripeDirectConfirmInit() {
+                if (typeof scriptpaypalproconfirm === 'undefined') {
+                    scriptpaypalproconfirm = $('.confirm-order-next-step-button').attr("onclick");
+                }
+                $(document).ready(function () {
+                    //confirm-order-next-step-button
+                    //confirm-order-button
+                    $('.confirm-order-next-step-button').show().prop("onclick", null).unbind().click(confirmstripedirectpayment);
+                    //$("#checkoutForm").find("button[data-complete]").show().prop("onclick", null).unbind().click(createstripedirectpayment);
+                    //$("#checkoutForm").find(".complete-button").find(':submit').click(createstripedirectpayment);
+
+                    if (typeof stripe == 'undefined') {
+                       stripe = Stripe('@Model.PublishableKey');
+                    }
+                });
+            }
+            function deferjqueryloading(method) {
+                if (window.jQuery)
+                    method();
+                else
+                    setTimeout(function () { deferjqueryloading(method) }, 50);
+            }
+            deferjqueryloading(stripeStripeDirectConfirmInit);
+            </text>
+        }
+        function confirmstripedirectpayment() {
+            if ($('#stripe-payment-confirm-form').length === 0) {
+                if (typeof scriptpaypalproconfirm !== 'undefined' && scriptpaypalproconfirm.length !== 0) {
+                    eval(scriptpaypalproconfirm);
+                }
+                return true;
+            }
+            if (hasstripedirectcardpaymentconfirm) {
+                return true;
+            }
+
+            //var buttonsubmit = $(this);
+            //terms of service
+            var termOfServiceOk = true;
+            var termsofservice = $('#termsofservice');
+            if ($('#termsofservice').length === 0)
+                termsofservice = $('#terms-of-service');
+            if (termsofservice.length > 0 && !termsofservice.is(":hidden")) {
+                //terms of service element exists
+                if (!termsofservice.is(':checked')) {
+                    var readterms = $("#terms-of-service-warning-box");
+                    if (readterms.length === 0)
+                        readterms = $('#read-terms');
+                    readterms.dialog();
+                    termOfServiceOk = false;
+                } else {
+                    termOfServiceOk = true;
+                }
+            }
+            if (!termOfServiceOk) {
+               return false;
+            }
+            $(".confirm-order-next-step-button").attr('disabled', true);
+
+            var paymentintentid = '@Model.StripePaymentIntentId';
+            if (paymentintentid.length == 0)
+                paymentintentid = document.getElementById('@Html.IdFor(model => model.StripePaymentIntentId)').value;
+
+            fetch('@Url.Action("ConfrimPayment", "StripeDirectPayment")', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ paymentintentid: paymentintentid })
+            }).then(function (result) {
+                // Handle server response (see Step 3)
+                result.json().then(function (json) {
+                    handleStripeServerConfirmResponse(json);
+                })
+            });
+            @if (!Model.OnePageCheckoutPlugin)
+            {
+                <text>
+            event.preventDefault();
+                </text>
+            }
+            return false;
+        }
+
+        function handleStripeServerConfirmResponse(result) {
+            if (result.error) {
+                // Inform the customer that there was an error.
+                stripePaymentConfirmError(result.error)
+            } else if (result.requires_action) {
+                // Use Stripe.js to handle required card action
+                stripe.handleCardAction(
+                    result.payment_intent_client_secret
+                ).then(function (result) {
+                    if (result.error) {
+                        // Inform the customer that there was an error.
+                        stripePaymentConfirmError(result.error)
+                        // Show error in payment form
+                    } else {
+                        // The card action has been handled
+                        // The PaymentIntent can be confirmed again on the server
+                        //stripePaymentConfirmSucceeded(result.id);
+                        confirmstripedirectpayment();
+                    }
+                });
+            } else {
+                // Show success message
+                // The payment has succeeded. Display a success message.
+                stripePaymentConfirmSucceeded(result.payment_intent_id);
+            }
+        }
+        function stripePaymentConfirmError(error) {
+            // Inform the customer that there was an error.
+            var errorElement = document.getElementById('stripe-confirm-form-card-errors');
+            if (document.getElementById('stripe-card-errors') != null)
+                errorElement = document.getElementById('stripe-card-errors');
+
+            //errorElement.textContent = JSON.stringify(error.message);
+            if (error.message !== undefined)
+                errorElement.textContent = error.message;
+            else
+                errorElement.textContent = error;
+
+            $(".confirm-order-next-step-button").removeAttr('disabled');
+            hasstripedirectcardpayment = false;
+            hasstripedirectcardpaymentconfirm = false;
+            if ($('.payment-info-next-step-button').length >= 1 && typeof Checkout !== 'undefined')
+                Checkout.back();
+        }
+        function stripePaymentConfirmSucceeded(paymentintentid) {
+            hasstripedirectcardpaymentconfirm = true;
+            var errorElement = document.getElementById('stripe-confirm-form-card-errors');
+            if (document.getElementById('stripe-card-errors') != null)
+                errorElement = document.getElementById('stripe-card-errors');
+            errorElement.textContent = "";
+            //buttonsubmit.closest('form').submit();
+            $(".confirm-order-next-step-button").removeAttr('disabled');
+
+            //$('.payment-info-next-step-button, .confirm-order-button').show().click();
+            //$("#checkoutForm").find("button[data-complete]").show().click();
+            if (typeof scriptpaypalproconfirm !== 'undefined' && scriptpaypalproconfirm.length !== 0) {
+                eval(scriptpaypalproconfirm);
+                return true;
+            }
+            @if (Model.OnePageCheckoutPlugin)
+            {
+                <text>
+                $('.confirm-order-button').click();
+                $("#checkoutForm").find("button[data-complete]").click();
+                </text>
+            }
+            else
+            {
+                <text>
+                $('.confirm-order-next-step-button').click();
+                </text>
+            }
+        }
+    </script>
+}

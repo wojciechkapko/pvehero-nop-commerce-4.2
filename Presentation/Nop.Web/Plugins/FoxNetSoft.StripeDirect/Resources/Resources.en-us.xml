@@ -1,0 +1,170 @@
+﻿<Language Name="English" IsRightToLeft="false">
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.showDebugInfo">
+    <Value>Enable Debugging</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.showDebugInfo.Hint">
+    <Value>Write debugging information into file. In ~/App_Data/ folder.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.SerialNumber">
+    <Value>Serial Number</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.SerialNumber.Hint">
+    <Value>Specify serial number.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.IsRegisted">
+    <Value>Registered version.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.IsNoRegisted">
+    <Value>Unregistered version is fully operational. There is only one limitation – only 100 payments.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.IsExpired">
+    <Value>Your license has expired, you should renew the license with a 50% discount.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.StoreUrl">
+    <Value>Website address (for registration)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.StoreUrl.Hint">
+    <Value>Website address (for registration).</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.ClearLogFile">
+    <Value>Clear log-file</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.GetLogFile">
+    <Value>Download log-file</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.PublishableKey">
+    <Value>Publishable key</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.PublishableKey.Hint">
+    <Value>Specify Publishable key.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.SecretKey">
+    <Value>Secret key</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.SecretKey.Hint">
+    <Value>Specify secret key.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.TransactMode">
+    <Value>Transaction mode</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.TransactMode.Hint">
+    <Value>Choose transaction mode.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookId">
+    <Value>Webhook ID</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookId.Hint">
+    <Value>Specify webhook ID.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.SigningSecretKey">
+    <Value>Webhook Signing Secret</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.SigningSecretKey.Hint">
+    <Value>Specify webhook 'Signing Secret' from webhook detail's paqge.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.UseSandbox">
+    <Value>Use Sandbox</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.UseSandbox.Hint">
+    <Value>Check to enable Sandbox (testing environment).</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.SupportMultiCurrency">
+    <Value>Support multi-currency</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.SupportMultiCurrency.Hint">
+    <Value>By default plugin uses the primary currency of store, but you can enabled to use the customer's currency of the order.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.HidePostalCode">
+    <Value>Hide Postal Code</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.HidePostalCode.Hint">
+    <Value>Hide the postal code field. Default is false. If you are already collecting a full billing address or postal code elsewhere, set this to true.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.EnablePaymentRequestButton">
+    <Value>Enable Payment Request Button</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.EnablePaymentRequestButton.Hint">
+    <Value>Collect payment and address information from your customers using Apple Pay, Google Pay, Microsoft Pay, and the Payment Request API by using the Payment Request Button Element.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.AdditionalFee">
+    <Value>Additional fee</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.AdditionalFee.Hint">
+    <Value>Enter additional fee to charge your customers.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.AdditionalFeePercentage">
+    <Value>Additional fee. Use percentage</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.AdditionalFeePercentage.Hint">
+    <Value>Determines whether to apply a percentage additional fee to the order total. If not enabled, a fixed value is used.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.Description">
+    <Value>Description of the payment</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.Description.Hint">
+    <Value>Extra information about a product which will appear on your customer’s credit card statement. In the case that multiple products are billed at once, the first statement descriptor will be used. Only available on products of type=service. By default your customer will see this message 'NopCommerce Store'.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.EnableEmailReceipts">
+    <Value>Enable Email Receipts</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.EnableEmailReceipts.Hint">
+    <Value>Stripe will send payment or refund receipts automatically.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.ConnectedStripeAccount">
+    <Value>Connected Stripe Account. You can send amount to another Stripe account minus your aplication fees.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.EnableConnectedStripeAccount">
+    <Value>Enable Connected Stripe Account</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.EnableConnectedStripeAccount.Hint">
+    <Value>Enable Connected Stripe Account, plugin will send money to connected Stripe account automatically.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.ConnectedStripeAccountId">
+    <Value>Connected Stripe Account Id</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.ConnectedStripeAccountId.Hint">
+    <Value>Provide Connected Stripe Account Id.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.ConnectedStripeAccountPercent">
+    <Value>Application fee percent</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.ConnectedStripeAccountPercent.Hint">
+    <Value>Application fee percent. Example 2% - it means that plugin will send 98% of amount to Connected Stripe Account.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookDescription">
+    <Value>Important! Create Webhook from this page using the button 'Get webhook ID'. You need to have the live URL, not localhost. After it copy webhook secret key from Stripe Dashboard back to this page. Only Webhook can change the order payment status.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookCreate">
+    <Value>Get webhook ID</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookRemove">
+    <Value>Remove webhook ID</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.WebhookError">
+    <Value>Webhook was not created (see details in the log)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.StripeDirect.OldLibrary">
+    <Value>Error. You has another plugin for Stripe with old Stripe.net.dll. Download the last release or uninstall and remove it from the folder 'Plugins'. This plugin uses the new library Stripe.net.dll.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.StripeDirect.PaymentMethodDescription">
+    <Value>Pay by credit or debit card.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.StripeDirect.Caption.Card">
+    <Value>Credit or debit card</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.StripeDirect.Caption.SubmitButton">
+    <Value>Submit Payment</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.StripeDirect.WrongStripePaymentIntentKey">
+    <Value>Error. Stripe. Wrong Stripe Payment Intent Key.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.StripeDirect.WrongStripePaymentIntentStatus">
+    <Value>Error. Stripe. Wrong Stripe Payment Intent Status '{0}'.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.StripeDirect.PaymentWasSent">
+    <Value>Payment was done.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.StripeDirect.CardHolder">
+    <Value>Card holder</Value>
+  </LocaleResource>
+</Language>
