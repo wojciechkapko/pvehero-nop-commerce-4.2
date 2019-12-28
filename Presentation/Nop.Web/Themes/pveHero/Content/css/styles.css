@@ -1803,15 +1803,6 @@ label, label + * {
     background: url('../images/discontinued-product-icon.png') no-repeat 13px center;
     color: #de444c;
 }
-.overview .product-name {
-	margin: 0 0 25px;
-	border-bottom: 1px solid #ddd;
-    padding: 0 0 10px;
-}
-.overview .product-name h1 {
-	font-size: 30px;
-    font-weight: normal;
-}
 .overview .short-description {
 	margin: 0 0 25px;
 	line-height: 22px;
@@ -1914,14 +1905,6 @@ label, label + * {
 .overview .availability .back-in-stock-subscription,
 .variant-overview .availability .back-in-stock-subscription {
 	display: inline-block;
-}
-.overview .additional-details,
-.variant-overview .additional-details {
-	margin: 0 0 20px;
-}
-.overview .additional-details div,
-.variant-overview .additional-details div {
-	margin: 0 0 8px;
 }
 .overview .delivery,
 .variant-overview .delivery {
