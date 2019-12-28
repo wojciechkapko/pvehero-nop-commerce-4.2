@@ -166,7 +166,13 @@ namespace Nop.Services.Catalog
                     {
                         foreach (var attributeValue in _productAttributeParser.ParseProductAttributeValues(attributesXml, attribute.Id))
                         {
-                            var formattedAttribute = $"{_localizationService.GetLocalized(attribute.ProductAttribute, a => a.Name, _workContext.WorkingLanguage.Id)}: {_localizationService.GetLocalized(attributeValue, a => a.Name, _workContext.WorkingLanguage.Id)}";
+                            var formattedAttribute = $"{attribute.ProductAttribute.Name}: {attributeValue.Name}";
+
+                            if (attribute.TextPrompt != null)
+                            {
+                                formattedAttribute = $"{attribute.TextPrompt}: {attributeValue.Name}";
+
+                            }
 
                             if (renderPrices)
                             {
@@ -215,8 +221,8 @@ namespace Nop.Services.Catalog
                             }
 
                             //encode (if required)
-                            if (htmlEncode)
-                                formattedAttribute = WebUtility.HtmlEncode(formattedAttribute);
+                            //if (htmlEncode)
+                            //    formattedAttribute = WebUtility.HtmlEncode(formattedAttribute);
 
                             if (string.IsNullOrEmpty(formattedAttribute))
                                 continue;
