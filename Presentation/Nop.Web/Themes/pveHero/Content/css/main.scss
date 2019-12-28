@@ -837,3 +837,14 @@ label:not(.checkbox-style):not(.checkbox-label) {
         color: #fff !important;
     }
 }
+
+.quantity .fs-dropdown.fs-light .fs-dropdown-selected {
+    padding: .5rem 1.75rem;
+}
+
+.table-wrapper, .cart-options {
+    border-radius: .5rem;
+    background: rgba(0,0,0,.35);
+    padding: 1rem 0;
+    box-shadow: 0 7px 15px rgba(0,0,0,.2);
+}

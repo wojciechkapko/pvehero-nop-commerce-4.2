@@ -373,10 +373,6 @@ label, label + * {
 /*********** GLOBAL TABLES ***********/
 
 
-
-.table-wrapper {
-	overflow-x: auto;
-}
 .data-table .hidden-row {
 	height: 1px;
   border: none;
@@ -423,13 +419,8 @@ label, label + * {
 .cart td,
 .data-table td,
 .forum-table td {
-	min-width: 50px;
-	border-width: 1px;
-	border-style: solid;
-    border-color: transparent #ddd #ddd;
-    background-color: #fff;
-    padding: 20px;
-	color: #444;
+    min-width: 50px;
+    padding: 8px 0;
 }
 .forum-table td {
 	min-width: 90px;
@@ -492,6 +483,7 @@ label, label + * {
 .cart td.unit-price,
 .data-table td.unit-price {
     white-space: nowrap;
+    text-align: center;
 }
 .cart td.quantity input {
     width: 50px;
@@ -499,8 +491,8 @@ label, label + * {
 }
 .cart td.subtotal,
 .data-table td.total {
-	white-space: nowrap;
-    color: #444;
+    white-space: nowrap;
+    padding: 0 1rem;
 }
 .cart td.subtotal .discount, .cart td.subtotal .discount-additional-info {
     font-style: italic;

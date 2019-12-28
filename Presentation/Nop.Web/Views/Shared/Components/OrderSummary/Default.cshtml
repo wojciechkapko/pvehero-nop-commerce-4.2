@@ -93,17 +93,19 @@
                             <tr>
                                 @if (Model.IsEditable)
                                 {
-                                    <td class="remove-from-cart">
-                                        @if (item.DisableRemoval)
-                                        {
-                                            <text>&nbsp;</text>
-                                        }
-                                        else
-                                        {
-                                            <label class="td-title" for="removefromcart@(item.Id)">@T("ShoppingCart.Remove"):</label>
-                                            <input type="checkbox" name="removefromcart" id="removefromcart@(item.Id)" value="@(item.Id)"/>
-                                        }
-                                    </td>
+                                <td class="remove-from-cart">
+                                    @if (item.DisableRemoval)
+                                    {
+                                        <text>&nbsp;</text>
+                                    }
+                                    else
+                                    {
+                                        <div class="checkbox justify-content-center">
+                                            <input id="remove_@(item.Id)" class="d-none" type="checkbox" name="removefromcart" value="@(item.Id)" />
+                                            <label for="remove_@(item.Id)" class="checkbox-style"></label>
+                                        </div>
+                                    }
+                                </td>
                                 }
                                 @if (Model.ShowSku)
                                 {
@@ -166,11 +168,9 @@
                                     </td>
                                 }
                                 <td class="unit-price">
-                                    <label class="td-title">@T("ShoppingCart.UnitPrice"):</label>
                                     <span class="product-unit-price">@item.UnitPrice</span>
                                 </td>
                                 <td class="quantity">
-                                    <label class="td-title" for="itemquantity@(item.Id)">@T("ShoppingCart.Quantity"):</label>
                                     @if (Model.IsEditable)
                                     {
                                         if (item.AllowedQuantities.Count > 0)
@@ -193,7 +193,6 @@
                                     }
                                 </td>
                                 <td class="subtotal">
-                                    <label class="td-title">@T("ShoppingCart.ItemTotal"):</label>
                                     <span class="product-subtotal">@item.SubTotal</span>
                                     @if (!string.IsNullOrEmpty(item.Discount))
                                     {
