@@ -124,7 +124,7 @@ input[type="radio"] + * {
 	vertical-align: middle;
 }
 input[type="button"],
-button, .btn, .button-1, .button-2 {
+.btn, .button-1, .button-2 {
     cursor: pointer;
     position: relative;
     text-align: center;
