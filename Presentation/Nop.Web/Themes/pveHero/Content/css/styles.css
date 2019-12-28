@@ -123,7 +123,7 @@ input[type="checkbox"] + *,
 input[type="radio"] + * {
 	vertical-align: middle;
 }
-input[type="button"], input[type="submit"],
+input[type="button"],
 button, .btn, .button-1, .button-2 {
     cursor: pointer;
     position: relative;
