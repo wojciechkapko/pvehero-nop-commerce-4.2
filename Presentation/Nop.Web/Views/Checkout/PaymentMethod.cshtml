@@ -15,7 +15,7 @@
     </div>
     <div class="page-body checkout-data">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentMethodTop })
-        <div class="section payment-method">
+        <div class="section card default payment-method">
             <form asp-route="CheckoutPaymentMethod" method="post">
                 @if (Model.DisplayRewardPoints && Model.PaymentMethods.Count > 0)
                 {
@@ -48,24 +48,19 @@
                         @for (var i = 0; i < Model.PaymentMethods.Count; i++)
                         {
                             var paymentMethod = Model.PaymentMethods[i];
-                            var paymentMethodName = paymentMethod.Name;
-                            if (!string.IsNullOrEmpty(paymentMethod.Fee))
-                            {
-                                paymentMethodName = T("Checkout.SelectPaymentMethod.MethodAndFee", paymentMethodName, paymentMethod.Fee).Text;
-                            }
-                            <li>
+                            var paymentMethodName = paymentMethod.Name.Replace(" ", string.Empty);
+                            var paymentMethodFee = paymentMethod.Fee;
+                            <li id="method_@(i)" onclick="$('.method-list li').removeClass('active'); $(this).addClass('active');$('#' + 'paymentmethod_' + @(i)).prop('checked', true );">
+                                <svg class="icon check"><use href="#check"></use></svg>
                                 <div class="method-name">
-                                    @if (!string.IsNullOrEmpty(paymentMethod.LogoUrl))
-                                    {
                                         <div class="payment-logo">
                                             <label for="paymentmethod_@(i)">
-                                                <img src="@paymentMethod.LogoUrl" alt="@paymentMethodName" />
+                                                <svg class="icon white"><use href="#@paymentMethodName"></use></svg>
                                             </label>
                                         </div>
-                                    }
                                     <div class="payment-details">
-                                        <input id="paymentmethod_@(i)" type="radio" name="paymentmethod" value="@(paymentMethod.PaymentMethodSystemName)" checked="@paymentMethod.Selected" />
-                                        <label for="paymentmethod_@(i)">@paymentMethodName</label>
+                                        <input class="d-none" id="paymentmethod_@(i)" type="radio" name="paymentmethod" value="@(paymentMethod.PaymentMethodSystemName)" checked="@paymentMethod.Selected" />
+                                        <label for="paymentmethod_@(i)">Fee: @paymentMethodFee</label>
                                         @if (!string.IsNullOrEmpty(paymentMethod.Description))
                                         {
                                             <div class="payment-description">@paymentMethod.Description</div>
@@ -96,3 +91,9 @@
         </div>
     </div>
 </div>
+
+<script asp-location="Footer">
+    $(document).ready(function () {
+        $("input[type=radio]:checked").closest('li').addClass('active');
+    });
+</script>

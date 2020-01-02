@@ -100,6 +100,7 @@
                                     }
                                     else
                                     {
+                                        <label class="td-title" for="removefromcart@(item.Id)">@T("ShoppingCart.Remove")</label>
                                         <div class="checkbox justify-content-center">
                                             <input id="remove_@(item.Id)" class="d-none" type="checkbox" name="removefromcart" value="@(item.Id)" />
                                             <label for="remove_@(item.Id)" class="checkbox-style"></label>
