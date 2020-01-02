@@ -196,5 +196,4 @@ src/packages/*
 *.jpeg
 *.webp
 
-src/Presentation/Nop.Web/wwwroot/icons/
-!src/Presentation/Nop.Web/wwwroot/icons/
+Presentation/Nop.Web/wwwroot/icons/
