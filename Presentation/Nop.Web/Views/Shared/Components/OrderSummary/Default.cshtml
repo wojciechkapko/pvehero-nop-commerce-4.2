@@ -23,7 +23,7 @@
         }
         @*we add enctype = "multipart/form-data" because "File upload" attribute control type requires it*@
         <form asp-route="ShoppingCart" method="post" enctype="multipart/form-data" id="shopping-cart-form">
-            <div class="table-wrapper">
+            <div class="table-wrapper mb-4">
                 <table class="cart">
                     <colgroup>
                         @if (Model.IsEditable)
@@ -64,7 +64,7 @@
                             @if (Model.ShowProductImages)
                             {
                                 <th class="product-picture">
-                                    @T("ShoppingCart.Image")
+
                                 </th>
                             }
                             <th class="product">
@@ -221,20 +221,20 @@
                     @T(inclTax ? "ShoppingCart.TaxShipping.InclTax" : "ShoppingCart.TaxShipping.ExclTax", Url.RouteUrl("Topic", new { SeName = Html.GetTopicSeName("shippinginfo") }))
                 </div>
             }
-            <div class="cart-options">
-                @if (Model.IsEditable)
-                {
-                    <div class="common-buttons">
-                        <input type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="button-2 update-cart-button" />
-                        <input type="submit" name="continueshopping" value="@T("ShoppingCart.ContinueShopping")" class="button-2 continue-shopping-button" />
-                    </div>
-                }
-                @if (Model.IsEditable)
-                {
-                    @await Html.PartialAsync("_CheckoutAttributes", Model)
-                }
-                @await Component.InvokeAsync("SelectedCheckoutAttributes")
-            </div>
+        <div class="cart-options">
+            @if (Model.IsEditable)
+            {
+                <div class="common-buttons">
+                    <input type="submit" name="updatecart" value="@T("ShoppingCart.UpdateCart")" class="button-1 update-cart-button" />
+                    <input type="submit" name="continueshopping" value="@T("ShoppingCart.ContinueShopping")" class="button-2 continue-shopping-button" />
+                </div>
+            }
+            @if (Model.IsEditable)
+            {
+                @await Html.PartialAsync("_CheckoutAttributes", Model)
+            }
+            @*@await Component.InvokeAsync("SelectedCheckoutAttributes")*@
+        </div>
             <div class="cart-footer">
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderSummaryCartFooter })
                 @if (Model.IsEditable)
@@ -319,7 +319,7 @@
                                 }
                                 else
                                 {
-                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="button-1 checkout-button">
+                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="big button-1 checkout-button w-100">
                                         @T("Checkout.Button")
                                     </button>
                                 }

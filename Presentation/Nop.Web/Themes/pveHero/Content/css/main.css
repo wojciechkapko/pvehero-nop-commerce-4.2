@@ -666,3 +666,78 @@ label:not(.checkbox-style):not(.checkbox-label) {
   background: rgba(0, 0, 0, 0.35);
   padding: 1rem 0;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2); }
+
+.shopping-cart-page .page-title {
+  padding: 10px;
+  text-align: left; }
+
+.page-title h1 {
+  font-size: 2.25rem; }
+
+.table-wrapper .cart a {
+  font-weight: bold;
+  color: #b79bff; }
+
+.w-100 {
+  width: 100%; }
+
+.button-2 {
+  background-color: transparent;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), inset 0 0 0 2px #b79bff; }
+
+.checkout-page .product-picture {
+  padding-left: 1rem !important; }
+
+.order-progress span {
+  background: #673ab7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 900;
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px #7e57c2, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+  width: 30px;
+  height: 30px;
+  margin: 0 auto .6rem auto;
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden; }
+
+input::-webkit-input-placeholder {
+  color: #868e96;
+  opacity: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Cabin, Helvetica, sans-serif; }
+
+input::-moz-placeholder {
+  color: #868e96;
+  opacity: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Cabin, Helvetica, sans-serif; }
+
+input:-ms-input-placeholder {
+  color: #868e96;
+  opacity: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Cabin, Helvetica, sans-serif; }
+
+input::-ms-input-placeholder {
+  color: #868e96;
+  opacity: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Cabin, Helvetica, sans-serif; }
+
+input::placeholder {
+  color: #868e96;
+  opacity: 1;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Cabin, Helvetica, sans-serif; }
+
+.payment-info .info p {
+  text-align: center;
+  font-size: 2rem; }

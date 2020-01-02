@@ -21,7 +21,8 @@
                     </td>
                 </tr>
             }
-            @if (!Model.HideShippingTotal)
+            @*
+                           @if (!Model.HideShippingTotal)
             {
                 <tr class="shipping-cost">
                     <td class="cart-total-left">
@@ -49,7 +50,9 @@
                         }
                     </td>
                 </tr>
-            }
+            } 
+            *@
+
             @if (!string.IsNullOrEmpty(Model.PaymentMethodAdditionalFee))
             {
                 <tr class="additional-fees">
@@ -61,7 +64,8 @@
                     </td>
                 </tr>
             }
-            @if (Model.DisplayTaxRates && Model.TaxRates.Count > 0)
+            @*
+                           @if (Model.DisplayTaxRates && Model.TaxRates.Count > 0)
             {
                 foreach (var taxRate in Model.TaxRates)
                 {
@@ -74,8 +78,10 @@
                     </td>
                 </tr>
                 }
-            }
-            @if (Model.DisplayTax)
+            } 
+            *@
+            @*
+                            @if (Model.DisplayTax)
             {
                 <tr class="tax-value">
                     <td class="cart-total-left">
@@ -86,6 +92,8 @@
                     </td>
                 </tr>
             }
+            *@
+
             @if (!string.IsNullOrEmpty(Model.OrderTotalDiscount))
             {
                 <tr class="discount-total">

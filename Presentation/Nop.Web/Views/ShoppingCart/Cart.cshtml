@@ -14,6 +14,7 @@
 <div class="page shopping-cart-page">
     <div class="page-title">
         <h1>@T("ShoppingCart")</h1>
+        <p>Review your cart's content.</p>
     </div>
     <div class="page-body">
         @await Component.InvokeAsync("OrderSummary", new { overriddenModel = Model})
