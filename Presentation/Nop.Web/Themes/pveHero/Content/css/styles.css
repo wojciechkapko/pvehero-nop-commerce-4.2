@@ -6204,13 +6204,14 @@ pre {
 }
 
 .flyout-cart {
-	position: absolute;
-	top: 45px;
-	right: 0;
-	z-index: 100;
-	width: 300px;
-	box-shadow: 0 0 2px rgba(0,0,0,0.25);
-	background-color: #fff;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    z-index: 100;
+    width: 300px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgb(48, 40, 81) 10%);
+    border-radius: 0 0 .5rem .5rem;
+    box-shadow: 0 15px 10px -5px rgba(0, 0, 0, 0.3);
 }
 .flyout-cart.active {
 	display: block;
@@ -6222,12 +6223,11 @@ pre {
 }
 .mini-shopping-cart .count {
 	padding: 5px 0 15px;
-	color: #444;
 }
 .mini-shopping-cart .count a {
-	margin: 0 2px;
-	font-weight: bold;
-	color: #444;
+    margin: 0 2px;
+    font-weight: bold;
+    color: #c52c8d;
 }
 .mini-shopping-cart .items {
 	border-top: 1px solid #ddd;
@@ -6270,25 +6270,25 @@ pre {
 	font-size: 14px;
 }
 .mini-shopping-cart .name a {
-	color: #4ab2f1;
-}
-.mini-shopping-cart .name a:hover {
-	color: #248ece;
+    font-weight: bold;
+    color: #b79bff;
 }
 .mini-shopping-cart .attributes {
 	margin: 5px 0;
-	color: #444;
 }
 .mini-shopping-cart .totals {
 	margin: 0 0 12px;
-	font-size: 14px;
+    font-size: 1.25rem;
+    display: flex;
+    padding: 0 1.25rem;
 }
 .mini-shopping-cart .totals strong {
-	font-size: 16px;
-	color: #444;
+    margin-left: auto;
 }
 .mini-shopping-cart .buttons {
 	margin: 0 0 5px;
+    display: flex;
+    justify-content: space-evenly;
 }
 .mini-shopping-cart input[type="button"] {
 	display: inline-block;

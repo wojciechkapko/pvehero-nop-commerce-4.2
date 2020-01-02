@@ -472,7 +472,7 @@ input.search-box-text::placeholder {
     max-width: 100%;
 }
 
-.product-picture img {
+.product-picture img, .mini-shopping-cart .picture img {
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
     border-radius: .5rem;
     overflow: hidden;
