@@ -688,6 +688,9 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .checkout-page .product-picture {
   padding-left: 1rem !important; }
 
+.checkout-page label {
+  margin-bottom: 0 !important; }
+
 .order-progress span {
   background: #673ab7;
   display: flex;

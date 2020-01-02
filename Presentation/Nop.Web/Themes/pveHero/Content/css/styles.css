@@ -279,7 +279,6 @@ label, label + * {
 	margin: 0 0 10px;
 	text-align: center;
     font-size: 14px; /*reset zeroing*/
-	color: #444;
 }
 .inputs input[type="text"],
 .inputs input[type="email"],
@@ -3539,7 +3538,7 @@ label, label + * {
 	margin: 0 0 30px;
 }
 .checkout-page .section.order-summary {
-	margin: 100px 0 30px;
+	margin: 90px 0 30px;
 }
 
 .checkout-page .cart-options {
@@ -3576,9 +3575,7 @@ label, label + * {
 }
 .checkout-page .address-item ul {
 	margin: 0 0 15px;
-	background-color: #f9f9f9;
 	padding: 20px;
-	color: #444;
 }
 .checkout-page .address-item li {
 	padding: 5px 0;
@@ -3592,8 +3589,6 @@ label, label + * {
 	margin: 20px 0;
 }
 .enter-address .edit-address {
-    background-color: #f9f9f9;
-    border-top: 1px solid #e6e6e6;
     margin: 0 0 30px;
     padding: 30px 15px;
 }
