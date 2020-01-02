@@ -265,7 +265,6 @@ label, label + * {
 	position: relative;
 	margin: 0 0 15px;
 	text-align: center;
-	white-space: nowrap; /*fix for 'required' elements*/
     font-size: 0;
 }
 .inputs:after {
@@ -5102,15 +5101,15 @@ pre {
 	display: none;
 }
 .cart tbody {
-	display: block;
-	overflow: hidden;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
 }
 .cart tr {
 	display: block;
 	float: left;
 	width: 100%;
 	margin: 40px 0 0;
-	border: 1px solid #ddd;
 }
 .cart td {
 	display: block;
@@ -5119,17 +5118,14 @@ pre {
 }
 .cart td.remove-from-cart {
     margin: 0 0 15px;
-	border-bottom: 1px solid #ddd;
 	background-color: #eee;
 	padding: 10px;
 }
 .cart td.product-picture {
-	border-top: 1px solid #ddd;
 	padding: 15px 10px 5px;
 }
 .cart td.product {
 	min-width: 0;
-	border-bottom: 1px solid #ddd;
 	padding: 5px 10px 15px;
 	text-align: center;
 }
@@ -5283,7 +5279,11 @@ pre {
 }
 
 
-
+@media all and (max-width: 399px) {
+    .cart tbody {
+        flex-direction: column;
+    }
+}
 
 
 @media all and (min-width: 481px) {

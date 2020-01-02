@@ -691,6 +691,9 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .checkout-page label {
   margin-bottom: 0 !important; }
 
+.checkout-page .cart-options {
+  display: none; }
+
 .order-progress span {
   background: #673ab7;
   display: flex;
