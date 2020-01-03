@@ -62,7 +62,7 @@
                         @await Html.PartialAsync("_ProductDetailsPictures", Model)
                         @if (!string.IsNullOrEmpty(Model.FullDescription))
                         {
-                        <div class="card default mb-3">
+                        <div class="card default p-4 mb-3">
                             <!--product reviews-->
                             @await Html.PartialAsync("_ProductReviewOverview", Model.ProductReviewOverview)
                         </div>
@@ -153,10 +153,13 @@
                     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsEssentialBottom, additionalData = Model })
                 </div>
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
-                <div class="product-collateral">
+                @*
+                                  <div class="product-collateral">
                     @await Html.PartialAsync("_ProductSpecifications", Model.ProductSpecifications)
                     @await Html.PartialAsync("_ProductTags", Model.ProductTags)
-                </div>
+                </div>  
+                *@
+
                 @await Component.InvokeAsync("ProductsAlsoPurchased", new { productId = Model.Id })
                 @await Component.InvokeAsync("RelatedProducts", new { productId = Model.Id })
             </div>
