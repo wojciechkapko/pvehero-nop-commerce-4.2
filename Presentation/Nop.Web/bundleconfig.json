@@ -1,0 +1,8 @@
+[
+  {
+    "outputFileName": "wwwroot/js/ajaxreviews.min.js",
+    "inputFiles": [
+      "wwwroot/js/ajaxreviews.js"
+    ]
+  }
+]

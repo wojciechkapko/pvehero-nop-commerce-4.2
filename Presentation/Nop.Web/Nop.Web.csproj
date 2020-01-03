@@ -40,6 +40,7 @@
 
     <!-- We copy the \Logs directory -->
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
+    <Content Remove="bundleconfig.json" />
     <Content Remove="compilerconfig.json" />
     <None Remove="Themes\pveHero\Content\css\main.scss" />
     <None Remove="Themes\pveHero\Content\css\print.css" />
@@ -95,6 +96,7 @@
     <None Remove="Themes\pveHero\Content\images\watch.png" />
     <None Remove="Themes\pveHero\Content\images\wishlist-button.png" />
     <None Remove="Themes\pveHero\preview.jpg" />
+    <_ContentIncludedByDefault Remove="bundleconfig.json" />
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
 
     <None Update="Areas\Admin\sitemap.config">
@@ -109,6 +111,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
   </ItemGroup>
 

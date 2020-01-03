@@ -70,6 +70,16 @@ body {
     align-self: center;
 }
 
+input, textarea, select {
+    font-family: Cabin,Helvetica,sans-serif;
+}
+
+textarea {
+    min-height: 150px;
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
 @media (min-width: 1001px) {
     .header-menu {
         background-color: rgba(0, 0, 0, 0.3);
@@ -196,6 +206,9 @@ body {
 
 .mb-0, .mx-0 {
     margin-bottom: 0 !important;
+}
+.mb-1, .mx-1 {
+margin-bottom: .25rem !important;
 }
 
 .mb-2, .my-2 {
@@ -372,6 +385,10 @@ button, .btn, .button-1, .button-2 {
             left: auto !important;
         }
     }
+}
+
+.ml-auto, .mx-auto {
+    margin-left: auto !important;
 }
 
 .ml-1, .mx-1 {

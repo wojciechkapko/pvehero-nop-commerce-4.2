@@ -1797,7 +1797,7 @@ label, label + * {
 	text-decoration: underline;
 }
 .product-review-links a:hover {
-	color: #4ab2f1;
+	color: #b79bff;
 }
 
 .overview .value,
@@ -2355,7 +2355,7 @@ label, label + * {
 
 
 .product-reviews-page h1 a {
-	color: #4ab2f1;
+    color: #b79bff;
 }
 .product-reviews-page h1 a:before,
 .product-reviews-page h1 a:after {
@@ -2364,7 +2364,6 @@ label, label + * {
 .product-reviews-page .title {
 	margin: 0 0 20px;
 	font-size: 20px;
-	color: #444;
 }
 .product-reviews-page .title strong {
 	font-weight: normal;
@@ -2403,9 +2402,10 @@ label, label + * {
 }
 
 .write-review .review-rating {
-    text-align: left;
     padding-top: 10px;
-    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 .write-review .review-rating label {
     display: block;
@@ -2452,15 +2452,15 @@ label, label + * {
 	margin: 0 0 40px;
 }
 .product-review-item .review-item-head {
-	border-top: 1px solid #ddd;
-	overflow: hidden;
-	background-color: #f6f6f6;
-	padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
 }
 .product-review-item .review-title {
-	line-height: 20px;
-	font-size: 15px;
-	color: #444;
+    line-height: 20px;
+    font-size: 1.25rem;
 }
 .product-review-item .product-review-box {
 	margin: 3px 0 0;
@@ -2469,9 +2469,7 @@ label, label + * {
 	padding: 20px 10px;
 }
 .product-review-item .review-text {
-	margin: 0 0 15px;
 	line-height: 22px;
-	color: #444;
 }
 .product-review-item .reply {
 	margin: 15px 0;
@@ -5075,12 +5073,6 @@ pre {
         width: 100%;
         display: block;
     }
-
-    .write-review .review-rating div{
-        text-align: center;
-        padding-bottom: 10px;
-        display: inline-block;
-    }
 }
 
 
@@ -5669,21 +5661,6 @@ pre {
 	float: left;
 	max-width: 600px;
 }
-.product-review-item .product-review-box {
-	float: right;
-}
-
-.write-review .review-rating div {
-    display: inline-block;
-    margin: 0 0 0 5px;
-    cursor: default;
-    vertical-align: middle;
-    font-size: 14px;
-    height: 17px;
-}
-
-
-
 
 /*** REGISTRATION, LOGIN, ACCOUNT ***/
 
@@ -6064,7 +6041,11 @@ pre {
 }
 
 
-
+.write-review .review-rating div {
+    display: inline-block;
+    margin: 0 0 0 15px;
+    font-size: 1.75rem;
+}
 
 
 @media all and (min-width: 1001px) {
