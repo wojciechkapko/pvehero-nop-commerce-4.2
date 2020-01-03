@@ -177,6 +177,9 @@ namespace Nop.Web.Factories
                 prePopulateWithCustomerFields: prePopulateNewAddressWithCustomerFields,
                 customer: _workContext.CurrentCustomer,
                 overrideAttributesXml: overrideAttributesXml);
+
+            model.BillingNewAddress.IsGuest = _workContext.CurrentCustomer.IsGuest();
+
             return model;
         }
 

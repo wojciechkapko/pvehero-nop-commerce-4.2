@@ -266,6 +266,19 @@ namespace Nop.Web.Controllers
 
             //model
             var model = _checkoutModelFactory.PrepareCheckoutCompletedModel(order);
+            if (!_workContext.CurrentCustomer.IsGuest())
+            {
+                var customer = _workContext.CurrentCustomer;
+                var firstname = _genericAttributeService.GetAttribute<string>(customer, NopCustomerDefaults.FirstNameAttribute);
+                if (firstname == null)
+                {
+                    firstname = _workContext.CurrentCustomer.BillingAddress.FirstName;
+                    var lastname = _workContext.CurrentCustomer.BillingAddress.LastName;
+                    _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.FirstNameAttribute, firstname);
+                    _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.LastNameAttribute, lastname);
+                }
+            }
+
             return View(model);
         }
 
