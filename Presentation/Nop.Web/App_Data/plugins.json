@@ -1,7 +1,8 @@
 ﻿{
   "InstalledPluginNames": [
     "Payments.PayPalStandard",
-    "FoxNetSoft.StripeDirect"
+    "FoxNetSoft.StripeDirect",
+    "CurrencyExchange.ECB"
   ],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],
