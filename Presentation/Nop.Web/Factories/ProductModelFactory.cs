@@ -19,6 +19,7 @@ using Nop.Services.Directory;
 using Nop.Services.Helpers;
 using Nop.Services.Localization;
 using Nop.Services.Media;
+using Nop.Services.Orders;
 using Nop.Services.Security;
 using Nop.Services.Seo;
 using Nop.Services.Shipping.Date;
@@ -62,6 +63,7 @@ namespace Nop.Web.Factories
         private readonly ISpecificationAttributeService _specificationAttributeService;
         private readonly IStaticCacheManager _cacheManager;
         private readonly IStoreContext _storeContext;
+        private readonly IOrderService _orderService;
         private readonly ITaxService _taxService;
         private readonly IUrlRecordService _urlRecordService;
         private readonly IVendorService _vendorService;
@@ -100,6 +102,7 @@ namespace Nop.Web.Factories
             ISpecificationAttributeService specificationAttributeService,
             IStaticCacheManager cacheManager,
             IStoreContext storeContext,
+            IOrderService orderService,
             ITaxService taxService,
             IUrlRecordService urlRecordService,
             IVendorService vendorService,
@@ -134,6 +137,7 @@ namespace Nop.Web.Factories
             _specificationAttributeService = specificationAttributeService;
             _cacheManager = cacheManager;
             _storeContext = storeContext;
+            _orderService = orderService;
             _taxService = taxService;
             _urlRecordService = urlRecordService;
             _vendorService = vendorService;
@@ -177,10 +181,30 @@ namespace Nop.Web.Factories
             }
             else
             {
+
+                var productReviews = product.ProductReviews.Where(pr => pr.IsApproved).OrderBy(pr => pr.CreatedOnUtc);
+                // value init
+                bool hasCompletedOrders = false;
+                // value init
+                bool hasAlreadyRevieved = false;
+                // test if customer is logged in
+                if (_workContext.CurrentCustomer.IsRegistered())
+                {
+                    // Check if client has any orders for the current product
+                    hasCompletedOrders = _orderService.SearchOrders(customerId: _workContext.CurrentCustomer.Id,
+                            productId: product.Id,
+                            osIds: new List<int> { (int)OrderStatus.Complete },
+                            pageSize: 1).Any();
+
+                    // Check if client has already reviewed this product
+                    hasAlreadyRevieved = productReviews.Where(x => x.CustomerId == _workContext.CurrentCustomer.Id).Any();
+                }
+
                 productReview = new ProductReviewOverviewModel()
                 {
                     RatingSum = product.ApprovedRatingSum,
-                    TotalReviews = product.ApprovedTotalReviews
+                    TotalReviews = product.ApprovedTotalReviews,
+                    CanCurrentCustomerLeaveReview = !_workContext.CurrentCustomer.IsGuest() && hasCompletedOrders && !hasAlreadyRevieved
                 };
             }
 

@@ -13,6 +13,8 @@ namespace Nop.Web.Models.Catalog
         public int TotalReviews { get; set; }
 
         public bool AllowCustomerReviews { get; set; }
+
+        public bool CanCurrentCustomerLeaveReview { get; set; }
     }
 
     public partial class ProductReviewsModel : BaseNopModel
