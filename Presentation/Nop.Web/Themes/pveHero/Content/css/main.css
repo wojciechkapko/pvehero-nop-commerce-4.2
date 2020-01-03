@@ -361,7 +361,7 @@ input.search-box-text::placeholder {
   text-align: center;
   white-space: nowrap; }
 
-.card {
+.card, .fieldset {
   padding: 1.5rem;
   position: relative;
   display: -webkit-box;
@@ -375,26 +375,34 @@ input.search-box-text::placeholder {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2); }
-  .card.default {
+  .card.default, .fieldset.default {
     padding: 2.25rem 2.5rem 2.5rem;
     border: none;
     background-color: #1e183e;
     border-radius: .5rem; }
-  .card.secondary {
+  .card.dark, .fieldset.dark {
+    background-color: rgba(0, 0, 0, 0.35); }
+  .card.secondary, .fieldset.secondary {
     border-radius: .5rem;
     border: none;
     background: rgba(0, 0, 0, 0.35);
     padding: 1rem 0; }
-  .card .card-body {
+  .card .card-body, .fieldset .card-body {
     -ms-flex: 1 1 auto;
     flex: 1 1 auto;
     padding: 1.25rem; }
-  .card .card-footer {
+  .card .card-footer, .fieldset .card-footer {
     border-radius: 0 0 1rem 1rem; }
-  .card .card-header {
+  .card .card-header, .fieldset .card-header {
     margin-bottom: 0;
     background-color: #6658d5;
     border-radius: 1rem 1rem 0 0; }
+
+.fieldset {
+  padding: 2.25rem 2.5rem 2.5rem;
+  border: none;
+  background-color: #1e183e;
+  border-radius: .5rem; }
 
 .gallery img {
   border-radius: .5rem;
@@ -478,7 +486,6 @@ input.search-box-text::placeholder {
 .attributes dt, .attribute-label, .title strong {
   display: block;
   margin: 0 0 5px;
-  white-space: nowrap;
   font-weight: bold;
   font-size: 1.3rem;
   letter-spacing: .025em; }
@@ -940,3 +947,6 @@ input::placeholder {
 .product-reviews-overview {
   display: flex;
   align-items: center; }
+
+.data-table label {
+  margin-bottom: 0 !important; }

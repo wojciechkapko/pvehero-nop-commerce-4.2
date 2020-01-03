@@ -87,7 +87,8 @@ textarea, select {
     background: #fff;
 }
 input, textarea, select, button {
-    font-size: 14px;
+    font-size: 1rem;
+    font-weight: 500;
     font-family: 'Open Sans', sans-serif;
     color: #777;
 }
@@ -265,8 +266,6 @@ label, label + * {
 }
 .form-fields {
 	position: relative;
-	border-top: 1px solid #e6e6e6;
-	background-color: #f9f9f9;
 	padding: 30px 15px;
 }
 .inputs {
@@ -439,7 +438,7 @@ label, label + * {
 .data-table .product a,
 .data-table .info a {
     font-weight: bold;
-	color: #444;
+    color: #b79bff;
 }
 .cart .product a:hover,
 .data-table .product a:hover,
@@ -940,7 +939,7 @@ label, label + * {
 .footer-upper {
 	width: 95%;
 	margin: auto;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid rgba(255,255,255,.15);
 	overflow: hidden;
 	padding: 40px 0;
 	font-size: 0;
@@ -1076,7 +1075,7 @@ label, label + * {
 }
 .footer-powered-by a {
 	font-weight: bold;
-	color: #4ab2f1;
+    color: #bba0ff;
 }
 .footer-powered-by a:hover {
 	text-decoration: underline;
@@ -3712,9 +3711,7 @@ label, label + * {
 	width: 350px;
 	max-width: 100%;
 	margin: 0 auto 40px;
-	background-color: #f9f9f9;
 	padding: 20px;
-	color: #444;
 }
 .order-review-data li,
 .order-details-area li,
@@ -3741,10 +3738,10 @@ label, label + * {
     margin-top: 20px;
 }
 .order-completed .details {
-	margin: 0 0 30px;
-	padding: 30px 15px;
-	text-align: center;
-	color: #444;
+    margin: 0 0 30px;
+    padding: 30px 15px;
+    text-align: center;
+    font-size: 1.5rem;
 }
 .order-completed .details div {
 	margin: 5px 0;
@@ -3754,7 +3751,7 @@ label, label + * {
 	text-transform: uppercase;
 }
 .order-completed .details a {
-	color: #4ab2f1;
+	color: #b79bff;
 }
 .order-completed .details a:hover {
 	text-decoration: underline;
@@ -3856,7 +3853,7 @@ label, label + * {
 }
 .order-details-page .page-title h1 {
 	margin: 0 0 30px;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid rgba(255,255,255,.15);
 	padding: 0 0 10px;
 }
 .order-details-page .page-title a {
@@ -3885,15 +3882,10 @@ label, label + * {
 	line-height: 26px;
 	text-align: center;
 	font-size: 16px;
-	color: #444;
 }
 .order-details-page .order-overview .order-number {
 	margin: 0 0 10px;
 	text-transform: uppercase;
-}
-.order-details-page .order-overview .order-total strong {
-	font-weight: normal;
-	color: #4ab2f1;
 }
 
 .order-details-page .repost .button-2 {
@@ -3975,12 +3967,7 @@ label, label + * {
     width: 370px;
     padding: 0 10px;
     max-width: 100%;
-    margin: 0 auto 50px;
-}
-.order-details-page .total-info {
-	background-color: #f9f9f9;
-	padding: 15px 20px;
-	color: #444;
+    margin: 0 0 0 auto;
 }
 
 
@@ -5146,7 +5133,6 @@ pre {
 	float: left;
 	width: 100%;
 	margin: 40px 0 0;
-	border: 1px solid #ddd;
 }
 .order-details-page .data-table td {
 	display: block;
@@ -5156,7 +5142,6 @@ pre {
 .order-details-page .data-table td.product,
 .order-details-page .data-table td.tracking-number {
 	min-width: 0;
-	border-bottom: 1px solid #ddd;
 	padding: 5px 10px 15px;
 	text-align: center;
 }
