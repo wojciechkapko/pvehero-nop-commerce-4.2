@@ -4,24 +4,34 @@
     var ratingPercent = 0;
     if (Model.TotalReviews != 0)
     {
-        ratingPercent = ((Model.RatingSum * 100) / Model.TotalReviews) / 5;
+        ratingPercent = (Model.RatingSum / Model.TotalReviews);
     }
 }
 @if (Model.AllowCustomerReviews)
 {
-    <div class="product-reviews-overview" @if (Model.TotalReviews > 0) { <text>itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"</text>}>
-        <div class="product-review-box">
-            <div class="rating">
-                <div style="width: @(ratingPercent)%">
-                </div>
-            </div>
+    <div class="product-reviews-overview" @if (Model.TotalReviews > 0) { <text> itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" </text> }>
+        <div class="stars mr-3" data-stars="@ratingPercent">
+            <svg class='icon star rate' data-rating="1"><use href='#star'></use></svg>
+            <svg class='icon star rate' data-rating="2"><use href='#star'></use></svg>
+            <svg class='icon star rate' data-rating="3"><use href='#star'></use></svg>
+            <svg class='icon star rate' data-rating="4"><use href='#star'></use></svg>
+            <svg class='icon star rate' data-rating="5"><use href='#star'></use></svg>
         </div>
 
         @if (Model.TotalReviews > 0)
         {
             <div class="product-review-links">
-                <a href="@Url.RouteUrl("ProductReviews", new { productId = Model.ProductId })">@Model.TotalReviews
-                    @T("Reviews.Overview.Reviews")</a> <span class="separator">|</span> <a href="@Url.RouteUrl("ProductReviews", new { productId = Model.ProductId })">@T("Reviews.Overview.AddNew")</a>
+                <a href="@Url.RouteUrl("ProductReviews", new { productId = Model.ProductId })">
+                    @Model.TotalReviews
+                    @T("Reviews.Overview.Reviews")
+                </a>
+
+                @if (Model.CanCurrentCustomerLeaveReview)
+                {
+                    <span class="separator">|</span>
+                    <a href="@Url.RouteUrl("ProductReviews", new { productId = Model.ProductId })">@T("Reviews.Overview.AddNew")</a>
+
+                }
             </div>
             @*hidden microdata info*@
             var ratingValue = ratingPercent / (decimal)20;
@@ -30,8 +40,23 @@
         }
         else
         {
-            <div class="product-no-reviews">
-                <a href="@Url.RouteUrl("ProductReviews", new { productId = Model.ProductId })">@T("Reviews.Overview.First")</a>
+            <div class="stars mr-2 no-reviews" data-stars="1">
+                <svg class='icon star rate d-none' data-rating="1"><use href='#star'></use></svg>
+                <svg class='icon star rate' data-rating="2"><use href='#star'></use></svg>
+                <svg class='icon star rate' data-rating="3"><use href='#star'></use></svg>
+                <svg class='icon star rate' data-rating="4"><use href='#star'></use></svg>
+                <svg class='icon star rate' data-rating="5"><use href='#star'></use></svg>
+                <svg class='icon star rate' data-rating="6"><use href='#star'></use></svg>
+            </div>
+            <div class="product-no-reviews d-flex align-items-center">
+                @if (!Model.CanCurrentCustomerLeaveReview)
+                {
+                    <span>No reviews yet</span>
+                }
+                else
+                {
+                    <a href="@Url.RouteUrl("ProductReviews", new { productId = Model.ProductId })">@T("Reviews.Overview.First")</a>
+                }
             </div>
         }
     </div>

@@ -1616,11 +1616,9 @@ label, label + * {
 }
 .product-grid .title {
 	margin: 0 0 30px;
-	border-bottom: 1px solid #ddd;
+	border-bottom:1px solid rgba(255,255,255,.15);
 	padding: 0 0 15px;
 	font-size: 30px;
-	font-weight: normal;
-	color: #444;
 }
 .product-grid .title strong {
 	font-weight: normal;
@@ -1711,11 +1709,6 @@ label, label + * {
 
 .product-details-page {
 	padding: 20px 0 0;
-}
-.product-essential {
-	margin: 0 0 40px;
-	border-bottom: 1px solid #ddd;
-	padding: 0 0 10px;
 }
 .product-essential:after {
 	content: "";

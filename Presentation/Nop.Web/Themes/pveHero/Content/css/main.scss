@@ -176,6 +176,10 @@ body {
     margin-right: 1rem !important;
 }
 
+.p-4 {
+    padding: 1.5rem !important;
+}
+
 .item-box .picture {
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
     border-radius: .5rem;
@@ -1090,4 +1094,102 @@ input::placeholder {
     .check {
         display: inline-block
     }
+}
+
+.breadcrumb .current-item {
+    color: #bba0ff;
+    text-decoration: underline;
+}
+
+
+// REVIEWS //
+
+.stars {
+    font-size: 1.75rem;
+
+    &.no-reviews {
+        opacity: 0.5
+    }
+
+    .star {
+        float: left;
+        color: #c7c7c7;
+        padding: .15rem;
+        margin-right: .25rem;
+    }
+
+    &[data-stars] {
+        .star {
+            color: #fff;
+            background: #6658d5;
+            box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+            transition: all .25s ease;
+        }
+    }
+
+    &[data-stars="1"] {
+        .star:nth-child(1) ~ .star {
+            color: #c7c7c7;
+            background: #888;
+        }
+    }
+
+    &[data-stars="2"] {
+        .star:nth-child(2) ~ .star {
+            color: #c7c7c7;
+            background: #888;
+        }
+    }
+
+    &[data-stars="3"] {
+        .star:nth-child(3) ~ .star {
+            color: #c7c7c7;
+            background: #888;
+        }
+    }
+
+    &[data-stars="4"] {
+        .star:nth-child(4) ~ .star {
+            color: #c7c7c7;
+            background: #888;
+        }
+    }
+
+    &[data-stars="5"] {
+        .star:nth-child(5) ~ .star {
+            color: #c7c7c7;
+            background: #888;
+        }
+    }
+
+    &[data-stars="6"] {
+        .star:nth-child(6) ~ .star {
+            color: #c7c7c7;
+            background: #888;
+        }
+    }
+}
+
+.stars.hover {
+    cursor: pointer;
+    font-size: 1.75rem;
+
+    &:hover {
+        .star {
+            color: #fff !important;
+            background: #6658d5 !important;
+        }
+    }
+
+    .star {
+        &:hover ~ .star {
+            color: #c7c7c7 !important;
+            background: #888 !important;
+        }
+    }
+}
+
+.product-reviews-overview {
+    display: flex;
+    align-items: center;
 }
