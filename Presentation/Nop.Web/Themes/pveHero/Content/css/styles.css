@@ -762,7 +762,6 @@ label, label + * {
 }
 
 .header-selectors-wrapper {
-	border-bottom: 1px solid #ddd;
 	padding: 10px 0;
 }
 .header-selectors-wrapper > div {
@@ -6230,8 +6229,8 @@ pre {
     color: #c52c8d;
 }
 .mini-shopping-cart .items {
-	border-top: 1px solid #ddd;
-	border-bottom: 1px solid #ddd;
+	border-top: 1px solid rgba(255,255,255,.15);
+	border-bottom: 1px solid rgba(255,255,255,.15);
 	margin: 0 0 20px;
 }
 .mini-shopping-cart .item {

@@ -6,7 +6,7 @@
 }
 @if (!Model.DisableBuyButton || Model.CustomerEntersPrice)
 {
-    <div class="add-to-cart d-inline-flex align-items-end">
+    <div class="add-to-cart d-inline-flex">
         @if (Model.CustomerEntersPrice)
         {
             <div class="customer-entered-price">
@@ -44,7 +44,7 @@
                     addToCartText = T("ShoppingCart.PreOrder").Text;
                 }
             }
-            <a id="add-to-cart-button-@Model.ProductId" class="mr-3 button-1 huge add-to-cart-button" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new {productId = Model.ProductId, shoppingCartTypeId = (int) ShoppingCartType.ShoppingCart})', '#product-details-form');return false;"><svg class="icon white size-1-25x mr-3"><use href="#shopping-bag"></use></svg>@addToCartText</a>
+            <a id="add-to-cart-button-@Model.ProductId" class="md-mr-3 button-1 huge add-to-cart-button" data-productid="@Model.ProductId" onclick="AjaxCart.addproducttocart_details('@Url.RouteUrl("AddProductToCart-Details", new {productId = Model.ProductId, shoppingCartTypeId = (int) ShoppingCartType.ShoppingCart})', '#product-details-form');return false;"><svg class="icon white size-1-25x mr-3"><use href="#shopping-bag"></use></svg>@addToCartText</a>
         }
         <label asp-for="EnteredQuantity" asp-postfix=":" class="qty-label"></label>
         @if (Model.AllowedQuantities.Count > 0)
