@@ -9,8 +9,8 @@
 }
 @if (Model.AllowCustomerReviews)
 {
-    <div class="product-reviews-overview" @if (Model.TotalReviews > 0) { <text> itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" </text> }>
-        <div class="stars mr-3" data-stars="@ratingPercent">
+    <div class="product-reviews-overview flex-column md-flex-row" @if (Model.TotalReviews > 0) { <text> itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" </text> }>
+        <div class="stars mb-3 md-mb-0 md-mr-3" data-stars="@ratingPercent">
             <svg class='icon star rate' data-rating="1"><use href='#star'></use></svg>
             <svg class='icon star rate' data-rating="2"><use href='#star'></use></svg>
             <svg class='icon star rate' data-rating="3"><use href='#star'></use></svg>
