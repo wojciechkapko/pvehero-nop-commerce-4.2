@@ -191,7 +191,7 @@ function addAntiForgeryToken(data) {
         data.__RequestVerificationToken = tokenInput.val();
     }
     return data;
-};
+}
 
 var utility = (function () {
 
@@ -232,7 +232,7 @@ var utility = (function () {
         el.css("width", el.css("width")).css("height", el.css("height"));
         el.html("<div class='spinner-wrapper'><div class='spinner small'></div></div>");
         if (zindex) { el.children('.spinner-wrapper').css('z-index', zindex); }
-    }
+    };
 
     var isInViewport = function (id) {
 
@@ -302,18 +302,7 @@ var loader = (function () {
         });
     };
 
-    var loadModal = function (id) {
-        if (id == null) {
-            id = 'modal-container';
-        }
-        if (!$('#' + id).hasClass('loaded')) {
-            $('#' + id).velocity("transition.fadeIn", { duration: 250 }).addClass('loaded');
-            utility.removeSpinner(id);
-        }
-    };
-
     return {
-        reloadContent: reloadContent,
-        loadModal: loadModal
+        reloadContent: reloadContent
     };
 })();
