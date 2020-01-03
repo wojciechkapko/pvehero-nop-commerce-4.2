@@ -1423,7 +1423,7 @@ namespace Nop.Web.Factories
                 {
                     Id = pr.Id,
                     CustomerId = pr.CustomerId,
-                    CustomerName = _customerService.FormatUsername(customer),
+                    CustomerName = pr.Customer.BillingAddress.FirstName,
                     AllowViewingProfiles = _customerSettings.AllowViewingProfiles && customer != null && !customer.IsGuest(),
                     Title = pr.Title,
                     ReviewText = pr.ReviewText,
