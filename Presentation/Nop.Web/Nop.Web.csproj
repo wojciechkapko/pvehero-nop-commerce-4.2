@@ -98,6 +98,7 @@
     <None Remove="Themes\pveHero\preview.jpg" />
     <_ContentIncludedByDefault Remove="bundleconfig.json" />
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\stripeform.min.css" />
 
     <None Update="Areas\Admin\sitemap.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
