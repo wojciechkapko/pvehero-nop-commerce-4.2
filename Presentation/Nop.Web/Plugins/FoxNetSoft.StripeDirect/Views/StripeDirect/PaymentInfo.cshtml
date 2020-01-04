@@ -4,75 +4,79 @@
 @{
     Layout = "";
 }
-<style>
-    #stripe-payment-form {
-        width: 100%;
-        padding: 0 5px 0 5px;
-        margin: auto;
-        max-width: 430px;
-    }
 
-    .payment-stripe-next-step-button {
-        margin-top: 10px;
-    }
+@*
+       <style>
+        #stripe-payment-form {
+            width: 100%;
+            padding: 0 5px 0 5px;
+            margin: auto;
+            max-width: 430px;
+        }
 
-    .form-sprite-payment-cardholder {
-        text-align: left;
-    }
+        .payment-stripe-next-step-button {
+            margin-top: 10px;
+        }
 
-        .form-sprite-payment-cardholder label {
-            display: inline-block;
-            margin: 0 10px 0 0;
+        .form-sprite-payment-cardholder {
             text-align: left;
         }
 
-        .form-sprite-payment-cardholder input[type="text"] {
-            min-height: 40px;
-            max-width: 430px;
-            width: 100%;
+            .form-sprite-payment-cardholder label {
+                display: inline-block;
+                margin: 0 10px 0 0;
+                text-align: left;
+            }
+
+            .form-sprite-payment-cardholder input[type="text"] {
+                min-height: 40px;
+                max-width: 430px;
+                width: 100%;
+            }
+
+        #stripe-cardholder-name {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        /**
+        * The CSS shown here will not be introduced in the Quickstart guide, but shows
+        * how you can use CSS to style your Element's container.
+        */
+        .StripeElement {
+            box-sizing: border-box;
+            height: 40px;
+            padding: 10px 12px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            background-color: white;
+            box-shadow: 0 1px 3px 0 #e6ebf1;
+            -webkit-transition: box-shadow 150ms ease;
+            transition: box-shadow 150ms ease;
         }
 
-    #stripe-cardholder-name {
-        margin-top: 15px;
-        margin-bottom: 15px;
-    }
-    /**
-    * The CSS shown here will not be introduced in the Quickstart guide, but shows
-    * how you can use CSS to style your Element's container.
-    */
-    .StripeElement {
-        box-sizing: border-box;
-        height: 40px;
-        padding: 10px 12px;
-        border: 1px solid transparent;
-        border-radius: 4px;
-        background-color: white;
-        box-shadow: 0 1px 3px 0 #e6ebf1;
-        -webkit-transition: box-shadow 150ms ease;
-        transition: box-shadow 150ms ease;
-    }
+        .StripeElement--focus {
+            box-shadow: 0 1px 3px 0 #cfd7df;
+        }
 
-    .StripeElement--focus {
-        box-shadow: 0 1px 3px 0 #cfd7df;
-    }
+        .StripeElement--invalid {
+            border-color: #fa755a;
+        }
 
-    .StripeElement--invalid {
-        border-color: #fa755a;
-    }
+        .StripeElement--webkit-autofill {
+            background-color: #fefde5 !important;
+        }
 
-    .StripeElement--webkit-autofill {
-        background-color: #fefde5 !important;
-    }
+        #stripe-card-errors {
+            color: red;
+            padding: 10px;
+        }
 
-    #stripe-card-errors {
-        color: red;
-        padding: 10px;
-    }
+        .form-sprite-payment-button {
+            text-align: center;
+        }
+    </style>
+*@
 
-    .form-sprite-payment-button {
-        text-align: center;
-    }
-</style>
 @if (Model.Warnings.Any())
 {
     <div class="message-error">
@@ -89,18 +93,25 @@ else
     <div id="stripe-payment-was-sent" style="display:none;">
         @T("FoxNetSoft.Plugin.Payments.StripeDirect.PaymentWasSent")
     </div>
-    <div id="stripe-payment-form">
+    @*
+            <div id="stripe-payment-form">
         <input type="hidden" asp-for="StripeErrors">
         <input type="hidden" asp-for="StripePaymentIntentId">
 
         <div class="form-sprite-payment">
             <div class="form-sprite-payment-cardholder">
-                <label for="stripe-card-element">
+                <label for="card-number">
                     @T("FoxNetSoft.Plugin.Payments.StripeDirect.CardHolder")
                 </label>
                 <input id="stripe-cardholder-name" type="text" value="@Model.CardholderName">
             </div>
-            <div id="stripe-card-element">
+            <div id="card-number">
+                <!-- A Stripe Element will be inserted here. -->
+            </div>
+            <div id="card-expiry">
+                <!-- A Stripe Element will be inserted here. -->
+            </div>
+            <div id="card-cvc">
                 <!-- A Stripe Element will be inserted here. -->
             </div>
             <!-- Used to display Element errors. -->
@@ -110,10 +121,55 @@ else
             <div id="stripe-card-errors" role="alert"></div>
         </div>
     </div>
+    *@
+
+
+
+<div class="form-container" id="stripe-payment-form">
+    <input type="hidden" asp-for="StripeErrors">
+    <input type="hidden" asp-for="StripePaymentIntentId">
+
+    <div id="my-sample-form" class="scale-down">
+        <div class="cardinfo-card-number">
+            <label class="cardinfo-label" for="card-number">@T("FoxNetSoft.Plugin.Payments.StripeDirect.CardHolder")</label>
+            <input class='input-wrapper' id="stripe-cardholder-name" type="text" value="@Model.CardholderName">
+        </div>
+
+        <div class="cardinfo-card-number">
+            <label class="cardinfo-label" for="card-number">Card Number</label>
+            <div class='input-wrapper' id="card-number"></div>
+            <div id="card-image"></div>
+        </div>
+
+        <div class="cardinfo-wrapper">
+            <div class="cardinfo-exp-date">
+                <label class="cardinfo-label" for="expiration-date">Valid Thru</label>
+                <div class='input-wrapper' id="card-expiry"></div>
+            </div>
+
+            <div class="cardinfo-cvv">
+                <label class="cardinfo-label" for="cvv">CVC</label>
+                <div class='input-wrapper' id="card-cvc"></div>
+            </div>
+            <div id="stripe-direct-payment-pay-button">
+                <!-- A Stripe Element will be inserted here. -->
+            </div>
+        </div>
+
+    </div>
+    <div id="stripe-card-errors" role="alert"></div>
+</div>
+
+
+
+
     <script>
         var hasstripedirectcardpayment = false;
         var stripe;
         var cardStripeElement;
+        var cardNumber;
+        var cardExpiry;
+        var cardCvc;
         if (typeof scriptpaypalpro === 'undefined') {
             var scriptpaypalpro;
         }
@@ -143,9 +199,84 @@ else
                 if (typeof stripe == 'undefined') {
                    stripe = Stripe('@Model.PublishableKey');
                 }
-                var elements = stripe.elements();
-                cardStripeElement = elements.create('card', { hidePostalCode: @(Model.HidePostalCode.ToString().ToLower()), postalCode: '@Model.BillingAddress?.ZipPostalCode?.FixIllegalJavaScriptChars()'});
-                cardStripeElement.mount('#stripe-card-element');
+                var elements = stripe.elements({
+                    fonts: [
+                      {
+                        cssSrc: 'https://fonts.googleapis.com/css?family=Cabin:500',
+                      },
+                    ],
+                    // Stripe's examples are localized to specific languages, but if
+                    // you wish to have Elements automatically detect your user's locale,
+                    // use `locale: 'auto'` instead.
+                    locale: 'auto',
+                });
+
+                  var elementStyles = {
+                    base: {
+                      color: '#282c37',
+                      fontWeight: 500,
+                      fontFamily: 'Cabin, sans-serif',
+                      fontSize: '16px',
+                      fontSmoothing: 'antialiased',
+
+                      ':focus': {
+                        color: '#424770',
+                      },
+
+                      '::placeholder': {
+                        color: '#9BACC8',
+                      },
+
+                      ':focus::placeholder': {
+                        color: '#CFD7DF',
+                      },
+                    },
+                    invalid: {
+                      color: '#eb1c26',
+                      ':focus': {
+                        color: '#eb1c26',
+                      },
+                      '::placeholder': {
+                        color: '#eb1c26',
+                      },
+                    },
+                  };
+
+                  var elementClasses = {
+                    focus: 'focus',
+                    empty: 'empty',
+                    invalid: 'invalid',
+                  };
+                //cardStripeElement = elements.create('card', { hidePostalCode: @(Model.HidePostalCode.ToString().ToLower()), postalCode: '@Model.BillingAddress?.ZipPostalCode?.FixIllegalJavaScriptChars()'});
+                //cardStripeElement.mount('#stripe-card-element');
+
+                cardNumber = elements.create('cardNumber', {
+                    style: elementStyles,
+                    classes: elementClasses,
+                  });
+                  cardNumber.mount('#card-number');
+
+                  cardExpiry = elements.create('cardExpiry', {
+                    style: elementStyles,
+                    classes: elementClasses,
+                  });
+                  cardExpiry.mount('#card-expiry');
+
+                  cardCvc = elements.create('cardCvc', {
+                    style: elementStyles,
+                    classes: elementClasses,
+                  });
+                cardCvc.mount('#card-cvc');
+
+                cardNumber.on('change', function (event) {
+                    if (event.complete) {
+                        console.log(event.brand);
+                        $("#my-sample-form").removeClass().addClass(event.brand);
+                        $('#card-image').removeClass().addClass(event.brand);
+                  } else if (event.error) {
+                    // show validation to customer
+                  }
+                });
 
                 @if (Model.EnablePaymentRequestButton)
                 {
@@ -199,7 +330,7 @@ else
             stripeEnableDisableButtons(true);
 
             var cardholderName = document.getElementById('stripe-cardholder-name');
-            stripe.createPaymentMethod('card', cardStripeElement, {
+            stripe.createPaymentMethod('card', cardNumber, {
                          billing_details: {
                                     name: cardholderName.value,
                                     @if (!string.IsNullOrWhiteSpace(Model.BillingAddress?.PhoneNumber))
@@ -281,6 +412,7 @@ else
                 errorElement.textContent = error;
                 $('#@Html.IdFor(model => model.StripeErrors)').val(error);
             }
+            $(errorElement).show();
             stripeEnableDisableButtons(false);
         }
         function stripePaymentSucceeded(paymentintentid) {

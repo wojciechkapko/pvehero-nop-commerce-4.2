@@ -6,6 +6,8 @@
     #stripe-confirm-form-card-errors {
         color: red;
         padding: 10px;
+        font-size: 1.5rem;
+        text-align: center;
     }
 </style>
 @if (Model.Warnings.Any())
@@ -148,6 +150,7 @@ else
                 errorElement = document.getElementById('stripe-card-errors');
 
             //errorElement.textContent = JSON.stringify(error.message);
+            $(".wrapper").remove();
             if (error.message !== undefined)
                 errorElement.textContent = error.message;
             else
