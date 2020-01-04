@@ -17,7 +17,8 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutConfirmTop })
         <div class="section confirm-order">
             <form asp-route="CheckoutConfirm" method="post" id="confirm-order-form">
-                <script asp-location="Footer">
+                @*
+                                   <script asp-location="Footer">
                     $(document).ready(function () {
                         $('.confirm-order-next-step-button').on('click', function () {
                             //terms of service
@@ -40,7 +41,9 @@
                             }
                         });
                     });
-                </script>
+                </script> 
+                *@
+
                 @if (!string.IsNullOrEmpty(Model.MinOrderTotalWarning))
                 {
                     <span class="min-order-warning">@Model.MinOrderTotalWarning</span>
@@ -74,8 +77,13 @@
                             }
                         </div>
                     }
+                    <div class="wrapper">
+                        <div class="spinner-wrapper">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
                     <div class="buttons">
-                        <input type="submit" name="nextstep" value="@T("Checkout.ConfirmButton")" class="button-1 confirm-order-next-step-button" />
+                        <input type="submit" id="confirm-order" name="nextstep" value="@T("Checkout.ConfirmButton")" class="d-none confirm-order-next-step-button" />
                     </div>
                     <script asp-location="Footer">
                         $('#confirm-order-form').on('submit',
@@ -102,8 +110,23 @@
             </form>
         </div>
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutConfirmBottom })
-        <div class="section order-summary">
+        @*
+                   <div class="section order-summary">
             @await Component.InvokeAsync("OrderSummary", new { prepareAndDisplayOrderReviewData = true })
         </div>
+        *@
+
     </div>
 </div>
+
+
+    <script type="text/javascript" asp-location="Footer">
+    $(document).ready(function () {
+                                        setTimeout(function () {
+                                            $("#confirm-order").click();
+                                },
+                                100);
+
+    });
+</script>
+
