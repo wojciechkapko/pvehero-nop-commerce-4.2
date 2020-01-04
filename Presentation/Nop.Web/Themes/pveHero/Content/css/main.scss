@@ -941,6 +941,12 @@ label:not(.checkbox-style):not(.checkbox-label) {
     }
 }
 
+@media all and (max-width: 480px) {
+    .checkout-data .card.payment-info {
+        padding: 0 !important;
+    }
+}
+
 @media all and (min-width: 1001px) {
     label.td-title {
         display:none!important;
