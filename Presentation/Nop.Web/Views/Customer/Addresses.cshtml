@@ -28,7 +28,7 @@
                             <div class="title">
                                 <strong>@address.FirstName @address.LastName</strong>
                             </div>
-                            <ul class="info">
+                            <ul class="card default info">
                                 <li class="name">
                                     @address.FirstName @address.LastName
                                 </li>
@@ -122,8 +122,8 @@
                                 }
                             </ul>
                             <div class="buttons">
-                                <input type="button" class="button-2 edit-address-button" onclick="location.href = '@(Url.RouteUrl("CustomerAddressEdit", new {addressId = address.Id}))'" value="@T("Common.Edit")"/>
-                                <input type="button" class="button-2 delete-address-button" onclick="deletecustomeraddress(@(address.Id))" value="@T("Common.Delete")"/>
+                                <input type="button" class="edit-address-button" onclick="location.href = '@(Url.RouteUrl("CustomerAddressEdit", new {addressId = address.Id}))'" value="@T("Common.Edit")"/>
+                                <input type="button" class="delete-address-button" onclick="deletecustomeraddress(@(address.Id))" value="@T("Common.Delete")"/>
                             </div>
                         </div>
                     }

@@ -447,7 +447,7 @@ button, .btn, .button-1, .button-2 {
     padding: 0 !important;
 }
 
-.checkout-data .fs-dropdown {
+.checkout-data .fs-dropdown, .address-edit-page .fs-dropdown {
     width: 400px;
     display: inline-block;
     vertical-align: middle;
@@ -836,7 +836,6 @@ input.search-box-text::placeholder {
 
 label:not(.checkbox-style):not(.checkbox-label) {
     display: inline-block;
-    margin-bottom: .5rem;
 }
 
 .checkbox {
@@ -1302,4 +1301,8 @@ input::placeholder {
     .block-account-navigation .icon {
         display: none;
     }
+}
+
+.address-list-page .buttons input {
+    box-shadow: none;
 }

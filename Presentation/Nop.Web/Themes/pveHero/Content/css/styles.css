@@ -3031,7 +3031,6 @@ label, label + * {
     background-color: #f9f9f9;
     padding: 20px;
     line-height: 26px;
-    color: #444;
 }
 .address-list-page .info .name,
 .order-list-page .info .name {
@@ -3070,10 +3069,6 @@ label, label + * {
 .address-list-page .add-button {
 	margin: 0 0 20px;
 	text-align: center;
-}
-
-.address-edit-page .page-title {
-	margin: 0 0 -1px;
 }
 .address-edit-page .message-error {
 	margin: 20px 0;
