@@ -769,9 +769,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .checkout-page .product-picture {
   padding-left: 1rem !important; }
 
-.checkout-page label {
-  margin-bottom: 0 !important; }
-
 .checkout-page .cart-options {
   display: none; }
 
