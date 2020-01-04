@@ -149,6 +149,8 @@ namespace Nop.Web.Models.Customer
 
         public IList<GdprConsentModel> GdprConsents { get; set; }
 
+        public string Result { get; set; }
+
         #region Nested classes
 
         public partial class AssociatedExternalAuthModel : BaseNopEntityModel

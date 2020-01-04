@@ -1208,7 +1208,8 @@ namespace Nop.Web.Controllers
                     if (_gdprSettings.GdprEnabled)
                         LogGdpr(customer, oldCustomerModel, model, form);
 
-                    return RedirectToRoute("CustomerInfo");
+                    model.Result = "Changes saved";
+                    return View(model);
                 }
             }
             catch (Exception exc)
