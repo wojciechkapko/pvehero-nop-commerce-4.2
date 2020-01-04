@@ -2,5 +2,13 @@
   {
     "outputFile": "Themes/pveHero/Content/css/main.css",
     "inputFile": "Themes/pveHero/Content/css/main.scss"
+  },
+  {
+    "outputFile": "Themes/pveHero/Content/css/stripeform.css",
+    "inputFile": "Themes/pveHero/Content/css/stripeform.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/stripeform.css",
+    "inputFile": "wwwroot/css/stripeform.scss"
   }
 ]
