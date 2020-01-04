@@ -2,7 +2,7 @@
     'use strict';
 
     var file = '/sprites/regular.svg',
-        revision = 97;
+        revision = 98;
 
     if (!document.createElementNS || !document.createElementNS('http://www.w3.org/2000/svg', 'svg').createSVGRect)
         return true;
