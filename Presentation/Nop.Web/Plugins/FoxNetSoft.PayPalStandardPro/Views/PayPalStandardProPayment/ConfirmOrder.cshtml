@@ -1,0 +1,105 @@
+﻿@model FoxNetSoft.Plugin.Payments.PayPalStandardPro.Models.PayPalConfirmModel
+@using Nop.Web.Framework.UI
+@using Nop.Core
+@inject IWorkContext workContext
+@{
+    Layout = "_ColumnsOne";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Checkout").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-shopping-cart-page");
+
+    //CSS resources
+    Html.AddCssFileParts("~/Plugins/FoxNetSoft.PayPalStandardPro/Styles/styles.css");
+    var supportRtl = workContext.WorkingLanguage.Rtl;
+    if (supportRtl)
+    {
+        Html.AddCssFileParts("~/Plugins/FoxNetSoft.PayPalStandardPro/Styles/styles.rtl.css");
+    }
+}
+<div class="checkout-data">
+    <nop-antiforgery-token />
+    @await Component.InvokeAsync("Widget", new { widgetZone = "paypal_checkout_confirm_top" })
+    @if (!string.IsNullOrEmpty(Model.MinOrderTotalWarning))
+    {
+        <div class="section confirm-order">
+            @if (!string.IsNullOrEmpty(Model.MinOrderTotalWarning))
+            {
+                <div>
+                    <span class="min-order-warning">@Model.MinOrderTotalWarning</span>
+                </div>
+            }
+        </div>
+    }
+    @await Component.InvokeAsync("Widget", new { widgetZone = "paypal_checkout_confirm_bottom" })
+    <div class="section order-summary">
+        @await Component.InvokeAsync("OrderSummary", new { prepareAndDisplayOrderReviewData = true })
+    </div>
+</div>
+<div id="paypalcheckoutconfirmbutton">
+    @if (String.IsNullOrEmpty(Model.MinOrderTotalWarning) && Model.TermsOfServiceOnOrderConfirmPage)
+    {
+        <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display:none;">
+            <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
+        </div>
+        <div class="terms-of-service">
+            <input id="termsofservice" type="checkbox" name="termsofservice" />
+            <label for="termsofservice">@T("Checkout.TermsOfService.IAccept")</label>
+            <a class="read" id="read-terms">@T("Checkout.TermsOfService.Read")</a>
+            <script>
+                $(document).ready(function () {
+                    $('#read-terms').on('click', function (e) {
+                        e.preventDefault();
+                        displayPopupContentFromUrl('@Url.RouteUrl("TopicPopup", new {SystemName = "conditionsofuse"})', '@T("Checkout.TermsOfService")');
+                    });
+                });
+            </script>
+        </div>
+    }
+    <div class="checkout-buttons">
+        @*<button type="button" id="paypalshoppingcartbutton" class="button-1 checkout-button" style="@(Model.Warnings.Count()==0?"display: none;":"")" onclick="setLocation('@Url.RouteUrl("ShoppingCart")')">
+            @T("ShoppingCart.Mini.ViewCart")
+        </button>*@
+        <button type="submit" id="paypalconfirmbutton" name="paypalconfirmbutton" value="paypalconfirmbutton" class="button-1 checkout-button">
+            @T("Checkout.ConfirmButton")
+        </button>
+    </div>
+</div>
+<div class="cart-collaterals">
+    <div class="shipping">
+        <div class="message-error">
+            @if (Model.Warnings.Any())
+            {
+                <ul>
+                    @foreach (var warning in Model.Warnings)
+                    {
+                        <li>@warning</li>
+                    }
+                </ul>
+            }
+        </div>
+    </div>
+</div>
+<script asp-location="Footer">
+    $(document).ready(function () {
+        $('#shopping-cart-form').attr('action', '/paypalstandardpropayment/confirmorder');
+        $('.cart-footer .totals').append($('#paypalcheckoutconfirmbutton'));
+        $('.cart-footer').prepend($('.cart-collaterals'));
+
+        $('#paypalconfirmbutton').click(function () {
+            //terms of service
+            var termOfServiceOk = true;
+            if ($('#termsofservice').length > 0) {
+                //terms of service element exists
+                if (!$('#termsofservice').is(':checked')) {
+                    $("#terms-of-service-warning-box").dialog();
+                    termOfServiceOk = false;
+                } else {
+                    termOfServiceOk = true;
+                }
+            }
+            return termOfServiceOk;
+        });
+    });
+</script>

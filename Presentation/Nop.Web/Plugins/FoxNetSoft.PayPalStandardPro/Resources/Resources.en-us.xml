@@ -1,0 +1,164 @@
+﻿<Language Name="English" IsRightToLeft="false">
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.showDebugInfo">
+    <Value>Enable Debugging</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.showDebugInfo.Hint">
+    <Value>Write debugging information into file. In ~/App_Data/ folder.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.SerialNumber">
+    <Value>Serial Number</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.SerialNumber.Hint">
+    <Value>Specify serial number.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.IsRegisted">
+    <Value>Registered version.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.IsNoRegisted">
+    <Value>Unregistered version is fully operational. There is only one limitation – only 100 payments.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.IsExpired">
+    <Value>Your license has expired, you should renew the license with a 50% discount.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.StoreUrl">
+    <Value>Website address (for registration)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.StoreUrl.Hint">
+    <Value>Website address (for registration).</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.ClearLogFile">
+    <Value>Clear log-file</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.GetLogFile">
+    <Value>Download log-file</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.ClientId">
+    <Value>Client ID</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.ClientId.Hint">
+    <Value>Specify client ID.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.ClientSecret">
+    <Value>Client secret</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.ClientSecret.Hint">
+    <Value>Specify secret key.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.TransactMode">
+    <Value>Transaction mode</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.TransactMode.Hint">
+    <Value>Choose transaction mode.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.SupportMultiCurrency">
+    <Value>Support multi-currency</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.SupportMultiCurrency.Hint">
+    <Value>By default plugin uses the primary currency of store, but you can enabled to use the customer's currency of the order.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.WebhookId">
+    <Value>Webhook ID</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.WebhookId.Hint">
+    <Value>Specify webhook ID.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.UseSandbox">
+    <Value>Use Sandbox</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.UseSandbox.Hint">
+    <Value>Check to enable Sandbox (testing environment).</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.AdditionalFee">
+    <Value>Additional fee</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.AdditionalFee.Hint">
+    <Value>Enter additional fee to charge your customers.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.AdditionalFeePercentage">
+    <Value>Additional fee. Use percentage</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.AdditionalFeePercentage.Hint">
+    <Value>Determines whether to apply a percentage additional fee to the order total. If not enabled, a fixed value is used.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.ShowConfirmPage">
+    <Value>Enable 'Confirm' page</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.ShowConfirmPage.Hint">
+    <Value>Enable 'Confirm' page in nop store after payment on PayPal.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.SkipPaymentInfo">
+    <Value>Skip payment info page</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.SkipPaymentInfo.Hint">
+    <Value>Skip payment info page.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.CreateOrderMode">
+    <Value>Create order</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.CreateOrderMode.Hint">
+    <Value>Choose the creating mode for nop order (after or before payment).</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.IgnoreOrderItems">
+    <Value>Don't send order's items</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.IgnoreOrderItems.Hint">
+    <Value>Don't send order items on PayPal. Customer will not see products from the order on PayPal site, he will see only total amount.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.DescriptionTransaction">
+    <Value>Description of the transaction</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.DescriptionTransaction.Hint">
+    <Value>Description of the transaction in PayPal store. By default your customer will see this message 'NopCommerce PayPal Standard Pro.'.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.WebhookCreate">
+    <Value>Get webhook ID</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.WebhookError">
+    <Value>Webhook was not created (see details in the log)</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.PaymentMethodDescription">
+    <Value>Pay by PayPal, credit or debit card.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.Error.WrongConnect">
+    <Value>Error. Can't connect to PayPal.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.Error.EmptyPayPalTransactionId">
+    <Value>Error. Empty PayPal TransactionId.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.WrongReturnUrl">
+    <Value>PayPal. Wrong returnURL.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.ErrorExecutePayment">
+    <Value>Error. PayPal. Can't execute PayPal payment.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.ErrorCreatedOrder">
+    <Value>Error. PayPal. Can't create order. Please contact to support about this problem.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.WrongPaymentID">
+    <Value>Error. Can't connect to PayPal. Wrong paymentID.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.WrongPayerID">
+    <Value>Error. PayPal. Wrong PayerID.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.Title">
+    <Value>PayPal Payment</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.RedirectionTip">
+    <Value>You will be redirected to PayPal site to complete the order.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Payments.PayPalStandardPro.Refund.EmptyCaptureTransactionId">
+    <Value>Error. Can't refund online. Empty CaptureTransactionId value.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.ErrorGetPayment">
+    <Value>Error. PayPal. Can't read PayPal payment detalis.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.ErrorOrderTotal">
+    <Value>Error. Your order total was changed. Old amount = {0}, new amount = {1}.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.ErrorOrderPaymentInfo">
+    <Value>Error. PayPal. OrderPaymentInfo is null.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Payments.PayPalStandardPro.WrongOrderTotal">
+    <Value>Error. Order total couldn't be calculated.</Value>
+  </LocaleResource>
+</Language>

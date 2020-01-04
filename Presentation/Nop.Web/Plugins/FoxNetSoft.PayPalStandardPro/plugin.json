@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Payment methods",
+  "FriendlyName": "PayPal Standard Pro",
+  "SystemName": "FoxNetSoft.PayPalStandardPro",
+  "Version": "1.21",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "FoxNetSoft",
+  "DisplayOrder": 1,
+  "FileName": "FoxNetSoft.Plugin.Payments.PayPalStandardPro.dll",
+  "Description": "This plugin allows paying with PayPal Standard"
+}

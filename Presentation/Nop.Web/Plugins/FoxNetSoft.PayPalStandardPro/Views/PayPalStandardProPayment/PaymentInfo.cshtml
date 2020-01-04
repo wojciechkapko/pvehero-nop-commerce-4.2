@@ -1,0 +1,106 @@
+﻿@model FoxNetSoft.Plugin.Payments.PayPalStandardPro.Models.PaymentInfoModel
+@{
+    Layout = "";
+}
+<div id="paymentpaypalstandartpro" style="display:none"></div>
+<table style="width:100%;" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <p><b>@T("FoxNetSoft.Plugin.Payments.PayPalStandardPro.RedirectionTip")</b></p>
+        </td>
+    </tr>
+</table>
+
+<script>
+     function submitpaypalstandardpro() {
+        if ($('#paymentpaypalstandartpro').length===0)
+        {
+            if (typeof scriptpaypalpro !== 'undefined' && scriptpaypalpro.length!==0)
+            {
+                eval(scriptpaypalpro);
+            }
+            return  true;
+         }
+         var buttonsubmit = $(this);
+        //terms of service
+         var termOfServiceOk = true;
+         var termsofservice = $('#termsofservice');
+         if ($('#termsofservice').length === 0)
+             termsofservice = $('#terms-of-service');
+         if (termsofservice.length > 0 && !termsofservice.is(":hidden")) {
+             //terms of service element exists
+             if (!termsofservice.is(':checked')) {
+                 var readterms = $("#terms-of-service-warning-box");
+                 if (readterms.length === 0)
+                     readterms = $('#read-terms');
+                 readterms.dialog();
+                 termOfServiceOk = false;
+             } else {
+                 termOfServiceOk = true;
+             }
+         }
+         if (termOfServiceOk) {
+             displayAjaxLoading(true);
+             var postData = {
+             };
+             addAntiForgeryToken(postData);
+             $.ajax({
+                cache: false,
+                url: '@Url.Action("GetApprovalUrl", "PayPalStandardProPayment")',
+                type: 'post',
+                async: true,
+                data: postData,
+                 success: function (response) {
+                     displayAjaxLoading(false);
+                    if (response.success)
+                    {
+                        //check if approvalurl has value, maybe customer wants to pay using reward points
+                        if (response.approvalurl.length > 0)
+                            location.href = response.approvalurl;
+                        else {
+                            buttonsubmit.closest('form').submit();
+                            return true;
+                        }
+                    }
+                    else
+                    {
+                        if (response.message.length>0)
+                            alert(response.message);
+                    }
+                     return false;
+                },
+                 error: function () {
+                     displayAjaxLoading(false);
+                    alert('Failed to do payment. Reload the page and try again.');
+                    return false;
+                 }
+             });
+	         return false;
+         } else {
+            return false;
+        }
+    }
+    if (typeof scriptpaypalpro === 'undefined') {
+        var scriptpaypalpro;
+    }
+    function payPalStandardProInit() {
+        if (typeof scriptpaypalpro === 'undefined') {
+            scriptpaypalpro = $('.payment-info-next-step-button').attr("onclick");
+        }
+        $(document).ready(function () {
+            $('.payment-info-next-step-button, .confirm-order-button').show().prop("onclick", null).unbind().click(submitpaypalstandardpro);
+            $("#checkoutForm").find("button[data-complete]").show().prop("onclick", null).unbind().click(submitpaypalstandardpro);
+            //$("#checkoutForm").find(".complete-button").find(':submit').click(submitpaypalstandardpro);
+        });
+    }
+    function deferjqueryloading(method) {
+        if (window.jQuery)
+            method();
+        else
+            setTimeout(function () { deferjqueryloading(method) }, 50);
+    }
+    deferjqueryloading(payPalStandardProInit);
+</script>
+
+
+
