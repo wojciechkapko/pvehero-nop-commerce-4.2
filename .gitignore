@@ -197,3 +197,4 @@ src/packages/*
 *.webp
 
 Presentation/Nop.Web/wwwroot/icons/
+Presentation/Nop.Web/Plugins/
