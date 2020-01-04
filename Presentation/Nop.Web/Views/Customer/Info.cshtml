@@ -21,6 +21,12 @@
         <h1>@T("Account.MyAccount") - @T("Account.CustomerInfo")</h1>
     </div>
     <div class="page-body">
+        @if (!string.IsNullOrEmpty(Model.Result))
+        {
+            <div class="result">
+                @Model.Result
+            </div>
+        }
         <form asp-route="CustomerInfo" method="post">
             <div asp-validation-summary="ModelOnly" class="message-error"></div>
             <div class="fieldset">
@@ -47,13 +53,11 @@
                     <div class="inputs">
                         <label asp-for="FirstName" asp-postfix=":"></label>
                         <input asp-for="FirstName" />
-                        <nop-required />
                         <span asp-validation-for="FirstName"></span>
                     </div>
                     <div class="inputs">
                         <label asp-for="LastName" asp-postfix=":"></label>
                         <input asp-for="LastName" />
-                        <nop-required />
                         <span asp-validation-for="LastName"></span>
                     </div>
                     @if (Model.DateOfBirthEnabled)
@@ -80,7 +84,6 @@
                     <div class="inputs">
                         <label asp-for="Email" asp-postfix=":"></label>
                         <input asp-for="Email" />
-                        <nop-required />
                         <span asp-validation-for="Email"></span>
                     </div>
                     @if (!string.IsNullOrEmpty(Model.EmailToRevalidate))
@@ -117,6 +120,23 @@
                         }
                     }
                 </div>
+                    <div class="title">
+                        <strong>@T("Account.Options")</strong>
+                    </div>
+                    <div class="form-fields">
+                            <div class="inputs">
+                                <div class="checkbox">
+                                    <input class="d-none" type="checkbox" data-val="true" data-val-required="The Newsletter field is required." id="Newsletter" name="Newsletter" value="true" checked="@Model.Newsletter">
+                                    <label for="Newsletter" class="checkbox-style"></label>
+                                    <label for="Newsletter" class="checkbox-label">Newsletter:</label>
+                                </div>
+                                <span asp-validation-for="Newsletter"></span>
+                            </div>
+                        @if (Model.CustomerAttributes.Count > 0)
+                        {
+                            @await Html.PartialAsync("_CustomerAttributes", Model.CustomerAttributes)
+                        }
+                    </div>
             </div>
             @if (Model.CompanyEnabled || Model.DisplayVatNumber)
             {
@@ -152,11 +172,11 @@
                 </div>
             }
             @if (Model.StreetAddressEnabled ||
-        Model.StreetAddress2Enabled ||
-        Model.ZipPostalCodeEnabled ||
-        Model.CityEnabled ||
-        Model.CountyEnabled ||
-        Model.CountryEnabled)
+       Model.StreetAddress2Enabled ||
+       Model.ZipPostalCodeEnabled ||
+       Model.CityEnabled ||
+       Model.CountyEnabled ||
+       Model.CountryEnabled)
             {
                 <div class="fieldset">
                     <div class="title">
@@ -289,28 +309,7 @@
                     </div>
                 </div>
             }
-            @if (Model.NewsletterEnabled || Model.CustomerAttributes.Count > 0)
-            {
-                <div class="fieldset">
-                    <div class="title">
-                        <strong>@T("Account.Options")</strong>
-                    </div>
-                    <div class="form-fields">
-                        @if (Model.NewsletterEnabled)
-                        {
-                            <div class="inputs">
-                                <label asp-for="Newsletter" asp-postfix=":"></label>
-                                <input asp-for="Newsletter" />
-                                <span asp-validation-for="Newsletter"></span>
-                            </div>
-                        }
-                        @if (Model.CustomerAttributes.Count > 0)
-                        {
-                            @await Html.PartialAsync("_CustomerAttributes", Model.CustomerAttributes)
-                        }
-                    </div>
-                </div>
-            }
+
             @if (Model.AllowCustomersToSetTimeZone || Model.SignatureEnabled)
             {
                 <div class="fieldset">

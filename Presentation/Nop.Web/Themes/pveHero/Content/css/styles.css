@@ -1099,50 +1099,29 @@ label, label + * {
 	margin: auto;
 	text-align: left;
 }
-.block .title {
-	position: relative;
-	margin: 0 0 10px;
-	border-bottom: 1px solid #ddd;
-	background: #f6f6f6 url('../images/toggle-gray.png') right 14px no-repeat;
-	padding: 12px 30px 12px 10px;
-	font-size: 20px;
-	color: #444;
-	cursor: pointer;
-}
+
 .block .title strong {
 	font-weight: normal;
 }
 .block .listbox {
 	display: none;
-	border-bottom: 1px solid #ddd;
-	padding: 10px 5px;
-}
-.block .list li {
-	padding: 5px 0 5px 15px;
+	padding: 21px 5px;
 }
 .block .list a {
 	display: inline-block;
 	position: relative;
-	padding: 5px 0;
+	padding: 10px 0 10px 15px;
 	font-size: 16px;
-	color: #444;
+    width: 100%;
+    border-radius: .5rem;
     -webkit-transition: all 0.1s ease;
 	transition: all 0.1s ease;
-}
-.block .list a:before {
-	content: "";
-	position: absolute;
-	top: 12px;
-	left: -15px;
-	width: 5px;
-	height: 5px;
-	background-color: #ddd;
 }
 .block .list .active > a {
 	color: #4ab2f1;
 }
 .block .list a:hover {
-	color: #4ab2f1;
+    background: #6658d5;
 }
 .block a.product-picture {
 	display: none;
@@ -6170,7 +6149,7 @@ pre {
     right: 0;
     z-index: 100;
     width: 300px;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgb(48, 40, 81) 10%);
+    background: #1f1b3c;
     border-radius: 0 0 .5rem .5rem;
     box-shadow: 0 15px 10px -5px rgba(0, 0, 0, 0.3);
 }
@@ -6447,7 +6426,7 @@ pre {
 }
 .block .title {
 	margin: 0;
-	border-bottom: 1px solid #ddd;
+	border-bottom: 1px solid rgba(255,255,255,.15);
 	background: none;
 	cursor: auto;
 }

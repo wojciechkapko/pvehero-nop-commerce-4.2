@@ -74,6 +74,10 @@ textarea {
   font-weight: 500;
   font-size: 1.25rem; }
 
+.customer-info-page .checkbox {
+  justify-content: flex-end;
+  flex-direction: row-reverse; }
+
 @media (min-width: 1001px) {
   .header-menu {
     background-color: rgba(0, 0, 0, 0.3);
@@ -101,7 +105,9 @@ textarea {
   .attributes .fs-dropdown.fs-light .fs-dropdown-selected {
     padding: .5rem 4rem; }
   .product-reviews-overview {
-    justify-content: center; } }
+    justify-content: center; }
+  .customer-info-page .checkbox {
+    flex-direction: column-reverse; } }
 
 .product-details-page .attributes {
   margin-bottom: 41px; }
@@ -209,7 +215,7 @@ button.btn-danger, .btn.btn-danger, .button-1.btn-danger, .button-2.btn-danger {
   background-color: #d41451; }
 
 .currency-selector .dropdown-menu {
-  background-color: #000; }
+  background-color: #1f1b3c; }
 
 .currency-selector .dropdown-item {
   text-align: center; }
@@ -965,3 +971,42 @@ input::placeholder {
 
 .data-table label {
   margin-bottom: 0 !important; }
+
+.result {
+  margin: 1rem 0;
+  color: #fff !important;
+  font-size: 14px !important;
+  padding: .5rem 1.45rem;
+  border-radius: .25rem;
+  font-weight: 500;
+  letter-spacing: .015rem;
+  text-align: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  background: #3e905c; }
+
+.block-account-navigation .icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  left: auto; }
+
+.block .title {
+  position: relative;
+  margin: 0 0 10px;
+  padding: 12px 30px 12px 10px;
+  font-size: 20px; }
+
+@media all and (max-width: 1000px) {
+  .block .title {
+    border-bottom: none;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: .5rem; } }
+
+@media all and (min-width: 1001px) {
+  .block-account-navigation .icon {
+    display: none; } }
