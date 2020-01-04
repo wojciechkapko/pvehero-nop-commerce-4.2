@@ -405,6 +405,7 @@ label, label + * {
 .forum-table td {
     min-width: 50px;
     padding: 8px 0;
+    text-align: center;
 }
 .forum-table td {
 	min-width: 90px;
@@ -819,7 +820,7 @@ label, label + * {
 	text-transform: uppercase;
 }
 .header-links a:hover {
-	color: #4ab2f1;
+	color: #b79bff;
 }
 #topcartlink {
 	display: block;
