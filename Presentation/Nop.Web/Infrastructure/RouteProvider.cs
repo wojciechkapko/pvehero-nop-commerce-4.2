@@ -65,6 +65,10 @@ namespace Nop.Web.Infrastructure
             routeBuilder.MapLocalizedRoute("ContactUs", "contactus",
 				new { controller = "Common", action = "ContactUs" });
 
+            //how it works
+            routeBuilder.MapLocalizedRoute("HowItWorks", "howitworks",
+                new { controller = "Common", action = "HowItWorks" });
+
             //sitemap
             routeBuilder.MapLocalizedRoute("Sitemap", "sitemap",
 				new { controller = "Common", action = "Sitemap" });

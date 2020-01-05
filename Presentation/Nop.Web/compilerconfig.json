@@ -10,5 +10,9 @@
   {
     "outputFile": "wwwroot/css/stripeform.css",
     "inputFile": "wwwroot/css/stripeform.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/howitworks.css",
+    "inputFile": "wwwroot/css/howitworks.scss"
   }
 ]
