@@ -331,11 +331,17 @@ label, label + * {
 .field-validation-error,
 .username-not-available-status,
 .poll-vote-error, .password-error {
-	display: block;
-	text-align: center;
-	font-size: 13px;
-	color: #e4434b;
-    margin-top: 5px;
+    display: block;
+    margin: 1rem 0;
+    color: #fff !important;
+    font-size: 14px !important;
+    padding: .5rem 1.45rem;
+    border-radius: .25rem;
+    font-weight: 500;
+    letter-spacing: .015rem;
+    text-align: center;
+    box-shadow: 0 3px 5px rgba(0,0,0,.2);
+    background: #e4444c;
 }
 .field-validation-valid,
 .username-available-status {
@@ -2464,7 +2470,7 @@ label, label + * {
 	line-height: 22px;
 }
 .product-review-item .review-info {
-	margin: 0 0 5px;
+	margin: 0 0 .5rem;
 }
 .product-review-item .review-info label {
 	font-weight: normal;
@@ -2473,7 +2479,7 @@ label, label + * {
 .product-review-helpfulness .vote {
 	display: inline-block;
 	padding: 0 5px;
-	color: #4ab2f1; 
+	color: #b79bff;
 	cursor: pointer;
 }
 .product-review-helpfulness .question {
@@ -3126,14 +3132,6 @@ label, label + * {
 }
 .reward-points-history table td:first-child {
 	min-width: 120px;
-}
-
-.change-password-page .page-title {
-	margin: 0 0 -1px;
-}
-.change-password-page .result,
-.change-password-page .message-error {
-	margin: 20px 0;
 }
 .change-password-page .fieldset {
 	margin: 0 0 30px;
@@ -6429,7 +6427,7 @@ pre {
 	font-weight: bold;
 }
 .block .listbox {
-	display: block;
+	display: block!important;
 	border-bottom: none;
 }
 .block a.product-picture {

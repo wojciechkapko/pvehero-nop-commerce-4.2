@@ -929,7 +929,8 @@ input::placeholder {
     float: left;
     color: #c7c7c7;
     padding: .15rem;
-    margin-right: .25rem; }
+    margin-right: .25rem;
+    margin-bottom: .25rem; }
   .stars[data-stars] .star {
     color: #fff;
     background: #6658d5;
@@ -1004,11 +1005,15 @@ input::placeholder {
     font-weight: bold;
     text-transform: uppercase;
     background-color: rgba(0, 0, 0, 0.3);
-    border-radius: .5rem; } }
+    border-radius: .5rem;
+    cursor: pointer; } }
 
 @media all and (min-width: 1001px) {
   .block-account-navigation .icon {
     display: none; } }
 
-.address-list-page .buttons input {
+.address-list-page .buttons input, .order-list .buttons input {
   box-shadow: none; }
+
+.block .list a.active {
+  background: #2f295b; }

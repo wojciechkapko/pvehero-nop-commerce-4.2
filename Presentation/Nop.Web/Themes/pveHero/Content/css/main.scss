@@ -1173,6 +1173,7 @@ input::placeholder {
         color: #c7c7c7;
         padding: .15rem;
         margin-right: .25rem;
+        margin-bottom: .25rem;
     }
 
     &[data-stars] {
@@ -1294,6 +1295,7 @@ input::placeholder {
         text-transform: uppercase;
         background-color: rgba(0, 0, 0, 0.3);
         border-radius: .5rem;
+        cursor: pointer;
     }
 }
 
@@ -1303,6 +1305,10 @@ input::placeholder {
     }
 }
 
-.address-list-page .buttons input {
+.address-list-page .buttons input, .order-list .buttons input {
     box-shadow: none;
+}
+
+.block .list a.active {
+    background: #2f295b;
 }

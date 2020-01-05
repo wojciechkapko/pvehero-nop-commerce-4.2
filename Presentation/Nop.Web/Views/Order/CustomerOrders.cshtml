@@ -138,7 +138,7 @@
                         <div class="title">
                             <strong>@T("Account.CustomerOrders.OrderNumber"): @order.CustomOrderNumber</strong>
                         </div>
-                        <ul class="info">
+                        <ul class="info card default">
                             <li>@T("Account.CustomerOrders.OrderStatus"): <span class="order-status @order.OrderStatusEnum.ToString().ToLowerInvariant()">@order.OrderStatus</span></li>
                             <li>@T("Account.CustomerOrders.OrderDate"): <span class="order-date">@order.CreatedOn.ToString()</span></li>
                             <li>@T("Account.CustomerOrders.OrderTotal"): <span class="order-total">@order.OrderTotal</span></li>
@@ -146,9 +146,9 @@
                         <div class="buttons">
                             @if (order.IsReturnRequestAllowed)
                             {
-                                <input type="button" value="@T("Account.CustomerOrders.ReturnItems")" class="button-2 return-items-button" onclick="setLocation('@Url.RouteUrl("ReturnRequest", new { orderId = order.Id })')" />
+                                <input type="button" value="@T("Account.CustomerOrders.ReturnItems")" class="return-items-button" onclick="setLocation('@Url.RouteUrl("ReturnRequest", new { orderId = order.Id })')" />
                             }
-                            <input type="button" value="@T("Account.CustomerOrders.OrderDetails")" class="button-2 order-details-button" onclick="setLocation('@Url.RouteUrl("OrderDetails", new { orderId = order.Id })')" />
+                            <input type="button" value="@T("Account.CustomerOrders.OrderDetails")" class="order-details-button" onclick="setLocation('@Url.RouteUrl("OrderDetails", new { orderId = order.Id })')" />
                         </div>
                     </div>
                 }
