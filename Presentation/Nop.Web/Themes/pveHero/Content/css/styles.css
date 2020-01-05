@@ -951,28 +951,12 @@ label, label + * {
 	padding: 40px 0;
 	font-size: 0;
 }
-.footer-block {
-	width: 95%;
-	margin: 1px auto;
-	text-align: left;
-	font-size: 14px; /*reset zeroing*/
-}
-.footer-block .title {
-	margin: 0 0 1px;
-	background: #4ab2f1 url('../images/toggle-white.png') right center no-repeat;
-	padding: 10px 15px;
-	font-size: 20px;
-	color: #fff;
-	cursor: pointer;
-}
 .footer-block .title strong {
-	font-weight: normal;
-}
-.footer-block .list {
-	display: none;
-	margin: 0 0 20px;
-	background-color: #fff;
-	padding: 10px 15px;
+    margin: 0 0 15px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #b79bff;
+    text-transform: uppercase;
 }
 .footer-block .list a {
 	display: block;
@@ -980,7 +964,7 @@ label, label + * {
 	line-height: 20px;
 }
 .footer-block .list a:hover {
-	color: #4ab2f1;
+	color: #b79bff;
 }
 
 .follow-us {
@@ -4936,6 +4920,19 @@ pre {
 }
 
 
+.footer-block {
+    display: block;
+    width: 95%;
+    margin: 1px auto;
+    font-size: 14px; /*reset zeroing*/
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.footer-block:last-child {
+    margin-bottom: 0;
+}
+
 @media all and (min-width: 481px) {
 
 
@@ -4989,9 +4986,7 @@ pre {
 /*** FOOTER ***/
 
 
-.footer-block {
-	width: 85%;
-}
+
 .newsletter-email input[type="text"] {
 	width: 240px;
 }
@@ -5178,13 +5173,6 @@ pre {
 
 /*** FOOTER ***/
 
-
-.footer-block {
-	display: inline-block;
-	width: 25.33333%;
-	margin: 0 4%;
-	vertical-align: top;
-}
 .footer-block .title {
 	margin: 0 0 15px;
 	background: none;
@@ -6048,7 +6036,7 @@ pre {
 
 .footer-upper {
 	width: 980px;
-	padding: 35px 10px;
+	padding: 45px 10px;
 }
 .footer-upper:after {
 	content: "";
@@ -6057,8 +6045,14 @@ pre {
 }
 .footer-block {
 	float: left;
-	width: 220px;
+	width: 175px;
 	margin: 0;
+    text-align: left;
+}
+.footer-block.data {
+    width: 360px;
+    border-right: 1px solid rgba(255,255,255,.15);
+    margin-right: 50px;
 }
 .footer-block:first-child {
 }
@@ -6090,7 +6084,7 @@ pre {
 .footer-lower {
 	position: relative;
 	width: 980px;
-	padding: 25px 5px;
+	padding: 15px 5px;
 }
 .footer-lower:after {
 	content: "";
@@ -6529,14 +6523,19 @@ pre {
 
 .footer-upper {
 	width: 1200px;
-	padding: 35px 30px;
+	padding: 45px 30px;
 }
 .footer-block {
-	width: 280px;
+	width: 230px;
+}
+.footer-block.data {
+    width: 400px;
+    border-right: 1px solid rgba(255,255,255,.15);
+    margin-right: 50px;
 }
 .footer-lower {
 	width: 1200px;
-	padding: 25px 20px;
+	padding: 15px 20px;
 }
 
 

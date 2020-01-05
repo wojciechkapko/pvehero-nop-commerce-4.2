@@ -4,11 +4,35 @@
 @inject IWorkContext workContext;
 <div class="footer">
     <div class="footer-upper">
+        <div class="footer-block data">
+            <address class="contact-info d-flex flex-column">
+                <span>
+                    <svg class="icon svg-baseline"><use href="#skype"></use></svg>Skype: <a href="skype:contact.pvehero?chat" data-toggle="tooltip" title="Click to chat">contact.pvehero</a>
+                </span>
+                <span>
+                    <svg class="icon svg-baseline"><use href="#whatsapp"></use></svg>Whatsapp: <a href="https://api.whatsapp.com/send?phone=48691019390">+48691019390</a>
+                </span>
+                <span>
+                    <svg class="icon svg-baseline"><use href="#discord"></use></svg>Discord: <a href="https://discord.gg/YYeuMSe">pveHero</a>
+                </span>
+                <span>
+                    <svg class="icon svg-baseline"><use href="#mail"></use></svg>Mail: <a href="mailto:contact@pvehero.com">contact@pvehero.com</a>
+                </span>
+                <span>
+                    <svg class="icon svg-baseline"><use href="#clock"></use></svg>Workhours: Mon. - Sun.: 11:00 - 23:00 <span class="size-0-85x">GMT+1</span>
+                </span>
+            </address>
+            <div class="social">
+                @await Component.InvokeAsync("SocialButtons")
+            </div>
+            @await Component.InvokeAsync("NewsletterBox")
+        </div>
         <div class="footer-block information">
             <div class="title">
                 <strong>@T("Footer.Information")</strong>
             </div>
             <ul class="list">
+                <li><a href="@Url.RouteUrl("HowItWorks")">How it works</a></li>
                 @if (Model.SitemapEnabled && Model.DisplaySitemapFooterItem)
                 {
                     <li><a href="@Url.RouteUrl("Sitemap")">@T("Sitemap")</a></li>
@@ -17,58 +41,23 @@
                 {
                     <li><a href="@Url.RouteUrl("Topic", new { SeName = topic.SeName })">@topic.Name</a></li>
                 }
-                @if (Model.DisplayContactUsFooterItem)
-                {
-                    <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
-                }
             </ul>
         </div>
-        <div class="footer-block customer-service">
+        <div class="footer-block games">
             <div class="title">
-                <strong>@T("Footer.CustomerService")</strong>
+                <strong>Games</strong>
             </div>
             <ul class="list">
-                @if (Model.DisplayProductSearchFooterItem)
-                {
-                    <li><a href="@Url.RouteUrl("ProductSearch")">@T("Search")</a> </li>
-                }
-                @if (Model.NewsEnabled && Model.DisplayNewsFooterItem)
-                {
-                    <li><a href="@Url.RouteUrl("NewsArchive")">@T("News")</a></li>
-                }
-                @if (Model.BlogEnabled && Model.DisplayBlogFooterItem)
-                {
-                    <li><a href="@Url.RouteUrl("Blog")">@T("Blog")</a></li>
-                }
-                @if (Model.ForumEnabled && Model.DisplayForumsFooterItem)
-                {
-                    <li><a href="@Url.RouteUrl("Boards")">@T("Forum.Forums")</a></li>
-                }
-                @if (Model.RecentlyViewedProductsEnabled && Model.DisplayRecentlyViewedProductsFooterItem)
-                {
-                    <li><a href="@Url.RouteUrl("RecentlyViewedProducts")">@T("Products.RecentlyViewedProducts")</a></li>
-                }
-                @if (Model.CompareProductsEnabled && Model.DisplayCompareProductsFooterItem)
-                {
-                    <li><a href="@Url.RouteUrl("CompareProducts")">@T("Products.Compare.List")</a></li>
-                }
-                @if (Model.NewProductsEnabled && Model.DisplayNewProductsFooterItem)
-                {
-                    <li><a href="@Url.RouteUrl("NewProducts")">@T("Products.NewProducts")</a></li>
-                }
-                @foreach (var topic in Model.Topics.Where(x => x.IncludeInFooterColumn2).ToList())
-                {
-                    <li><a href="@Url.RouteUrl("Topic", new {SeName = topic.SeName})">@topic.Name</a></li>
-                }
-                @if (Model.AllowCustomersToCheckGiftCardBalance)
-                {
-                    <li><a href="@Url.RouteUrl("CheckGiftCardBalance")">@T("CheckGiftCardBalance")</a></li>
-                }
+                <li><a href="@Url.RouteUrl("Category", new { SeName = "world-of-warcraft" })">World of Warcraft</a></li>
+                <li><a href="javascript:void(0)" data-toggle="tooltip" title="Coming soon" style="opacity:0.5">Hearthstone</a></li>
+                <li><a href="javascript:void(0)" data-toggle="tooltip" title="Coming soon" style="opacity:0.5">League of Legends</a></li>
+                <li><a href="javascript:void(0)" data-toggle="tooltip" title="Coming soon" style="opacity:0.5">Destiny 2</a></li>
+                <li><a href="javascript:void(0)" data-toggle="tooltip" title="Coming soon" style="opacity:0.5">Diablo 3</a></li>
             </ul>
         </div>
         <div class="footer-block my-account">
             <div class="title">
-                <strong>@T("Footer.MyAccount")</strong>
+                <strong>Navigation</strong>
             </div>
             <ul class="list">
                 @if (Model.DisplayCustomerInfoFooterItem)
@@ -99,16 +88,11 @@
                 {
                     <li><a href="@Url.RouteUrl("Topic", new {SeName = topic.SeName})">@topic.Name</a></li>
                 }
+                @if (Model.DisplayContactUsFooterItem)
+                {
+                    <li><a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a></li>
+                }
             </ul>
-        </div>
-        <div class="footer-block follow-us">
-            <div class="social">
-                <div class="title">
-                    <strong>@T("Footer.FollowUs")</strong>
-                </div>
-                @await Component.InvokeAsync("SocialButtons")
-            </div>
-            @await Component.InvokeAsync("NewsletterBox")
         </div>
     </div>
     <div class="footer-lower">
@@ -134,33 +118,3 @@
     </div>
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.Footer })
 </div>
-<script asp-location="Footer">
-    $(document).ready(function () {
-        $('.footer-block .title').on('click', function () {
-            var e = window, a = 'inner';
-            if (!('innerWidth' in window)) {
-                a = 'client';
-                e = document.documentElement || document.body;
-            }
-            var result = { width: e[a + 'Width'], height: e[a + 'Height'] };
-            if (result.width < 769) {
-                $(this).siblings('.list').slideToggle('slow');
-            }
-        });
-    });
-</script>
-<script asp-location="Footer">
-    $(document).ready(function () {
-        $('.block .title').on('click', function () {
-            var e = window, a = 'inner';
-            if (!('innerWidth' in window)) {
-                a = 'client';
-                e = document.documentElement || document.body;
-            }
-            var result = { width: e[a + 'Width'], height: e[a + 'Height'] };
-            if (result.width < 1001) {
-                $(this).siblings('.listbox').slideToggle('slow');
-            }
-        });
-    });
-</script>

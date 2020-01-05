@@ -1,4 +1,4 @@
-﻿$accent-color: #11a7ea;
+﻿$accent-color: #b79bff;
 $accent-color-3: #2a3f6f;
 $accent-color-2: #e55b6a;
 $accent-color-4: #385494;
@@ -187,6 +187,14 @@ textarea {
     &.size-1-75x {
         font-size: 1.75rem !important;
     }
+
+    &.size-2x {
+        font-size: 2rem !important;
+    }
+
+    &.size-3x {
+        font-size: 3rem !important;
+    }
 }
 
 .mr-1, .mx-1 {
@@ -199,6 +207,10 @@ textarea {
 
 .mr-3, .mx-3 {
     margin-right: 1rem !important;
+}
+
+.mr-4, .mx-4 {
+    margin-right: 1.5rem !important;
 }
 
 .p-4 {
@@ -624,6 +636,10 @@ input.search-box-text::placeholder {
         margin-right: 1rem !important;
     }
 
+    .md-mr-4, .md-mr-4 {
+        margin-right: 1.5rem !important;
+    }
+
     .md-mb-0 {
         margin-bottom: 0 !important;
     }
@@ -631,6 +647,11 @@ input.search-box-text::placeholder {
     .md-flex-row {
         -ms-flex-direction: row !important;
         flex-direction: row !important;
+    }
+
+    .md-justify-content-start {
+        -ms-flex-pack: start !important;
+        justify-content: flex-start!important;
     }
 }
 
@@ -1311,4 +1332,26 @@ input::placeholder {
 
 .block .list a.active {
     background: #2f295b;
+}
+
+// FOOTER //
+
+.contact-info {
+    font-style: normal;
+
+    span {
+        margin-bottom: 1rem
+    }
+
+    .icon {
+        font-size: 1.25rem;
+        color: #b79bff;
+        margin-right: .75rem
+    }
+}
+
+.user-select-none {
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
 }

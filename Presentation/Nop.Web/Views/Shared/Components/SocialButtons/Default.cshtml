@@ -1,19 +1,5 @@
 ﻿@model SocialModel
-<ul class="networks">
-	@if (!string.IsNullOrEmpty(Model.FacebookLink))
-	{
-		<li class="facebook"><a href="@Model.FacebookLink" target="_blank">@T("Footer.FollowUs.Facebook")</a></li>
-	}
-	@if (!string.IsNullOrEmpty(Model.TwitterLink))
-	{
-		<li class="twitter"><a href="@Model.TwitterLink" target="_blank">@T("Footer.FollowUs.Twitter")</a></li>
-	}
-	@if (Model.NewsEnabled)
-	{
-		<li class="rss"><a href="@Url.RouteUrl("NewsRSS", new {languageId = Model.WorkingLanguageId})">@T("Footer.FollowUs.RSS")</a></li>
-	}
-	@if (!string.IsNullOrEmpty(Model.YoutubeLink))
-	{
-		<li class="youtube"><a href="@Model.YoutubeLink" target="_blank">@T("Footer.FollowUs.Youtube")</a></li>
-	}
-</ul>
+<div class="d-flex align-items-center justify-content-center md-justify-content-start">
+    <a href="https://www.facebook.com/PveHero/" class="user-select-none"><svg class="icon svg-baseline size-2x mr-4" data-toggle="tooltip" title="@@PveHero"><use href="#facebook-square"></use></svg></a>
+    <a href="https://twitter.com/pvehero_com" class="user-select-none"><svg class="icon svg-baseline size-2x mr-0 md-mr-4" data-toggle="tooltip" title="@@pvehero_com"><use href="#twitter-square"></use></svg></a>
+</div>
