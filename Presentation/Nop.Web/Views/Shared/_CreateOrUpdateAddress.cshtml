@@ -105,6 +105,9 @@
     }
     @if (Model.CustomAddressAttributes.Count > 0)
     {
-        @await Html.PartialAsync("_AddressAttributes", Model.CustomAddressAttributes)
+        <div class="inputs custom-attributes">
+            <label>Optional contact method</label>
+            @await Html.PartialAsync("_AddressAttributes", Model.CustomAddressAttributes)
+        </div>
     }
 </div>

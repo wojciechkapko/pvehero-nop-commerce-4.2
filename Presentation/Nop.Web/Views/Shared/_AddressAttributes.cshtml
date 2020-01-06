@@ -5,8 +5,7 @@
     var controlId = $"address_attribute_{attribute.Id}";
     var textPrompt = attribute.Name;
 
-    <div class="inputs custom-attributes">
-        <label>@textPrompt:</label>
+
         
         @switch (attribute.AttributeControlType)
         {
@@ -53,7 +52,7 @@
             break;
             case AttributeControlType.TextBox:
             {
-                <input name="@(controlId)" type="text" class="textbox" id="@(controlId)" value="@attribute.DefaultValue" />
+                <input name="@(controlId)" placeholder="@textPrompt" type="text" class="textbox" id="@(controlId)" value="@attribute.DefaultValue" />
             }
             break;
             case AttributeControlType.MultilineTextbox:
@@ -74,5 +73,4 @@
         {
             <nop-required />
         }
-    </div>
 }
