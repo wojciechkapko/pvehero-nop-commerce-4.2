@@ -1355,3 +1355,52 @@ input::placeholder {
     -moz-user-select: none;
     -webkit-user-select: none;
 }
+
+#notification-icon {
+    width: 60px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.6);
+    height: 100%;
+    font-size: 2.5rem;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bar-notification {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    padding: 1rem;
+    line-height: 1.4;
+    color: #fff;
+    opacity: 0.95;
+    align-items: center;
+
+    .content {
+        font-size: 1.15rem;
+    }
+
+    .close {
+        font-size: 1.15rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.bar-notification-container .close {
+    display: none;
+    position: fixed;
+    right: 1.5rem;
+    top: 1.5rem;
+    font-size: 2em;
+    z-index: 10000;
+    cursor: pointer;
+}

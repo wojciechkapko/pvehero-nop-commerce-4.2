@@ -129,11 +129,6 @@ function displayBarNotification(message, messagetype, timeout) {
     var htmlcode = document.createElement('div');
     htmlcode.classList.add('bar-notification', cssclass);
 
-    //add close button for notification
-    var close = document.createElement('span');
-    close.classList.add('close');
-    close.setAttribute('title', document.getElementById('bar-notification').dataset.close);
-
     for (var i = 0; i < messages.length; i++) {
         var content = document.createElement('p');
         content.classList.add('content');
@@ -142,10 +137,12 @@ function displayBarNotification(message, messagetype, timeout) {
         htmlcode.append(content);
     }
     
-    htmlcode.append(close);
+
 
     $('#bar-notification')
         .append(htmlcode);
+
+    $('.bar-notification-container .close').fadeIn('slow');
 
     $(htmlcode)
         .fadeIn('slow')
@@ -158,7 +155,8 @@ function displayBarNotification(message, messagetype, timeout) {
         htmlcode.remove();
     };
 
-    $(close).on('click', function () {
+    $('#close-button').on('click', function () {
+        $('.bar-notification-container .close').fadeOut();
         $(htmlcode).fadeOut('slow', removeNoteItem);
     });
 

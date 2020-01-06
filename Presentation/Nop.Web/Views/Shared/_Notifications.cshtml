@@ -77,5 +77,7 @@
 <div id="dialog-notifications-warning" title="@T("Common.Warning")" style="display:none;">
 </div>
 <div id="bar-notification" class="bar-notification-container" data-close="@T("Common.Close")">
+    <span id="close-button" class="close ml-auto" title="@T("Common.Close")"><svg class="icon"><use href="#times"></use></svg></span>
 </div>
+
 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.Notifications })
