@@ -142,10 +142,10 @@ function displayBarNotification(message, messagetype, timeout) {
     $('#bar-notification')
         .append(htmlcode);
 
-    $('.bar-notification-container .close').fadeIn('slow');
+    $('.bar-notification-container .close').velocity("transition.expandIn", { delay: 100, duration: 200 });
 
     $(htmlcode)
-        .fadeIn('slow')
+        .velocity('transition.slideDownIn', { duration: 200, display: 'block' })
         .on('mouseenter', function() {
             clearTimeout(notificationTimeout);
         });
@@ -156,14 +156,14 @@ function displayBarNotification(message, messagetype, timeout) {
     };
 
     $('#close-button').on('click', function () {
-        $('.bar-notification-container .close').fadeOut();
-        $(htmlcode).fadeOut('slow', removeNoteItem);
+        $('.bar-notification-container .close').velocity("transition.expandOut", { duration: 200 });
+        $(htmlcode).velocity('transition.slideUpOut', { duration: 200, complete: function () { removeNoteItem(); } });
     });
 
     //timeout (if set)
     if (timeout > 0) {
         notificationTimeout = setTimeout(function () {
-            $(htmlcode).fadeOut('slow', removeNoteItem);
+            $(htmlcode).velocity('transition.slideUpOut', { duration: 200 });
         }, timeout);
     }
 }
