@@ -49,14 +49,14 @@
             }
             else
             {
-                <div class="new-wrapper register-block">
+                <div class="new-wrapper register-block card default">
                     <div class="title">
                         <strong>@T("Account.Login.NewCustomer")</strong>
                     </div>
                     <div class="text">
                         @T("Account.Login.NewCustomerText")
                     </div>
-                    <div class="buttons">
+                    <div class="buttons mb-0">
                         <input type="button" class="button-1 register-button" onclick="location.href='@registerUrl'" value="@T("Account.Register")" />
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                         else
                         {
                             <div class="inputs">
-                                <label asp-for="Email" asp-postfix=":"></label>
+                                <label asp-for="Email" asp-postfix=":"></label>                                
                                 <input asp-for="Email" class="email" autofocus="autofocus" />
                                 <span asp-validation-for="Email"></span>
                             </div>
@@ -90,8 +90,11 @@
                             <span asp-validation-for="Password"></span>
                         </div>
                         <div class="inputs reversed">
-                            <input asp-for="RememberMe" />
-                            <label asp-for="RememberMe"></label>
+                            <div class="checkbox">
+                                <input class="d-none" type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" value="true">
+                                <label for="RememberMe" class="checkbox-style"></label>
+                                <label for="RememberMe" class="checkbox-label">Remember me?</label>
+                            </div>
                             <span class="forgot-password">
                                 <a asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
                             </span>
@@ -103,7 +106,7 @@
                             </div>
                         }
                     </div>
-                    <div class="buttons">
+                    <div class="buttons mb-0">
                         <input class="button-1 login-button" type="submit" value="@T("Account.Login.LoginButton")" />
                     </div>
                 </form>

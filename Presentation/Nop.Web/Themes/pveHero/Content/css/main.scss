@@ -1029,7 +1029,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .order-progress .active-step a:hover span {
     background: #8258ca;
     transform: translateY(-5px);
-    box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgb(126, 87, 194);
+    box-shadow: 0 0 0 4px #ffffff, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 0 0 4px rgb(126, 87, 194);
 }
 
 input::-webkit-input-placeholder {
