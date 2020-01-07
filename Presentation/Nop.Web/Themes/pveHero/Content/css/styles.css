@@ -421,8 +421,8 @@ label, label + * {
 .cart a,
 .data-table a,
 .forum-table a {
-	font-weight: normal;
-	color: #4ab2f1;
+    font-weight: normal;
+    color: #b79bff;
 }
 .cart a:hover,
 .data-table a:hover,
@@ -863,7 +863,7 @@ label, label + * {
 }
 .search-box input.search-box-text {
 	float: left;
-	width: 200px;
+	width: 250px;
 	height: 36px;
 	margin: 0 -1px 0 0;
 }
@@ -889,7 +889,7 @@ label, label + * {
 	display: none !important;
 }
 .ui-autocomplete {
-	width: 285px !important;
+	width: 250px !important;
 	border: 1px solid #ddd;
 	border-top: none;
 	overflow: hidden;
@@ -917,7 +917,6 @@ label, label + * {
 	background: none !important;
 	padding: 15px !important;
 	line-height: normal !important;
-	color: #777 !important;
 }
 .ui-autocomplete a:hover,
 .ui-autocomplete a.ui-state-focus {
@@ -2642,18 +2641,17 @@ label, label + * {
 }
 
 .external-authentication {
-	margin: 0 0 50px;
+	margin: 0 0 20px;
 	overflow: hidden;
 	text-align: center;
 }
 .external-authentication .title {
 	margin: 0 0 15px;
 	font-size: 20px;
-	color: #444;
 }
 .external-authentication .buttons {
     margin: 0 0 30px;
-    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid rgba(255,255,255,.15);
     padding: 30px;
 }
 .external-auth-errors {
@@ -3175,7 +3173,9 @@ label, label + * {
 	color: #444;
 }
 .shopping-cart-page .no-data {
-	margin: 25px 0 0;
+    margin: 25px 0 0;
+    text-align: center;
+    font-size: 2rem;
 }
 
 
