@@ -2890,7 +2890,7 @@ label, label + * {
 
 
 .order-progress {
-	margin: 0 0 50px;
+	margin: 0 0 10px;
 	padding: 15px 0;
 	text-align: center;
 }
@@ -3139,7 +3139,7 @@ label, label + * {
 }
 .cart-collaterals .message-failure {
 	margin: 10px 0 0;
-	font-size: 12px;
+	font-size: 14px;
 	color: #e4434b;
 }
 .cart-collaterals .message-success {
@@ -4907,6 +4907,16 @@ pre {
 @media all and (max-width: 480px) {
     .cart tbody {
         flex-direction: column;
+    }
+}
+@media all and (max-width: 532px) {
+
+    .shopping-cart-page .common-buttons input {
+        margin: 10px 5px;
+        width: 100%;
+    }
+    .payment-method .method-list li {
+        margin: 4% 0!important;
     }
 }
 

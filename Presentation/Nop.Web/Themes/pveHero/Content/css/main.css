@@ -765,8 +765,10 @@ label:not(.checkbox-style):not(.checkbox-label) {
     text-align: left; } }
 
 @media all and (max-width: 480px) {
-  .checkout-data .card.payment-info {
-    padding: 0 !important; } }
+  .payment-info-page .card.payment-info {
+    padding: 0 !important;
+    background: transparent;
+    box-shadow: none; } }
 
 @media all and (min-width: 1001px) {
   label.td-title {

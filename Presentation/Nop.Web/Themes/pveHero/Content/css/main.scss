@@ -975,8 +975,10 @@ label:not(.checkbox-style):not(.checkbox-label) {
 }
 
 @media all and (max-width: 480px) {
-    .checkout-data .card.payment-info {
+    .payment-info-page .card.payment-info {
         padding: 0 !important;
+        background: transparent;
+        box-shadow: none;
     }
 }
 
