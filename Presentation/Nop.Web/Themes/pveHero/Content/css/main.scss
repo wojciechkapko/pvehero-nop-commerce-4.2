@@ -100,6 +100,9 @@ textarea {
 }
 
 @media (max-width: 1000px) {
+    .dropdown-item {
+        padding: .75rem 0!important;
+    }
     .gallery .picture img, .gallery .picture-thumbs img, .variant-picture img {
         right: 0;
         bottom: 0;
@@ -302,6 +305,7 @@ button, .btn, .button-1, .button-2 {
     .btn {
         box-shadow: none;
         background: none;
+        font-size: .875rem !important;
     }
 }
 

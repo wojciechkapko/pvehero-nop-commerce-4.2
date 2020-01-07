@@ -766,12 +766,8 @@ label, label + * {
     position: relative;
     z-index: 1;
 }
-
-.header-selectors-wrapper {
-	padding: 10px 0;
-}
 .header-selectors-wrapper > div {
-	display: block;
+	display: inline-block;
 	width: 50%;
 	margin: 10px auto;
 	vertical-align: middle;
@@ -805,8 +801,8 @@ label, label + * {
 }
 
 .header-links-wrapper {
-	position: relative;
-	padding: 20px 0;
+    position: relative;
+    padding-bottom: 20px;
 }
 .header-links {
 }
