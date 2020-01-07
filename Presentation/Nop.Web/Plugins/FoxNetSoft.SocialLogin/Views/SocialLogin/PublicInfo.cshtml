@@ -1,0 +1,227 @@
+﻿@model FoxNetSoft.Plugin.ExternalAuth.Social.Models.PublicInfoModel
+@using Nop.Web.Framework.UI
+@using Nop.Core
+@inject IWorkContext workContext
+@{
+    Layout = "";
+
+    Html.AddCssFileParts("~/Plugins/FoxNetSoft.SocialLogin/Content/socialstyles.css");
+    var supportRtl = workContext.WorkingLanguage.Rtl;
+    if (supportRtl)
+    {
+        Html.AddCssFileParts("~/Plugins/FoxNetSoft.SocialLogin/Content/socialstyles.rtl.css");
+    }
+}
+<div class="social-login-blocks">
+    @if (Model.Google_Enable == true)
+    {
+        <fieldset class="social-login-block">
+            <legend>@T("FoxNetSoft.ExternalAuth.Social.Google.Login")</legend>
+            <div class="g-signin2" data-onsuccess="onGoogleSignIn" data-theme="dark"></div>
+        </fieldset>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script>
+            function onGoogleSignIn(googleUser) {
+                // Useful data for your client-side scripts:
+                var profile = googleUser.getBasicProfile();
+                /*
+                console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                console.log('Full Name: ' + profile.getName());
+                console.log('Given Name: ' + profile.getGivenName());
+                console.log('Family Name: ' + profile.getFamilyName());
+                console.log("Image URL: " + profile.getImageUrl());
+                console.log("Email: " + profile.getEmail());
+                */
+                // The ID token you need to pass to your backend:
+                var id_token = googleUser.getAuthResponse().id_token;
+                //console.log("ID Token: " + id_token);
+                console.log('Welcome!  Fetching your information.... ');
+                 var returnurl = location.search.split('returnurl=')[1] ? location.search.split('returnurl=')[1] : '';
+                        if ('@Model.ReturnUrl'.length > 0) {
+                            returnurl = '@Model.ReturnUrl';
+                }
+
+                $.ajax({
+                     cache: false,
+                     url: '@Url.Action("FacebookLoginPopUp", "SocialExternalAuth")',
+                     type: "POST",
+                    data: { "id_token": id_token, "returnurl": returnurl},
+                     error: function () {
+                         alert("error logging in to your Google account.");
+                     },
+                                success: function (response) {
+                                    if (!response.success) {
+                                        if (response.message)
+                                            alert(response.message);
+                                    }
+                                    if (response.returnUrl && response.returnUrl.length>0) {
+                                        window.location.href = response.returnUrl;
+                                    }
+                                    else {
+                                        window.location.reload();
+                                    }
+                                }
+                });
+            }
+        </script>
+    }
+    @foreach (var provider in Model.Providers.Select(p => p.ToLower()).ToList())
+    {
+        <fieldset class="social-login-block">
+            <legend>@T("FoxNetSoft.ExternalAuth.Social." + provider + ".Login")</legend>
+            <a asp-controller="socialexternalauth" asp-action="login" asp-route-provider="@provider" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" class="exoauth_btn social-@provider-btn">
+                <svg class="icon svg-baseline size-1x mr-3"><use href="#@provider"></use></svg>
+                Login with @provider
+            </a>
+        </fieldset>
+    }
+    @if (Model.Facebook_UsePopUpForm == true)
+    {
+        <fieldset class="social-login-block">
+            <legend>@T("FoxNetSoft.ExternalAuth.Social.Facebook.Login")</legend>
+            <div id="fb-root"></div>
+            <a href="#" onclick="fb_login();" class="exoauth_btn social-facebook-btn"></a>
+            <script>
+            window.fbAsyncInit = function () {
+                FB.init({
+                    appId: '@Model.Facebook_ClientKeyIdentifier',
+                    oauth: true,
+                    status: true, // check login status
+                    cookie: true, // enable cookies to allow the server to access the session
+                    xfbml: true // parse XFBML
+                });
+
+            };
+
+            function fb_login() {
+                FB.login(function (response) {
+
+                    if (response.authResponse) {
+                        console.log('Welcome!  Fetching your information.... ');
+                        //console.log(response); // dump complete info
+                        access_token = response.authResponse.accessToken; //get access token
+                        user_id = response.authResponse.userID; //get FB UID
+                        var returnurl = location.search.split('returnurl=')[1] ? location.search.split('returnurl=')[1] : '';
+                        if ('@Model.ReturnUrl'.length > 0) {
+                            returnurl = '@Model.ReturnUrl';
+                        }
+
+                            $.ajax({
+                                cache: false,
+                                url: '@Url.Action("FacebookLoginPopUp", "SocialExternalAuth")',
+                                type: "POST",
+                                data: { "access_token": access_token, "user_id": user_id, "returnurl": returnurl},
+                                error: function () {
+                                    alert("error logging in to your facebook account.");
+                                },
+                                success: function (response) {
+                                    if (!response.success) {
+                                        if (response.message)
+                                            alert(response.message);
+                                    }
+                                    if (response.returnUrl && response.returnUrl.length>0) {
+                                        window.location.href = response.returnUrl;
+                                    }
+                                    else {
+                                        window.location.reload();
+                                    }
+                                }
+                            });
+
+                    } else {
+                        //user hit cancel button
+                        console.log('User cancelled login or did not fully authorize.');
+
+                    }
+                }, {
+                    scope: 'email'
+                });
+            }
+            (function () {
+                var e = document.createElement('script');
+                e.src = document.location.protocol + '//connect.facebook.net/@(Model.Facebook_Locale)/all.js';
+                e.async = true;
+                document.getElementById('fb-root').appendChild(e);
+            }());
+            </script>
+        </fieldset>
+    }
+    @if (Model.AccountKit_Enable == true)
+    {
+        <script src="https://sdk.accountkit.com/@(Model.AccountKit_Locale)/sdk.js"></script>
+        <fieldset class="social-login-block">
+            <legend>@T("FoxNetSoft.ExternalAuth.Social.AccountKit.LoginEmail")</legend>
+            <a class="exoauth_btn social-accountkit-btn-email" onclick="accountkit_login_email()"></a>
+        </fieldset>
+        <fieldset class="social-login-block">
+            <legend>@T("FoxNetSoft.ExternalAuth.Social.AccountKit.LoginPhone")</legend>
+            <a class="exoauth_btn social-accountkit-btn-phone" onclick="accountkit_login_phone()"></a>
+        </fieldset>
+        <script>
+        // initialize Account Kit with CSRF protection
+        AccountKit_OnInteractive = function(){
+            AccountKit.init(
+              {
+                  appId:@Model.AccountKit_ClientKeyIdentifier,
+                  state:"@Model.AccountKit_CSRF",
+                  version:"@Model.AccountKit_API_Version"
+              }
+            );
+        };
+
+        // login callback
+        function loginCallback(response) {
+            console.log(response);
+            if (response.status === "PARTIALLY_AUTHENTICATED") {
+                //document.getElementById("code").value = response.code;
+                //document.getElementById("csrf_nonce").value = response.state;
+                //document.getElementById("my_form").submit();
+                var returnurl = location.search.split('returnurl=')[1] ? location.search.split('returnurl=')[1] : '';
+                $.ajax({
+                    cache: false,
+                    url: '@Url.Action("AccountKitLoginPost")',
+                    type: 'post',
+                    async: true,
+                    data: { "code": response.code, "csrf_nonce": response.state, "returnUrl": returnurl },
+                    error: function () {
+                        alert("error logging in.");
+                    },
+                    success: function (response) {
+                        if (!response.success) {
+                            if (response.message)
+                                alert(response.message);
+                        }
+                        if (response.returnUrl && response.returnUrl.length>0) {
+                            window.location.href = response.returnUrl;
+                        }
+                        else {
+                            window.location.reload();
+                        }
+                    }
+                 });
+            }
+            else if (response.status === "NOT_AUTHENTICATED") {
+                // handle authentication failure
+            }
+            else if (response.status === "BAD_PARAMS") {
+                // handle bad parameters
+            }
+        }
+
+        // phone form submission handler
+        function accountkit_login_phone() {
+            var country_code = '';
+            var ph_num = '';
+            AccountKit.login('PHONE',
+              {countryCode: country_code, phoneNumber: ph_num}, // will use default values if this is not specified
+              loginCallback);
+        }
+
+        // email form submission handler
+        function accountkit_login_email() {
+            var email_address = '';
+            AccountKit.login('EMAIL', {emailAddress: email_address}, loginCallback);
+        }
+        </script>
+    }
+</div>
