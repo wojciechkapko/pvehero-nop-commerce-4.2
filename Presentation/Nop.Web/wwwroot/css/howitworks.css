@@ -13,7 +13,7 @@ Main components
   position: absolute;
   top: 35px;
   left: 25px;
-  height: 84%;
+  height: 81%;
   width: 4px;
   background: #7e57c2; }
 
@@ -21,7 +21,7 @@ Main components
   #cd-timeline::before {
     top: 0;
     left: 25px;
-    height: 85%; }
+    height: 82%; }
   #cd-timeline {
     margin-top: 1em; }
   #cd-timeline::before {
