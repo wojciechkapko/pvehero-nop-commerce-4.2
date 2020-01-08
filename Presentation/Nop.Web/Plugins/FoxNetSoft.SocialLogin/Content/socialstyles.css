@@ -107,3 +107,8 @@ fieldset.social-login-block {
 .exoauth_btn {
     float: left;
 }
+
+.exoauth_btn span {
+    margin-left: .25rem;
+    text-transform: capitalize;
+}

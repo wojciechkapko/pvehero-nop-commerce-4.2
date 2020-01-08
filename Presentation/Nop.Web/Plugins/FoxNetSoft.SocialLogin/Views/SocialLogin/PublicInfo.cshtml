@@ -71,7 +71,7 @@
             <legend>@T("FoxNetSoft.ExternalAuth.Social." + provider + ".Login")</legend>
             <a asp-controller="socialexternalauth" asp-action="login" asp-route-provider="@provider" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" class="exoauth_btn social-@provider-btn">
                 <svg class="icon svg-baseline size-1x mr-3"><use href="#@provider"></use></svg>
-                Login with @provider
+                Login with <span>@provider</span>
             </a>
         </fieldset>
     }
