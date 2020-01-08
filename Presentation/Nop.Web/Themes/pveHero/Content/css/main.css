@@ -759,10 +759,23 @@ label:not(.checkbox-style):not(.checkbox-label) {
   padding: 1rem 0;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2); }
 
+.product-selectors div span:first-child {
+  margin: 0 0 .5rem 0; }
+
+.product-selectors > div {
+  flex-direction: column; }
+
+.product-selectors .fs-dropdown > button {
+  padding: 0.5rem 2rem 0.5rem 0.75rem !important; }
+
 @media all and (min-width: 481px) {
   .shopping-cart-page .page-title {
     padding: 10px;
-    text-align: left; } }
+    text-align: left; }
+  .product-selectors div span:first-child, .product-page-size .fs-dropdown {
+    margin: 0 .5rem 0 0; }
+  .product-selectors > div {
+    flex-direction: row; } }
 
 @media all and (max-width: 480px) {
   .payment-info-page .card.payment-info {
@@ -1032,7 +1045,7 @@ input::placeholder {
 .address-list-page .buttons input, .order-list .buttons input {
   box-shadow: none; }
 
-.block .list a.active {
+.block-account-navigation .list a.active {
   background: #2f295b; }
 
 .contact-info {
@@ -1124,3 +1137,12 @@ input::placeholder {
 
 .customer-info-page .data-table th {
   text-align: center; }
+
+.html-category-page .page-title {
+  padding: 0;
+  margin: 0 0 1rem; }
+
+.html-category-page .category-description p {
+  margin: 1rem 0;
+  color: #bba0ff;
+  font-size: 1.25rem; }

@@ -26,7 +26,7 @@
     @*page size*@
     @if (Model.AllowCustomersToSelectPageSize)
     {
-        <div class="product-page-size">
+        <div class="product-page-size ml-auto">
             <span>@T("Catalog.PageSize")</span>
             @Html.DropDownList("products-pagesize", Model.PageSizeOptions, new { onchange = "setLocation(this.value);", aria_label = T("Catalog.PageSize.Label") })
             <span>@T("Catalog.PageSize.PerPage")</span>
