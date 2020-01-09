@@ -242,8 +242,9 @@ label, label + * {
 .topic-page p,
 .post-body p,
 .news-body p {
-	margin: 10px 0;
-	text-align: justify;
+    margin: 10px 0;
+    text-align: center;
+    line-height: 1.5;
 }
 .flyout-cart {
 	display: none;
@@ -350,11 +351,6 @@ label, label + * {
 	text-align: center;
 	font-size: 13px;
 	color: #4cb17c;
-}
-
-.captcha-box {
-	text-align: center;
-	line-height: 0; /*firefox line-height bug fix*/
 }
 .captcha-box > div {
 	display: inline-block;
@@ -690,17 +686,18 @@ label, label + * {
 
 .eu-cookie-bar-notification {
     position: fixed;
-    top: 50%;
-	left: 50%;
-	z-index: 1050;
-	width: 320px;
-	height: 180px;
+    bottom: 3%;
+    right: 3%;
+    z-index: 1050;
+    width: 320px;
+    height: 180px;
     margin: -90px 0 0 -160px;
-    border: 1px solid #ccc;
-	box-shadow: 0 0 2px rgba(0,0,0,0.15);
-    background-color: #fff;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.15);
+    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+    background-color: #26214a;
+    border-radius: .5rem;
     padding: 20px;
-	text-align: center;
+    text-align: center;
 }
 .eu-cookie-bar-notification .text {
 	margin-bottom: 20px;
@@ -715,12 +712,9 @@ label, label + * {
 	font-size: 14px;
 	color: #fff;
 }
-.eu-cookie-bar-notification button:hover {
-	background-color: #248ece;
-}
 .eu-cookie-bar-notification a {
 	display: block;
-	color: #4ab2f1;
+	color: #b79bff;
 }
 .eu-cookie-bar-notification a:hover {
 	text-decoration: underline;
@@ -1103,9 +1097,6 @@ label, label + * {
     -webkit-transition: all 0.1s ease;
 	transition: all 0.1s ease;
 }
-.block .list .active > a {
-	color: #4ab2f1;
-}
 .block-account-navigation .list a:hover {
     background: #6658d5;
 }
@@ -1116,7 +1107,7 @@ label, label + * {
 	display: none;
 }
 .block .sublist {
-	margin: 15px 0 5px;
+    margin: 15px 0 15px 45px;
 }
 .block .sublist a {
 	font-size: 14px;
@@ -2681,7 +2672,7 @@ label, label + * {
 	text-align: center;
 }
 .add-more-external-records a {
-	color: #4ab2f1;
+    color: #b79bff;
 }
 .add-more-external-records a:hover {
 	text-decoration: underline;
@@ -4829,8 +4820,8 @@ pre {
 	display: none;
 }
 .top-menu > li {
-	position: relative;
-	margin: 1px 0;
+    position: relative;
+    margin: 1px 0;
 }
 .top-menu > li > a {
 	display: block;
@@ -4841,17 +4832,19 @@ pre {
 }
 .top-menu .sublist {
 	display: none;
-	background-color: #fff;
-	padding: 5px 0;
 }
 .top-menu .sublist li {
 	position: relative;
 	margin: 1px 0 1px 20px;
 }
 .top-menu .sublist li a {
-	display: block;
-	padding: 15px 18px;
-	font-size: 15px;
+    display: block;
+    padding: 15px 18px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.035rem;
+    cursor: pointer;
+    font-family: 'Open Sans', sans-serif;
 }
 .top-menu.mobile {
     margin-top: .5rem;
@@ -4860,19 +4853,20 @@ pre {
 }
 
 .sublist-toggle {
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 55px;
-	height: 55px;
-	border-left: 1px solid #fff;
-	background: url('../images/toggle-black.png') center no-repeat;
-	padding: 15px;
-	font-size: 15px;
-	font-weight: bold;
-	color: #fff;
-	text-transform: uppercase;
-	cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55px;
+    height: 55px;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .sublist .sublist-toggle {
@@ -5207,26 +5201,24 @@ pre {
 	text-align: left;
 }
 .product-selectors .product-viewmode {
-	display: inline-block;
-	float: right;
+    display: inline-flex;
+    border-right: 1px solid rgba(255, 255, 255, .15);
+    padding-right: 1.5rem;
+    margin-right: .75rem;
 }
 .product-selectors .product-viewmode span {
 	display: none;
 }
 .product-selectors .product-viewmode a {
 	display: inline-block;
-	width: 24px;
-	height: 32px;
 	margin: 0 0 0 12px;
 	background-position: center;
 	background-repeat: no-repeat;
 	opacity: 0.5;
+    cursor: pointer;
 }
-.product-selectors .product-viewmode a.grid {
-	background-image: url('../images/view-grid.png');
-}
-.product-selectors .product-viewmode a.list {
-	background-image: url('../images/view-list.png');
+.product-viewmode .icon {
+    font-size: 1.5rem;
 }
 .product-selectors .product-viewmode a.selected {
 	opacity: 1;
@@ -5759,7 +5751,9 @@ pre {
 	margin: 6px 0 0;
 }
 
-
+.category-description p, .manufacturer-description p, .full-description p, .topic-block p, .topic-page p, .post-body p, .news-body p {
+    text-align: left;
+}
 /*** GLOBAL TABLES ***/
 
 
@@ -5989,9 +5983,6 @@ pre {
 	font-size: 17px; /*reset zeroing*/
 	color: #555;
 	cursor: pointer;
-}
-.header-menu > ul > li > a:hover {
-	color: #4ab2f1;
 }
 .header-menu .sublist {
 	display: none;

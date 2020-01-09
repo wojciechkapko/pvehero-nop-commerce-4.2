@@ -8,7 +8,7 @@
             <text> </text>@T("Categories.TotalProducts", Model.Category.NumberOfProducts.Value)
         }
     </a>
-    @*@{
+    @{
         //subcategories
         var subCategories = Model.ResponsiveMobileMenu ?
             //responsive (all categories)
@@ -23,7 +23,9 @@
         }
         if (subCategories.Count > 0)
         {
-            <div class="sublist-toggle"></div>
+        <div class="sublist-toggle">
+            <svg class="icon size-1x white"><use href="#chevron-down"></use></svg>
+        </div>
             <ul class="sublist @levelClass">
                 @foreach (var subCategory in subCategories)
                 {
@@ -37,5 +39,5 @@
                 }
             </ul>
         }
-    }*@
+    }
 </li>

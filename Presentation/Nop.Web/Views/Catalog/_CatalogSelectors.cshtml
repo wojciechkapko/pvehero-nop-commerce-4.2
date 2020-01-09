@@ -10,8 +10,8 @@
                 var gridMode = Model.AvailableViewModes[0];
                 var listMode = Model.AvailableViewModes[1];
 
-                <a class="viewmode-icon grid @if(gridMode.Selected){<text>selected</text>}" href="@gridMode.Value" title="@gridMode.Text">@gridMode.Text</a>
-                <a class="viewmode-icon list @if (listMode.Selected){<text>selected</text>}" href="@listMode.Value" title="@listMode.Text">@listMode.Text</a>
+                <a class="viewmode-icon grid @if(gridMode.Selected){<text>selected</text>}" href="@gridMode.Value" title="@gridMode.Text"><svg class="icon white"><use href="#@gridMode.Text.ToLower()"></use></svg></a>
+                <a class="viewmode-icon list @if (listMode.Selected){<text>selected</text>}" href="@listMode.Value" title="@listMode.Text"><svg class="icon white"><use href="#@listMode.Text.ToLower()"></use></svg></a>
             }
         </div>
     }

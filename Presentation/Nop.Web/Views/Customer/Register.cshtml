@@ -13,6 +13,9 @@
         <h1>@T("Account.Register")</h1>
     </div>
     <div class="page-body">
+        <div class="external-authentication">
+            @await Component.InvokeAsync("ExternalMethods", "ExternalAuthentication")
+        </div>
         <form asp-route="Register" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post">
             <div asp-validation-summary="ModelOnly" class="message-error"></div>
             <div class="fieldset">
@@ -35,18 +38,18 @@
                     }
 
                     @*
-                               <div class="inputs">
-            <label asp-for="FirstName" asp-postfix=":"></label>
-            <input asp-for="FirstName" />
-            <nop-required />
-            <span asp-validation-for="FirstName"></span>
-        </div>
-        <div class="inputs">
-            <label asp-for="LastName" asp-postfix=":"></label>
-            <input asp-for="LastName" />
-            <nop-required />
-            <span asp-validation-for="LastName"></span>
-        </div>
+                                           <div class="inputs">
+                        <label asp-for="FirstName" asp-postfix=":"></label>
+                        <input asp-for="FirstName" />
+                        <nop-required />
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="inputs">
+                        <label asp-for="LastName" asp-postfix=":"></label>
+                        <input asp-for="LastName" />
+                        <nop-required />
+                        <span asp-validation-for="LastName"></span>
+                    </div>
                     *@
 
                     @if (Model.DateOfBirthEnabled)
@@ -75,26 +78,26 @@
                         <input asp-for="Email" />
                         <span asp-validation-for="Email"></span>
                     </div>
-                        <div class="inputs">
-                            <label asp-for="Password" asp-postfix=":"></label>
-                            <input asp-for="Password" />
-                            <span asp-validation-for="Password"></span>
+                    <div class="inputs">
+                        <label asp-for="Password" asp-postfix=":"></label>
+                        <input asp-for="Password" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+                    <div class="inputs">
+                        <label asp-for="ConfirmPassword" asp-postfix=":"></label>
+                        <input asp-for="ConfirmPassword" />
+                        <span asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                    @if (Model.DisplayCaptcha)
+                    {
+                        <div class="captcha-box">
+                            <nop-captcha />
                         </div>
-                        <div class="inputs">
-                            <label asp-for="ConfirmPassword" asp-postfix=":"></label>
-                            <input asp-for="ConfirmPassword" />
-                            <span asp-validation-for="ConfirmPassword"></span>
-                        </div>
-                        @if (Model.DisplayCaptcha)
-                        {
-                            <div class="captcha-box">
-                                <nop-captcha />
-                            </div>
-                        }
-                        @if (Model.HoneypotEnabled)
-                        {
-                            @Html.Raw(Html.GenerateHoneypotInput())
-                        }
+                    }
+                    @if (Model.HoneypotEnabled)
+                    {
+                        @Html.Raw(Html.GenerateHoneypotInput())
+                    }
                     @if (Model.EnteringEmailTwice)
                     {
                         <div class="inputs">
@@ -151,11 +154,11 @@
                 </div>
             }
             @if (Model.StreetAddressEnabled ||
-              Model.StreetAddress2Enabled ||
-              Model.ZipPostalCodeEnabled ||
-              Model.CityEnabled ||
-              Model.CountyEnabled ||
-              Model.CountryEnabled)
+             Model.StreetAddress2Enabled ||
+             Model.ZipPostalCodeEnabled ||
+             Model.CityEnabled ||
+             Model.CountyEnabled ||
+             Model.CountryEnabled)
             {
                 <div class="fieldset">
                     <div class="title">
@@ -409,8 +412,5 @@
                 <input type="submit" id="register-button" class="button-1 register-next-step-button" value="@T("Account.Register.Button")" name="register-button" />
             </div>
         </form>
-        <div class="external-authentication">
-            @await Component.InvokeAsync("ExternalMethods", "ExternalAuthentication")
-        </div>
     </div>
 </div>
