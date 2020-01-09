@@ -1092,19 +1092,12 @@ label, label + * {
 	position: relative;
 	padding: 10px 0 10px 15px;
 	font-size: 16px;
-    width: 100%;
     border-radius: .5rem;
     -webkit-transition: all 0.1s ease;
 	transition: all 0.1s ease;
 }
 .block-account-navigation .list a:hover {
     background: #6658d5;
-}
-.block a.product-picture {
-	display: none;
-}
-.block a.product-picture:before {
-	display: none;
 }
 .block .sublist {
     margin: 15px 0 15px 45px;
@@ -5692,7 +5685,6 @@ pre {
     font-size: 1.75rem;
 }
 
-
 @media all and (min-width: 1001px) {
 
 
@@ -6119,19 +6111,6 @@ pre {
 .block .listbox {
 	display: block!important;
 	border-bottom: none;
-}
-.block a.product-picture {
-	display: inline-block;
-	position: relative;
-	width: 30%;
-	margin: 0 0 0 -15px;
-	vertical-align: middle;
-}
-.block a.product-name {
-	vertical-align: middle;
-}
-.block a.product-picture + a.product-name {
-	width: 70%;
 }
 .block a.product-picture + a.product-name:before {
 	display: none;

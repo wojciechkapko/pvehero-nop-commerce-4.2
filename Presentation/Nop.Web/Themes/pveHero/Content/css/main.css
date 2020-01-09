@@ -1023,7 +1023,7 @@ input::placeholder {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   background: #3e905c; }
 
-.block-account-navigation .icon {
+.block-account-navigation .icon, .block-recently-viewed-products .icon {
   position: absolute;
   right: 15px;
   top: 50%;
@@ -1048,7 +1048,7 @@ input::placeholder {
     cursor: pointer; } }
 
 @media all and (min-width: 1001px) {
-  .block-account-navigation .icon {
+  .block-account-navigation .icon, .block-recently-viewed-products .icon {
     display: none; } }
 
 .address-list-page .buttons input, .order-list .buttons input {
@@ -1207,3 +1207,12 @@ input::placeholder {
 
 .block-category-navigation .list .active > a {
   background: #6658d5; }
+
+.block a.product-picture {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 -15px;
+  vertical-align: middle; }
+
+.block a.product-name {
+  vertical-align: middle; }
