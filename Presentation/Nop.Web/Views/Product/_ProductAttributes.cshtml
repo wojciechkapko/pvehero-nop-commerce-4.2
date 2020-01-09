@@ -97,44 +97,54 @@
                         case AttributeControlType.Checkboxes:
                         case AttributeControlType.ReadonlyCheckboxes:
                             {
-                <ul class="option-list">
-                    @foreach (var attributeValue in attribute.Values)
-                                    {
-                                        var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
-                                            attributeValue.Name :
-                                            T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment,
-                                                attributeValue.CustomerEntersQty ? T("Products.ProductAttributes.PriceAdjustment.PerItem").Text : string.Empty).Text;
+            <ul class="option-list">
+                @foreach (var attributeValue in attribute.Values)
+                {
+                    var optionName = "";
+                    var tooltip = "";
+                    if (attributeValue.Name.IndexOf("tooltip") > 0)
+                    {
+
+                        optionName = attributeValue.Name.Split("&tooltip=")[0];
+                        tooltip = attributeValue.Name.Split("&tooltip=")[1];
+
+                    }
+                    else
+                    {
+                        optionName = attributeValue.Name;
+                    }
+                    var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
+                        optionName :
+                        T("Products.ProductAttributes.PriceAdjustment", optionName, attributeValue.PriceAdjustment,
+                            attributeValue.CustomerEntersQty ? T("Products.ProductAttributes.PriceAdjustment.PerItem").Text : string.Empty).Text;
                     <li>
                         <div class="checkbox">
                             <input class="d-none" id="@(controlId)_@(attributeValue.Id)" type="checkbox" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected" @(attribute.AttributeControlType == AttributeControlType.ReadonlyCheckboxes ? Html.Raw(" disabled=\"disabled\"") : null)
                                    @(attributeValue.CustomerEntersQty ? Html.Raw($"onchange=\"showHideCheckboxQuantity('{controlId}_{attributeValue.Id}')\"") : null) />
                             <label for="@(controlId)_@(attributeValue.Id)" class="checkbox-style"></label>
                             <label for="@(controlId)_@(attributeValue.Id)" class="checkbox-label">@attributeName</label>
-                            @*
-                                                            @if (!string.IsNullOrEmpty(attributeValue.Tooltip))
-                                            {
-                            <div class="attribute-desc-tooltip ml-1" data-toggle="tooltip" title="@attributeValue.Tooltip"><svg class="icon"><use href="#question"></use></svg></div>
-                                            }
-                            *@
-
+                             @if (!string.IsNullOrEmpty(tooltip))
+                                {
+                                    <div class="attribute-desc-tooltip ml-1" data-toggle="tooltip" title="@tooltip"><svg class="icon"><use href="#question"></use></svg></div>
+                                }
                         </div>
 
 
                         @if (attributeValue.CustomerEntersQty)
-                                        {
-                        <div class="qty-box" id="@(controlId)_@(attributeValue.Id)_qty_box" style="display:none">
-                            <label for="@(controlId)_@(attributeValue.Id)_qty">@(T("Products.ProductAttributes.PriceAdjustment.Quantity").Text)</label>
-                            <input type="text" name="@(controlId)_@(attributeValue.Id)_qty" id="@(controlId)_@(attributeValue.Id)_qty" value="@(attributeValue.Quantity)" />
-                            <script type="text/javascript" asp-location="Footer">
+                        {
+                            <div class="qty-box" id="@(controlId)_@(attributeValue.Id)_qty_box" style="display:none">
+                                <label for="@(controlId)_@(attributeValue.Id)_qty">@(T("Products.ProductAttributes.PriceAdjustment.Quantity").Text)</label>
+                                <input type="text" name="@(controlId)_@(attributeValue.Id)_qty" id="@(controlId)_@(attributeValue.Id)_qty" value="@(attributeValue.Quantity)" />
+                                <script type="text/javascript" asp-location="Footer">
                                                         $(document).ready(function() {
                                                             showHideCheckboxQuantity('@(controlId)_@(attributeValue.Id)');
                                                         })
-                            </script>
-                        </div>
-                                        }
+                                </script>
+                            </div>
+                        }
                     </li>
-                                    }
-                </ul>
+                }
+            </ul>
                             }
                             break;
                         case AttributeControlType.TextBox:

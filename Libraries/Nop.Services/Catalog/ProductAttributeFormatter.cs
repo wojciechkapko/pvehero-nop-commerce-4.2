@@ -166,12 +166,25 @@ namespace Nop.Services.Catalog
                     {
                         foreach (var attributeValue in _productAttributeParser.ParseProductAttributeValues(attributesXml, attribute.Id))
                         {
-                            var formattedAttribute = $"{attribute.ProductAttribute.Name}: {attributeValue.Name}";
+
+                            var optionValue = "";
+                            if (attributeValue.Name.IndexOf("tooltip") > 0)
+                            {
+
+                                optionValue = attributeValue.Name.Split("&tooltip=")[0];
+
+                            }
+                            else
+                            {
+                                optionValue = attributeValue.Name;
+                            }
+
+
+                            var formattedAttribute = $"{attribute.ProductAttribute.Name}: {optionValue}";
 
                             if (attribute.TextPrompt != null)
                             {
-                                formattedAttribute = $"{attribute.TextPrompt}: {attributeValue.Name}";
-
+                                formattedAttribute = $"{attribute.TextPrompt}: {optionValue}";
                             }
 
                             if (renderPrices)
