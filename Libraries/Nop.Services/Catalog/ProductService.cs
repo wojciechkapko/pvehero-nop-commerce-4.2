@@ -57,6 +57,7 @@ namespace Nop.Services.Catalog
         private readonly IStoreService _storeService;
         private readonly IWorkContext _workContext;
         private readonly LocalizationSettings _localizationSettings;
+        private readonly ICategoryService _categoryService;
 
         #endregion
 
@@ -87,7 +88,8 @@ namespace Nop.Services.Catalog
             IStoreService storeService,
             IStoreMappingService storeMappingService,
             IWorkContext workContext,
-            LocalizationSettings localizationSettings)
+            LocalizationSettings localizationSettings,
+            ICategoryService categoryService)
         {
             _catalogSettings = catalogSettings;
             _commonSettings = commonSettings;
@@ -115,6 +117,7 @@ namespace Nop.Services.Catalog
             _storeService = storeService;
             _workContext = workContext;
             _localizationSettings = localizationSettings;
+            _categoryService = categoryService;
         }
 
         #endregion
@@ -323,11 +326,21 @@ namespace Nop.Services.Catalog
         /// Gets all products displayed on the home page
         /// </summary>
         /// <returns>Products</returns>
-        public virtual IList<Product> GetAllProductsDisplayedOnHomepage()
+        public virtual IList<Product> GetAllProductsDisplayedOnHomepage(int categoryId)
         {
+
+            var categoryIds = new List<int>();
+            if (categoryId != 0)
+            {
+                categoryIds.Add(categoryId);
+                //include subcategories
+                categoryIds.AddRange(_categoryService.GetChildCategoryIds(categoryId));
+            }
+
             var query = from p in _productRepository.Table
                         orderby p.DisplayOrder, p.Id
                         where p.Published &&
+                        (categoryId == 0 || p.ProductCategories.Count(pc => categoryIds.Contains(pc.CategoryId)) > 0) &&
                         !p.Deleted &&
                         p.ShowOnHomepage
                         select p;

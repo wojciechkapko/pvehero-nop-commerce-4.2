@@ -222,14 +222,14 @@ textarea {
   -ms-flex-direction: row !important;
   flex-direction: row !important; }
 
-button.big, .btn.big, .button-1.big, .button-2.big {
+button.big, .btn.big, .button-1.big, .button-2.big, .button-3.big {
   padding: .75rem 2rem; }
 
-button.huge, .btn.huge, .button-1.huge, .button-2.huge {
+button.huge, .btn.huge, .button-1.huge, .button-2.huge, .button-3.huge {
   padding: 1rem 2.5rem;
   font-size: 1rem; }
 
-button.btn-danger, .btn.btn-danger, .button-1.btn-danger, .button-2.btn-danger {
+button.btn-danger, .btn.btn-danger, .button-1.btn-danger, .button-2.btn-danger, .button-3.btn-danger {
   background-color: #d41451; }
 
 .currency-selector .dropdown-menu {
@@ -817,6 +817,10 @@ label:not(.checkbox-style):not(.checkbox-label) {
   background-color: transparent;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), inset 0 0 0 2px #b79bff !important; }
 
+.button-3 {
+  background: #6c56d7;
+  border-radius: 5rem; }
+
 .checkout-page .product-picture {
   padding-left: 1rem !important; }
 
@@ -1059,6 +1063,9 @@ input::placeholder {
     cursor: pointer; } }
 
 @media all and (min-width: 1001px) {
+  .currency-selector {
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.15); }
   .block-account-navigation .icon, .block-recently-viewed-products .icon {
     display: none; } }
 
@@ -1315,3 +1322,27 @@ input::placeholder {
     font-size: 1rem; }
   .product-item .prices .actual-price {
     font-weight: 900; }
+
+.block-recently-viewed-products li {
+  position: relative;
+  display: flex; }
+  .block-recently-viewed-products li .info {
+    padding: 10px 0 10px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  .block-recently-viewed-products li .product-name {
+    font-weight: bold; }
+  .block-recently-viewed-products li .price {
+    margin-top: .25rem; }
+  .block-recently-viewed-products li:hover .product-name {
+    color: #b79bff; }
+
+.block-recently-viewed-products a.link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }

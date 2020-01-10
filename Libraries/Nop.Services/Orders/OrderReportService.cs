@@ -9,6 +9,7 @@ using Nop.Core.Domain.Orders;
 using Nop.Core.Domain.Payments;
 using Nop.Core.Domain.Shipping;
 using Nop.Core.Domain.Stores;
+using Nop.Services.Catalog;
 using Nop.Services.Helpers;
 
 namespace Nop.Services.Orders
@@ -26,6 +27,7 @@ namespace Nop.Services.Orders
         private readonly IRepository<OrderItem> _orderItemRepository;
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<StoreMapping> _storeMappingRepository;
+        private readonly ICategoryService _categoryService;
 
         #endregion
 
@@ -36,7 +38,8 @@ namespace Nop.Services.Orders
             IRepository<Order> orderRepository,
             IRepository<OrderItem> orderItemRepository,
             IRepository<Product> productRepository,
-            IRepository<StoreMapping> storeMappingRepository)
+            IRepository<StoreMapping> storeMappingRepository,
+            ICategoryService categoryService)
         {
             _catalogSettings = catalogSettings;
             _dateTimeHelper = dateTimeHelper;
@@ -44,6 +47,7 @@ namespace Nop.Services.Orders
             _orderItemRepository = orderItemRepository;
             _productRepository = productRepository;
             _storeMappingRepository = storeMappingRepository;
+            _categoryService = categoryService;
         }
 
         #endregion
@@ -325,6 +329,14 @@ namespace Nop.Services.Orders
             if (ss.HasValue)
                 shippingStatusId = (int)ss.Value;
 
+            var categoryIds = new List<int>();
+            if (categoryId != 0)
+            {
+                categoryIds.Add(categoryId);
+                //include subcategories
+                categoryIds.AddRange(_categoryService.GetChildCategoryIds(categoryId, storeId));
+            }
+
             var query1 = from orderItem in _orderItemRepository.Table
                          join o in _orderRepository.Table on orderItem.OrderId equals o.Id
                          join p in _productRepository.Table on orderItem.ProductId equals p.Id
@@ -341,7 +353,7 @@ namespace Nop.Services.Orders
                                (vendorId == 0 || p.VendorId == vendorId) &&
                                //(categoryId == 0 || pc.CategoryId == categoryId) &&
                                //(manufacturerId == 0 || pm.ManufacturerId == manufacturerId) &&
-                               (categoryId == 0 || p.ProductCategories.Count(pc => pc.CategoryId == categoryId) > 0) &&
+                               (categoryId == 0 || p.ProductCategories.Count(pc => categoryIds.Contains(pc.CategoryId)) > 0) &&
                                (manufacturerId == 0 || p.ProductManufacturers.Count(pm => pm.ManufacturerId == manufacturerId) >
                                 0) &&
                                (billingCountryId == 0 || o.BillingAddress.CountryId == billingCountryId) &&

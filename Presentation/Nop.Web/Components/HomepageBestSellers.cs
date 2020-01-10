@@ -43,17 +43,17 @@ namespace Nop.Web.Components
             _storeMappingService = storeMappingService;
         }
 
-        public IViewComponentResult Invoke(int? productThumbPictureSize)
+        public IViewComponentResult Invoke(int categoryId)
         {
             if (!_catalogSettings.ShowBestsellersOnHomepage || _catalogSettings.NumberOfBestsellersOnHomepage == 0)
                 return Content("");
 
             //load and cache report
-            var report = _cacheManager.Get(string.Format(NopModelCacheDefaults.HomepageBestsellersIdsKey, _storeContext.CurrentStore.Id),
-                () => _orderReportService.BestSellersReport(
+            var report = _orderReportService.BestSellersReport(
+                        categoryId: categoryId,
                         storeId: _storeContext.CurrentStore.Id,
                         pageSize: _catalogSettings.NumberOfBestsellersOnHomepage)
-                    .ToList());
+                    .ToList();
 
             //load products
             var products = _productService.GetProductsByIds(report.Select(x => x.ProductId).ToArray());

@@ -4,22 +4,26 @@
     <div class="block block-recently-viewed-products">
         <div class="title">
             <svg class="icon size-1x white"><use href="#chevron-down"></use></svg>
-            @T("Products.RecentlyViewedProducts")
+            <strong>@T("Products.RecentlyViewedProducts")</strong>
         </div>
         <div class="listbox">
             <ul class="list">
                 @for (var i = 0; i < Model.Count; i++)
                 {
                     var product = Model[i];
-                    <li @(i == Model.Count - 1 ? @Html.Raw(" class=\"last\"") : null)>
-                        @if (!string.IsNullOrEmpty(product.DefaultPictureModel.ImageUrl))
-                        {
-                            <a class="product-picture" href="@Url.RouteUrl("Product", new { SeName = product.SeName })" title="@product.DefaultPictureModel.Title">
-                                <img alt="@product.DefaultPictureModel.AlternateText" src="@product.DefaultPictureModel.ImageUrl" title="@product.DefaultPictureModel.Title" />
-                            </a>
-                        }
-                        <a class="product-name" href="@Url.RouteUrl("Product", new { SeName = product.SeName })">@product.Name</a>
-                    </li>
+                <li @(i == Model.Count - 1 ? @Html.Raw(" class=\"last\"") : null)>
+                    <a href="@Url.RouteUrl("Product", new { SeName = product.SeName })" class="link" title="@product.DefaultPictureModel.Title"></a>
+                    @if (!string.IsNullOrEmpty(product.DefaultPictureModel.ImageUrl))
+                    {
+                        <a class="product-picture" href="@Url.RouteUrl("Product", new { SeName = product.SeName })">
+                            <img alt="@product.DefaultPictureModel.AlternateText" src="@product.DefaultPictureModel.ImageUrl" title="@product.DefaultPictureModel.Title" />
+                        </a>
+                    }
+                    <div class="info">
+                        <p class="product-name">@product.Name</p>
+                        <p class="price actual-price">From: @product.ProductPrice.Price</p>
+                    </div>
+                </li>
                 }
             </ul>
         </div>

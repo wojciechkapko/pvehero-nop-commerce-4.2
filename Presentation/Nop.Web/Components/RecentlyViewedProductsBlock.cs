@@ -54,7 +54,7 @@ namespace Nop.Web.Components
             //prepare model
             var model = new List<ProductOverviewModel>();
             model.AddRange(_productModelFactory.PrepareProductOverviewModels(products,
-                preparePriceModel.GetValueOrDefault(),
+                true,
                 preparePictureModel,
                 80));
 

@@ -115,7 +115,7 @@ input[type="radio"] + * {
 	vertical-align: middle;
 }
 input[type="button"],
-.btn, .button-1, .button-2 {
+.btn, .button-1, .button-2, .button-3 {
     cursor: pointer;
     position: relative;
     text-align: center;
@@ -1088,13 +1088,13 @@ label, label + * {
 	padding: 21px 5px;
 }
 .block .list a {
-	display: inline-block;
-	position: relative;
-	padding: 10px 0 10px 15px;
-	font-size: 16px;
+    display: inline-block;
+    position: relative;
+    padding: 10px 0 10px 15px;
+    font-size: 16px;
     border-radius: .5rem;
     -webkit-transition: all 0.1s ease;
-	transition: all 0.1s ease;
+    transition: all 0.1s ease;
 }
 .block-account-navigation .list a:hover {
     background: #6658d5;
@@ -1526,47 +1526,17 @@ label, label + * {
 .item-box .add-to-wishlist-button:hover {
 	background-color: #ddd;
 }
-
-.home-page-category-grid,
-.sub-category-grid,
-.manufacturer-grid,
-.vendor-grid {
-	margin: 0 0 20px;
-}
-.home-page-category-grid .title,
-.sub-category-grid .title {
-	text-align: center;
-	font-size: 22px;
-	font-weight: normal;
-    -webkit-transition: all 0.3s ease;
-	transition: all 0.3s ease;
-}
-.home-page-category-grid .title a,
-.sub-category-grid .title a {
-	display: block;
-	padding: 0 0 15px;
-}
-.home-page-category-grid .picture,
-.sub-category-grid .picture {
-	margin: 0;
-}
-.home-page-category-grid .picture a:before,
-.sub-category-grid .picture a:before {
-	padding-top: 65%;
-}
-
 .product-grid,
 .product-list {
 	margin: 0 0 50px;
 }
 .product-grid .title {
-	margin: 0 0 30px;
-	border-bottom:1px solid rgba(255,255,255,.15);
-	padding: 0 0 15px;
-	font-size: 30px;
-}
-.product-grid .title strong {
-	font-weight: normal;
+    position: relative;
+    margin: 0 0 10px;
+    padding: 12px 30px 12px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
 .manufacturer-grid .title {
@@ -6118,7 +6088,6 @@ pre {
 	text-align: left;
 }
 
-.home-page .product-grid .item-box,
 .product-details-page .product-grid .item-box,
 .shopping-cart-page .product-grid .item-box {
 	width: 24%;

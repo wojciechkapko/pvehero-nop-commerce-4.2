@@ -31,7 +31,7 @@ namespace Nop.Services.Catalog
         /// Gets all products displayed on the home page
         /// </summary>
         /// <returns>Products</returns>
-        IList<Product> GetAllProductsDisplayedOnHomepage();
+        IList<Product> GetAllProductsDisplayedOnHomepage(int categoryId);
 
         /// <summary>
         /// Gets product

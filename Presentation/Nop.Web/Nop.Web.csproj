@@ -42,6 +42,7 @@
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
     <Content Remove="bundleconfig.json" />
     <Content Remove="compilerconfig.json" />
+    <None Remove="Themes\pveHero\Content\css\homepage.scss" />
     <None Remove="Themes\pveHero\Content\css\main.scss" />
     <None Remove="Themes\pveHero\Content\css\print.css" />
     <None Remove="Themes\pveHero\Content\css\styles.css" />
@@ -98,6 +99,7 @@
     <None Remove="Themes\pveHero\preview.jpg" />
     <_ContentIncludedByDefault Remove="bundleconfig.json" />
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\homepage.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\howitworks.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\stripeform.min.css" />
 

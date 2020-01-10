@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Nop.Services.Catalog;
 using Nop.Services.Security;
@@ -14,23 +15,27 @@ namespace Nop.Web.Components
         private readonly IProductModelFactory _productModelFactory;
         private readonly IProductService _productService;
         private readonly IStoreMappingService _storeMappingService;
+        private readonly ICategoryService _categoryService;
 
         public HomepageProductsViewComponent(IAclService aclService,
             IProductModelFactory productModelFactory,
             IProductService productService,
-            IStoreMappingService storeMappingService)
+            IStoreMappingService storeMappingService,
+            ICategoryService categoryService)
         {
             _aclService = aclService;
             _productModelFactory = productModelFactory;
             _productService = productService;
             _storeMappingService = storeMappingService;
+            _categoryService = categoryService;
         }
 
-        public IViewComponentResult Invoke(int? productThumbPictureSize)
+        public IViewComponentResult Invoke(int categoryId)
         {
-            var products = _productService.GetAllProductsDisplayedOnHomepage();
+            var products = _productService.GetAllProductsDisplayedOnHomepage(categoryId);
             //ACL and store mapping
             products = products.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
+
             //availability dates
             products = products.Where(p => _productService.ProductIsAvailable(p)).ToList();
 
@@ -39,7 +44,7 @@ namespace Nop.Web.Components
             if (!products.Any())
                 return Content("");
 
-            var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, productThumbPictureSize).ToList();
+            var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, 350).ToList();
 
             return View(model);
         }

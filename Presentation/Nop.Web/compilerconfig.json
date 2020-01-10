@@ -14,5 +14,9 @@
   {
     "outputFile": "wwwroot/css/howitworks.css",
     "inputFile": "wwwroot/css/howitworks.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/homepage.css",
+    "inputFile": "wwwroot/css/homepage.scss"
   }
 ]
