@@ -37,12 +37,16 @@
                                 <input asp-for="q" class="search-text"/>
                             </div>
                             @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.ProductSearchPageBasic})
-                            <div class="inputs reversed">
+                            @*
+                                                           <div class="inputs reversed">
                                 <input asp-for="adv"/>
                                 <label asp-for="adv">@T("Search.AdvancedSearch")</label>
-                            </div>
+                            </div> 
+                            *@
+
                         </div>
-                        <div class="advanced-search" id="advanced-search-block">
+                        @*
+                                                  <div class="advanced-search" id="advanced-search-block">
                             @if (Model.AvailableCategories.Count > 0)
                             {
                                 <div class="inputs">
@@ -82,7 +86,9 @@
                                 <label asp-for="sid">@T("Search.SearchInDescriptions")</label>
                             </div>
                             @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.ProductSearchPageAdvanced})
-                        </div>
+                        </div>  
+                        *@
+
                     </div>
                 </div>
                 <div class="buttons">
