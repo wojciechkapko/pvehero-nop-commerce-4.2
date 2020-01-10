@@ -339,7 +339,13 @@ namespace Nop.Web.Factories
                 MetaDescription = _localizationService.GetLocalized(category, x => x.MetaDescription),
                 MetaTitle = _localizationService.GetLocalized(category, x => x.MetaTitle),
                 SeName = _urlRecordService.GetSeName(category),
+
             };
+
+            if(category.ParentCategoryId != 0)
+            {
+                model.ParentName = _urlRecordService.GetSeName(_categoryService.GetCategoryById(category.ParentCategoryId));
+            }
 
             //sorting
             PrepareSortingOptions(model.PagingFilteringContext, command);
