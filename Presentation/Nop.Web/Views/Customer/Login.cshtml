@@ -37,14 +37,14 @@
         }
         else if (Model.CheckoutAsGuest)
         {
-            <div class="new-wrapper checkout-as-guest-or-register-block">
+            <div class="new-wrapper checkout-as-guest-or-register-block card default">
                 <div class="title">
                     <strong>@T("Account.Login.CheckoutAsGuestOrRegister")</strong>
                 </div>
                 <div class="text">
                     @await Component.InvokeAsync("TopicBlock", new { systemName = "CheckoutAsGuestOrRegister" })
                 </div>
-                <div class="buttons">
+                <div class="buttons mb-0">
                     <input type="button" class="button-1 checkout-as-guest-button" onclick="location.href='@Url.RouteUrl("Checkout")'" value="@T("Account.Login.CheckoutAsGuest")" />
                     <input type="button" class="button-1 register-button" onclick="location.href='@registerUrl'" value="@T("Account.Register")" />
                 </div>
