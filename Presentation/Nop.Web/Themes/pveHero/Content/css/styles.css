@@ -1390,16 +1390,16 @@ label, label + * {
 	clear: both;
 }
 .item-box {
-	position: relative;
-	width: 100%;
-	float: left;
-	margin: 0 0 80px;
-	text-align: left;
+    position: relative;
+    width: 100%;
+    float: left;
+    margin: 0 0 25px;
+    text-align: left;
+    max-width: 350px;
 }
 .item-box .picture {
 	z-index: 1;
 	overflow: hidden;
-    margin: 0 0 20px;
 }
 .item-box .picture a {
 	display: block;
@@ -1423,11 +1423,11 @@ label, label + * {
 	transition: all 0.3s ease;
 	-webkit-transform: translateZ(0) scale(1.0, 1.0);
 }
-.item-box:hover .picture a img {
-	opacity: 0.85;
-}
 .item-box .details {
-	padding: 0 10px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
 }
 .item-box .product-title {
 	margin: 0 0 10px;
@@ -1475,11 +1475,6 @@ label, label + * {
 	font-size: 16px;
 	color: #aaa;
 	text-decoration: line-through;
-}
-.item-box .actual-price {
-	margin: 0 5px 0 0;
-	font-size: 16px;
-	color: #666;
 }
 .item-box .tax-shipping-info a {
 	color: #4ab2f1;
@@ -2044,13 +2039,7 @@ label, label + * {
 .product-tags-list {
 	font-size: 0;
 }
-.product-tags-list li {
-	display: inline-block;
-	font-size: 14px; /*reset zeroing*/
-}
-.product-tags-list li.separator {
-	margin: 0 5px 0 3px;
-}
+
 .product-tags-list a {
 	display: inline-block;
 	line-height: 24px;
@@ -5009,8 +4998,8 @@ pre {
 }
 
 .item-box {
-	width: 49%;
-	margin: 0 0.5% 50px;
+	width: 48%;
+    margin: 1%;
 }
 .item-box:nth-child(2n+1) {
 	clear: both;
@@ -5219,8 +5208,8 @@ pre {
 }
 
 .item-box {
-	width: 32.33333%;
-	margin: 0 0.5% 50px;
+	width: 31.33333%;
+    margin: 1%;
 }
 .item-box:nth-child(2n+1) {
 	clear: none;

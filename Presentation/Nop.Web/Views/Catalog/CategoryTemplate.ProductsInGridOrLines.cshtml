@@ -13,7 +13,15 @@
     Html.AddMetaDescriptionParts(Model.MetaDescription);
     Html.AddMetaKeywordParts(Model.MetaKeywords);
     //page class
-    Html.AppendPageCssClassParts("html-category-page");
+
+    if (!string.IsNullOrEmpty(Model.ParentName))
+    {
+        Html.AppendPageCssClassParts("html-category-page" + " class-" + @Model.ParentName);
+    }
+    else
+    {
+        Html.AppendPageCssClassParts("html-category-page" + " class-" + @Model.SeName);
+    }
 
     if (seoSettings.CanonicalUrlsEnabled)
     {
@@ -81,30 +89,30 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeSubcategories, additionalData = Model })
         @*subcategories*@
         @*
-                   @if (Model.SubCategories.Count > 0)
-        {
-            <div class="category-grid sub-category-grid">
-                <div class="item-grid">
-                    @foreach (var item in Model.SubCategories)
-                    {
-                        <div class="item-box">
-                            <div class="sub-category-item">
-                                <h2 class="title">
-                                    <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
-                                        @item.Name
-                                    </a>
-                                </h2>
-                                <div class="picture">
-                                    <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
-                                        <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
-                                    </a>
+                       @if (Model.SubCategories.Count > 0)
+            {
+                <div class="category-grid sub-category-grid">
+                    <div class="item-grid">
+                        @foreach (var item in Model.SubCategories)
+                        {
+                            <div class="item-box">
+                                <div class="sub-category-item">
+                                    <h2 class="title">
+                                        <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                                            @item.Name
+                                        </a>
+                                    </h2>
+                                    <div class="picture">
+                                        <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
+                                            <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    }
+                        }
+                    </div>
                 </div>
-            </div>
-        } 
+            }
         *@
 
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeFeaturedProducts, additionalData = Model })
@@ -170,3 +178,29 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBottom, additionalData = Model })
     </div>
 </div>
+
+
+
+    <style>
+        .html-category-page.class-@(Model.SeName).webp  .master-wrapper-page::before
+        {
+            background-image: url(/images/categories/@Model.SeName-bg.webp) !important;
+        }
+        .html-category-page.class-@(Model.SeName).no-webp .master-wrapper-page::before
+        {
+            background-image: url(/images/categories/@Model.SeName-bg.jpg) !important;
+        }
+    </style>
+
+    <style>
+        .html-category-page.class-@(Model.ParentName).webp  .master-wrapper-page::before
+        {
+            background-image: url(/images/categories/@Model.ParentName-bg.webp) !important;
+        }
+        .html-category-page.class-@(Model.ParentName).no-webp .master-wrapper-page::before
+        {
+            background-image: url(/images/categories/@Model.ParentName-bg.jpg) !important;
+        }
+    </style>
+
+
