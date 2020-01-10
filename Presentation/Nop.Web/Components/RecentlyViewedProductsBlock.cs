@@ -56,7 +56,7 @@ namespace Nop.Web.Components
             model.AddRange(_productModelFactory.PrepareProductOverviewModels(products,
                 preparePriceModel.GetValueOrDefault(),
                 preparePictureModel,
-                productThumbPictureSize));
+                80));
 
             return View(model);
         }

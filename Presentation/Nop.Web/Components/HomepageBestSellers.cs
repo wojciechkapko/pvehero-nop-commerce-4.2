@@ -66,7 +66,7 @@ namespace Nop.Web.Components
                 return Content("");
 
             //prepare model
-            var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, productThumbPictureSize).ToList();
+            var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, 80).ToList();
             return View(model);
         }
     }
