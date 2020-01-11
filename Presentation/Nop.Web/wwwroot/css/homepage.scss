@@ -1,4 +1,5 @@
 ﻿.home-page-category-list {
+    margin-top: 4rem;
     .item-list {
         display: flex;
         flex-direction: column;
@@ -6,6 +7,7 @@
         .item-box.category {
             width: 100%;
             max-width: none;
+            margin: 0;
         }
     }
 
@@ -36,6 +38,7 @@
     }
 
     .message {
+        padding-top: 2rem;
         h2 {
             text-transform: uppercase;
             font-size: 3.1rem;
@@ -68,3 +71,107 @@
     margin: 0 0.5% 50px;
 }
 */
+
+
+.glide {
+    h2 {
+        font-size: 2rem;
+        //line-height: 1.5;
+        text-shadow: 0 2px 5px rgba(0,0,0,.5);
+        text-transform: uppercase;
+    }
+
+    .ribbon {
+        right: 0;
+        bottom: 2rem
+    }
+
+    img, .card {
+        border-radius: .5rem;
+        border: 0;
+        height: 240px;
+        justify-content: space-around;
+    }
+
+    .card {
+        padding: 1.5rem 6rem;
+    }
+
+    .images {
+        &::before {
+            content: "";
+            position: absolute;
+            z-index: 13;
+            bottom: 0;
+            right: 2.625rem;
+            width: 29.5rem;
+            height: 20.6875rem;
+            background-repeat: no-repeat;
+            pointer-events: none;
+        }
+
+        &.diablo-3::before {
+            right: 0;
+            width: 30.5rem;
+        }
+    }
+}
+/*
+.registration-page .card, .login-page .card, .featured .main-game2 {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 2.25rem 2.5rem 2.5rem;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    z-index: 1;
+}
+*/
+
+
+.webp .wow {
+    background-image: url(/images/mythic-plus-featured.webp);
+    &::before {
+        background-image: url(/images/featured-mythic-plus-character.webp);
+    }
+}
+
+.no-webp .wow {
+    background-image: url(/images/mythic-plus-featured.jpg);
+    &::before {
+        background-image: url(/images/featured-mythic-plus-character.png);
+    }
+}
+
+.webp .diablo-3 {
+    background-image: url(/images/diablo-3-featured.webp);
+
+    &::before {
+        background-image: url(/images/diablo3-character2.webp);
+    }
+}
+
+.no-webp .diablo-3 {
+    background-image: url(/images/diablo-3-featured.jpg);
+
+    &::before {
+        background-image: url(/images/diablo3-character2.png);
+    }
+}
+
+
+.glide__track {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+}
+.controls {
+    display:none;
+}
+.glide__slides {
+    overflow: visible;
+}
+.glide__arrow {
+    top: 60%;
+    padding: 9px 12px;
+    background-color: #6c56d7;
+    border: 2px solid #6c56d7;
+}

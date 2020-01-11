@@ -4,6 +4,11 @@
     //page class
     Html.AppendPageCssClassParts("html-home-page");
     Html.AppendCssFileParts($"~/css/homepage.min.css");
+
+    Html.AppendCssFileParts($"~/lib/glide/css/glide.core.min.css");
+    Html.AppendCssFileParts($"~/lib/glide/css/glide.theme.min.css");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/glide/glide.min.js");
+
 }
 
 <div class="page home-page">
@@ -13,7 +18,7 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeCategories })
 
 
-
+        @await Html.PartialAsync("_HomepageSlider")
         @await Component.InvokeAsync("HomepageCategories")
 
 
@@ -27,3 +32,21 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBottom })
     </div>
 </div>
+
+
+<script asp-location="Footer">
+                $(document).ready(function() {
+
+                    new Glide('.glide', {
+                      type: 'carousel',
+                      startAt: 0,
+                        perView: 1,
+                        autoplay: 3500,
+                        hoverpause: true,
+                          peek: {
+                            before: 0,
+                            after: 330
+                          }
+                    }).mount()
+            });
+</script>
