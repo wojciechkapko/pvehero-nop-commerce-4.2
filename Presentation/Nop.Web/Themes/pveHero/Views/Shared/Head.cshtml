@@ -9,14 +9,7 @@
     var themeName = themeContext.WorkingThemeName;
     
     // custom styles
-    Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/main.css");
+    Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/main.min.css");
     //add main CSS file
-    if (supportRtl)
-    {
-        Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/styles.rtl.css");
-    }
-    else
-    {
-        Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/styles.css");
-    }
+    Html.AppendCssFileParts($"~/Themes/{themeName}/Content/css/styles.min.css");
 }
