@@ -30,6 +30,36 @@
     }
 }
 
+.home-page {
+    .topic-block-title {
+        display: none;
+    }
+
+    .message {
+        h2 {
+            text-transform: uppercase;
+            font-size: 3.1rem;
+        }
+
+        p {
+            margin: 2rem 0 2rem 0;
+            color: #bba0ff;
+            font-size: 1.45rem;
+        }
+    }
+}
+
+@media all and (min-width: 1001px){
+    .center-1 {
+        .home-page {
+            .buttons {
+                text-align: left;
+            }
+        }
+    }
+}
+
+
 /*
 .home-page .product-grid .item-box,
 .product-details-page .product-grid .item-box,
