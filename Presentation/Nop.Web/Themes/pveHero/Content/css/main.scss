@@ -227,6 +227,10 @@ textarea {
     margin-right: 1.5rem !important;
 }
 
+.mt-4, .my-4 {
+    margin-top: 1.5rem !important;
+}
+
 .p-4 {
     padding: 1.5rem !important;
 }
@@ -1762,5 +1766,31 @@ input::placeholder {
         left: 0;
         right: 0;
         bottom: 0;
+    }
+}
+
+.ribbon {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 3px 5px rgba(0,0,0,.2);
+    z-index: 13;
+    border-bottom-left-radius: .5rem;
+    border-top-left-radius: .5rem;
+
+    &.new {
+        background: #d46;
+    }
+
+    span {
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 0.0625em 0.0625em 0.0625em #333;
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        padding: .75rem 2.5rem;
     }
 }
