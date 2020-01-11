@@ -47,7 +47,7 @@
     <None Remove="Themes\pveHero\Content\css\print.css" />
     <None Remove="Themes\pveHero\Content\css\styles.css" />
     <None Remove="Themes\pveHero\Content\css\styles.rtl.css" />
-    <None Remove="Themes\pveHero\Content\images\ajax-loader-small.gif" />
+    <None Remove="Themes\pveHero\Content\css\unused.scss" />
     <None Remove="Themes\pveHero\Content\images\back-button.png" />
     <None Remove="Themes\pveHero\Content\images\calendar-next.png" />
     <None Remove="Themes\pveHero\Content\images\calendar-prev.png" />
@@ -62,7 +62,6 @@
     <None Remove="Themes\pveHero\Content\images\first.png" />
     <None Remove="Themes\pveHero\Content\images\ie_warning.jpg" />
     <None Remove="Themes\pveHero\Content\images\last.png" />
-    <None Remove="Themes\pveHero\Content\images\loading.gif" />
     <None Remove="Themes\pveHero\Content\images\logo.png" />
     <None Remove="Themes\pveHero\Content\images\menu-icon.png" />
     <None Remove="Themes\pveHero\Content\images\move.png" />
