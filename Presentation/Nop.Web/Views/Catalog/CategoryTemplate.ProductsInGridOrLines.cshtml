@@ -139,18 +139,22 @@
             @await Html.PartialAsync("_CatalogSelectors", Model.PagingFilteringContext)
         }
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeFilters, additionalData = Model })
-        <div class="product-filters">
-            @*filtering*@
+
+        @*
+                    <div class="product-filters">
+
             @if (Model.PagingFilteringContext.PriceRangeFilter.Enabled)
             {
                 @await Html.PartialAsync("_FilterPriceBox", Model.PagingFilteringContext.PriceRangeFilter)
             }
-            @*filtering*@
+
             @if (Model.PagingFilteringContext.SpecificationFilter.Enabled)
             {
                 @await Html.PartialAsync("_FilterSpecsBox", Model.PagingFilteringContext.SpecificationFilter)
             }
         </div>
+        *@
+
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CategoryDetailsBeforeProductList, additionalData = Model })
 
         @if (Model.Products.Count > 0)
