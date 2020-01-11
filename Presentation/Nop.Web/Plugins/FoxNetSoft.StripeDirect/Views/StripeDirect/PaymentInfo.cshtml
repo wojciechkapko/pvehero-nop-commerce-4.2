@@ -94,71 +94,71 @@ else
         @T("FoxNetSoft.Plugin.Payments.StripeDirect.PaymentWasSent")
     </div>
     @*
-            <div id="stripe-payment-form">
-        <input type="hidden" asp-for="StripeErrors">
-        <input type="hidden" asp-for="StripePaymentIntentId">
+                <div id="stripe-payment-form">
+            <input type="hidden" asp-for="StripeErrors">
+            <input type="hidden" asp-for="StripePaymentIntentId">
 
-        <div class="form-sprite-payment">
-            <div class="form-sprite-payment-cardholder">
-                <label for="card-number">
-                    @T("FoxNetSoft.Plugin.Payments.StripeDirect.CardHolder")
-                </label>
-                <input id="stripe-cardholder-name" type="text" value="@Model.CardholderName">
+            <div class="form-sprite-payment">
+                <div class="form-sprite-payment-cardholder">
+                    <label for="card-number">
+                        @T("FoxNetSoft.Plugin.Payments.StripeDirect.CardHolder")
+                    </label>
+                    <input id="stripe-cardholder-name" type="text" value="@Model.CardholderName">
+                </div>
+                <div id="card-number">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+                <div id="card-expiry">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+                <div id="card-cvc">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+                <!-- Used to display Element errors. -->
+                <div id="stripe-direct-payment-pay-button">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+                <div id="stripe-card-errors" role="alert"></div>
             </div>
-            <div id="card-number">
-                <!-- A Stripe Element will be inserted here. -->
-            </div>
-            <div id="card-expiry">
-                <!-- A Stripe Element will be inserted here. -->
-            </div>
-            <div id="card-cvc">
-                <!-- A Stripe Element will be inserted here. -->
-            </div>
-            <!-- Used to display Element errors. -->
-            <div id="stripe-direct-payment-pay-button">
-                <!-- A Stripe Element will be inserted here. -->
-            </div>
-            <div id="stripe-card-errors" role="alert"></div>
         </div>
-    </div>
     *@
 
 
 
-<div class="form-container" id="stripe-payment-form">
-    <input type="hidden" asp-for="StripeErrors">
-    <input type="hidden" asp-for="StripePaymentIntentId">
+    <div class="form-container" id="stripe-payment-form">
+        <input type="hidden" asp-for="StripeErrors">
+        <input type="hidden" asp-for="StripePaymentIntentId">
 
-    <div id="my-sample-form" class="scale-down">
-        <div class="cardinfo-card-number">
-            <label class="cardinfo-label" for="card-number">@T("FoxNetSoft.Plugin.Payments.StripeDirect.CardHolder")</label>
-            <input class='input-wrapper' id="stripe-cardholder-name" type="text" value="@Model.CardholderName">
-        </div>
-
-        <div class="cardinfo-card-number">
-            <label class="cardinfo-label" for="card-number">Card Number</label>
-            <div class='input-wrapper' id="card-number"></div>
-            <div id="card-image"></div>
-        </div>
-
-        <div class="cardinfo-wrapper">
-            <div class="cardinfo-exp-date">
-                <label class="cardinfo-label" for="expiration-date">Valid Thru</label>
-                <div class='input-wrapper' id="card-expiry"></div>
+        <div id="my-sample-form" class="scale-down">
+            <div class="cardinfo-card-number">
+                <label class="cardinfo-label" for="card-number">@T("FoxNetSoft.Plugin.Payments.StripeDirect.CardHolder")</label>
+                <input class='input-wrapper' id="stripe-cardholder-name" type="text" value="@Model.CardholderName">
             </div>
 
-            <div class="cardinfo-cvv">
-                <label class="cardinfo-label" for="cvv">CVC</label>
-                <div class='input-wrapper' id="card-cvc"></div>
+            <div class="cardinfo-card-number">
+                <label class="cardinfo-label" for="card-number">Card Number</label>
+                <div class='input-wrapper' id="card-number"></div>
+                <div id="card-image"></div>
             </div>
-            <div id="stripe-direct-payment-pay-button">
-                <!-- A Stripe Element will be inserted here. -->
-            </div>
-        </div>
 
+            <div class="cardinfo-wrapper">
+                <div class="cardinfo-exp-date">
+                    <label class="cardinfo-label" for="expiration-date">Valid Thru</label>
+                    <div class='input-wrapper' id="card-expiry"></div>
+                </div>
+
+                <div class="cardinfo-cvv">
+                    <label class="cardinfo-label" for="cvv">CVC</label>
+                    <div class='input-wrapper' id="card-cvc"></div>
+                </div>
+                <div id="stripe-direct-payment-pay-button">
+                    <!-- A Stripe Element will be inserted here. -->
+                </div>
+            </div>
+
+        </div>
+        <div id="stripe-card-errors" role="alert"></div>
     </div>
-    <div id="stripe-card-errors" role="alert"></div>
-</div>
 
 
 
