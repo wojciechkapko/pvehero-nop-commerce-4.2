@@ -11,12 +11,6 @@
                         <svg class='icon shadow svg-baseline'><use href='#@item.SeName'></use></svg>
                         @item.Name
                     </h2>
-                    <div class="picture d-none">
-                        <a href="@Url.RouteUrl("Category", new { SeName = item.SeName })" title="@item.PictureModel.Title">
-                            <img alt="@item.PictureModel.AlternateText" src="@item.PictureModel.ImageUrl" title="@item.PictureModel.Title" />
-                        </a>
-                    </div>
-
                     <div class="category-details">
                         <div class="side-2">
                             @await Component.InvokeAsync("HomepageBestSellers", item.Id)
