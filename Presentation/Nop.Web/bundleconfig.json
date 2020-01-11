@@ -4,5 +4,11 @@
     "inputFiles": [
       "wwwroot/js/ajaxreviews.js"
     ]
+  },
+  {
+    "outputFileName": "Themes/pveHero/Content/css/styles.min.css",
+    "inputFiles": [
+      "Themes/pveHero/Content/css/styles.css"
+    ]
   }
 ]
