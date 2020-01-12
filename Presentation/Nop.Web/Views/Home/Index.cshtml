@@ -41,12 +41,14 @@
                       type: 'carousel',
                       startAt: 0,
                         perView: 1,
-                        autoplay: 3500,
                         hoverpause: true,
-                          peek: {
+                        peek: {
                             before: 0,
                             after: 330
-                          }
+                        },
+                        breakpoints: {
+                               1000: { peek: 0 }
+                        }
                     }).mount()
             });
 </script>

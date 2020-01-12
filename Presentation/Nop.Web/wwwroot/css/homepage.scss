@@ -79,6 +79,7 @@
         //line-height: 1.5;
         text-shadow: 0 2px 5px rgba(0,0,0,.5);
         text-transform: uppercase;
+        z-index: 15;
     }
 
     .ribbon {
@@ -98,6 +99,7 @@
     }
 
     .images {
+        overflow: visible;
         &::before {
             content: "";
             position: absolute;
@@ -113,6 +115,42 @@
         &.diablo-3::before {
             right: 0;
             width: 30.5rem;
+        }
+    }
+}
+
+@media all and (max-width: 1366px) {
+    .glide {
+        .images {
+            overflow:hidden;
+            &::before {
+                right: 0;
+                width: 18.5rem;
+                height: 20.6875rem;
+            }
+
+            &.diablo-3::before {
+                width: 24.5rem;
+                height: 15rem;
+            }
+        }
+    }
+}
+@media all and (max-width: 1000px) {
+    .glide {
+        .images {
+            overflow: visible;
+
+            &::before {
+                right: 0;
+                width: 18.5rem;
+                height: 20.6875rem;
+            }
+
+            &.diablo-3::before {
+                width: 24.5rem;
+                height: 15rem;
+            }
         }
     }
 }

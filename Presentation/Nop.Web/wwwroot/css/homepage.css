@@ -48,7 +48,8 @@
 .glide h2 {
   font-size: 2rem;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  z-index: 15; }
 
 .glide .ribbon {
   right: 0;
@@ -63,20 +64,43 @@
 .glide .card {
   padding: 1.5rem 6rem; }
 
-.glide .images::before {
-  content: "";
-  position: absolute;
-  z-index: 13;
-  bottom: 0;
-  right: 2.625rem;
-  width: 29.5rem;
-  height: 20.6875rem;
-  background-repeat: no-repeat;
-  pointer-events: none; }
+.glide .images {
+  overflow: visible; }
+  .glide .images::before {
+    content: "";
+    position: absolute;
+    z-index: 13;
+    bottom: 0;
+    right: 2.625rem;
+    width: 29.5rem;
+    height: 20.6875rem;
+    background-repeat: no-repeat;
+    pointer-events: none; }
+  .glide .images.diablo-3::before {
+    right: 0;
+    width: 30.5rem; }
 
-.glide .images.diablo-3::before {
-  right: 0;
-  width: 30.5rem; }
+@media all and (max-width: 1366px) {
+  .glide .images {
+    overflow: hidden; }
+    .glide .images::before {
+      right: 0;
+      width: 18.5rem;
+      height: 20.6875rem; }
+    .glide .images.diablo-3::before {
+      width: 24.5rem;
+      height: 15rem; } }
+
+@media all and (max-width: 1000px) {
+  .glide .images {
+    overflow: visible; }
+    .glide .images::before {
+      right: 0;
+      width: 18.5rem;
+      height: 20.6875rem; }
+    .glide .images.diablo-3::before {
+      width: 24.5rem;
+      height: 15rem; } }
 
 /*
 .registration-page .card, .login-page .card, .featured .main-game2 {
