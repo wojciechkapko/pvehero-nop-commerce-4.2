@@ -43,11 +43,13 @@
                 </div>
                 <div class="text">
                     @await Component.InvokeAsync("TopicBlock", new { systemName = "CheckoutAsGuestOrRegister" })
+                    <div class="buttons mb-0">
+                        <input type="button" class="button-1 checkout-as-guest-button" onclick="location.href='@Url.RouteUrl("Checkout")'" value="@T("Account.Login.CheckoutAsGuest")" />
+                        <p>or</p>
+                        <input type="button" class="button-1 register-button" onclick="location.href='@registerUrl'" value="@T("Account.Register")" />
+                    </div>
                 </div>
-                <div class="buttons mb-0">
-                    <input type="button" class="button-1 checkout-as-guest-button" onclick="location.href='@Url.RouteUrl("Checkout")'" value="@T("Account.Login.CheckoutAsGuest")" />
-                    <input type="button" class="button-1 register-button" onclick="location.href='@registerUrl'" value="@T("Account.Register")" />
-                </div>
+
             </div>
         }
         else
@@ -108,10 +110,11 @@
                             <nop-captcha />
                         </div>
                     }
+                    <div class="buttons mb-0">
+                        <input class="button-1 login-button" type="submit" value="@T("Account.Login.LoginButton")" />
+                    </div>
                 </div>
-                <div class="buttons mb-0">
-                    <input class="button-1 login-button" type="submit" value="@T("Account.Login.LoginButton")" />
-                </div>
+
             </form>
         </div>
     </div>

@@ -94,6 +94,17 @@ textarea {
   .product-details-page .add-to-cart {
     align-items: flex-end; } }
 
+.login-page .new-wrapper .topic-block {
+  margin-bottom: 45px; }
+
+.login-page .buttons {
+  text-align: center; }
+  .login-page .buttons input {
+    width: 400px;
+    max-width: 100%; }
+  .login-page .buttons p {
+    margin: 15px 0; }
+
 @media (max-width: 1000px) {
   .dropdown-item {
     padding: 0.75rem 0 !important; }
@@ -118,7 +129,14 @@ textarea {
   .customer-info-page .checkbox {
     flex-direction: column-reverse; }
   .captcha-box {
-    padding-left: 0; } }
+    padding-left: 0; }
+  .login-page .checkout-as-guest-or-register-block .category-description ul, .login-page .checkout-as-guest-or-register-block .manufacturer-description ul, .login-page .checkout-as-guest-or-register-block .full-description ul, .login-page .checkout-as-guest-or-register-block .topic-block ul, .login-page .checkout-as-guest-or-register-block .topic-page ul, .login-page .checkout-as-guest-or-register-block .post-body ul {
+    list-style: none;
+    padding: 0; } }
+
+@media all and (max-width: 480px) {
+  .login-page .new-wrapper .text {
+    padding: 0; } }
 
 .product-details-page .attributes {
   margin-bottom: 41px; }

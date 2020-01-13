@@ -2072,7 +2072,6 @@ label, label + * {
 	margin: 0 0 50px;
 }
 .login-page .new-wrapper .text {
-    margin: 0 0 30px;
     padding: 0 2rem;
     line-height: 22px;
 }
@@ -2082,9 +2081,6 @@ label, label + * {
 }
 .login-page .new-wrapper .topic-block-body strong {
     color: #b79bff;
-}
-.login-page .new-wrapper .button-1 {
-	margin: 0 0 5px;
 }
 .login-page .returning-wrapper {
 	margin: 0;

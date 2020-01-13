@@ -107,6 +107,26 @@ textarea {
     }
 }
 
+
+.login-page {
+    .new-wrapper .topic-block {
+        margin-bottom: 45px;
+    }
+
+    .buttons {
+        text-align: center;
+
+        input {
+            width: 400px;
+            max-width: 100%;
+        }
+
+        p {
+            margin: 15px 0;
+        }
+    }
+}
+
 @media (max-width: 1000px) {
     .dropdown-item {
         padding: .75rem 0!important;
@@ -147,6 +167,20 @@ textarea {
     }
     .captcha-box {
         padding-left: 0;
+    }
+
+    .login-page {
+        .checkout-as-guest-or-register-block {
+            .category-description ul, .manufacturer-description ul, .full-description ul, .topic-block ul, .topic-page ul, .post-body ul {
+                list-style: none;
+                padding: 0;
+            }
+        }
+    }
+}
+@media all and (max-width: 480px) {
+    .login-page .new-wrapper .text {
+        padding: 0;
     }
 }
 
