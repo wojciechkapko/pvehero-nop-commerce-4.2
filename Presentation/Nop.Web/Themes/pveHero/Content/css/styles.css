@@ -950,10 +950,6 @@ label, label + * {
 	margin: auto;
 	text-align: left;
 }
-
-.block .title strong {
-	font-weight: normal;
-}
 .block .listbox {
 	display: none;
 	padding: 21px 5px;
@@ -3122,7 +3118,7 @@ pre {
     }
     .menu-toggle {
         padding: 15px;
-        font-size: 15px;
+        font-size: 18px;
         font-weight: bold;
         color: #fff;
         text-transform: uppercase;
@@ -4083,9 +4079,6 @@ pre {
 	    border-bottom: 1px solid rgba(255,255,255,.15);
 	    background: none;
 	    cursor: auto;
-    }
-    .block .title strong {
-	    font-weight: bold;
     }
     .block .listbox {
 	    display: block!important;

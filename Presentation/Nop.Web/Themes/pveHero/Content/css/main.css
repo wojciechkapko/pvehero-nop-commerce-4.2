@@ -550,9 +550,7 @@ input.search-box-text::placeholder {
 
 .attributes dt, .attribute-label, .title strong {
   display: block;
-  margin: 0 0 5px;
   font-weight: bold;
-  font-size: 1.3rem;
   letter-spacing: .025em; }
 
 .attributes .text-prompt {
