@@ -3,7 +3,7 @@
     "FoxNetSoft.StripeDirect",
     "CurrencyExchange.ECB",
     "FoxNetSoft.PayPalStandardPro",
-    "FoxNetSoft.SocialLogin"
+    "ExternalAuth"
   ],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],
