@@ -2908,15 +2908,16 @@ label, label + * {
 	text-align: center;
 }
 .sitemap-page .entity-title h2 {
-	font-size: 20px;
-	font-weight: normal;
-	color: #444;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: .025em;
+    text-transform: uppercase;
 }
 .sitemap-page .entity-body {
-    border-top: 1px solid #e6e6e6;
-	background-color: #f9f9f9;
     padding: 30px 15px;
-	text-align: center;
+    text-align: center;
+    background-color: rgba(0,0,0,.3);
+    border-radius: .5rem;
 }
 .sitemap-page .entity ul {
 	font-size: 0;
@@ -2938,11 +2939,9 @@ label, label + * {
 	height: 5px;
 	background-color: #ddd;
 }
-.sitemap-page .entity a {
-	color: #444;
-}
 .sitemap-page .entity a:hover {
-	color: #4ab2f1;
+    color: #bba0ff;
+    text-decoration: underline;
 }
 .sitemap-page .entity a:empty {
 	display: none;
