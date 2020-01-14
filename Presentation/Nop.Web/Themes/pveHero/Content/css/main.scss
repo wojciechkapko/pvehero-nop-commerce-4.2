@@ -310,10 +310,12 @@ margin-bottom: .25rem !important;
     form {
         position: relative;
     }
+
     .icon {
         position: absolute;
-        right: 0.6rem;
-        top: 0.7rem;
+        right: .75rem;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 
@@ -1825,4 +1827,8 @@ input::placeholder {
         text-transform: uppercase;
         padding: .75rem 2.5rem;
     }
+}
+
+.cart-footer {
+    margin-bottom: 4rem;
 }

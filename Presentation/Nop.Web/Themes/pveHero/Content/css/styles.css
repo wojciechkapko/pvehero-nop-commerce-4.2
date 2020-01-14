@@ -728,8 +728,8 @@ label, label + * {
 }
 .search-box input.search-box-text {
 	float: left;
-	width: 250px;
-	height: 36px;
+	width: 288px;
+	height: 45px;
 	margin: 0 -1px 0 0;
 }
 .search-box .search-box-button {
@@ -1151,11 +1151,6 @@ label, label + * {
 	font-size: 16px;
 	color: #aaa;
 	text-decoration: line-through;
-}
-
-.product-grid,
-.product-list {
-	margin: 0 0 50px;
 }
 .product-grid .title {
     position: relative;
@@ -3913,10 +3908,6 @@ pre {
 	    display: table-cell;
 	    text-align: right;
 	    vertical-align: middle;
-    }
-    .search-box input.search-box-text,
-    .search-box .search-box-button {
-	    height: 40px;
     }
 
     /*** NAVIGATION ***/
