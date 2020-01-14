@@ -1,7 +1,9 @@
 ﻿@model IList<ProductOverviewModel>
 @if (Model.Count > 0)
 {
-        <div class="item-grid">
+
+    @*
+              <div class="item-grid">
             @foreach (var item in Model)
             {
                 <div class="item-box">
@@ -9,4 +11,12 @@
                 </div>
             }
         </div>
+    *@
+
+    @foreach (var item in Model)
+    {
+        <div class="slide">
+            @await Html.PartialAsync("_ProductBox", item)
+        </div>
+    }
 }

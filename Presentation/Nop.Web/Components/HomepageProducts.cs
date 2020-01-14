@@ -15,19 +15,16 @@ namespace Nop.Web.Components
         private readonly IProductModelFactory _productModelFactory;
         private readonly IProductService _productService;
         private readonly IStoreMappingService _storeMappingService;
-        private readonly ICategoryService _categoryService;
 
         public HomepageProductsViewComponent(IAclService aclService,
             IProductModelFactory productModelFactory,
             IProductService productService,
-            IStoreMappingService storeMappingService,
-            ICategoryService categoryService)
+            IStoreMappingService storeMappingService)
         {
             _aclService = aclService;
             _productModelFactory = productModelFactory;
             _productService = productService;
             _storeMappingService = storeMappingService;
-            _categoryService = categoryService;
         }
 
         public IViewComponentResult Invoke(int categoryId)

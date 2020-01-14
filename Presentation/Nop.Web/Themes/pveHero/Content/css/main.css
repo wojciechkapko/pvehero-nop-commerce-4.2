@@ -838,8 +838,12 @@ label:not(.checkbox-style):not(.checkbox-label) {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2), inset 0 0 0 2px #b79bff !important; }
 
 .button-3 {
-  background: #6c56d7;
-  border-radius: 5rem; }
+  padding: 0;
+  text-transform: capitalize;
+  font-size: 1rem;
+  box-shadow: none; }
+  .button-3:hover {
+    text-decoration: underline; }
 
 .checkout-page .product-picture {
   padding-left: 1rem !important; }

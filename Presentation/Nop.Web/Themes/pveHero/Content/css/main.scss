@@ -1084,8 +1084,13 @@ label:not(.checkbox-style):not(.checkbox-label) {
 }
 
 .button-3 {
-    background: #6c56d7;
-    border-radius: 5rem;
+    padding: 0;
+    text-transform: capitalize;
+    font-size: 1rem;
+    box-shadow: none;
+    &:hover{
+        text-decoration: underline;
+    }
 }
 
 .checkout-page {

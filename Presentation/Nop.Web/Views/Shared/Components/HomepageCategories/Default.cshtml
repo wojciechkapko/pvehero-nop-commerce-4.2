@@ -5,6 +5,7 @@
         <div class="item-list">
             @foreach (var item in Model)
             {
+                var category = item.SeName.Replace("-", string.Empty);
                 //@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeBestSellers })
                 <div class="item-box category">
                     <h2 class="title">
@@ -16,31 +17,60 @@
                             @await Component.InvokeAsync("HomepageBestSellers", item.Id)
                         </div>
                         <div class="center-2">
-                            <div class="product-grid home-page-product-grid">
+                            <div class="product-grid home-page-product-grid carousel">
                                 <div class="title">
                                     <strong>Featured</strong>
                                     <a class="button-3" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
                                 </div>
 
                                 @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeProducts })*@
-                                @await Component.InvokeAsync("HomepageProducts", item.Id)
+                                <div class="featured-slider @category">
+                                    @await Component.InvokeAsync("HomepageProducts", item.Id)
+                                </div>
+
+
+
                                 @*
-                                                                   <div class="item-grid">
-                                    @foreach (var product in item.Products)
-                                    {
-                                        <div class="item-box">
-                                            @await Html.PartialAsync("_ProductBox", product)
-                                        </div>
-                                    }
-                                </div> 
+                                                               <div class="item-grid">
+                                @foreach (var product in item.Products)
+                                {
+                                    <div class="item-box">
+                                        @await Html.PartialAsync("_ProductBox", product)
+                                    </div>
+                                }
+                            </div>
                                 *@
 
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <script type="module" asp-location="Footer">
+            var sliderCat_@category = tns({
+                container: '.featured-slider.@category',
+                items: 1,
+                slideBy: 1,
+                gutter: 10,
+                controlsText: ["<svg class='icon size-1'><use href='#chevron-left'></use></svg>", "<svg class='icon size-1'><use href='#chevron-right'></use></svg>"],
+                nav: false,
+                responsive: {
+                450: {
+                    items: 2,
+                    slideBy: 2
+                    },
+                689: {
+                    items: 3,
+                    slideBy: 3
+                    }
+                }
+            });
+                </script>
             }
         </div>
     </div>
+
+
+
 }
 

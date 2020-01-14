@@ -952,7 +952,7 @@ label, label + * {
 }
 .block .listbox {
 	display: none;
-	padding: 21px 5px;
+	padding: 0.4rem 5px;
 }
 .block .list a {
     display: inline-block;
