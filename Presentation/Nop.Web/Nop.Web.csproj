@@ -101,6 +101,7 @@
     <_ContentIncludedByDefault Remove="wwwroot\css\homepage.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\howitworks.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\stripeform.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\tiny-slider\tiny-slider.min.css" />
 
     <None Update="Areas\Admin\sitemap.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

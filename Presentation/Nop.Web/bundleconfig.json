@@ -3,16 +3,24 @@
     "outputFileName": "wwwroot/js/ajaxreviews.min.js",
     "inputFiles": [
       "wwwroot/js/ajaxreviews.js"
-    ],
-    "sourceMap": false,
-    "sourceMapRootPath": null
+    ]
   },
   {
     "outputFileName": "Themes/pveHero/Content/css/styles.min.css",
     "inputFiles": [
       "Themes/pveHero/Content/css/styles.css"
-    ],
-    "sourceMap": false,
-    "sourceMapRootPath": null
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/tiny-slider/tiny-slider.min.js",
+    "inputFiles": [
+      "wwwroot/lib/tiny-slider/tiny-slider.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/tiny-slider/tiny-slider.min.css",
+    "inputFiles": [
+      "wwwroot/lib/tiny-slider/tiny-slider.css"
+    ]
   }
 ]

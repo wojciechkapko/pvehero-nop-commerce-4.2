@@ -4,11 +4,8 @@
     //page class
     Html.AppendPageCssClassParts("html-home-page");
     Html.AppendCssFileParts($"~/css/homepage.min.css");
-
-    Html.AppendCssFileParts($"~/lib/glide/css/glide.core.min.css");
-    Html.AppendCssFileParts($"~/lib/glide/css/glide.theme.min.css");
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/glide/glide.min.js");
-
+    Html.AppendCssFileParts($"~/lib/tiny-slider/tiny-slider.min.css");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/tiny-slider/tiny-slider.min.js");
 }
 
 <div class="page home-page">
@@ -16,15 +13,8 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageTop })
         @await Component.InvokeAsync("TopicBlock", new { systemName = "HomepageText" })
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeCategories })
-
-
         @await Html.PartialAsync("_HomepageSlider")
         @await Component.InvokeAsync("HomepageCategories")
-
-
-
-
-
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeNews })
         @await Component.InvokeAsync("HomepageNews")
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforePoll })
@@ -34,22 +24,25 @@
 </div>
 
 
-<script asp-location="Footer">
-                $(document).ready(function() {
-
-                    new Glide('.glide', {
-                      type: 'carousel',
-                      startAt: 0,
-                        perView: 1,
-                        autoplay: 3000,
-                        hoverpause: true,
-                        peek: {
-                            before: 0,
-                            after: 330
-                        },
-                        breakpoints: {
-                               1000: { peek: 0 }
-                        }
-                    }).mount()
-            });
+<script type="module" asp-location="Footer">
+    var slider = tns({
+        items: 1,
+        slideBy: 1,
+        autoplay: false,
+        fixedWidth: false,
+        gutter: 10,
+        controlsText: ["<svg class='icon size-1'><use href='#chevron-left'></use></svg>", "<svg class='icon size-1'><use href='#chevron-right'></use></svg>"],
+        nav: false,
+        center: true,
+        responsive: {
+            689: {
+                edgePadding: 35
+            },
+            1001: {
+                fixedWidth: 870,
+                center: false,
+                edgePadding: 0
+            }
+        }
+    });
 </script>

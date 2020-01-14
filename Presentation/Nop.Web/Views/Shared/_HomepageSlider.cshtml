@@ -11,54 +11,35 @@
     var diabloPrice = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(5, workContext.WorkingCurrency));
 }
 
-<div class="mt-4 glide">
-    <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides">
-            <li class="glide__slide">
-                <div class="card mb-3 mt-4 images wow border-0">
-                    <h2 class="text-uppercase mb-4 shadow">Mythic+<br />Now 5% cheaper</h2>
-
-                    <div class="elements">
-                        <div class="buttons mb-0">
-                            <a href="/mythic-plus" class="button-1 big">Learn more</a>
-                        </div>
-                        <div class="ribbons">
-                            <div class="ribbon new">
-                                <span>From: @Price</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-
+<div class="mt-4 slider">
+    <div class="slide">
+        <div class="card mb-3 mt-4 images wow border-0">
+            <h2 class="text-uppercase mb-4 shadow">Mythic+<br />Now 5% cheaper</h2>
+            <div class="elements">
+                <div class="buttons mb-0">
+                    <a href="/mythic-plus" class="button-1 big">Learn more</a>
                 </div>
-            </li>
-            <li class="glide__slide">
-                <div class="card mb-3 mt-4 images diablo-3 border-0">
-                    <h2 class="text-uppercase mb-4 shadow">Greater rifts<br />Now 10% cheaper</h2>
-
-                    <div class="elements">
-                        <div class="buttons mb-0">
-                            <a href="/greater-rifts" class="button-1 big">Learn more</a>
-                        </div>
-                        <div class="ribbons">
-                            <div class="ribbon new">
-                                <span>From: @diabloPrice</span>
-                            </div>
-                        </div>
+                <div class="ribbons">
+                    <div class="ribbon new">
+                        <span>From: @Price</span>
                     </div>
-
-
                 </div>
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
-    <div class="glide__arrows" data-glide-el="controls">
-        <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><svg class="icon size-1"><use href="#chevron-left"></use></svg></button>
-        <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><svg class="icon size-1"><use href="#chevron-right"></use></svg></button>
+    <div class="slide">
+        <div class="card mb-3 mt-4 images diablo-3 border-0">
+            <h2 class="text-uppercase mb-4 shadow">Greater rifts<br />Now 10% cheaper</h2>
+            <div class="elements">
+                <div class="buttons mb-0">
+                    <a href="/greater-rifts" class="button-1 big">Learn more</a>
+                </div>
+                <div class="ribbons">
+                    <div class="ribbon new">
+                        <span>From: @diabloPrice</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<div class="controls" data-glide-el="controls">
-    <button data-glide-dir="<">Start</button>
-    <button data-glide-dir=">">End</button>
 </div>
