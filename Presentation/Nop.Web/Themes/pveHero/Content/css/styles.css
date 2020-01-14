@@ -1131,9 +1131,6 @@ label, label + * {
 .item-box .product-title a {
 	display: block;
 }
-.item-box .product-title a:hover {
-	color: #248ece;
-}
 
 .item-box .description {
 	display: none;
@@ -1163,7 +1160,7 @@ label, label + * {
 
 
 .pager {
-	margin: 0 0 20px;
+    margin: 20px 0;
 }
 .pager ul {
 	text-align: right;
@@ -1179,42 +1176,28 @@ label, label + * {
 	display: block;
 	min-width: 35px;
 	height: 35px;
-	border: 1px solid #ddd;
-	background-color: #eee;
-	padding: 8px;
-	text-align: center;
-	font-size: 14px; /*reset zeroing*/
-	cursor: pointer;
+
+    background-color: #6c56d7;
+    opacity: .6;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: .25rem;
+        border: 2px solid transparent;
 }
 .pager li span {
-	border-color: transparent;
-	background-color: #4ab2f1;
-	color: #fff;
+    border-color: transparent;
+    background-color: #6c56d7;
+    color: #fff;
+    border-radius: .25rem;
 }
-.pager li.previous-page *,
-.pager li.next-page *,
-.pager li.first-page *,
-.pager li.last-page * {
-	background-position: center;
-	background-repeat: no-repeat;
-	font-size: 0;
-	color: #fff;
-}
-.pager li.previous-page * {
-	background-image: url('../images/prev.png');
-}
-.pager li.next-page * {
-	background-image: url('../images/next.png');
-}
-.pager li.first-page * {
-	background-image: url('../images/first.png');
-}
-.pager li.last-page * {
-	background-image: url('../images/last.png');
+.pager li.current-page span {
+    opacity: 1;
 }
 .pager li a:hover {
-	border-color: transparent;
-	background-color: #ddd;
+    border-color: #8e76ff;
+    opacity: 1;
 }
 
 
@@ -1230,7 +1213,8 @@ label, label + * {
 	clear: both;
 }
 .gallery {
-	margin: 0 auto 50px;
+    margin: 0 auto 50px;
+    position: relative;
 }
 .gallery .picture-wrapper {
     margin: 0 0 10px;
