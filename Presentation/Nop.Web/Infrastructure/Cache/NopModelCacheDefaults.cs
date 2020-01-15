@@ -295,7 +295,7 @@
         /// <remarks>
         /// {0} : current store ID
         /// </remarks>
-        public static string HomepageBestsellersIdsKey => "Nop.pres.bestsellers.homepage-{0}";
+        public static string HomepageBestsellersIdsKey => "Nop.pres.bestsellers.homepage-{0}--{1}";
         public static string HomepageBestsellersIdsPrefixCacheKey => "Nop.pres.bestsellers.homepage";
 
         /// <summary>
