@@ -22,5 +22,17 @@
     "inputFiles": [
       "wwwroot/lib/tiny-slider/tiny-slider.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/bootstrap-native/bootstrap-native-v4.min.js",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap-native/bootstrap-native-v4.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/waves/waves.min.js",
+    "inputFiles": [
+      "wwwroot/lib/waves/waves.js"
+    ]
   }
 ]

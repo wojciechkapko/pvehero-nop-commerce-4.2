@@ -18,5 +18,9 @@
   {
     "outputFile": "wwwroot/css/homepage.css",
     "inputFile": "wwwroot/css/homepage.scss"
+  },
+  {
+    "outputFile": "wwwroot/lib/waves/waves.css",
+    "inputFile": "wwwroot/lib/waves/waves.less"
   }
 ]

@@ -42,6 +42,7 @@
     <Content Include="Logs\**" CopyToPublishDirectory="PreserveNewest" />
     <Content Remove="bundleconfig.json" />
     <Content Remove="compilerconfig.json" />
+    <Content Remove="wwwroot\lib\bootstrap-native\bootstrap-native-v4.min.js" />
     <None Remove="Themes\pveHero\Content\css\homepage.scss" />
     <None Remove="Themes\pveHero\Content\css\main.scss" />
     <None Remove="Themes\pveHero\Content\css\print.css" />
@@ -101,7 +102,9 @@
     <_ContentIncludedByDefault Remove="wwwroot\css\homepage.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\howitworks.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\stripeform.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\bootstrap-native\bootstrap-native-v4.min.js" />
     <_ContentIncludedByDefault Remove="wwwroot\lib\tiny-slider\tiny-slider.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\lib\waves\waves.min.css" />
 
     <None Update="Areas\Admin\sitemap.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -111,12 +114,12 @@
   <ItemGroup>
     <Folder Include="Plugins\" />
     <Folder Include="Themes\pveHero\Content\lib\" />
-    <Folder Include="wwwroot\lib\bootstrap-native\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="bundleconfig.json" />
     <None Include="compilerconfig.json" />
+    <None Include="wwwroot\lib\bootstrap-native\bootstrap-native-v4.min.js" />
   </ItemGroup>
 
   <!-- This target execute after "Build" target.
