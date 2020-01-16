@@ -48,7 +48,7 @@
                         @for (var i = 0; i < Model.PaymentMethods.Count; i++)
                         {
                             var paymentMethod = Model.PaymentMethods[i];
-                            var paymentMethodName = paymentMethod.Name.Replace(" ", string.Empty);
+                            var paymentMethodName = paymentMethod.Name.Replace(" ", string.Empty).ToLower();
                             var paymentMethodFee = paymentMethod.Fee;
                             <li id="method_@(i)" onclick="$('.method-list li').removeClass('active'); $(this).addClass('active');$('#' + 'paymentmethod_' + @(i)).prop('checked', true );">
                                 <svg class="icon check"><use href="#check"></use></svg>
