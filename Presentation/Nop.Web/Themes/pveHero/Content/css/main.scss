@@ -749,6 +749,11 @@ input.search-box-text::placeholder {
     letter-spacing: .025em;
 }
 
+.attributes dt, .attribute-label {
+    margin: 0 0 5px;
+    font-size: 1.3rem;
+}
+
 .attributes .text-prompt {
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
