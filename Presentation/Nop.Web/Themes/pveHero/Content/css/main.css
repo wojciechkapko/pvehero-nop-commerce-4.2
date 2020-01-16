@@ -31,10 +31,10 @@ body {
   z-index: -1; }
 
 .webp .master-wrapper-page::before {
-  background-image: url(/images/bg-test3.webp); }
+  background-image: url(/images/categories/world-of-warcraft-bg.webp); }
 
 .no-webp .master-wrapper-page::before {
-  background-image: url(/images/bg-test3.jpg); }
+  background-image: url(/images/categories/world-of-warcraft-bg.jpg); }
 
 .button-1 {
   background: #994dec;
