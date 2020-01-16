@@ -444,13 +444,13 @@ namespace Nop.Services.Messages
             var language = _languageService.GetLanguageById(languageId);
 
             var sb = new StringBuilder();
-            sb.AppendLine("<table border=\"0\" style=\"width:100%;\">");
+            sb.AppendLine("<table border=\"0\" style=\"width:100%;font-family: Lato,sans-serif;\">");
 
-            sb.AppendLine($"<tr style=\"background-color:{_templatesSettings.Color1};text-align:center;\">");
-            sb.AppendLine($"<th>{_localizationService.GetResource("Messages.Order.Product(s).Name", languageId)}</th>");
-            sb.AppendLine($"<th>{_localizationService.GetResource("Messages.Order.Product(s).Price", languageId)}</th>");
+            sb.AppendLine($"<tr style=\"text-align:center;\">");
+            sb.AppendLine($"<th style=\"text-align:left;padding-right: 0.8em;\">{_localizationService.GetResource("Messages.Order.Product(s).Name", languageId)}</th>");
+            sb.AppendLine($"<th style=\"text-align:right;padding: 0 0.4em;\">{_localizationService.GetResource("Messages.Order.Product(s).Price", languageId)}</th>");
             sb.AppendLine($"<th>{_localizationService.GetResource("Messages.Order.Product(s).Quantity", languageId)}</th>");
-            sb.AppendLine($"<th>{_localizationService.GetResource("Messages.Order.Product(s).Total", languageId)}</th>");
+            sb.AppendLine($"<th style=\"text-align:right;padding-left: 0.8em;\">{_localizationService.GetResource("Messages.Order.Product(s).Total", languageId)}</th>");
             sb.AppendLine("</tr>");
 
             var table = order.OrderItems.ToList();
@@ -464,11 +464,12 @@ namespace Nop.Services.Messages
                 if (vendorId > 0 && product.VendorId != vendorId)
                     continue;
 
-                sb.AppendLine($"<tr style=\"background-color: {_templatesSettings.Color2};text-align: center;\">");
+                sb.AppendLine($"<tr style=\"text-align: center;\">");
                 //product name
                 var productName = _localizationService.GetLocalized(product, x => x.Name, languageId);
 
-                sb.AppendLine("<td style=\"padding: 0.6em 0.4em;text-align: left;\">" + WebUtility.HtmlEncode(productName));
+                sb.AppendLine("<td style=\"padding: 0.6em 0;text-align: left;font-family: Cabin,sans-serif;\">" + WebUtility.HtmlEncode(productName));
+
 
                 //add download link
                 if (_downloadService.IsDownloadAllowed(orderItem))
@@ -531,9 +532,9 @@ namespace Nop.Services.Messages
                     unitPriceStr = _priceFormatter.FormatPrice(unitPriceExclTaxInCustomerCurrency, true, order.CustomerCurrencyCode, language, false);
                 }
 
-                sb.AppendLine($"<td style=\"padding: 0.6em 0.4em;text-align: right;\">{unitPriceStr}</td>");
+                sb.AppendLine($"<td style=\"padding: 0.6em 0.4em;text-align: right;font-family: Cabin,sans-serif;\">{unitPriceStr}</td>");
 
-                sb.AppendLine($"<td style=\"padding: 0.6em 0.4em;text-align: center;\">{orderItem.Quantity}</td>");
+                sb.AppendLine($"<td style=\"padding: 0.6em 0.4em;text-align: center;font-family: Cabin,sans-serif;\">{orderItem.Quantity}</td>");
 
                 string priceStr;
                 if (order.CustomerTaxDisplayType == TaxDisplayType.IncludingTax)
@@ -549,7 +550,7 @@ namespace Nop.Services.Messages
                     priceStr = _priceFormatter.FormatPrice(priceExclTaxInCustomerCurrency, true, order.CustomerCurrencyCode, language, false);
                 }
 
-                sb.AppendLine($"<td style=\"padding: 0.6em 0.4em;text-align: right;\">{priceStr}</td>");
+                sb.AppendLine($"<td style=\"padding: 0.6em 0;text-align: right;font-family: Cabin,sans-serif;\">{priceStr}</td>");
 
                 sb.AppendLine("</tr>");
             }
