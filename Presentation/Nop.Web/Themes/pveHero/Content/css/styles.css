@@ -2285,23 +2285,13 @@ label, label + * {
 	padding: 20px;
 	font-size: 0;
 }
-.shopping-cart-page .common-buttons input {
+.shopping-cart-page .common-buttons button {
 	display: inline-block;
 	min-width: 180px;
 	margin: 5px;
 	border: none;
 	padding: 10px 20px;
 	font-size: 15px;
-	color: #fff;
-}
-.shopping-cart-page .common-buttons input:hover {
-	background-color: #999;
-}
-.shopping-cart-page .common-buttons input:first-child {
-	background-color: #4ab2f1;
-}
-.shopping-cart-page .common-buttons input:first-child:hover {
-	background-color: #248ece;
 }
 
 .checkout-attributes {
@@ -2446,9 +2436,6 @@ label, label + * {
 	color: #fff;
 	text-transform: uppercase;
 }
-.cart-collaterals .button-2:hover {
-	background-color: #999;
-}
 
 .cart-collaterals .title {
 	margin: 0 0 5px;
@@ -2472,7 +2459,7 @@ label, label + * {
 	height: 36px; /*safari padding fix*/
 	margin: 0 -1px 0 0;
 }
-.cart-collaterals .coupon-code input[type="submit"] {
+.cart-collaterals .coupon-code button {
 	float: left;
 	width: 40%;
 	height: 36px; /*safari padding fix*/
@@ -3863,21 +3850,11 @@ pre {
     .mini-shopping-cart .buttons {
 	    margin: 0 0 5px;
         display: flex;
-        justify-content: space-evenly;
+		flex-direction: column;
     }
-    .mini-shopping-cart input[type="button"] {
-	    display: inline-block;
-	    border: none;
-	    background-color: #4ab2f1;
-	    padding: 10px 20px;
-	    font-size: 12px;
-	    color: #fff;
-	    text-transform: uppercase;
-    }
-    .mini-shopping-cart input[type="button"]:hover {
-	    background-color: #248ece;
-    }
-
+	.mini-shopping-cart .buttons button {
+		margin: 10px;
+	}
     .header-lower {
 	    display: table;
     }

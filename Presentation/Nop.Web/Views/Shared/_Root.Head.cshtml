@@ -31,6 +31,7 @@
     //}
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/loadicons.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/bootstrap-native/bootstrap-native-v4.min.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/waves/waves.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/velocity/velocity.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/velocity/velocity.ui.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-ui/jquery-ui-1.12.1.custom-autocomp/jquery-ui.min.js");
@@ -39,6 +40,7 @@
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     //Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery/jquery-3.3.1.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery/jquery-3.4.1.min.js");
+    Html.AppendCssFileParts($"~/lib/waves/waves.min.css");
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
 
     //X-UA-Compatible tag
@@ -91,8 +93,27 @@
     @Html.NopInlineScripts(ResourceLocation.Footer)
     <script type="text/javascript">
         $(document).ready(function () {
+            Waves.attach('a.button-1', ['waves-light']);
+            Waves.attach('a.button-2', ['waves-light']);
+            Waves.attach('button', ['waves-light']);
+            Waves.attach('.picture a', ['waves-light']);
+
+
+            Waves.init();
             selectList.initSelect2();
         });
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/5b6c98d1f31d0f771d83a883/default';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
     </script>
 </body>
 </html>
