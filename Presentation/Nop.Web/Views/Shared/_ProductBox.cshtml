@@ -77,12 +77,21 @@
 
 <script asp-location="Footer">
 
-    
     $(window).on('load resize scroll', function () {
         var element = '.' + 'product-@Model.Id';
         var image = "@(Model.WebPSupport ? $"url(/images/products/{Model.SeName}-product.webp)" : $"url(/images/products/{Model.SeName}-product.jpg)")";
         if (utility.isInViewport(element) && !$(element).hasClass('loaded')) {
-            $(element).css("background", image).addClass('loaded');
+
+            //var jsonModel = 'Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(productBox.Filter))';
+            //productBox.GetProductBoxItems('Model.Id', jsonModel);
+            $(element).css("background", image).addClass('loaded').addClass('visible');
+
+
+
+            //utility.removeSpinner('product-Model.Id');
         }
     });
+
+    
+
 </script>

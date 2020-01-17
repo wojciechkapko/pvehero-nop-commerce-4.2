@@ -1658,6 +1658,7 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
     background-size: 276px auto !important;
     background-position: 50% 0 !important;
     background-repeat: no-repeat !important;
+    opacity:0;
 
     &.wide {
         width: 574px
@@ -1905,4 +1906,8 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
     &:hover::before {
         opacity: .3;
     }
+}
+
+.visible {
+    animation: appear .25s ease-in forwards;
 }

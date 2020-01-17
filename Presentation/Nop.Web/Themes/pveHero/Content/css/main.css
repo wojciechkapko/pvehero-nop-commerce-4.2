@@ -12,6 +12,12 @@
   100% {
     transform: rotate(360deg); } }
 
+@keyframes appear {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
 body {
   background: #30295c; }
 
@@ -1261,7 +1267,8 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
   /* min-width: 285px; */
   background-size: 276px auto !important;
   background-position: 50% 0 !important;
-  background-repeat: no-repeat !important; }
+  background-repeat: no-repeat !important;
+  opacity: 0; }
   .product-item.wide {
     width: 574px; }
   .product-item::before {
@@ -1445,3 +1452,6 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
 
 .btn:hover::before, .button-1:hover::before, .button-2:hover::before, .button-3:hover::before {
   opacity: .3; }
+
+.visible {
+  animation: appear .25s ease-in forwards; }
