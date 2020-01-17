@@ -232,10 +232,10 @@ var utility = (function () {
         if (zindex) { el.children('.spinner-wrapper').css('z-index', zindex); }
     };
 
-    var isInViewport = function (id) {
+    var isInViewport = function (el) {
 
-        var elementTop = $('#' + id).offset().top;
-        var elementBottom = elementTop + $('#' + id).outerHeight();
+        var elementTop = $(el).offset().top;
+        var elementBottom = elementTop + $(el).outerHeight();
 
         var viewportTop = $(window).scrollTop();
         var viewportBottom = viewportTop + $(window).height();
