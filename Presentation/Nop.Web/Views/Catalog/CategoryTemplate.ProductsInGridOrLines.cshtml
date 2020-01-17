@@ -13,6 +13,9 @@
     Html.AddMetaDescriptionParts(Model.MetaDescription);
     Html.AddMetaKeywordParts(Model.MetaKeywords);
     //page class
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
+    Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
 
     if (!string.IsNullOrEmpty(Model.ParentName))
     {

@@ -1296,8 +1296,7 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0;
-  z-index: 999; }
+  bottom: 0; }
 
 .product-list-item .old-price {
   text-decoration: line-through;

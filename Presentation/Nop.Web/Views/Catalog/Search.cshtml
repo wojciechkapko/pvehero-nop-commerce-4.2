@@ -6,6 +6,10 @@
     Html.AddTitleParts(T("PageTitle.Search").Text);
     //page class
     Html.AppendPageCssClassParts("html-search-page");
+
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
+    Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
 }
 <script asp-location="Footer">
     $(document).ready(function () {

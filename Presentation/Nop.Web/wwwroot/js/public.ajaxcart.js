@@ -23,23 +23,6 @@ var AjaxCart = {
         this.loadWaiting = display;
     },
 
-    //add a product to the cart/wishlist from the catalog pages
-    addproducttocart_catalog: function (urladd) {
-        if (this.loadWaiting != false) {
-            return;
-        }
-        this.setLoadWaiting(true);
-
-        $.ajax({
-            cache: false,
-            url: urladd,
-            type: "POST",
-            success: this.success_process,
-            complete: this.resetLoadWaiting,
-            error: this.ajaxFailure
-        });
-    },
-
     //add a product to the cart/wishlist from the product details page
     addproducttocart_details: function (urladd, formselector) {
         if (this.loadWaiting != false) {
@@ -51,23 +34,6 @@ var AjaxCart = {
             cache: false,
             url: urladd,
             data: $(formselector).serialize(),
-            type: "POST",
-            success: this.success_process,
-            complete: this.resetLoadWaiting,
-            error: this.ajaxFailure
-        });
-    },
-
-    //add a product to compare list
-    addproducttocomparelist: function (urladd) {
-        if (this.loadWaiting != false) {
-            return;
-        }
-        this.setLoadWaiting(true);
-
-        $.ajax({
-            cache: false,
-            url: urladd,
             type: "POST",
             success: this.success_process,
             complete: this.resetLoadWaiting,

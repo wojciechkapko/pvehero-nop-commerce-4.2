@@ -15,9 +15,9 @@
 @inject Nop.Services.Localization.ILanguageService languageService
 @{
     //Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.countryselect.js");
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
+
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.common.js");
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
+
     Html.AppendScriptParts(ResourceLocation.Head, "~/js/modernizr-custom.min.js");
 
     //when jQuery migrate script logging is active you will see the log in the browser console
@@ -37,11 +37,11 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-ui/jquery-ui-1.12.1.custom-autocomp/jquery-ui.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-validate/jquery.validate.unobtrusive-v3.2.10/jquery.validate.unobtrusive.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery-validate/jquery.validate-v1.17.0/jquery.validate.min.js");
-    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
+
     //Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery/jquery-3.3.1.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/jquery/jquery-3.4.1.min.js");
     Html.AppendCssFileParts($"~/lib/waves/waves.min.css");
-    Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+
 
     //X-UA-Compatible tag
     if (commonSettings.RenderXuaCompatible)
@@ -67,7 +67,11 @@
     <meta name="keywords" content="@(Html.NopMetaKeywords())" />
     <meta name="generator" content="nopCommerce" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,700|Lato:400,700,900|Montserrat:400,500,600,700,800,900|Open+Sans:400,600,700,800|Raleway:400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link href="https://fonts.googleapis.com/css?family=Cabin:400,500,700|Open+Sans:400,600,700,800&display=swap" rel="stylesheet">
     @Html.NopHeadCustom()
     @*This is used so that themes can inject content into the header*@
     @await Html.PartialAsync("Head")
@@ -81,7 +85,7 @@
     @await Component.InvokeAsync("Favicon")
     @if (displayMiniProfiler)
     {
-        <mini-profiler />
+    <mini-profiler />
     }
     @Html.NopInlineScripts(ResourceLocation.Head)
     <!--Powered by nopCommerce - https://www.nopCommerce.com-->

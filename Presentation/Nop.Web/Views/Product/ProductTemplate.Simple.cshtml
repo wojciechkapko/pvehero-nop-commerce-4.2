@@ -1,6 +1,6 @@
 ﻿@model ProductDetailsModel
 @using Nop.Core.Domain.Seo;
-@inject Nop.Core.IWebHelper webHelper 
+@inject Nop.Core.IWebHelper webHelper
 @inject SeoSettings seoSettings
 @{
     Layout = "_ColumnsOne";
@@ -12,6 +12,11 @@
     Html.AddMetaKeywordParts(Model.MetaKeywords);
     //page class
     Html.AppendPageCssClassParts("html-product-details-page");
+
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
+    Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
 
     //canonical URL
     if (seoSettings.CanonicalUrlsEnabled)
@@ -81,12 +86,12 @@
                         @await Html.PartialAsync("_Discontinued", Model)
 
                         @*
-                                    @if (!string.IsNullOrEmpty(Model.ShortDescription))
-        {
-            <div class="short-description">
-                @Html.Raw(Model.ShortDescription)
-            </div>
-        }
+                                                        @if (!string.IsNullOrEmpty(Model.ShortDescription))
+                            {
+                                <div class="short-description">
+                                    @Html.Raw(Model.ShortDescription)
+                                </div>
+                            }
                         *@
 
                         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewTop, additionalData = Model })
@@ -119,28 +124,28 @@
                             @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
                         }
                         <!--price & add to cart-->
-                    <div class="card default summary xl-flex-row" id="summary">
-                        @{
-                            var dataDictAddToCart = new ViewDataDictionary(ViewData);
-                            dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                            @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
+                        <div class="card default summary xl-flex-row" id="summary">
+                            @{
+                                var dataDictAddToCart = new ViewDataDictionary(ViewData);
+                                dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
+                                @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
 
-                            var dataDictPrice = new ViewDataDictionary(ViewData);
-                            dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
-                            @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
-                            @await Html.PartialAsync("_ProductTierPrices", Model.TierPrices)
-                        }
-                    </div>
+                                var dataDictPrice = new ViewDataDictionary(ViewData);
+                                dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
+                                @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
+                                @await Html.PartialAsync("_ProductTierPrices", Model.TierPrices)
+                            }
+                        </div>
 
                         <!--wishlist, compare, email a friend-->
                         <div class="overview-buttons">
                             @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsBefore, additionalData = Model })
                             @*
-                                            @{
-                var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
-                dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                @await Html.PartialAsync("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
-            }
+                                                                @{
+                                    var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
+                                    dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
+                                    @await Html.PartialAsync("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
+                                }
                             *@
 
                             @await Html.PartialAsync("_CompareProductsButton", Model)
@@ -154,10 +159,10 @@
                 </div>
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
                 @*
-                                  <div class="product-collateral">
-                    @await Html.PartialAsync("_ProductSpecifications", Model.ProductSpecifications)
-                    @await Html.PartialAsync("_ProductTags", Model.ProductTags)
-                </div>  
+                                      <div class="product-collateral">
+                        @await Html.PartialAsync("_ProductSpecifications", Model.ProductSpecifications)
+                        @await Html.PartialAsync("_ProductTags", Model.ProductTags)
+                    </div>
                 *@
 
                 @await Component.InvokeAsync("ProductsAlsoPurchased", new { productId = Model.Id })
@@ -167,3 +172,7 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBottom, additionalData = Model })
     </div>
 </div>
+
+<script asp-location="Footer">
+        AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+</script>

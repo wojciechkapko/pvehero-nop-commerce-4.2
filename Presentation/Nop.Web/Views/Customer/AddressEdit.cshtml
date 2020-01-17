@@ -7,6 +7,9 @@
     //page class
     Html.AppendPageCssClassParts("html-account-page");
     Html.AppendPageCssClassParts("html-address-edit-page");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
+    Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
 }
 @section left
 {
