@@ -60,7 +60,7 @@ namespace Nop.Web.Components
             //We know that the entire shopping cart page is not refresh
             //even if "ShoppingCartSettings.DisplayCartAfterAddingProduct" setting  is enabled.
             //That's why we force page refresh (redirect) in this case
-            var model = _productModelFactory.PrepareProductOverviewModels(products,
+            var model = _productModelFactory.PrepareProductOverviewModels(products, preparePictureModel: false,
                     productThumbPictureSize: productThumbPictureSize, forceRedirectionAfterAddingToCart: true)
                 .ToList();
 

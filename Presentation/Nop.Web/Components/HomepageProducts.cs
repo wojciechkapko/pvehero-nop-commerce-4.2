@@ -41,7 +41,7 @@ namespace Nop.Web.Components
             if (!products.Any())
                 return Content("");
 
-            var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, 350).ToList();
+            var model = _productModelFactory.PrepareProductOverviewModels(products, true, false).ToList();
 
             return View(model);
         }

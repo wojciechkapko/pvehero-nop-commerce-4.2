@@ -1125,6 +1125,7 @@ namespace Nop.Web.Factories
             if (products == null)
                 throw new ArgumentNullException(nameof(products));
 
+
             var models = new List<ProductOverviewModel>();
             foreach (var product in products)
             {
@@ -1153,6 +1154,19 @@ namespace Nop.Web.Factories
                 {
                     model.DefaultPictureModel = PrepareProductOverviewPictureModel(product, productThumbPictureSize);
                 }
+                else
+                {
+                    if (!_workContext.Browser.Equals("safari"))
+                    {
+                        model.WebPSupport = true;
+                    }
+                    else
+                    {
+                        model.WebPSupport = false;
+                    }
+                }
+                //websupport
+
 
                 //specs
                 if (prepareSpecificationAttributes)

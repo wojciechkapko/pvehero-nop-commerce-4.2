@@ -18,6 +18,7 @@ using Nop.Services.Localization;
 using Nop.Services.Stores;
 using Nop.Services.Tasks;
 using Nop.Services.Vendors;
+using Wangkanai.Detection;
 
 namespace Nop.Web.Framework
 {
@@ -41,13 +42,16 @@ namespace Nop.Web.Framework
         private readonly IVendorService _vendorService;
         private readonly LocalizationSettings _localizationSettings;
         private readonly TaxSettings _taxSettings;
+        private readonly IDetection _detection;
 
         private Customer _cachedCustomer;
         private Customer _originalCustomerIfImpersonated;
         private Vendor _cachedVendor;
         private Language _cachedLanguage;
         private Currency _cachedCurrency;
+        private string _cachedBrowser;
         private TaxDisplayType? _cachedTaxDisplayType;
+
 
         #endregion
 
@@ -65,7 +69,8 @@ namespace Nop.Web.Framework
             IUserAgentHelper userAgentHelper,
             IVendorService vendorService,
             LocalizationSettings localizationSettings,
-            TaxSettings taxSettings)
+            TaxSettings taxSettings,
+            IDetection detection)
         {
             _currencySettings = currencySettings;
             _authenticationService = authenticationService;
@@ -80,6 +85,7 @@ namespace Nop.Web.Framework
             _vendorService = vendorService;
             _localizationSettings = localizationSettings;
             _taxSettings = taxSettings;
+            _detection = detection;
         }
 
         #endregion
@@ -527,6 +533,39 @@ namespace Nop.Web.Framework
                 _cachedTaxDisplayType = null;
             }
         }
+
+
+        public virtual string Browser
+        {
+            get
+            {
+                //whether there is a cached value
+                if (_cachedBrowser != null)
+                    return _cachedBrowser;
+
+
+                string customerBrowser = _detection.Browser.Type.ToString().ToLower();
+                //if there are no languages for the current store try to get the first one regardless of the store
+                if (customerBrowser == null)
+                    customerBrowser = "safari";
+
+                //cache the found language
+                _cachedBrowser = customerBrowser;
+
+                return _cachedBrowser;
+            }
+            set
+            {
+                //and save it
+                _genericAttributeService.SaveAttribute(CurrentCustomer,
+                    NopCustomerDefaults.Browser, _cachedBrowser, _storeContext.CurrentStore.Id);
+
+                //then reset the cached value
+                _cachedBrowser = null;
+            }
+        }
+
+
 
         /// <summary>
         /// Gets or sets value indicating whether we're in admin area

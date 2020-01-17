@@ -58,10 +58,8 @@ body {
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5));
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  -o-user-select: none;
   user-select: none;
   display: inline-block;
   align-self: center; }
@@ -169,10 +167,8 @@ textarea {
   transition: fill .25s ease;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
-  -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  -o-user-select: none;
   user-select: none; }
   .icon.shadow {
     filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)); }
@@ -481,6 +477,7 @@ input.search-box-text::placeholder {
 
 .product-picture img, .mini-shopping-cart .picture img {
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 11px 15px -8px rgba(0, 0, 0, 0.6);
   border-radius: .5rem;
   overflow: hidden; }
 
@@ -891,28 +888,7 @@ input::-webkit-input-placeholder {
   font-weight: 500;
   font-family: Cabin, Helvetica, sans-serif; }
 
-input::-moz-placeholder {
-  color: #868e96;
-  opacity: 1;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: Cabin, Helvetica, sans-serif; }
-
-input:-ms-input-placeholder {
-  color: #868e96;
-  opacity: 1;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: Cabin, Helvetica, sans-serif; }
-
-input::-ms-input-placeholder {
-  color: #868e96;
-  opacity: 1;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: Cabin, Helvetica, sans-serif; }
-
-input::placeholder {
+input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placeholder, input::placeholder {
   color: #868e96;
   opacity: 1;
   font-size: 1rem;
@@ -1277,9 +1253,15 @@ input::placeholder {
   overflow: hidden;
   border: none;
   box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 9px 15px -8px rgba(0, 0, 0, 0.5);
   border-radius: .5rem;
-  max-width: 350px;
-  margin: 0 auto; }
+  max-width: 276px;
+  margin: 0 auto;
+  height: 380px;
+  /* min-width: 285px; */
+  background-size: 276px auto !important;
+  background-position: 50% 0 !important;
+  background-repeat: no-repeat !important; }
   .product-item.wide {
     width: 574px; }
   .product-item::before {
@@ -1299,6 +1281,13 @@ input::placeholder {
     z-index: 1; }
   .product-item:hover::before {
     opacity: 1; }
+  .product-item .item-box .details {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5; }
 
 .product-item .link, .product-list-item .link {
   position: absolute;
@@ -1307,7 +1296,8 @@ input::placeholder {
   top: 0;
   left: 0;
   right: 0;
-  bottom: 0; }
+  bottom: 0;
+  z-index: 999; }
 
 .product-list-item .old-price {
   text-decoration: line-through;
@@ -1337,29 +1327,16 @@ input::placeholder {
       padding: .75rem; }
 
 .product-item .product-title {
-  font-size: 1.75rem;
-  text-align: center;
-  padding: 2rem 1.5rem;
-  text-shadow: 0.0625em 0.0625em 0.0625em rgba(51, 51, 51, 0.75); }
+  font-size: 1.5rem; }
 
 .product-item .prices {
   pointer-events: none;
-  position: absolute;
-  right: 0;
-  bottom: 1rem;
-  background: #6c56d7;
-  padding: .75rem;
-  border-radius: .5rem 0 0 .5rem;
-  text-shadow: 0.0625em 0.0625em 0.0625em #333;
-  font-weight: 600;
-  text-transform: uppercase;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); }
+  padding: 0 2rem 1.5rem 2rem;
+  font-weight: 400; }
   .product-item .prices .old-price {
     text-decoration: line-through;
     color: #bdbdbd;
     font-size: 1rem; }
-  .product-item .prices .actual-price {
-    font-weight: 900; }
 
 .block-recently-viewed-products li {
   position: relative;
@@ -1410,17 +1387,18 @@ input::placeholder {
   margin-bottom: 4rem; }
 
 .item-box .product-title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1;
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* right: 0; */
+  /* z-index: 1; */
   color: #fff;
-  background: #6c56d7;
-  margin-top: .5em;
+  /* background: #6c56d7; */
+  /* margin-top: .5em; */
   text-shadow: none;
   font-weight: 500;
-  padding: 1rem 1.5rem; }
+  padding: 0 1rem 0 2rem;
+  margin: 0; }
 
 .gallery .product-name {
   position: absolute;

@@ -1128,9 +1128,6 @@ label, label + * {
 	font-weight: normal;
 	color: #4ab2f1;
 }
-.item-box .product-title a {
-	display: block;
-}
 
 .item-box .description {
 	display: none;
@@ -1138,10 +1135,6 @@ label, label + * {
 .item-box .description a {
 	display: block;
 	overflow: hidden;
-}
-.item-box .prices {
-    margin: 0 0 10px;
-    overflow: hidden;
 }
 .item-box .old-price {
 	margin: 0 5px 0 0;
@@ -3283,12 +3276,6 @@ pre {
     .item-box:nth-child(2n+1) {
 	    clear: both;
     }
-    .item-box .product-rating-box {
-        margin: 0 0 15px;
-    }
-    .item-box .prices {
-        min-height: 40px;
-    }
     .item-box .product-title {
         min-height: 42px;
         margin: 0 0 5px;
@@ -3648,11 +3635,11 @@ pre {
     }
     .center-2 {
 	    float: right;
-	    width: 73%;
+	    width: 74%;
     }
     .side-2 {
 	    float: left;
-	    width: 25%;
+	    width: 24%;
     }
     .page {
 	    text-align: left;
