@@ -63,12 +63,12 @@ namespace Nop.Web.Controllers
 
         //My account / Orders
         [HttpsRequirement(SslRequirement.Yes)]
-        public virtual IActionResult CustomerOrders()
+        public virtual IActionResult CustomerOrders(int? pageNumber)
         {
             if (!_workContext.CurrentCustomer.IsRegistered())
                 return Challenge();
 
-            var model = _orderModelFactory.PrepareCustomerOrderListModel();
+            var model = _orderModelFactory.PrepareCustomerOrderListModel(pageNumber);
             return View(model);
         }
 
@@ -97,7 +97,7 @@ namespace Nop.Web.Controllers
             {
                 var errors = _orderProcessingService.CancelRecurringPayment(recurringPayment);
 
-                var model = _orderModelFactory.PrepareCustomerOrderListModel();
+                var model = _orderModelFactory.PrepareCustomerOrderListModel(0);
                 model.RecurringPaymentErrors = errors;
 
                 return View(model);
@@ -131,7 +131,7 @@ namespace Nop.Web.Controllers
                 return RedirectToRoute("CustomerOrders");
 
             var errors = _orderProcessingService.ProcessNextRecurringPayment(recurringPayment);
-            var model = _orderModelFactory.PrepareCustomerOrderListModel();
+            var model = _orderModelFactory.PrepareCustomerOrderListModel(0);
             model.RecurringPaymentErrors = errors.ToList();
 
             return View(model);

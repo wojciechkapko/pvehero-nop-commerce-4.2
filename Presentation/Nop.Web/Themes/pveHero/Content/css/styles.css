@@ -1161,7 +1161,7 @@ label, label + * {
 }
 .pager li {
 	display: inline-block;
-	margin: 0 5px;
+	margin: 5px;
 	vertical-align: top;
 }
 .pager li a,

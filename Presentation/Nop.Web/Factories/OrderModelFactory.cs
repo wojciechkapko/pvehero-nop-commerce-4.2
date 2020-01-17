@@ -128,11 +128,12 @@ namespace Nop.Web.Factories
         /// Prepare the customer order list model
         /// </summary>
         /// <returns>Customer order list model</returns>
-        public virtual CustomerOrderListModel PrepareCustomerOrderListModel()
+        public virtual CustomerOrderListModel PrepareCustomerOrderListModel(int? page)
         {
             var model = new CustomerOrderListModel();
+            var pageSize = 5;
             var orders = _orderService.SearchOrders(storeId: _storeContext.CurrentStore.Id,
-                customerId: _workContext.CurrentCustomer.Id);
+                customerId: _workContext.CurrentCustomer.Id, pageIndex: --page ?? 0, pageSize: pageSize);
             foreach (var order in orders)
             {
                 var orderModel = new CustomerOrderListModel.OrderDetailsModel
@@ -151,6 +152,19 @@ namespace Nop.Web.Factories
 
                 model.Orders.Add(orderModel);
             }
+
+
+            model.PagerModel = new PagerModel
+            {
+                PageSize = orders.PageSize,
+                TotalRecords = orders.TotalCount,
+                PageIndex = orders.PageIndex,
+                ShowTotalSummary = true,
+                RouteActionName = "CustomerOrdersListPaged",
+                UseRouteLinks = true,
+                RouteValues = new OrdersListRouteValues { pageNumber = page ?? 0 }
+            };
+
 
             var recurringPayments = _orderService.SearchRecurringPayments(_storeContext.CurrentStore.Id,
                 _workContext.CurrentCustomer.Id);

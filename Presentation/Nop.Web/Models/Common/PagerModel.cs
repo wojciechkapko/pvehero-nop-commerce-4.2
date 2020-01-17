@@ -461,6 +461,10 @@ namespace Nop.Web.Models.Common
     {
         public int pageNumber { get; set; }
     }
+    public partial class OrdersListRouteValues : IRouteValues
+        {
+            public int pageNumber { get; set; }
+        }
 
     #endregion Classes
 }

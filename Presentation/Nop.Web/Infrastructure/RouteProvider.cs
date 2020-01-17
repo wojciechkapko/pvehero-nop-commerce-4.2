@@ -266,6 +266,9 @@ namespace Nop.Web.Infrastructure
             routeBuilder.MapLocalizedRoute("CustomerRewardPointsPaged", "rewardpoints/history/page/{pageNumber:min(0)}",
 				new { controller = "Order", action = "CustomerRewardPoints" });
 
+            routeBuilder.MapLocalizedRoute("CustomerOrdersListPaged", "order/history/page/{pageNumber:min(0)}",
+                new { controller = "Order", action = "CustomerOrders" });
+
             routeBuilder.MapLocalizedRoute("CustomerChangePassword", "customer/changepassword",
 				new { controller = "Customer", action = "ChangePassword" });
 
