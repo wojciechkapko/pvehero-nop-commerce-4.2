@@ -51,6 +51,10 @@
 .html-category-page .product-item {
   opacity: 1 !important; }
 
+.html-category-page .block .title {
+  margin: 0 0 10px;
+  padding: 12px 30px 15px 0; }
+
 @media all and (min-width: 481px) {
   .product-selectors > div {
     flex-direction: row; } }
@@ -59,3 +63,9 @@
   /*** CATEGORY ***/
   .product-selectors {
     text-align: left; } }
+
+@media all and (min-width: 1001px) {
+  .html-category-page .block .title {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
+  .block-category-navigation .listbox {
+    padding-top: 10px; } }

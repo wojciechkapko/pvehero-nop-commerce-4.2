@@ -12,6 +12,9 @@ $border-radius-5: .5rem;
 
 body {
     background: #30295c;
+    background: -moz-linear-gradient(top, #30295c 950px, #1c1835 100%);
+    background: -webkit-linear-gradient(top, #30295c 950px,#1c1835 100%);
+    background: linear-gradient(to bottom, #30295c 950px,#1c1835 100%);
 }
 
 .footer {
@@ -627,8 +630,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
 
 .block .title {
     position: relative;
-    margin: 0 0 10px;
-    padding: 12px 30px 12px 10px;
+    padding: 12px 30px .25rem 0;
     font-size: 20px;
     font-weight: bold;
 }

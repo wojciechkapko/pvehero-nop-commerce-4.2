@@ -61,8 +61,13 @@
         font-size: 1.25rem;
     }
 
-    .product-item{
-        opacity: 1!important;
+    .product-item {
+        opacity: 1 !important;
+    }
+
+    .block .title {
+        margin: 0 0 10px;
+        padding: 12px 30px 15px 0;
     }
 }
 
@@ -76,5 +81,14 @@
     /*** CATEGORY ***/
     .product-selectors {
         text-align: left;
+    }
+}
+
+@media all and (min-width: 1001px) {
+    .html-category-page .block .title {
+        border-bottom: 1px solid rgba(255,255,255,.15);
+    }
+    .block-category-navigation .listbox {
+        padding-top: 10px;
     }
 }

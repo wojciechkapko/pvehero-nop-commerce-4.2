@@ -181,7 +181,10 @@
     margin-bottom: 0 !important; } }
 
 body {
-  background: #30295c; }
+  background: #30295c;
+  background: -moz-linear-gradient(top, #30295c 950px, #1c1835 100%);
+  background: -webkit-linear-gradient(top, #30295c 950px, #1c1835 100%);
+  background: linear-gradient(to bottom, #30295c 950px, #1c1835 100%); }
 
 .footer {
   background-color: rgba(0, 0, 0, 0.2);
@@ -667,8 +670,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
 
 .block .title {
   position: relative;
-  margin: 0 0 10px;
-  padding: 12px 30px 12px 10px;
+  padding: 12px 30px .25rem 0;
   font-size: 20px;
   font-weight: bold; }
 
@@ -880,7 +882,8 @@ label:not(.checkbox-style):not(.checkbox-label) {
     flex-direction: column;
     justify-content: center; }
   .block-recently-viewed-products li .product-name {
-    font-weight: bold; }
+    font-weight: bold;
+    font-size: 1rem; }
   .block-recently-viewed-products li .price {
     margin-top: .25rem; }
   .block-recently-viewed-products li:hover .product-name {
@@ -937,7 +940,8 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .attributes dt, .attribute-label, .title strong {
   display: block;
   font-weight: bold;
-  letter-spacing: .025em; }
+  letter-spacing: .025em;
+  font-size: 1.3rem; }
 
 @media all and (max-width: 480px) {
   .item-grid {

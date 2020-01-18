@@ -656,13 +656,12 @@ label, label + * {
 
     .block .listbox {
         display: none;
-        padding: 0.4rem 5px;
     }
 
     .block .list a {
         display: inline-block;
         position: relative;
-        padding: 10px 0 10px 15px;
+        padding: .75rem 0 .75rem 15px;
         font-size: 16px;
         border-radius: .5rem;
         -webkit-transition: all 0.1s ease;

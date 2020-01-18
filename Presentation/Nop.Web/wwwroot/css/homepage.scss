@@ -1,6 +1,10 @@
 ﻿.home-page-category-list {
     margin-top: 4rem;
 
+    .block .title {
+        border-bottom: none !important;
+    }
+
     .item-list {
         display: flex;
         flex-direction: column;
@@ -9,6 +13,7 @@
             width: 100%;
             max-width: none;
             margin: 0;
+            position: relative;
 
             .category {
                 width: 100%;
@@ -25,6 +30,12 @@
         }
     }
 
+    a.button-3 {
+        position: absolute;
+        right: 0.45rem;
+        top: 12.7em;
+    }
+
     .title {
         text-align: left;
     }
@@ -33,19 +44,15 @@
         font-size: 2.5rem;
         text-transform: uppercase;
         margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,.15);
     }
 
     .product-grid .title {
         display: flex;
-        padding: 12px 10px 12px 10px;
-        margin: 0 0 1.55rem;
+        padding: 12px 10px .5rem 10px;
+        margin: 0 0 0.5rem;
         font-size: 20px;
-        border-bottom: 1px solid rgba(255,255,255,.15);
-
-        a {
-            line-height: 0;
-            margin-left: auto;
-        }
     }
 }
 
@@ -336,7 +343,7 @@
 
     .tns-controls {
         button {
-            top: -5rem;
+            top: -3.5rem;
 
             &.prev {
                 right: 8.5rem;
@@ -350,4 +357,31 @@
     }
 }
 
+@media all and (min-width: 1001px){
+    .home-page-category-list {
+        a.button-3 {
+            position: absolute;
+            right: 0;
+            top: 2em;
+        }
+    }
+
+
+
+    .home-page-product-grid.carousel {
+            .tns-controls {
+                button {
+                    top: -121px;
+                }
+            }
+        }
+}
+
+@media all and (max-width: 503px){
+    .home-page-category-list a.button-3 {
+        position: absolute;
+        right: .45rem;
+        top: 15.75rem;
+    }
+}
 .slider-wrapper {opacity:0}
