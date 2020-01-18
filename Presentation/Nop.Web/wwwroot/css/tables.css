@@ -1,0 +1,224 @@
+﻿/*********** GLOBAL TABLES ***********/
+.data-table .hidden-row {
+  height: 1px;
+  border: none; }
+
+.data-table tr.hidden-row th {
+  padding: 0;
+  border-top: none; }
+
+.data-table tr.hidden-row th > span {
+  height: 1px;
+  width: 1px;
+  position: absolute;
+  overflow: hidden;
+  top: -10px; }
+
+.cart th,
+.data-table th,
+.forum-table th {
+  padding: 0 1rem;
+  white-space: nowrap;
+  font-weight: normal; }
+
+.cart td,
+.data-table td,
+.forum-table td {
+  min-width: 50px;
+  padding: 8px 0;
+  text-align: center; }
+
+.cart a,
+.data-table a,
+.forum-table a {
+  font-weight: normal;
+  color: #b79bff; }
+
+.cart a:hover,
+.data-table a:hover,
+.forum-table a:hover {
+  text-decoration: underline; }
+
+.cart .product,
+.data-table .product,
+.data-table .message,
+.data-table .info,
+.data-table .name {
+  min-width: 225px;
+  text-align: left;
+  padding: .5rem 1rem; }
+
+.forum-table .forum-details,
+.forum-table .topic-details {
+  text-align: left; }
+
+.cart .product a,
+.data-table .product a,
+.data-table .info a {
+  font-weight: bold;
+  color: #b79bff; }
+
+.cart .product a:hover,
+.data-table .product a:hover,
+.data-table .info a:hover {
+  text-decoration: none; }
+
+.cart .product .edit-item {
+  margin: 10px 0 0; }
+
+.cart .product .edit-item a {
+  font-weight: normal; }
+
+.cart .product .edit-item a:hover {
+  text-decoration: underline; }
+
+.cart .remove-from-cart,
+.cart .add-to-cart,
+.data-table .select-boxes,
+.data-table .order {
+  text-align: center; }
+
+.cart td.unit-price,
+.data-table td.unit-price {
+  white-space: nowrap;
+  text-align: center; }
+
+.cart td.quantity input {
+  width: 50px;
+  text-align: center; }
+
+.cart td.subtotal,
+.data-table td.total {
+  white-space: nowrap;
+  padding: 0 1rem; }
+
+.cart td.subtotal .discount, .cart td.subtotal .discount-additional-info {
+  font-style: italic;
+  color: #4ab2f1; }
+
+.data-table em a {
+  font-weight: bold;
+  color: #444; }
+
+.data-table div.download {
+  margin: 10px 0 0; }
+
+.table-wrapper, .cart-options {
+  border-radius: .5rem;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 1rem 0;
+  box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2); }
+
+.table-wrapper .cart a {
+  font-weight: bold;
+  color: #b79bff; }
+
+.data-table label {
+  margin-bottom: 0 !important; }
+
+@media all and (max-width: 1000px) {
+  /*** GLOBAL TABLES ***/
+  .cart {
+    display: block; }
+  .cart colgroup,
+  .cart thead {
+    display: none; }
+  .cart tbody {
+    display: flex;
+    overflow: hidden;
+    justify-content: center; }
+  .cart tr {
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 40px 0 0; }
+  .cart td {
+    display: block;
+    border: none;
+    padding: 10px; }
+  .cart td.product-picture {
+    padding: 15px 10px 5px; }
+  .cart td.product {
+    min-width: 0;
+    padding: 5px 10px 15px;
+    text-align: center; }
+  .cart td.quantity {
+    display: inline-block;
+    padding: 0 10px;
+    vertical-align: middle; }
+  .cart td.unit-price,
+  .cart td.subtotal {
+    display: inline-block;
+    padding: 20px 10px;
+    vertical-align: middle; }
+  .order-details-page .data-table {
+    display: block; }
+  .order-details-page .data-table colgroup,
+  .order-details-page .data-table thead {
+    display: none; }
+  .order-details-page .data-table tbody {
+    display: block;
+    overflow: hidden; }
+  .order-details-page .data-table tr {
+    display: block;
+    float: left;
+    width: 100%;
+    margin: 40px 0 0; }
+  .order-details-page .data-table td {
+    display: block;
+    border: none;
+    padding: 10px; }
+  .order-details-page .data-table td.product,
+  .order-details-page .data-table td.tracking-number {
+    min-width: 0;
+    padding: 5px 10px 15px;
+    text-align: center; } }
+
+@media all and (max-width: 480px) {
+  .cart tbody {
+    flex-direction: column; } }
+
+@media all and (min-width: 481px) {
+  /*** GLOBAL TABLES ***/
+  .cart tr {
+    width: 46%;
+    margin: 40px 2% 0; }
+  .cart tr:nth-child(2n+1) {
+    clear: both; }
+  .order-details-page .data-table tr {
+    width: 46%;
+    margin: 40px 2% 0; }
+  .order-details-page .data-table tr:nth-child(2n+1) {
+    clear: both; } }
+
+@media all and (min-width: 769px) {
+  /**** GLOBAL TABLES ***/
+  .cart tr {
+    width: 31.33333%;
+    margin: 40px 1% 0; }
+  .cart tr:nth-child(2n+1) {
+    clear: none; }
+  .cart tr:nth-child(3n+1) {
+    clear: both; }
+  .order-details-page .data-table tr {
+    width: 31.33333%;
+    margin: 40px 1% 0; }
+  .order-details-page .data-table tr:nth-child(2n+1) {
+    clear: none; }
+  .order-details-page .data-table tr:nth-child(3n+1) {
+    clear: both; } }
+
+@media all and (min-width: 1001px) {
+  /*** GLOBAL TABLES ***/
+  .cart tr {
+    width: auto;
+    margin: 0; }
+  .cart label {
+    display: none; }
+  .order-details-page .data-table tr {
+    width: auto;
+    margin: 0; }
+  .order-details-page .data-table label {
+    display: none; }
+  label.td-title {
+    display: none !important; } }

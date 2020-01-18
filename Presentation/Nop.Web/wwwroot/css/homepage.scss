@@ -1,13 +1,27 @@
 ﻿.home-page-category-list {
     margin-top: 4rem;
+
     .item-list {
         display: flex;
         flex-direction: column;
 
-        .item-box.category {
+        .item-box {
             width: 100%;
             max-width: none;
             margin: 0;
+
+            .category {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+            }
+
+            .details {
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 100%;
+            }
         }
     }
 
@@ -24,6 +38,9 @@
     .product-grid .title {
         display: flex;
         padding: 12px 10px 12px 10px;
+        margin: 0 0 1.55rem;
+        font-size: 20px;
+        border-bottom: 1px solid rgba(255,255,255,.15);
 
         a {
             line-height: 0;
@@ -106,7 +123,6 @@
     margin: 0 0.5% 50px;
 }
 */
-
 
 .slider {
     h2 {

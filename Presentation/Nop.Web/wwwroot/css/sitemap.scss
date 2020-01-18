@@ -1,0 +1,60 @@
+﻿.sitemap-page .description {
+    margin: 0 0 30px;
+    text-align: center;
+}
+
+.sitemap-page .entity {
+    margin: 0 0 30px;
+}
+
+.sitemap-page .entity-title {
+    margin: 0 0 15px;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.sitemap-page .entity-title h2 {
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+}
+
+.sitemap-page .entity-body {
+    padding: 30px 15px;
+    text-align: center;
+    background-color: rgba(0,0,0,.3);
+    border-radius: .5rem;
+}
+
+.sitemap-page .entity ul {
+    font-size: 0;
+}
+
+.sitemap-page .entity li {
+    display: inline-block;
+    position: relative;
+    margin: 0 8px;
+    padding: 0 12px;
+    line-height: 50px;
+    font-size: 14px; /*reset zeroing*/
+}
+
+.sitemap-page .entity li:before {
+    content: "";
+    position: absolute;
+    top: 23px;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    background-color: #ddd;
+}
+
+.sitemap-page .entity a:hover {
+    color: #bba0ff;
+    text-decoration: underline;
+}
+
+.sitemap-page .entity a:empty {
+    display: none;
+}

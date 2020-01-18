@@ -3,10 +3,19 @@
   .home-page-category-list .item-list {
     display: flex;
     flex-direction: column; }
-    .home-page-category-list .item-list .item-box.category {
+    .home-page-category-list .item-list .item-box {
       width: 100%;
       max-width: none;
       margin: 0; }
+      .home-page-category-list .item-list .item-box .category {
+        width: 100%;
+        max-width: none;
+        margin: 0; }
+      .home-page-category-list .item-list .item-box .details {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%; }
   .home-page-category-list .title {
     text-align: left; }
   .home-page-category-list h2.title {
@@ -15,7 +24,10 @@
     margin-bottom: 1rem; }
   .home-page-category-list .product-grid .title {
     display: flex;
-    padding: 12px 10px 12px 10px; }
+    padding: 12px 10px 12px 10px;
+    margin: 0 0 1.55rem;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
     .home-page-category-list .product-grid .title a {
       line-height: 0;
       margin-left: auto; }

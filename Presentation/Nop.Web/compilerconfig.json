@@ -22,5 +22,65 @@
   {
     "outputFile": "wwwroot/lib/waves/waves.css",
     "inputFile": "wwwroot/lib/waves/waves.less"
+  },
+  {
+    "outputFile": "wwwroot/css/forms.css",
+    "inputFile": "wwwroot/css/forms.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/checkbox.css",
+    "inputFile": "wwwroot/css/checkbox.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/tables.css",
+    "inputFile": "wwwroot/css/tables.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/catalog.css",
+    "inputFile": "wwwroot/css/catalog.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/productdetails.css",
+    "inputFile": "wwwroot/css/productdetails.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/reviews.css",
+    "inputFile": "wwwroot/css/reviews.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/account.css",
+    "inputFile": "wwwroot/css/account.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/cart.css",
+    "inputFile": "wwwroot/css/cart.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/checkout.css",
+    "inputFile": "wwwroot/css/checkout.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/orderdetails.css",
+    "inputFile": "wwwroot/css/orderdetails.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/search.css",
+    "inputFile": "wwwroot/css/search.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/sitemap.css",
+    "inputFile": "wwwroot/css/sitemap.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/stars.css",
+    "inputFile": "wwwroot/css/stars.scss"
+  },
+  {
+    "outputFile": "wwwroot/lib/formstone/dropdown.css",
+    "inputFile": "wwwroot/lib/formstone/dropdown.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/pager.css",
+    "inputFile": "wwwroot/css/pager.scss"
   }
 ]

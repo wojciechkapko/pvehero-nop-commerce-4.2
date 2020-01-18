@@ -1,0 +1,253 @@
+﻿/********** PRODUCT REVIEWS **********/
+
+.product-reviews-page h1 a {
+    color: #b79bff;
+}
+
+.product-reviews-page h1 a:before,
+.product-reviews-page h1 a:after {
+    content: "''";
+}
+
+.product-reviews-page .title {
+    margin: 0 0 20px;
+    font-size: 20px;
+}
+
+.product-reviews-page .title strong {
+    font-weight: normal;
+}
+
+.write-review {
+    margin: 0 0 60px;
+}
+
+.write-review .fieldset {
+    margin: 0 0 30px;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: auto;
+    background: #f0f0f0 no-repeat 100% 5%;
+    border: #c0c0c0 1px dotted;
+    text-align: Left;
+    padding: 10px 10px 5px 5px;
+    position: absolute;
+    z-index: 1;
+    left: 10%;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    cursor: help;
+}
+
+.write-review .review-rating {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.write-review .review-rating label {
+    display: block;
+    margin: 0 0 5px;
+    font-size: 14px;
+    color: #444;
+}
+
+.write-review .review-rating div.first {
+    color: #e4444c;
+}
+
+.write-review .review-rating div.rating-options {
+    padding-top: 2px;
+}
+
+.write-review .review-rating div.rating-options input {
+    vertical-align: baseline;
+}
+
+.write-review .review-rating div.last {
+    color: #4cb17c;
+}
+
+.write-review .captcha-box {
+    margin: 15px 0 0;
+}
+
+.write-review .button-1 {
+    border: none;
+    background-color: #4ab2f1;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.write-review .button-1:hover {
+    background-color: #248ece;
+}
+
+.product-reviews-page .result,
+.product-reviews-page .message-error {
+    margin: 2rem auto;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.product-review-list {
+    overflow: hidden;
+}
+
+.product-review-item {
+    margin: 0 0 40px;
+}
+
+.product-review-item .review-item-head {
+    border-bottom: 1px solid rgba(255,255,255,.15);
+    overflow: hidden;
+    padding: 10px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.product-review-item .review-title {
+    line-height: 20px;
+    font-size: 1.25rem;
+}
+
+.product-review-item .product-review-box {
+    margin: 3px 0 0;
+}
+
+.product-review-item .review-content {
+    padding: 20px 10px;
+}
+
+.product-review-item .review-text {
+    line-height: 22px;
+}
+
+.product-review-item .reply {
+    margin: 15px 0;
+    border-top: 1px solid #ddd;
+}
+
+.product-review-item .reply-header {
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.product-review-item .reply-text {
+    line-height: 22px;
+}
+
+.product-review-item .review-info {
+    margin: 0 0 .5rem;
+}
+
+.product-review-item .review-info label {
+    font-weight: normal;
+}
+
+.product-review-item .review-info a,
+.product-review-helpfulness .vote {
+    display: inline-block;
+    padding: 0 5px;
+    color: #b79bff;
+    cursor: pointer;
+}
+
+.product-review-helpfulness .question {
+    margin: 0 5px 0 0;
+    font-style: italic;
+}
+
+.product-review-helpfulness .result {
+    margin: 0 0 0 10px;
+}
+
+.write-review .review-rating div {
+    display: inline-block;
+    margin: 0 0 0 15px;
+    font-size: 1.75rem;
+}
+
+
+
+.product-reviews-overview {
+    display: flex;
+    align-items: center;
+}
+
+@media all and (max-width: 769px) {
+    .review-rating .name-description {
+        text-align: center;
+        width: 100%;
+        display: block;
+    }
+}
+
+@media all and (max-width: 1000px) {
+    .write-review .review-rating {
+        text-align: center;
+    }
+
+    .write-review .review-rating div.name-description {
+        width: 100%;
+        margin: 0 5px 0 0;
+        text-align: center;
+    }
+    .product-reviews-overview {
+        justify-content: center;
+    }
+}
+
+
+
+@media all and (min-width: 769px) {
+    /*** PRODUCT REVIEWS ***/
+
+    .product-review-item .review-title {
+        float: left;
+        max-width: 600px;
+    }
+}
+
+@media all and (min-width: 1001px) {
+    /*** PRODUCT REVIEWS ***/
+
+    .product-review-item .review-title {
+        max-width: 850px;
+    }
+
+    .write-review .review-rating div.name-description {
+        width: 265px;
+        margin: 0 5px 0 0;
+        text-align: right
+    }
+}
+
+@media all and (min-width: 1367px) {
+    /*** PRODUCT REVIEWS ***/
+
+    .product-review-item .review-title {
+        max-width: 1050px;
+    }
+
+    .write-review .review-rating div.name-description {
+        margin: 0 5px 0 0;
+        min-width: 375px;
+    }
+}

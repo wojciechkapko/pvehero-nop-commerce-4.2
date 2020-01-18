@@ -1813,3 +1813,62 @@ div.dataTables_wrapper div.dataTables_paginate{
     float: none;
   }
 }
+
+/* BB codes */
+
+pre {
+    white-space: pre-wrap;
+    white-space: normal;
+    word-wrap: break-word;
+}
+
+.csharpcode {
+    margin: 10px 0;
+    border: 1px dashed #ccc;
+    background-color: #fff;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
+    color: #000;
+}
+
+    .csharpcode .rem {
+        color: green;
+    }
+
+    .csharpcode .kwrd {
+        color: #00f;
+    }
+
+    .csharpcode .str {
+        color: #006080;
+    }
+
+    .csharpcode .op {
+        color: #00c;
+    }
+
+    .csharpcode .preproc {
+        color: #c63;
+    }
+
+    .csharpcode .asp {
+        background-color: #ff0;
+    }
+
+    .csharpcode .html {
+        color: maroon;
+    }
+
+    .csharpcode .attr {
+        color: red;
+    }
+
+    .csharpcode .alt {
+        width: 100%;
+        margin: 0;
+        background-color: #f6f6f6;
+    }
+
+    .csharpcode .lnum {
+        color: #666;
+    }
