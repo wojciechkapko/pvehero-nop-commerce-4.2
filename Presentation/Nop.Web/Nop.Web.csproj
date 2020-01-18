@@ -100,6 +100,7 @@
     <_ContentIncludedByDefault Remove="bundleconfig.json" />
     <_ContentIncludedByDefault Remove="compilerconfig.json" />
     <_ContentIncludedByDefault Remove="wwwroot\css\account.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\breadcrumb.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\cart.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\catalog.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\checkout.min.css" />
@@ -107,6 +108,7 @@
     <_ContentIncludedByDefault Remove="wwwroot\css\howitworks.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\orderdetails.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\pager.min.css" />
+    <_ContentIncludedByDefault Remove="wwwroot\css\product-grid.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\productdetails.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\reviews.min.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\search.min.css" />

@@ -168,3 +168,39 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
         padding-left: 0;
     }
 }
+
+@media all and (min-width: 1001px) {
+
+    .center-2 .inputs label {
+        width: 136px;
+    }
+
+    .inputs {
+        text-align: left;
+    }
+
+    .inputs label {
+        display: inline-block;
+        width: 265px;
+        margin: 0 10px 0 0;
+        text-align: right;
+    }
+
+    .inputs input[type="text"],
+    .inputs input[type="email"],
+    .inputs input[type="tel"],
+    .inputs input[type="password"],
+    .inputs select {
+        min-height: 40px;
+    }
+
+    .inputs .option-list li {
+        margin: 0 10px 0 0;
+    }
+}
+
+@media all and (min-width: 1367px) {
+    .inputs label {
+        width: 375px;
+    }
+}

@@ -82,5 +82,13 @@
   {
     "outputFile": "wwwroot/css/pager.css",
     "inputFile": "wwwroot/css/pager.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/breadcrumb.css",
+    "inputFile": "wwwroot/css/breadcrumb.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/product-grid.css",
+    "inputFile": "wwwroot/css/product-grid.scss"
   }
 ]

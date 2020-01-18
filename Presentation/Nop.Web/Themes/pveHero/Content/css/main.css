@@ -137,9 +137,27 @@
 .visible {
   animation: appear .25s ease-in forwards; }
 
+@media all and (min-width: 481px) {
+  .xs-flex-row {
+    -ms-flex-direction: row !important;
+    flex-direction: row !important; }
+  .xs-align-items-end {
+    -ms-flex-align: end !important;
+    align-items: flex-end !important; }
+  .xs-ml-auto, .xs-mx-auto {
+    margin-left: auto !important; }
+  .xs-mb-0 {
+    margin-bottom: 0 !important; }
+  .xs-mr-2, .xs-mx-2 {
+    margin-right: .5rem !important; }
+  .xs-text-left {
+    text-align: left; } }
+
 @media all and (min-width: 1001px) {
   .md-mr-3, .md-mr-3 {
     margin-right: 1rem !important; }
+  .md-ml-3, .md-mx-3 {
+    margin-left: 1rem !important; }
   .md-mr-4, .md-mr-4 {
     margin-right: 1.5rem !important; }
   .md-mb-0 {
@@ -158,7 +176,9 @@
   .xl-ml-3, .xl-mx-3 {
     margin-left: 1rem !important; }
   .xl-mt-0, .xl-my-0 {
-    margin-top: 0 !important; } }
+    margin-top: 0 !important; }
+  .xl-mb-0, .xl-my-0 {
+    margin-bottom: 0 !important; } }
 
 body {
   background: #30295c; }
@@ -204,8 +224,8 @@ body {
   display: inline-block;
   align-self: center; }
 
-input, textarea, select {
-  font-family: Cabin,Helvetica,sans-serif; }
+input, textarea {
+  color: #777; }
 
 input, textarea {
   font-family: Cabin,Helvetica,sans-serif;
@@ -224,7 +244,7 @@ input, textarea {
 
 .login-page .buttons {
   text-align: center; }
-  .login-page .buttons input {
+  .login-page .buttons button {
     width: 400px;
     max-width: 100%; }
   .login-page .buttons p {
@@ -427,7 +447,7 @@ button.btn-danger, .btn.btn-danger, .button-1.btn-danger, .button-2.btn-danger, 
   left: auto !important; }
 
 input.search-box-text {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4) !important;
   border: none;
   font-size: 1.25rem;
   color: #fff;
@@ -791,8 +811,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
   background-repeat: no-repeat !important;
   opacity: 0;
   text-align: left; }
-  .product-item.wide {
-    width: 574px; }
   .product-item::before {
     transition: opacity .15s ease-in-out;
     content: '';
@@ -810,13 +828,11 @@ label:not(.checkbox-style):not(.checkbox-label) {
     z-index: 1; }
   .product-item:hover::before {
     opacity: 1; }
-  .product-item .item-box .details {
+  .product-item .details {
     position: absolute;
     bottom: 0;
     right: 0;
-    left: 0;
-    width: 100%;
-    z-index: 5; }
+    width: 100%; }
 
 .product-item .link, .product-list-item .link {
   position: absolute;
@@ -901,18 +917,12 @@ label:not(.checkbox-style):not(.checkbox-label) {
     background: #6c56d7; }
 
 .item-box .product-title {
-  /* position: absolute; */
-  /* top: 0; */
-  /* left: 0; */
-  /* right: 0; */
-  /* z-index: 1; */
   color: #fff;
-  /* background: #6c56d7; */
-  /* margin-top: .5em; */
   text-shadow: none;
   font-weight: 500;
   padding: 0 1rem 1rem 2rem;
-  margin: 0; }
+  margin: 0;
+  line-height: 1.2; }
 
 .tns-outer > button {
   display: none; }
@@ -923,6 +933,11 @@ label:not(.checkbox-style):not(.checkbox-label) {
   top: 50%;
   transform: translateY(-50%);
   left: auto; }
+
+.attributes dt, .attribute-label, .title strong {
+  display: block;
+  font-weight: bold;
+  letter-spacing: .025em; }
 
 @media all and (max-width: 480px) {
   .item-grid {

@@ -6,6 +6,8 @@
     Html.AddTitleParts(T("PageTitle.Register").Text);
     //page class
     Html.AppendPageCssClassParts("html-registration-page");
+    Html.AppendCssFileParts($"~/css/forms.min.css");
+    Html.AppendCssFileParts($"~/css/account.min.css");
 }
 
 <div class="page registration-page">
@@ -75,17 +77,17 @@
                     }
                     <div class="inputs">
                         <label asp-for="Email" asp-postfix=":"></label>
-                        <input asp-for="Email" />
+                        <input asp-for="Email" placeholder="Email address" />
                         <span asp-validation-for="Email"></span>
                     </div>
                     <div class="inputs">
                         <label asp-for="Password" asp-postfix=":"></label>
-                        <input asp-for="Password" />
+                        <input asp-for="Password" placeholder="Secure password" />
                         <span asp-validation-for="Password"></span>
                     </div>
                     <div class="inputs">
                         <label asp-for="ConfirmPassword" asp-postfix=":"></label>
-                        <input asp-for="ConfirmPassword" />
+                        <input asp-for="ConfirmPassword" placeholder="Password repeat" />
                         <span asp-validation-for="ConfirmPassword"></span>
                     </div>
                     @if (Model.DisplayCaptcha)

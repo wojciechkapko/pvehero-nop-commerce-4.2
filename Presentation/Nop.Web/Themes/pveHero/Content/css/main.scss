@@ -64,8 +64,8 @@ body {
     align-self: center;
 }
 
-input, textarea, select {
-    font-family: Cabin,Helvetica,sans-serif;
+input, textarea {
+    color: #777;
 }
 
 input, textarea {
@@ -92,7 +92,7 @@ input, textarea {
     .buttons {
         text-align: center;
 
-        input {
+        button {
             width: 400px;
             max-width: 100%;
         }
@@ -360,7 +360,7 @@ button, .btn, .button-1, .button-2, .button-3 {
 }
 
 input.search-box-text {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4)!important;
     border: none;
     font-size: 1.25rem;
     color: #fff;
@@ -803,10 +803,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
     opacity: 0;
     text-align: left;
 
-    &.wide {
-        width: 574px
-    }
-
     &::before {
         transition: opacity .15s ease-in-out;
         content: '';
@@ -828,15 +824,14 @@ label:not(.checkbox-style):not(.checkbox-label) {
         opacity: 1;
     }
 
-    .item-box .details {
+    .details {
         position: absolute;
         bottom: 0;
         right: 0;
-        left: 0;
         width: 100%;
-        z-index: 5;
     }
 }
+
 
 .product-item, .product-list-item {
     .link {
@@ -952,18 +947,12 @@ label:not(.checkbox-style):not(.checkbox-label) {
 }
 
 .item-box .product-title {
-    /* position: absolute; */
-    /* top: 0; */
-    /* left: 0; */
-    /* right: 0; */
-    /* z-index: 1; */
     color: #fff;
-    /* background: #6c56d7; */
-    /* margin-top: .5em; */
     text-shadow: none;
     font-weight: 500;
     padding: 0 1rem 1rem 2rem;
     margin: 0;
+    line-height: 1.2;
 }
 
 .tns-outer > button {
@@ -981,7 +970,11 @@ label:not(.checkbox-style):not(.checkbox-label) {
     }
 }
 
-
+.attributes dt, .attribute-label, .title strong {
+    display: block;
+    font-weight: bold;
+    letter-spacing: .025em;
+}
 
 
 @media all and (max-width: 480px) {

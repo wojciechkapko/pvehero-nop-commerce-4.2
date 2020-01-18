@@ -118,8 +118,6 @@
     border-bottom: 1px solid rgba(255,255,255,.15);
     overflow: hidden;
     padding: 10px;
-    display: flex;
-    align-items: flex-end;
 }
 
 .product-review-item .review-title {
@@ -132,7 +130,7 @@
 }
 
 .product-review-item .review-content {
-    padding: 20px 10px;
+    padding: 20px 10px 0 10px;
 }
 
 .product-review-item .review-text {
@@ -153,9 +151,11 @@
     line-height: 22px;
 }
 
-.product-review-item .review-info {
-    margin: 0 0 .5rem;
-}
+.product-review-item {
+    .review-info, .date {
+        margin: 0 0 .5rem;
+    }
+} 
 
 .product-review-item .review-info label {
     font-weight: normal;
@@ -186,10 +186,7 @@
 
 
 
-.product-reviews-overview {
-    display: flex;
-    align-items: center;
-}
+
 
 @media all and (max-width: 769px) {
     .review-rating .name-description {
@@ -208,9 +205,6 @@
         width: 100%;
         margin: 0 5px 0 0;
         text-align: center;
-    }
-    .product-reviews-overview {
-        justify-content: center;
     }
 }
 

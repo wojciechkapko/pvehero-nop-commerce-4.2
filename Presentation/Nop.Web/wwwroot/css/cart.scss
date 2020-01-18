@@ -232,14 +232,6 @@
     margin: 0 0 50px;
 }
 
-.cart-collaterals .button-2 {
-    display: inline-block;
-    border: none;
-    padding: 10px 15px;
-    color: #fff;
-    text-transform: uppercase;
-}
-
 .cart-collaterals .title {
     margin: 0 0 5px;
     font-size: 18px;
@@ -251,28 +243,6 @@
 
 .cart-collaterals .hint {
     margin: 0 0 10px;
-}
-
-.cart-collaterals .deals > div {
-    margin: 0 0 20px;
-}
-
-.cart-collaterals .coupon-code {
-    overflow: hidden;
-}
-
-.cart-collaterals .coupon-code input[type="text"] {
-    float: left;
-    width: 54%;
-    height: 36px; /*safari padding fix*/
-    margin: 0 -1px 0 0;
-}
-
-.cart-collaterals .coupon-code button {
-    float: left;
-    width: 40%;
-    height: 36px; /*safari padding fix*/
-    padding: 0;
 }
 
 .cart-collaterals .message-failure {
@@ -411,10 +381,7 @@
         margin: 0 2.5%;
     }
 
-    .cart-footer .cart-collaterals div,
-    .cart-footer .cart-collaterals label {
-        text-align: left;
-    }
+
 
     .cart-footer .estimate-shipping label {
         display: block;
@@ -447,6 +414,11 @@
         float: right;
         max-width: 395px;
         margin: 15px 0;
+    }
+
+    .cart-footer .cart-collaterals div,
+    .cart-footer .cart-collaterals label {
+        text-align: left;
     }
 }
 

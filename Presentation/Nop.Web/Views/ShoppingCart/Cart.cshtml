@@ -9,6 +9,11 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+    Html.AppendCssFileParts($"~/css/forms.min.css");
+    Html.AppendCssFileParts($"~/css/cart.min.css");
+    Html.AppendCssFileParts($"~/css/tables.min.css");
+    Html.AppendCssFileParts($"~/css/product-grid.min.css");
+
 }
 @if (!Model.OnePageCheckoutEnabled)
 {

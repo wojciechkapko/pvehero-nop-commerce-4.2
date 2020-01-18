@@ -16,6 +16,12 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+    Html.AppendCssFileParts($"~/css/catalog.min.css");
+    Html.AppendCssFileParts($"~/css/product-grid.min.css");
+    Html.AppendCssFileParts($"~/css/breadcrumb.min.css");
+    Html.AppendCssFileParts($"~/css/pager.min.css");
+
+
 
     if (!string.IsNullOrEmpty(Model.ParentName))
     {
@@ -130,7 +136,7 @@
                     @foreach (var item in Model.FeaturedProducts)
                     {
                         <div class="item-box">
-                            @await Html.PartialAsync("_ProductBox", item)
+                            @await Html.PartialAsync("_ProductBoxCatalog", item)
                         </div>
                     }
                 </div>
@@ -167,7 +173,7 @@
                     @foreach (var product in Model.Products)
                     {
                         <div class="item-box">
-                            @await Html.PartialAsync("_ProductBox", product)
+                            @await Html.PartialAsync("_ProductBoxCatalog", product)
                         </div>
                     }
                 </div>

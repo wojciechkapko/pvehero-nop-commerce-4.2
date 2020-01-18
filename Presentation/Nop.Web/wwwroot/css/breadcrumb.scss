@@ -1,0 +1,31 @@
+﻿.breadcrumb {
+    margin: 0 0 50px;
+
+    ul {
+        font-size: 0;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    a:hover {
+        color: #4ab2f1;
+    }
+}
+
+.breadcrumb li * {
+    display: inline-block;
+    margin: 0 3px;
+    font-size: 15px;
+    line-height: 32px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/*** CATEGORY ***/
+@media all and (min-width: 1001px) {
+    .breadcrumb {
+        margin: 0 0 20px;
+    }
+}
