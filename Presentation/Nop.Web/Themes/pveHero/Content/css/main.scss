@@ -107,14 +107,13 @@ input, textarea {
     margin-bottom: 41px;
 }
 
-.header-menu > ul > li > a {
-    font-weight: 700;
+.header-menu > ul > li a {
+    font-weight: 600;
     letter-spacing: 0.035rem;
     cursor: pointer;
-    font-family: 'Open Sans', sans-serif;
-    color: #fff;
     align-items: center;
     display: flex;
+    text-transform: uppercase;
 }
 
 .icon {
@@ -376,7 +375,7 @@ input.search-box-text {
 
 input.search-box-text::placeholder {
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #bba0ff;
 }
 
@@ -390,7 +389,7 @@ input.search-box-text::placeholder {
     font-size: 12px !important;
     padding: .2rem .5rem;
     border-radius: .25rem;
-    font-weight: 700;
+    font-weight: 600;
     text-align: center;
     white-space: nowrap;
 }

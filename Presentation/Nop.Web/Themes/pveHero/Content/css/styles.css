@@ -770,13 +770,14 @@ label, label + * {
             margin: 1px 0;
         }
 
-            .top-menu > li > a {
-                display: block;
+            .top-menu > li a {
                 min-height: 55px;
                 padding: 18px;
-                font-size: 15px;
-                color: #555;
+                font-size: 16px;
             }
+                .top-menu li a .icon {
+                    margin-right: 1rem !important;
+                }
 
         .top-menu .sublist {
             display: none;
@@ -788,13 +789,7 @@ label, label + * {
             }
 
                 .top-menu .sublist li a {
-                    display: block;
-                    padding: 15px 18px;
-                    font-size: 15px;
-                    font-weight: 700;
-                    letter-spacing: 0.035rem;
-                    cursor: pointer;
-                    font-family: 'Open Sans', sans-serif;
+                    padding: 15px 18px!important;
                 }
 
         .top-menu.mobile {
@@ -1199,12 +1194,8 @@ label, label + * {
             }
 
             .header-menu > ul > li > a {
-                display: block;
                 padding: 5px 10px;
                 line-height: 20px;
-                font-size: 17px; /*reset zeroing*/
-                color: #555;
-                cursor: pointer;
             }
 
     .header-menu .sublist {
