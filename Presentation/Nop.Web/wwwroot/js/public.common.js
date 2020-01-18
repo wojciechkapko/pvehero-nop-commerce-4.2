@@ -282,25 +282,3 @@ var selectList = (function () {
     };
 
 })();
-
-var loader = (function () {
-    var reloadContent = function (attributes) {
-        var element = $("#" + attributes.id);
-        var url = attributes.url;
-        if (url === undefined) {
-            url = document.location;
-        }
-
-        element.load(url + ' #' + attributes.id + ' > *', function () {
-            $('#' + attributes.id + '_spinner').remove();
-            $("#" + attributes.id + '_spinner_bg').remove();
-            if (attributes.callback) {
-                attributes.callback();
-            }
-        });
-    };
-
-    return {
-        reloadContent: reloadContent
-    };
-})();
