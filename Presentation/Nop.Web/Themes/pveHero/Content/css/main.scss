@@ -1746,15 +1746,8 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
         letter-spacing: .035rem;
         text-transform: none;
 
-        &.price {
-            left: 0;
-            right: auto;
-            bottom: 1.25rem;
-            border-radius: 0 .5rem .5rem 0;
-
-            span {
-                padding: .75rem;
-            }
+        &.discount {
+            left: 5rem;
         }
     }
 
@@ -1832,6 +1825,10 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
 
     &.new {
         background: #d46;
+    }
+
+    &.discount {
+        background: #6c56d7;
     }
 }
 

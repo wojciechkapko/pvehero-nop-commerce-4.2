@@ -366,6 +366,15 @@ namespace Nop.Web.Factories
 
                     //PAngV default baseprice (used in Germany)
                     priceModel.BasePricePAngV = _priceFormatter.FormatBasePrice(product, finalPriceWithDiscount);
+
+                    //Check if there is a discount
+                    var isDiscounted = (finalPriceWithoutDiscountBase != finalPriceWithDiscountBase);
+                    priceModel.isDiscounted = isDiscounted;
+                    //Check discount value
+                    if (isDiscounted)
+                    {
+                        priceModel.DiscountValue = ((int)((finalPriceWithDiscountBase / finalPriceWithoutDiscountBase - 1) * 100 * -1)).ToString();
+                    }
                 }
             }
             else

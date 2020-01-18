@@ -11,6 +11,10 @@
         {
             <span class="ribbon new">New</span>
         }
+        @if (Model.ProductPrice.isDiscounted)
+        {
+            <span class="ribbon discount">-@Model.ProductPrice.DiscountValue%</span>
+        }
         <h2 class="product-title">@Model.Name</h2>
 
         <div class="prices">

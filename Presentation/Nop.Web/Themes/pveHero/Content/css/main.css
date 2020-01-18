@@ -1333,13 +1333,8 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
   border-radius: .25rem;
   letter-spacing: .035rem;
   text-transform: none; }
-  .product-item .ribbon.price {
-    left: 0;
-    right: auto;
-    bottom: 1.25rem;
-    border-radius: 0 .5rem .5rem 0; }
-    .product-item .ribbon.price span {
-      padding: .75rem; }
+  .product-item .ribbon.discount {
+    left: 5rem; }
 
 .product-item .product-title {
   font-size: 1.5rem; }
@@ -1395,6 +1390,8 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
   padding: .75rem 2.5rem; }
   .ribbon.new {
     background: #d46; }
+  .ribbon.discount {
+    background: #6c56d7; }
 
 .cart-footer {
   margin-bottom: 4rem; }
