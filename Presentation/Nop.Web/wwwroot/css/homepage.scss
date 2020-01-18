@@ -215,18 +215,16 @@
         }
 
         .ribbon {
-            right: 0;
-            bottom: 2rem;
             position: initial;
-            display: inline-block;
             border-radius: .5rem;
             margin-bottom: 1.5rem;
-            padding: 0;
+            padding: .75rem 2rem;
         }
 
         .elements {
             display: flex;
             flex-direction: column-reverse;
+            align-items: center;
         }
     }
 
@@ -279,61 +277,59 @@
     z-index: 1;
 }
 */
+            .webp .wow {
+                background-image: url(/images/mythic-plus-featured.webp);
 
-
-    .webp .wow {
-        background-image: url(/images/mythic-plus-featured.webp);
-
-        &::before {
-            background-image: url(/images/featured-mythic-plus-character.webp);
-        }
-    }
-
-    .no-webp .wow {
-        background-image: url(/images/mythic-plus-featured.jpg);
-
-        &::before {
-            background-image: url(/images/featured-mythic-plus-character.png);
-        }
-    }
-
-    .webp .diablo-3 {
-        background-image: url(/images/diablo-3-featured.webp);
-
-        &::before {
-            background-image: url(/images/diablo3-character2.webp);
-        }
-    }
-
-    .no-webp .diablo-3 {
-        background-image: url(/images/diablo-3-featured.jpg);
-
-        &::before {
-            background-image: url(/images/diablo3-character2.png);
-        }
-    }
-
-
-
-
-.home-page-product-grid.carousel {
-    .tns-ovh {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
-
-    .tns-controls {
-        button {
-            top: -4rem;
-
-            &.prev {
-                right: 8.5rem;
-                left: auto;
+                &::before {
+                    background-image: url(/images/featured-mythic-plus-character.webp);
+                }
             }
 
-            &.next {
-                right: 5rem;
+            .no-webp .wow {
+                background-image: url(/images/mythic-plus-featured.jpg);
+
+                &::before {
+                    background-image: url(/images/featured-mythic-plus-character.png);
+                }
             }
-        }
-    }
-}
+
+            .webp .diablo-3 {
+                background-image: url(/images/diablo-3-featured.webp);
+
+                &::before {
+                    background-image: url(/images/diablo3-character2.webp);
+                }
+            }
+
+            .no-webp .diablo-3 {
+                background-image: url(/images/diablo-3-featured.jpg);
+
+                &::before {
+                    background-image: url(/images/diablo3-character2.png);
+                }
+            }
+
+
+
+
+            .home-page-product-grid.carousel {
+                .tns-ovh {
+                    padding-top: 0;
+                    padding-bottom: 1rem;
+                }
+
+                .tns-controls {
+                    button {
+                        top: -5rem;
+
+                        &.prev {
+                            right: 8.5rem;
+                            left: auto;
+                        }
+
+                        &.next {
+                            right: 5rem;
+                        }
+                    }
+                }
+            }
