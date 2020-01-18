@@ -223,3 +223,6 @@
     left: auto; }
   .home-page-product-grid.carousel .tns-controls button.next {
     right: 5rem; }
+
+.slider-wrapper {
+  opacity: 0; }
