@@ -1,5 +1,7 @@
 ﻿/********** REGISTRATION, LOGIN, ACCOUNT PAGES  **********/
 
+/*
+
 .registration-page .button-1,
 .registration-result-page .button-1,
 .login-page .button-1,
@@ -15,15 +17,7 @@
     color: #fff;
     text-transform: uppercase;
 }
-
-.registration-page .button-1:hover,
-.registration-result-page .button-1:hover,
-.login-page .button-1:hover,
-.password-recovery-page .button-1:hover,
-.account-page .button-1:hover,
-.return-request-page .button-1:hover {
-    background-color: #248ece;
-}
+*/
 
 .return-request-page h1 a {
     color: #4ab2f1;
@@ -212,58 +206,7 @@
 
 .address-list-page .info,
 .order-list-page .info {
-    margin: 0 0 10px;
-    border-top: 1px solid #e6e6e6;
-    background-color: #f9f9f9;
-    padding: 20px;
     line-height: 26px;
-}
-
-.address-list-page .info .name,
-.order-list-page .info .name {
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.address-list-page .button-2,
-.order-list-page .button-2 {
-    display: inline-block;
-    margin: 0 0 0 10px;
-    border: none;
-    padding: 0 0 0 18px;
-    font-size: 12px;
-    color: #444;
-}
-
-.edit-address-button {
-    background: url('../images/edit.png') left center no-repeat;
-}
-
-.delete-address-button,
-.cancel-recurring-order-button {
-    background: url('../images/remove.png') left center no-repeat;
-}
-
-.retry-recurring-order-button {
-    background: url('../images/retry.png') left center no-repeat;
-}
-
-.return-items-button {
-    background: url('../images/return.png') left center no-repeat;
-}
-
-.order-details-button {
-    background: url('../images/details.png') left center no-repeat;
-}
-
-.address-list-page .button-2:hover,
-.order-list-page .button-2:hover {
-    color: #4ab2f1;
-}
-
-.address-list-page .add-button {
-    margin: 0 0 20px;
-    text-align: center;
 }
 
 .address-edit-page .message-error {
@@ -277,18 +220,29 @@
     padding: 30px 15px;
 }
 
-.recurring-payments table td {
-    white-space: nowrap;
-}
+.address-item {
+    text-align: left;
+    .dropdown {
+        position: absolute;
+        right: 0;
+        top: 0;
 
-.recurring-payments table td:first-child {
-    min-width: 120px;
-    white-space: normal;
-}
+        .dropdown-menu {
+            width: auto;
 
-.recurring-payments .button-2 {
-    font-size: 14px;
-}
+            .dropdown-item {
+                padding: .375rem 3rem .75rem 3rem!important;
+            }
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+    }
+    &:last-child {
+        margin-bottom: 0;
+    }
+} 
 
 .reward-points-overview {
     margin: 0 0 25px;
@@ -319,7 +273,11 @@
     }
 }
 
-
+@media all and (max-width: 350px){
+    .address-list-page .info, .order-list-page .info {
+        font-size: 14px;
+    }
+}
 
 @media all and (max-width: 459px) {
     .html-registration-page, .html-contact-page {
@@ -365,24 +323,6 @@
     }
 }
 
-@media all and (min-width: 769px) {
-    /*** REGISTRATION, LOGIN, ACCOUNT ***/
-
-    .address-list-page .section,
-    .order-list-page .section,
-    .return-request-list-page .section {
-        display: inline-block;
-        width: 45%;
-        margin: 20px 1%;
-        vertical-align: top;
-    }
-
-    .recurring-payments {
-        width: 100% !important;
-        margin: 20px 0 !important;
-    }
-}
-
 @media all and (min-width: 1001px) {
     /*** REGISTRATION, LOGIN, ACCOUNT ***/
 
@@ -425,14 +365,14 @@
     .return-request-list-page .section {
         display: block;
         width: auto;
-        margin: 0 0 40px;
-    }
-
-    .address-list-page .buttons,
-    .order-list-page .buttons {
-        position: absolute;
-        top: 5px;
-        right: 10px;
+        margin: 0 0 20px;
+        padding: 0 0 20px;
+        border-bottom: 1px solid rgba(255,255,255,.15);
+        &:last-child {
+            border-bottom: none;
+            margin:0;
+            padding:0;
+        }
     }
 
     .avatar-page .message-error,

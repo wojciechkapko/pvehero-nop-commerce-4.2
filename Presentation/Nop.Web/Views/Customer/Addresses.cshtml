@@ -7,125 +7,133 @@
     //page class
     Html.AppendPageCssClassParts("html-account-page");
     Html.AppendPageCssClassParts("html-address-list-page");
+    Html.AppendCssFileParts($"~/css/forms.min.css");
+    Html.AppendCssFileParts($"~/css/checkbox.min.css");
+    Html.AppendCssFileParts($"~/css/account.min.css");
 }
 @section left
 {
     @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.Addresses })
 }
 <div class="page account-page address-list-page">
-    <div class="page-title">
-        <h1>@T("Account.MyAccount") - @T("Account.CustomerAddresses")</h1>
+    <div class="page-title d-flex flex-column sm-flex-row">
+        <h1 class="mb-3 sm-mb-0">@T("Account.MyAccount") - @T("Account.CustomerAddresses")</h1>
+        <div class="add-button sm-ml-auto">
+            <button type="button" class="button-1 add-address-button" onclick="location.href='@Url.RouteUrl("CustomerAddressAdd")'">@T("Common.AddNew")</button>
+        </div>
     </div>
     <div class="page-body">
         <nop-antiforgery-token />
         @if (Model.Addresses.Count > 0)
         {
-                <div class="address-list">
+                <div class="address-list card default">
                     @for (var i = 0; i < Model.Addresses.Count; i++)
                     {
                         var address = Model.Addresses[i];
-                        <div class="section address-item">
-                            <div class="title">
-                                <strong>@address.FirstName @address.LastName</strong>
-                            </div>
-                            <ul class="card default info">
-                                <li class="name">
-                                    @address.FirstName @address.LastName
+                    <div class="section address-item">
+                        <ul class="info">
+                            <li class="name">
+                                @address.FirstName @address.LastName
+                            </li>
+                            <li class="email">
+                                <label>@T("Address.Fields.Email"):</label>
+                                @address.Email
+                            </li>
+                            @if (address.PhoneEnabled)
+                            {
+                                <li class="phone">
+                                    <label>@T("Address.Fields.PhoneNumber"):</label>
+                                    @address.PhoneNumber
                                 </li>
-                                <li class="email">
-                                    <label>@T("Address.Fields.Email"):</label>
-                                    @address.Email
+                            }
+                            @if (address.FaxEnabled)
+                            {
+                                <li class="fax">
+                                    <label>@T("Address.Fields.FaxNumber"):</label>
+                                    @address.FaxNumber
                                 </li>
-                                @if (address.PhoneEnabled)
+                            }
+                            @if (address.CompanyEnabled && !string.IsNullOrEmpty(address.Company))
+                            {
+                                <li class="company">@address.Company</li>
+                            }
+                            @if (address.StreetAddressEnabled)
+                            {
+                                <li class="address1">
+                                    @address.Address1
+                                </li>
+                            }
+                            @if (address.StreetAddress2Enabled && !string.IsNullOrEmpty(address.Address2))
+                            {
+                                <li class="address2">
+                                    @address.Address2
+                                </li>
+                            }
+                            @if (address.CityEnabled && !string.IsNullOrEmpty(address.City) ||
+                        address.CountyEnabled && !string.IsNullOrEmpty(address.County) ||
+                        address.StateProvinceEnabled && !string.IsNullOrEmpty(address.StateProvinceName) ||
+                        address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
+                            {
+                                var addressLine = string.Empty;
+                                if (address.CityEnabled && !string.IsNullOrEmpty(address.City))
                                 {
-                                    <li class="phone">
-                                        <label>@T("Address.Fields.PhoneNumber"):</label>
-                                        @address.PhoneNumber
-                                    </li>
-                                }
-                                @if (address.FaxEnabled)
-                                {
-                                    <li class="fax">
-                                        <label>@T("Address.Fields.FaxNumber"):</label>
-                                        @address.FaxNumber
-                                    </li>
-                                }
-                                @if (address.CompanyEnabled && !string.IsNullOrEmpty(address.Company))
-                                {
-                                    <li class="company">@address.Company</li>
-                                }
-                                @if (address.StreetAddressEnabled)
-                                {
-                                    <li class="address1">
-                                        @address.Address1
-                                    </li>
-                                }
-                                @if (address.StreetAddress2Enabled && !string.IsNullOrEmpty(address.Address2))
-                                {
-                                    <li class="address2">
-                                        @address.Address2
-                                    </li>
-                                }
-                                @if (address.CityEnabled && !string.IsNullOrEmpty(address.City)||
-                             address.CountyEnabled && !string.IsNullOrEmpty(address.County) ||
-                             address.StateProvinceEnabled && !string.IsNullOrEmpty(address.StateProvinceName) ||
-                             address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
-                                {
-                                    var addressLine = string.Empty;
-                                    if (address.CityEnabled && !string.IsNullOrEmpty(address.City))
+                                    addressLine += address.City;
+                                    if (address.CountyEnabled && !string.IsNullOrEmpty(address.County) ||
+                                        address.StateProvinceEnabled && !string.IsNullOrEmpty(address.StateProvinceName) ||
+                                        address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
                                     {
-                                        addressLine += address.City;
-                                        if (address.CountyEnabled && !string.IsNullOrEmpty(address.County) ||
-                                            address.StateProvinceEnabled && !string.IsNullOrEmpty(address.StateProvinceName) ||
-                                            address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
-                                        {
-                                            addressLine += ", ";
-                                        }
+                                        addressLine += ", ";
                                     }
-                                    if (address.CountyEnabled && !string.IsNullOrEmpty(address.County))
+                                }
+                                if (address.CountyEnabled && !string.IsNullOrEmpty(address.County))
+                                {
+                                    addressLine += address.County;
+                                    if (address.StateProvinceEnabled && !string.IsNullOrEmpty(address.StateProvinceName) ||
+                                        address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
                                     {
-                                        addressLine += address.County;
-                                        if (address.StateProvinceEnabled && !string.IsNullOrEmpty(address.StateProvinceName) ||
-                                            address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
-                                        {
-                                            addressLine += ", ";
-                                        }
+                                        addressLine += ", ";
                                     }
-                                    if (address.StateProvinceEnabled && !string.IsNullOrEmpty(address.StateProvinceName))
-                                    {
-                                        addressLine += address.StateProvinceName;
-                                        if (address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
-                                        {
-                                            addressLine += ", ";
-                                        }
-                                    }
+                                }
+                                if (address.StateProvinceEnabled && !string.IsNullOrEmpty(address.StateProvinceName))
+                                {
+                                    addressLine += address.StateProvinceName;
                                     if (address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
                                     {
-                                        addressLine += address.ZipPostalCode;
+                                        addressLine += ", ";
                                     }
+                                }
+                                if (address.ZipPostalCodeEnabled && !string.IsNullOrEmpty(address.ZipPostalCode))
+                                {
+                                    addressLine += address.ZipPostalCode;
+                                }
 
-                                    <li class="city-state-zip">
-                                        @addressLine
-                                    </li>
-                                }
-                                @if (address.CountryEnabled && !string.IsNullOrEmpty(address.CountryName))
-                                {
-                                    <li class="country">
-                                        @address.CountryName
-                                    </li>
-                                }
-                                @if (!string.IsNullOrEmpty(address.FormattedCustomAddressAttributes))
-                                {
-                                    <li class="custom-attributes-view">
-                                        @Html.Raw(address.FormattedCustomAddressAttributes)
-                                    </li>
-                                }
-                            </ul>
-                            <div class="buttons">
-                                <input type="button" class="edit-address-button" onclick="location.href = '@(Url.RouteUrl("CustomerAddressEdit", new {addressId = address.Id}))'" value="@T("Common.Edit")"/>
-                                <input type="button" class="delete-address-button" onclick="deletecustomeraddress(@(address.Id))" value="@T("Common.Delete")"/>
+                                <li class="city-state-zip">
+                                    @addressLine
+                                </li>
+                            }
+                            @if (address.CountryEnabled && !string.IsNullOrEmpty(address.CountryName))
+                            {
+                                <li class="country">
+                                    @address.CountryName
+                                </li>
+                            }
+                            @if (!string.IsNullOrEmpty(address.FormattedCustomAddressAttributes))
+                            {
+                                <li class="custom-attributes-view">
+                                    @Html.Raw(address.FormattedCustomAddressAttributes)
+                                </li>
+                            }
+                        </ul>
+                        <div class="dropdown">
+                            <a href="javascript:void(0)" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <svg class="icon size-2x"><use href="#dots-vertical"></use></svg>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right mt-0">
+                                <a href="javascript:void(0)" class="dropdown-item edit-address-button px-5" onclick="location.href = '@(Url.RouteUrl("CustomerAddressEdit", new {addressId = address.Id}))'"><svg class="icon size-1x white mr-2"><use href="#edit"></use></svg>@T("Common.Edit")</a>
+                                <a href="javascript:void(0)" class="dropdown-item delete-address-button px-5" onclick="deletecustomeraddress(@(address.Id))"><svg class="icon size-1x white mr-2"><use href="#trash-alt"></use></svg>@T("Common.Delete")</a>
                             </div>
                         </div>
+                    </div>
                     }
                 </div>
                 <script asp-location="Footer">
@@ -159,8 +167,5 @@
                 @T("Account.CustomerAddresses.NoAddresses")
             </div>
         }
-        <div class="add-button">
-            <input type="button" class="button-1 add-address-button" onclick="location.href='@Url.RouteUrl("CustomerAddressAdd")'" value="@T("Common.AddNew")" />
-        </div>
     </div>
 </div>
