@@ -2,7 +2,7 @@
 @inject Nop.Core.IWebHelper webHelper
 
 <div class="header-links">
-    <ul class="md-d-flex">
+    <ul class="md-d-flex font-size-xs">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksBefore })
         @if (Model.IsAuthenticated)
         {

@@ -3,7 +3,7 @@
 @using Nop.Core.Domain.Tax
 @inject IWorkContext workContext;
     <div class="footer">
-        <div class="footer-upper">
+        <div class="footer-upper font-size-xs">
             <div class="footer-block data">
                 <address class="contact-info d-flex flex-column">
                     <span>
@@ -29,7 +29,7 @@
             </div>
             <div class="footer-block information">
                 <div class="title">
-                    <strong>@T("Footer.Information")</strong>
+                    <strong class="font-size-lg">@T("Footer.Information")</strong>
                 </div>
                 <ul class="list">
                     <li><a href="@Url.RouteUrl("HowItWorks")">How it works</a></li>
@@ -45,7 +45,7 @@
             </div>
             <div class="footer-block games">
                 <div class="title">
-                    <strong>Games</strong>
+                    <strong class="font-size-lg">Games</strong>
                 </div>
                 <ul class="list">
                     <li><a href="@Url.RouteUrl("Category", new { SeName = "world-of-warcraft" })">World of Warcraft</a></li>
@@ -57,7 +57,7 @@
             </div>
             <div class="footer-block my-account">
                 <div class="title">
-                    <strong>Navigation</strong>
+                    <strong class="font-size-lg">Navigation</strong>
                 </div>
                 <ul class="list">
                     @if (Model.DisplayCustomerInfoFooterItem)

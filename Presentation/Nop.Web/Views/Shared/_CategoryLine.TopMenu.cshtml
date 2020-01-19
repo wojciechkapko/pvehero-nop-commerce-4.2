@@ -1,5 +1,5 @@
 ﻿@model TopMenuModel.CategoryLineModel
-<li>
+<li class="md-font-size-lg">
     <a href="@Url.RouteUrl("Category", new { SeName = Model.Category.SeName })">
         <svg class='icon shadow size-1-75x svg-baseline mr-2' @(Model.Category.SeName == "world-of-warcraft" ? "style=font-size:2rem!important" : null)><use href='#@Model.Category.SeName'></use></svg>
         @Model.Category.Name

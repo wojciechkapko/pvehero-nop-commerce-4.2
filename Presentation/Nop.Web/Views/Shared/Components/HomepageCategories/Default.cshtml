@@ -12,7 +12,7 @@
                     <svg class='icon shadow svg-baseline'><use href='#@item.SeName'></use></svg>
                     @item.Name
                 </h2>
-                <a class="button-3" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
+                <a class="button-3 font-size-base" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
                 <div class="category-details d-flex flex-column md-flex-row">
                     <div class="side-2">
                         @await Component.InvokeAsync("HomepageBestSellers", item.Id)

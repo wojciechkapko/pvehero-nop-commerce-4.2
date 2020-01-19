@@ -63,11 +63,12 @@ script {
 }
 
 /*********** GLOBAL STYLES **********/
-
+html {
+    font: normal 16px 'Cabin',Helvetica,sans-serif;
+}
 body {
     max-width: 100%;
     overflow-x: hidden;
-    font: normal 14px 'Cabin',Helvetica,sans-serif;
     color: #fff;
 }
 
@@ -333,7 +334,6 @@ label, label + * {
     border: none;
     background-color: #4ab2f1;
     padding: 8px 12px;
-    font-size: 14px;
     color: #fff;
 }
 
@@ -400,10 +400,6 @@ label, label + * {
     padding-bottom: 20px;
 }
 
-.header-links ul {
-    font-size: 0;
-}
-
 .header-links li {
     display: inline-block;
     margin: 0 10px;
@@ -412,8 +408,6 @@ label, label + * {
 .header-links span,
 .header-links a {
     display: inline-block;
-    font-size: 14px; /*reset zeroing*/
-    color: #fff;
     line-height: 36px;
     text-transform: uppercase;
 }
@@ -465,13 +459,11 @@ label, label + * {
     border: 1px solid #ddd;
     border-top: none;
     overflow: hidden;
-    background-color: #fff;
     text-align: left;
     /*override jQuery UI styles, do not delete doubled properties*/
     border-radius: 0;
     margin-top: .5rem;
     padding: 0;
-    font: normal 14px Arial, Helvetica, sans-serif;
 }
 
 .ui-autocomplete li {
@@ -485,7 +477,6 @@ label, label + * {
 .ui-autocomplete a {
     display: block;
     padding: 15px;
-    font-size: 14px;
     /*override jQuery UI styles, do not delete doubled properties*/
     margin: 0 !important;
     border: none !important;
@@ -520,12 +511,10 @@ label, label + * {
     border-bottom: 1px solid rgba(255,255,255,.15);
     overflow: hidden;
     padding: 40px 0;
-    font-size: 0;
 }
 
 .footer-block .title strong {
     margin: 0 0 15px;
-    font-size: 18px;
     font-weight: bold;
     color: #b79bff;
     text-transform: uppercase;
@@ -575,7 +564,6 @@ label, label + * {
     display: block;
     width: 95%;
     margin: 1px auto;
-    font-size: 14px; /*reset zeroing*/
     text-align: center;
     margin-bottom: 2rem;
 }
@@ -601,7 +589,6 @@ label, label + * {
     display: inline-block;
     position: relative;
     padding: .75rem 0 .75rem 15px;
-    font-size: 16px;
     border-radius: .5rem;
     -webkit-transition: all 0.1s ease;
     transition: all 0.1s ease;
@@ -613,17 +600,6 @@ label, label + * {
 
 .block .sublist {
     margin: 15px 0 15px 45px;
-}
-
-.block .sublist a {
-    font-size: 14px;
-}
-
-@media all and (max-width:349px) {
-    input[type="button"],
-    .btn, .button-1, .button-2 {
-        font-size: .75rem;
-    }
 }
 
 @media all and (max-width: 1000px) {
@@ -639,9 +615,7 @@ label, label + * {
 
     .menu-toggle {
         padding: 15px;
-        font-size: 18px;
         font-weight: bold;
-        color: #fff;
         text-transform: uppercase;
         cursor: pointer;
         background-color: rgba(0, 0, 0, 0.3);
@@ -667,7 +641,6 @@ label, label + * {
     .top-menu > li a {
         min-height: 55px;
         padding: 18px;
-        font-size: 16px;
     }
 
     .top-menu li a .icon {
@@ -700,12 +673,8 @@ label, label + * {
         width: 55px;
         height: 55px;
         padding: 15px;
-        font-size: 15px;
-        font-weight: bold;
-        color: #fff;
-        text-transform: uppercase;
-        cursor: pointer;
         display: flex;
+        cursor: pointer;
         align-items: center;
         justify-content: center;
     }
@@ -841,12 +810,6 @@ label, label + * {
         line-height: 45px;
     }
 
-    .header-selectors-wrapper select {
-        height: 25px;
-        padding: 4px;
-        font-size: 12px;
-    }
-
     .header-links-wrapper {
         padding: 0;
     }
@@ -886,7 +849,6 @@ label, label + * {
     .mini-shopping-cart {
         padding: 12px;
         text-align: left;
-        font-size: 12px;
     }
 
     .mini-shopping-cart .count {
@@ -938,7 +900,6 @@ label, label + * {
 
     .mini-shopping-cart .name {
         margin: 0 0 5px;
-        font-size: 14px;
     }
 
     .mini-shopping-cart .name a {
@@ -995,7 +956,6 @@ label, label + * {
 
     .header-menu > ul {
         display: block !important; /* prevents toggle display:none on resize */
-        font-size: 0;
     }
 
     .header-menu > ul.mobile {
@@ -1016,53 +976,8 @@ label, label + * {
     .header-menu > ul > li > a {
         padding: 5px 10px;
         line-height: 20px;
-        font-size: 18px;
     }
 
-    .header-menu .sublist {
-        display: none;
-        position: absolute;
-        width: 200px;
-        box-shadow: 0 0 2px rgba(0,0,0,0.2);
-        background-color: #fff;
-        padding: 10px 0;
-        text-align: left;
-    }
-
-    .header-menu .sublist li {
-        position: relative;
-    }
-
-    .header-menu .sublist li a {
-        display: block;
-        position: relative;
-        padding: 10px 20px 10px 30px;
-        font-size: 14px;
-        color: #444;
-    }
-
-    .header-menu .sublist li a:before {
-        content: "";
-        position: absolute;
-        top: 17px;
-        left: 15px;
-        width: 5px;
-        height: 5px;
-        background-color: #ddd;
-    }
-
-    .header-menu .sublist li:hover > a {
-        background-color: #f6f6f6;
-    }
-
-    .header-menu ul li:hover > .sublist {
-        display: block;
-    }
-
-    .header-menu .sublist .sublist {
-        top: -10px;
-        left: 100% !important;
-    }
 
     /*** FOOTER ***/
 
@@ -1440,7 +1355,6 @@ button, .btn, .button-1, .button-2, .button-3 {
 .button-3 {
     padding: 0;
     text-transform: capitalize;
-    font-size: 1rem;
     box-shadow: none;
 
     &:hover {
@@ -1480,12 +1394,9 @@ button, .btn, .button-1, .button-2, .button-3 {
     left: 0;
     z-index: 1000;
     display: none;
-    float: left;
     width: 100%;
     padding: .5rem 0;
     margin: .125rem 0 0;
-    font-size: 1rem;
-    color: #fff;
     text-align: left;
     list-style: none;
     background-color: #30295c;
@@ -1501,16 +1412,6 @@ button, .btn, .button-1, .button-2, .button-3 {
     &.dropdown-menu-right {
         right: 0;
         left: auto;
-    }
-
-    .dropdown-header {
-        padding: 0.75rem 1rem;
-        font-size: 1.25rem;
-        background: #6658d5;
-        border-radius: .5rem .5rem 0 0;
-        text-shadow: 0.0625em 0.0625em 0.0625em #333;
-        font-weight: 600;
-        letter-spacing: .025em;
     }
 }
 
@@ -1710,7 +1611,6 @@ input.search-box-text::placeholder {
     word-spacing: normal;
     white-space: normal;
     line-break: auto;
-    font-size: 1rem;
     word-wrap: break-word;
     opacity: 0;
     transition: opacity 0.15s ease-in
@@ -1824,8 +1724,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
 
 .result {
     margin: 1rem 0;
-    color: #fff !important;
-    font-size: 14px !important;
     padding: .5rem 1.45rem;
     border-radius: .25rem;
     font-weight: 500;
@@ -1921,9 +1819,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .ui-autocomplete a {
     display: flex;
     padding: 1rem;
-    font-size: 1rem;
     border-radius: .5rem;
-    font-family: 'Cabin', sans-serif;
     align-items: center;
 }
 
@@ -1950,14 +1846,8 @@ label:not(.checkbox-style):not(.checkbox-label) {
         }
 
         a {
-            /* position: absolute; */
-            /* width: 100%; */
-            /* height: 100%; */
             top: 0;
             left: 0;
-            border: 4px dotted;
-            /* border-color: #6c56d7; */
-            border-radius: 5rem;
             background: #26214a;
             display: inline-block;
             line-height: 1.5;
@@ -1995,11 +1885,9 @@ label:not(.checkbox-style):not(.checkbox-label) {
 }
 
 .product-item {
-    font-size: 1rem;
     position: relative;
     overflow: hidden;
     border: none;
-    box-shadow: 0 7px 15px rgba(0,0,0,.2);
     box-shadow: 0 9px 15px -8px rgba(0,0,0,.5);
     border-radius: .5rem;
     max-width: 276px;
@@ -2085,7 +1973,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
         .old-price {
             text-decoration: line-through;
             color: #bdbdbd;
-            font-size: 1rem;
         }
     }
 }
@@ -2104,7 +1991,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
 
         .product-name {
             font-weight: bold;
-            font-size: 1rem;
         }
 
         .price {
@@ -2132,16 +2018,13 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .ribbon {
     position: absolute;
     display: flex;
-    justify-content: center;
     box-shadow: 0 3px 5px rgba(0,0,0,.2);
     z-index: 13;
     border-bottom-left-radius: .5rem;
     border-top-left-radius: .5rem;
-    color: #fff;
     justify-content: center;
     align-items: center;
     text-shadow: 0.0625em 0.0625em 0.0625em #333;
-    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     padding: .75rem 2.5rem;
@@ -2206,7 +2089,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
     .block .title {
         border-bottom: none;
         padding: 15px;
-        font-size: 18px;
+        font-size: 1.125rem;
         font-weight: bold;
         text-transform: uppercase;
         background-color: rgba(0, 0, 0, 0.3);
