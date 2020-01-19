@@ -1,5 +1,6 @@
 ﻿.breadcrumb {
     margin: 0 0 50px;
+    text-align: center;
 
     ul {
         font-size: 0;
@@ -27,5 +28,6 @@
 @media all and (min-width: 1001px) {
     .breadcrumb {
         margin: 0 0 20px;
+        text-align: left;
     }
 }

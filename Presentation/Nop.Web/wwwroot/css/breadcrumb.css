@@ -1,5 +1,6 @@
 ﻿.breadcrumb {
-  margin: 0 0 50px; }
+  margin: 0 0 50px;
+  text-align: center; }
   .breadcrumb ul {
     font-size: 0; }
   .breadcrumb li {
@@ -18,4 +19,5 @@
 /*** CATEGORY ***/
 @media all and (min-width: 1001px) {
   .breadcrumb {
-    margin: 0 0 20px; } }
+    margin: 0 0 20px;
+    text-align: left; } }

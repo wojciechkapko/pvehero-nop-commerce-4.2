@@ -977,7 +977,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
     display: block;
     font-weight: bold;
     letter-spacing: .025em;
-    font-size: 1.3rem;
 }
 
 
@@ -1029,6 +1028,10 @@ label:not(.checkbox-style):not(.checkbox-label) {
 }
 
 @media all and (min-width:1001px) {
+    .attributes dt, .attribute-label, .title strong {
+        font-size: 1.3rem;
+    }
+
     .header-menu {
         background-color: rgba(0, 0, 0, 0.3);
         border-radius: .5rem;

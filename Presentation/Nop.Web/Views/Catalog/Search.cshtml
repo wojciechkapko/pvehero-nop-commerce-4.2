@@ -10,6 +10,9 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+    Html.AppendCssFileParts($"~/css/catalog.min.css");
+    Html.AppendCssFileParts($"~/css/product-grid.min.css");
+    Html.AppendCssFileParts($"~/css/pager.min.css");
 }
 <script asp-location="Footer">
     $(document).ready(function () {
@@ -31,72 +34,11 @@
         <h1>@T("Search")</h1>
     </div>
     <div class="page-body">
-        <div class="search-input">
-            <form asp-route="ProductSearch" method="get">
-                <div class="fieldset">
-                    <div class="form-fields">
-                        <div class="basic-search">
-                            <div class="inputs">
-                                <label asp-for="q">@T("Search.SearchTerm"):</label>
-                                <input asp-for="q" class="search-text"/>
-                            </div>
-                            @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.ProductSearchPageBasic})
-                            @*
-                                                           <div class="inputs reversed">
-                                <input asp-for="adv"/>
-                                <label asp-for="adv">@T("Search.AdvancedSearch")</label>
-                            </div> 
-                            *@
-
-                        </div>
-                        @*
-                                                  <div class="advanced-search" id="advanced-search-block">
-                            @if (Model.AvailableCategories.Count > 0)
-                            {
-                                <div class="inputs">
-                                    <label asp-for="cid">@T("Search.Category"):</label>
-                                    <select asp-for="cid" asp-items="Model.AvailableCategories"></select>
-                                </div>
-                                <div class="inputs reversed">
-                                    <input asp-for="isc"/>
-                                    <label asp-for="isc">@T("Search.IncludeSubCategories")</label>
-                                </div>
-                            }
-                            @if (Model.AvailableManufacturers.Count > 0)
-                            {
-                                <div class="inputs">
-                                    <label asp-for="mid">@T("Search.Manufacturer"):</label>
-                                    <select asp-for="mid" asp-items="Model.AvailableManufacturers"></select>
-                                </div>
-                            }
-                            @if (Model.asv && Model.AvailableVendors.Count > 0)
-                            {
-                                <div class="inputs">
-                                    <label asp-for="vid">@T("Search.Vendor"):</label>
-                                    <select asp-for="vid" asp-items="Model.AvailableVendors"></select>
-                                </div>
-                            }
-                            <div class="inputs">
-                                <label>@T("Search.PriceRange"):</label>
-                                <span class="price-range">
-                                    @T("Search.PriceRange.From")
-                                    <input asp-for="pf" class="price-from" aria-label="@T("Search.PriceRange.From")" />
-                                    @T("Search.PriceRange.To")
-                                    <input asp-for="pt" class="price-to" aria-label="@T("Search.PriceRange.To")" />
-                                </span>
-                            </div>
-                            <div class="inputs reversed">
-                                <input asp-for="sid" />
-                                <label asp-for="sid">@T("Search.SearchInDescriptions")</label>
-                            </div>
-                            @await Component.InvokeAsync("Widget", new {widgetZone = PublicWidgetZones.ProductSearchPageAdvanced})
-                        </div>  
-                        *@
-
-                    </div>
-                </div>
-                <div class="buttons">
-                    <input type="submit" class="button-1 search-button" value="@T("Search.Button")"/>
+        <div class="search-input mb-4">
+            <form asp-route="ProductSearch" method="get" class="d-flex">
+                <input asp-for="q" class="search-box-text" />
+                <div class="buttons d-flex mb-0">
+                    <button type="submit" class="button-1 search-button" style="border-radius: 0 .5rem .5rem 0">@T("Search.Button")</button>
                 </div>
             </form>
         </div>
@@ -126,7 +68,7 @@
                         @foreach (var product in Model.Products)
                         {
                             <div class="item-box">
-                                @await Html.PartialAsync("_ProductBox", product)
+                                @await Html.PartialAsync("_ProductBoxCatalog", product)
                             </div>
                         }
                     </div>
@@ -145,3 +87,12 @@
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductSearchPageAfterResults })
     </div>
 </div>
+
+<style>
+    .search-input .search-box-text{
+        height: 50px;
+        padding: 1rem;
+        border-radius: .5rem 0 0 .5rem;
+        width: 100%;
+    }
+</style>

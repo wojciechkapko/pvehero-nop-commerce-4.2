@@ -1280,7 +1280,7 @@ label, label + * {
     .block {
         float: none;
         width: auto;
-        margin: 0 0 20px;
+        margin: 0 0 45px;
     }
 
         .block .title {

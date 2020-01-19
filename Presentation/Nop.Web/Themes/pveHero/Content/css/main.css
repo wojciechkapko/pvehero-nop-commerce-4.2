@@ -940,8 +940,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .attributes dt, .attribute-label, .title strong {
   display: block;
   font-weight: bold;
-  letter-spacing: .025em;
-  font-size: 1.3rem; }
+  letter-spacing: .025em; }
 
 @media all and (max-width: 480px) {
   .item-grid {
@@ -975,6 +974,8 @@ label:not(.checkbox-style):not(.checkbox-label) {
     align-items: center; } }
 
 @media all and (min-width: 1001px) {
+  .attributes dt, .attribute-label, .title strong {
+    font-size: 1.3rem; }
   .header-menu {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: .5rem;
