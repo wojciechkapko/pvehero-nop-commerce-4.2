@@ -8,7 +8,6 @@
     Html.AppendPageCssClassParts("html-account-page");
     Html.AppendPageCssClassParts("html-address-list-page");
     Html.AppendCssFileParts($"~/css/forms.min.css");
-    Html.AppendCssFileParts($"~/css/checkbox.min.css");
     Html.AppendCssFileParts($"~/css/account.min.css");
 }
 @section left
@@ -17,7 +16,7 @@
 }
 <div class="page account-page address-list-page">
     <div class="page-title d-flex flex-column sm-flex-row">
-        <h1 class="mb-3 sm-mb-0">@T("Account.MyAccount") - @T("Account.CustomerAddresses")</h1>
+        <h1 class="mb-3 sm-mb-0">@T("Account.CustomerAddresses")</h1>
         <div class="add-button sm-ml-auto">
             <button type="button" class="button-1 add-address-button" onclick="location.href='@Url.RouteUrl("CustomerAddressAdd")'">@T("Common.AddNew")</button>
         </div>

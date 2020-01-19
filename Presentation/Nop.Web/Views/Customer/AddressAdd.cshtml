@@ -10,6 +10,8 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+    Html.AppendCssFileParts($"~/css/forms.min.css");
+    Html.AppendCssFileParts($"~/css/account.min.css");
 }
 @section left
 {
@@ -17,8 +19,11 @@
 }
 <form asp-route="CustomerAddressAdd" method="post">
     <div class="page account-page address-edit-page">
-        <div class="page-title">
-            <h1>@T("Account.MyAccount") - @T("Account.CustomerAddresses.AddNew")</h1>
+        <div class="page-title d-flex flex-column sm-flex-row">
+            <h1 class="mb-3 sm-mb-0">@T("Account.CustomerAddresses.AddNew")</h1>
+            <div class="sm-ml-auto">
+                <button type="submit" class="button-1 save-address-button">@T("Common.Save")</button>
+            </div>
         </div>
         <div class="page-body">
             <div asp-validation-summary="ModelOnly" class="message-error"></div>
@@ -27,9 +32,6 @@
                 dataDictAddress.TemplateInfo.HtmlFieldPrefix = "Address";
                 @await Html.PartialAsync("_CreateOrUpdateAddress", Model.Address, dataDictAddress)
             }
-            <div class="buttons">
-                <input type="submit" class="button-1 save-address-button" value="@T("Common.Save")" />
-            </div>
         </div>
     </div>
 </form>

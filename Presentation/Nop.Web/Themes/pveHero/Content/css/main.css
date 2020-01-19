@@ -779,8 +779,6 @@ label, label + * {
   /*** GLOBAL STYLES ***/
   .master-wrapper-content {
     width: 1200px; }
-  .center-2 .inputs label {
-    width: 213px; }
   .inputs.accept-consent label {
     width: auto; }
   /*** HEADER ***/
