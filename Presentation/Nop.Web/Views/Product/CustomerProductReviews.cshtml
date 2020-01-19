@@ -7,6 +7,10 @@
     //page class
     Html.AppendPageCssClassParts("html-account-page");
     Html.AppendPageCssClassParts("html-my-product-reviews-list-page");
+        Html.AppendCssFileParts($"~/css/forms.min.css");
+    Html.AppendCssFileParts($"~/css/account.min.css");
+        Html.AppendCssFileParts($"~/css/reviews.min.css");
+    Html.AppendCssFileParts($"~/css/stars.min.css");
 }
 @section left
 {
@@ -14,7 +18,7 @@
 }
 <div class="page account-page my-product-reviews-list-page">
     <div class="page-title">
-        <h1>@T("Account.MyAccount") - @T("Account.CustomerProductReviews")</h1>
+        <h1>@T("Account.CustomerProductReviews")</h1>
     </div>
     <div class="page-body">
         @if (Model.ProductReviews.Count > 0)
