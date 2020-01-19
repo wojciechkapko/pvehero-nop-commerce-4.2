@@ -110,16 +110,19 @@
 .p-0 {
     padding: 0 !important;
 }
+.text-left {
+    text-align: left!important;
+}
 
 .text-shadow {
     text-shadow: 0 2px 5px rgba(0,0,0,.5);
 }
 
-.mt-2, my-2 {
+.mt-2, .my-2 {
     margin-top: .5rem !important;
 }
 
-.mt-3, my-3 {
+.mt-3, .my-3 {
     margin-top: 1rem !important;
 }
 

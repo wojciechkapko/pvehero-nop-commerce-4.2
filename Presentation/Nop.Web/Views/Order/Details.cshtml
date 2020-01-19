@@ -12,6 +12,11 @@
     Html.AddTitleParts(T("PageTitle.OrderDetails").Text);
     //page class
     Html.AppendPageCssClassParts("html-order-details-page");
+    Html.AppendCssFileParts($"~/css/forms.min.css");
+    Html.AppendCssFileParts($"~/css/cart.min.css");
+    Html.AppendCssFileParts($"~/css/tables.min.css");
+    Html.AppendCssFileParts($"~/css/orderdetails.min.css");
+
 }
 
 @*
@@ -60,10 +65,10 @@
         </ul>
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.OrderDetailsPageOverview, additionalData = Model })
     </div>
-    <div class="order-details-area">
+    <div class="order-details-area mb-3">
         <div class="billing-info-wrap card default dark">
             <div class="billing-info">
-                <div class="title">
+                <div class="title text-left mb-3 d-none md-d-flex">
                     <strong>@T("Order.BillingAddress")</strong>
                 </div>
                 <ul class="info-list">
@@ -184,7 +189,7 @@
             @if (!string.IsNullOrEmpty(Model.PaymentMethod))
             {
                 <div class="payment-method-info">
-                    <div class="title">
+                    <div class="title text-left my-3 d-none md-d-flex">
                         <strong>@T("Order.Payment")</strong>
                     </div>
                     <ul class="info-list">
