@@ -547,10 +547,6 @@ label, label + * {
     text-decoration: underline;
 }
 
-.footer-powered-by {
-    margin: 10px 0 0;
-}
-
 .footer-powered-by a {
     font-weight: bold;
     color: #bba0ff;
@@ -986,14 +982,7 @@ label, label + * {
         padding: 45px 10px;
     }
 
-    .footer-upper:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
     .footer-block {
-        float: left;
         width: 175px;
         margin: 0;
         text-align: left;
@@ -1018,19 +1007,11 @@ label, label + * {
         padding: 15px 5px;
     }
 
-    .footer-lower:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
-
     .footer-info {
-        float: right;
         line-height: 32px;
     }
 
     .footer-powered-by {
-        float: left;
         margin: 0;
         line-height: 32px;
     }
@@ -1418,7 +1399,6 @@ button, .btn, .button-1, .button-2, .button-3 {
 .dropdown-item {
     display: block;
     width: 100%;
-    clear: both;
     text-align: inherit;
     white-space: nowrap;
     background-color: transparent;

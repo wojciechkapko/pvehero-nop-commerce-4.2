@@ -453,9 +453,6 @@ label, label + * {
 .footer-tax-shipping a:hover {
   text-decoration: underline; }
 
-.footer-powered-by {
-  margin: 10px 0 0; }
-
 .footer-powered-by a {
   font-weight: bold;
   color: #bba0ff; }
@@ -740,12 +737,7 @@ label, label + * {
   .footer-upper {
     width: 980px;
     padding: 45px 10px; }
-  .footer-upper:after {
-    content: "";
-    display: block;
-    clear: both; }
   .footer-block {
-    float: left;
     width: 175px;
     margin: 0;
     text-align: left; }
@@ -759,15 +751,9 @@ label, label + * {
     position: relative;
     width: 980px;
     padding: 15px 5px; }
-  .footer-lower:after {
-    content: "";
-    display: block;
-    clear: both; }
   .footer-info {
-    float: right;
     line-height: 32px; }
   .footer-powered-by {
-    float: left;
     margin: 0;
     line-height: 32px; }
   /*** COLUMN ***/
@@ -927,6 +913,9 @@ label, label + * {
 .text-shadow {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); }
 
+.mt-2, my-2 {
+  margin-top: .5rem !important; }
+
 .mt-3, my-3 {
   margin-top: 1rem !important; }
 
@@ -1016,7 +1005,9 @@ flex-wrap {
     flex-direction: row !important; }
   .md-justify-content-start {
     -ms-flex-pack: start !important;
-    justify-content: flex-start !important; } }
+    justify-content: flex-start !important; }
+  .md-mt-0, .md-my-0 {
+    margin-top: 0 !important; } }
 
 @media all and (min-width: 1367px) {
   .xl-flex-row {
@@ -1254,7 +1245,6 @@ button.btn-danger, .btn.btn-danger, .button-1.btn-danger, .button-2.btn-danger, 
 .dropdown-item {
   display: block;
   width: 100%;
-  clear: both;
   text-align: inherit;
   white-space: nowrap;
   background-color: transparent;
