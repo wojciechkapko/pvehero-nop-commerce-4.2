@@ -213,8 +213,9 @@
     margin: 20px 0;
 }
 
-.address-item {
+.address-item, .order-item {
     text-align: left;
+
     .dropdown {
         position: absolute;
         right: 0;
@@ -224,7 +225,7 @@
             width: auto;
 
             .dropdown-item {
-                padding: .375rem 3rem .75rem 3rem!important;
+                padding: .375rem 3rem .75rem 3rem !important;
             }
         }
 
@@ -232,6 +233,7 @@
             display: none;
         }
     }
+
     &:last-child {
         margin-bottom: 0;
     }
@@ -267,7 +269,7 @@
 }
 
 @media all and (max-width: 350px){
-    .address-list-page .info, .order-list-page .info {
+    .address-list-page .info, .order-list-page .info, .order-list-page .section .title {
         font-size: 14px;
     }
 }

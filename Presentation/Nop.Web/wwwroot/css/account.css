@@ -171,19 +171,19 @@
 .address-edit-page .message-error {
   margin: 20px 0; }
 
-.address-item {
+.address-item, .order-item {
   text-align: left; }
-  .address-item .dropdown {
+  .address-item .dropdown, .order-item .dropdown {
     position: absolute;
     right: 0;
     top: 0; }
-    .address-item .dropdown .dropdown-menu {
+    .address-item .dropdown .dropdown-menu, .order-item .dropdown .dropdown-menu {
       width: auto; }
-      .address-item .dropdown .dropdown-menu .dropdown-item {
-        padding: 0.375rem 3rem 0.75rem 3rem !important; }
-    .address-item .dropdown .dropdown-toggle::after {
+      .address-item .dropdown .dropdown-menu .dropdown-item, .order-item .dropdown .dropdown-menu .dropdown-item {
+        padding: .375rem 3rem .75rem 3rem !important; }
+    .address-item .dropdown .dropdown-toggle::after, .order-item .dropdown .dropdown-toggle::after {
       display: none; }
-  .address-item:last-child {
+  .address-item:last-child, .order-item:last-child {
     margin-bottom: 0; }
 
 .reward-points-overview {
@@ -207,7 +207,7 @@
   border: none; }
 
 @media all and (max-width: 350px) {
-  .address-list-page .info, .order-list-page .info {
+  .address-list-page .info, .order-list-page .info, .order-list-page .section .title {
     font-size: 14px; } }
 
 @media all and (max-width: 459px) {

@@ -7,6 +7,10 @@
     //page class
     Html.AppendPageCssClassParts("html-account-page");
     Html.AppendPageCssClassParts("html-order-list-page");
+    Html.AppendCssFileParts($"~/css/forms.min.css");
+    Html.AppendCssFileParts($"~/css/account.min.css");
+    Html.AppendCssFileParts($"~/css/pager.min.css");
+
 }
 @section left
 {
@@ -14,7 +18,7 @@
 }
 <div class="page account-page order-list-page">
     <div class="page-title">
-        <h1>@T("Account.MyAccount") - @T("Account.CustomerOrders")</h1>
+        <h1>@T("Account.CustomerOrders")</h1>
     </div>
     <div class="page-body">
         @if (Model.RecurringOrders.Count > 0)
@@ -131,26 +135,27 @@
 
         @if (Model.Orders.Count > 0)
         {
-            <div class="order-list">
+            <div class="order-list card default">
                 @foreach (var order in Model.Orders)
                 {
-                    <div class="section order-item">
-                        <div class="title">
-                            <strong>@T("Account.CustomerOrders.OrderNumber"): @order.CustomOrderNumber</strong>
-                        </div>
-                        <ul class="info card default">
-                            <li>@T("Account.CustomerOrders.OrderStatus"): <span class="order-status @order.OrderStatusEnum.ToString().ToLowerInvariant()">@order.OrderStatus</span></li>
-                            <li>@T("Account.CustomerOrders.OrderDate"): <span class="order-date">@order.CreatedOn.ToString()</span></li>
-                            <li>@T("Account.CustomerOrders.OrderTotal"): <span class="order-total">@order.OrderTotal</span></li>
-                        </ul>
-                        <div class="buttons">
-                            @if (order.IsReturnRequestAllowed)
-                            {
-                                <input type="button" value="@T("Account.CustomerOrders.ReturnItems")" class="return-items-button" onclick="setLocation('@Url.RouteUrl("ReturnRequest", new { orderId = order.Id })')" />
-                            }
-                            <input type="button" value="@T("Account.CustomerOrders.OrderDetails")" class="order-details-button" onclick="setLocation('@Url.RouteUrl("OrderDetails", new { orderId = order.Id })')" />
+                <div class="section order-item">
+                    <div class="title p-0">
+                        <strong>@T("Account.CustomerOrders.OrderNumber"): @order.CustomOrderNumber</strong>
+                    </div>
+                    <ul class="info">
+                        <li>@T("Account.CustomerOrders.OrderStatus"): <span class="order-status @order.OrderStatusEnum.ToString().ToLowerInvariant()">@order.OrderStatus</span></li>
+                        <li>@T("Account.CustomerOrders.OrderDate"): <span class="order-date">@order.CreatedOn.ToString()</span></li>
+                        <li>@T("Account.CustomerOrders.OrderTotal"): <span class="order-total">@order.OrderTotal</span></li>
+                    </ul>
+                    <div class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <svg class="icon size-2x"><use href="#dots-vertical"></use></svg>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mt-0">
+                            <a href="javascript:void(0)" class="dropdown-item order-details-button px-5" onclick="setLocation('@Url.RouteUrl("OrderDetails", new { orderId = order.Id })')">@T("Account.CustomerOrders.OrderDetails")</a>
                         </div>
                     </div>
+                </div>
                 }
             </div>
             var pager = Html.Pager(Model.PagerModel);
