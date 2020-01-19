@@ -314,6 +314,9 @@
             background: #2f295b;
         }
     }
+    .title {
+        border: none;
+    }
 }
 
 
@@ -444,6 +447,9 @@
     .customer-info-page .vat-note,
     .customer-info-page .email-to-revalidate-note {
         margin-left: 150px;
+    }
+    .block.block-account-navigation {
+        padding-top: 23px;
     }
 }
 

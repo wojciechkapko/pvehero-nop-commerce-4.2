@@ -2,7 +2,8 @@
 .order-progress {
   margin: 0 0 10px;
   padding: 15px 0;
-  text-align: center; }
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15); }
 
 .order-progress ul {
   font-size: 0; }

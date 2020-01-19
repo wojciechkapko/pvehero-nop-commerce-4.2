@@ -7,6 +7,8 @@
     //page class
     Html.AppendPageCssClassParts("html-checkout-page");
     Html.AppendPageCssClassParts("html-order-confirm-page");
+    Html.AppendCssFileParts($"~/css/cart.min.css");
+    Html.AppendCssFileParts($"~/css/checkout.min.css");
 }
 <div class="page checkout-page order-confirm-page">
     @await Component.InvokeAsync("CheckoutProgress", new { step = CheckoutProgressStep.Confirm })

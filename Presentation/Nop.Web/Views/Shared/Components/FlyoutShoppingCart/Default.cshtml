@@ -17,16 +17,16 @@
                 @for (var i = 0; i < Model.Items.Count; i++)
                 {
                     var item = Model.Items[i];
-                    <div class="item @(i == 0 ? "first" : null)">
+                    <div class="item @(i == 0 ? "first" : null) d-flex">
                         @if (Model.ShowProductImages)
                         {
-                            <div class="picture">
+                            <div class="picture mr-3">
                                 <a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })" title="@item.Picture.Title">
                                     <img alt="@item.Picture.AlternateText" src="@item.Picture.ImageUrl" title="@item.Picture.Title" />
                                 </a>
                             </div>
                         }
-                        <div class="product">
+                        <div class="product d-flex flex-column flex-wrap">
                             <div class="name">
                                 <a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })">@item.ProductName</a>
                             </div>

@@ -7,7 +7,7 @@
         @RenderSection("Breadcrumb")
     }
 }
-<div class="center-1">
+<div class="center-1 d-flex flex-column" style="width: 100%">
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MainColumnBefore })
     @RenderBody()
     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MainColumnAfter })

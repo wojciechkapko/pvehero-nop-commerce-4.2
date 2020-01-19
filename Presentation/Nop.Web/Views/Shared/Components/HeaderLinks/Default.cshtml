@@ -2,7 +2,7 @@
 @inject Nop.Core.IWebHelper webHelper
 
 <div class="header-links">
-    <ul>
+    <ul class="md-d-flex">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksBefore })
         @if (Model.IsAuthenticated)
         {
@@ -36,7 +36,7 @@
         }
         @if (Model.ShoppingCartEnabled)
         {
-            <li id="topcartlink">
+            <li id="topcartlink" class="d-flex justify-content-center">
                 <a href="@Url.RouteUrl("ShoppingCart")">
                     <svg class='icon white size-1-25x mr-1'><use href='#shopping-bag'></use></svg>
                     <span class="cart-label">@T("ShoppingCart")</span>

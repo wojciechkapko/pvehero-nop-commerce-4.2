@@ -251,6 +251,9 @@
   .block-account-navigation .list a.active {
     background: #2f295b; }
 
+.block-account-navigation .title {
+  border: none; }
+
 @media all and (max-width: 459px) {
   .html-registration-page .master-wrapper-content, .html-contact-page .master-wrapper-content {
     width: 100%; }
@@ -327,7 +330,9 @@
     margin-left: 275px; }
   .customer-info-page .vat-note,
   .customer-info-page .email-to-revalidate-note {
-    margin-left: 150px; } }
+    margin-left: 150px; }
+  .block.block-account-navigation {
+    padding-top: 23px; } }
 
 @media all and (min-width: 1367px) {
   /*** REGISTRATION, LOGIN, ACCOUNT ***/

@@ -10,6 +10,11 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+    Html.AppendCssFileParts($"~/css/forms.min.css");
+    Html.AppendCssFileParts($"~/css/cart.min.css");
+    Html.AppendCssFileParts($"~/css/checkout.min.css");
+    Html.AppendCssFileParts($"~/css/tables.min.css");
+
 }
 <div class="page checkout-page billing-address-page">
     @await Component.InvokeAsync("CheckoutProgress", new { step = CheckoutProgressStep.Address })
@@ -137,8 +142,8 @@
                                             </li>
                                         }
                                     </ul>
-                                    <div class="select-button">
-                                        <input type="button" value="@T("Checkout.BillToThisAddress")" class="button-1 select-billing-address-button" onclick="selectBillingAddress@(item.Id)()" />
+                                    <div class="select-button d-flex justify-content-center">
+                                        <button type="button" class="button-1 select-billing-address-button" onclick="selectBillingAddress@(item.Id)()">@T("Checkout.BillToThisAddress")</button>
                                         <script asp-location="Footer">
                                             function selectBillingAddress@(item.Id)() {
                                                 if ($('#@Html.IdFor(model => model.ShipToSameAddress)')

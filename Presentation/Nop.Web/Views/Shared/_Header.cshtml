@@ -1,27 +1,27 @@
-﻿<div class="header mb-4">
-    <div class="header-upper-wrapper ">
+﻿<div class="header mb-3">
+    <div class="header-upper-wrapper d-flex justify-content-center">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderBefore })
 
-        <div class="header-upper">
-            <div class="header-selectors-wrapper">
+        <div class="header-upper d-flex flex-column md-flex-row">
+            <div class="header-selectors-wrapper d-flex justify-content-center">
                 @await Component.InvokeAsync("TaxTypeSelector")
                 @await Component.InvokeAsync("CurrencySelector")
                 @await Component.InvokeAsync("LanguageSelector")
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderSelectors })
             </div>
-            <div class="header-links-wrapper">
+            <div class="header-links-wrapper md-ml-auto">
                 @await Component.InvokeAsync("HeaderLinks")
                 @await Component.InvokeAsync("FlyoutShoppingCart")
             </div>
         </div>
     </div>
-    <div class="header-lower-wrapper ">
+    <div class="header-lower-wrapper d-flex justify-content-center">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMiddle })
-        <div class="header-lower">
-            <div class="header-logo">
+        <div class="header-lower d-flex flex-column md-flex-row mb-3">
+            <div class="header-logo mb-4 md-mb-0">
                 @await Component.InvokeAsync("Logo")
             </div>
-            <div class="search-box store-search-box">
+            <div class="search-box store-search-box d-flex md-ml-auto align-items-center">
                 @await Component.InvokeAsync("SearchBox")
             </div>
         </div>

@@ -19,7 +19,7 @@
         {
             @RenderSection("Breadcrumb") 
         }
-        <div class="master-column-wrapper d-flex">
+        <div class="master-column-wrapper d-flex flex-column md-flex-row">
             @RenderBody()
         </div>
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContentAfter })
