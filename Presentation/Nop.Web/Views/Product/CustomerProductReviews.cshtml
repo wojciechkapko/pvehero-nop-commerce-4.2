@@ -27,7 +27,7 @@
                 {
                     var ratingPercent = review.Rating * 20;
                     <div class="product-review-item card default p-4">
-                        <div class="review-item-head">
+                        <div class="review-item-head d-flex flex-column xs-flex-row align-items-center xs-align-items-end">
                             <div class="stars mr-2" data-stars="@review.Rating">
                                 <svg class='icon star rate' data-rating="1"><use href='#star'></use></svg>
                                 <svg class='icon star rate' data-rating="2"><use href='#star'></use></svg>
@@ -44,7 +44,7 @@
                                 </span>
 
                             </div>
-                            <span class="date ml-auto">
+                            <span class="date xs-ml-auto">
                                 <span>@review.WrittenOnStr</span>
                             </span>
 
