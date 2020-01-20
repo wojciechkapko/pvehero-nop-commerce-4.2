@@ -608,8 +608,7 @@ label, label + * {
 @media all and (min-width: 1001px) {
   /*** GLOBAL STYLES ***/
   .master-wrapper-content {
-    width: 980px;
-    margin: auto; }
+    width: 980px; }
   .center-2 {
     width: 74%; }
   .side-2 {
@@ -926,6 +925,9 @@ label, label + * {
 
 .mt-3, .my-3 {
   margin-top: 1rem !important; }
+
+.mt-auto {
+  margin-top: auto !important; }
 
 .sr-only {
   position: absolute;
