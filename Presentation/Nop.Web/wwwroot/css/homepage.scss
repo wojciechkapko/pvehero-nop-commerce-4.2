@@ -30,12 +30,6 @@
         }
     }
 
-    a.button-3 {
-        position: absolute;
-        right: 0.45rem;
-        top: 12.7em;
-    }
-
     .title {
         text-align: left;
     }
@@ -377,11 +371,4 @@
         }
 }
 
-@media all and (max-width: 503px){
-    .home-page-category-list a.button-3 {
-        position: absolute;
-        right: .45rem;
-        top: 15.75rem;
-    }
-}
 .slider-wrapper {opacity:0}

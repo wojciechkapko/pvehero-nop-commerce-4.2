@@ -19,10 +19,6 @@
         bottom: 0;
         right: 0;
         width: 100%; }
-  .home-page-category-list a.button-3 {
-    position: absolute;
-    right: 0.45rem;
-    top: 12.7em; }
   .home-page-category-list .title {
     text-align: left; }
   .home-page-category-list h2.title {
@@ -236,12 +232,6 @@
     top: 2em; }
   .home-page-product-grid.carousel .tns-controls button {
     top: -121px; } }
-
-@media all and (max-width: 503px) {
-  .home-page-category-list a.button-3 {
-    position: absolute;
-    right: .45rem;
-    top: 15.75rem; } }
 
 .slider-wrapper {
   opacity: 0; }

@@ -8,11 +8,12 @@
                 var category = item.SeName.Replace("-", string.Empty);
                 //@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeBestSellers })
             <div class="item-box category">
-                <h2 class="title">
-                    <svg class='icon shadow svg-baseline'><use href='#@item.SeName'></use></svg>
+                <h2 class="title d-block md-d-flex align-items-end">
+                    <svg class='icon shadow svg-baseline mr-0 md-mr-2'><use href='#@item.SeName'></use></svg>
                     @item.Name
+                    <a class="button-3 font-size-base d-none md-d-inline-flex ml-auto" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
                 </h2>
-                <a class="button-3 font-size-base" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
+
                 <div class="category-details d-flex flex-column md-flex-row">
                     <div class="side-2">
                         @await Component.InvokeAsync("HomepageBestSellers", item.Id)
@@ -21,6 +22,7 @@
                         <div class="product-grid home-page-product-grid carousel">
                             <div class="title">
                                 <strong>Featured</strong>
+                                <a class="button-3 font-size-base ml-auto d-inline-flex md-d-none" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
                             </div>
 
                             @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeProducts })*@

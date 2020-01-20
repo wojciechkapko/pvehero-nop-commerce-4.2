@@ -1,5 +1,13 @@
 ﻿$accent-color: #b79bff;
 
+.d-block {
+    display: block !important;
+}
+
+.mr-0, .mx-0 {
+    margin-right: 0 !important;
+}
+
 .mr-1, .mx-1 {
     margin-right: .25rem !important;
 }
@@ -270,6 +278,16 @@ flex-wrap {
 
 @media all and (min-width: 1001px) {
 
+    .md-d-none {
+        display: none !important;
+    }
+
+
+    .md-d-inline-flex {
+        display: -ms-inline-flexbox !important;
+        display: inline-flex !important;
+    }
+
     .md-font-size-lg {
         font-size: 1.125rem !important;
     }
@@ -293,6 +311,10 @@ flex-wrap {
 
     .md-ml-auto, .md-my-auto {
         margin-left: auto !important;
+    }
+
+    .md-mr-2, .md-mr-2 {
+        margin-right: .5rem !important;
     }
 
     .md-mr-3, .md-mr-3 {
