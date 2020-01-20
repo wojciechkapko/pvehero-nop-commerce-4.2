@@ -12,11 +12,6 @@
 .product-selectors:first-child {
   border-top: none; }
 
-.product-selectors:after {
-  content: "";
-  display: block;
-  clear: both; }
-
 .product-selectors > div {
   display: flex;
   align-items: center;

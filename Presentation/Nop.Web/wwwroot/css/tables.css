@@ -19,13 +19,14 @@
 .forum-table th {
   padding: 0 1rem;
   white-space: nowrap;
-  font-weight: normal; }
+  font-weight: normal;
+  text-align: center; }
 
 .cart td,
 .data-table td,
 .forum-table td {
   min-width: 50px;
-  padding: 8px 0;
+  padding: 8px;
   text-align: center; }
 
 .cart a,
@@ -93,8 +94,7 @@
   padding: 0 1rem; }
 
 .cart td.subtotal .discount, .cart td.subtotal .discount-additional-info {
-  font-style: italic;
-  color: #4ab2f1; }
+  color: #b79bff; }
 
 .data-table em a {
   font-weight: bold;
@@ -123,13 +123,13 @@
   .cart colgroup,
   .cart thead {
     display: none; }
-  .cart tbody {
+  .cart tbody, .order-details-page .data-table tbody {
     display: flex;
     overflow: hidden;
-    justify-content: center; }
+    justify-content: center;
+    flex-wrap: wrap; }
   .cart tr {
     display: block;
-    float: left;
     width: 100%;
     margin: 40px 0 0; }
   .cart td {
@@ -156,12 +156,8 @@
   .order-details-page .data-table colgroup,
   .order-details-page .data-table thead {
     display: none; }
-  .order-details-page .data-table tbody {
-    display: block;
-    overflow: hidden; }
   .order-details-page .data-table tr {
     display: block;
-    float: left;
     width: 100%;
     margin: 40px 0 0; }
   .order-details-page .data-table td {
@@ -183,30 +179,18 @@
   .cart tr {
     width: 46%;
     margin: 40px 2% 0; }
-  .cart tr:nth-child(2n+1) {
-    clear: both; }
   .order-details-page .data-table tr {
     width: 46%;
-    margin: 40px 2% 0; }
-  .order-details-page .data-table tr:nth-child(2n+1) {
-    clear: both; } }
+    margin: 40px 2% 0; } }
 
 @media all and (min-width: 769px) {
   /**** GLOBAL TABLES ***/
   .cart tr {
     width: 31.33333%;
     margin: 40px 1% 0; }
-  .cart tr:nth-child(2n+1) {
-    clear: none; }
-  .cart tr:nth-child(3n+1) {
-    clear: both; }
   .order-details-page .data-table tr {
     width: 31.33333%;
-    margin: 40px 1% 0; }
-  .order-details-page .data-table tr:nth-child(2n+1) {
-    clear: none; }
-  .order-details-page .data-table tr:nth-child(3n+1) {
-    clear: both; } }
+    margin: 40px 1% 0; } }
 
 @media all and (min-width: 1001px) {
   /*** GLOBAL TABLES ***/

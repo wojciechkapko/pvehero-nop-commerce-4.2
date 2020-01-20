@@ -2,14 +2,9 @@
 .product-details-page {
   padding: 20px 0 0; }
 
-.product-essential:after {
-  content: "";
-  display: block;
-  clear: both; }
-
 .gallery {
-  margin: 0 auto 50px;
-  position: relative; }
+  position: relative;
+  margin-bottom: 50px; }
 
 .gallery .picture-wrapper {
   margin: 0 0 10px; }
@@ -184,10 +179,6 @@
   display: inline-block;
   position: relative; }
 
-.overview .add-to-cart-panel > *,
-.variant-overview .add-to-cart-panel > * {
-  float: left; }
-
 .overview .qty-label,
 .variant-overview .qty-label {
   display: none !important; }
@@ -209,7 +200,6 @@
   color: #444; }
 
 .full-description {
-  clear: both;
   line-height: 24px;
   padding: 1rem 2rem; }
 
@@ -223,47 +213,6 @@
 
 .product-collateral .title strong {
   font-weight: normal; }
-
-.product-variant-line {
-  margin: 0 0 30px;
-  border-bottom: 1px solid #ddd;
-  padding: 0 0 20px; }
-
-.product-variant-line:after {
-  content: "";
-  display: block;
-  clear: both; }
-
-.variant-picture {
-  position: relative;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 15px;
-  overflow: hidden; }
-
-.variant-overview {
-  width: 100%; }
-
-.variant-overview .variant-name {
-  margin: 0 0 10px;
-  padding: 10px 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #4ab2f1; }
-
-.variant-overview .variant-description {
-  margin: 0 0 15px;
-  line-height: 22px; }
-
-.variant-overview .add-to-wishlist {
-  margin: 0 0 25px; }
-
-.variant-overview .add-to-wishlist-button {
-  display: inline-block;
-  width: auto; }
-
-.variant-overview .add-to-cart {
-  margin: 0 0 10px; }
 
 .product-specs-box {
   margin: 0 0 40px; }
@@ -429,7 +378,6 @@
   border-radius: 5rem;
   box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.7);
   opacity: .9;
-  font-size: 1rem;
   min-height: 40px; }
   .attributes .option-list.radio label.active {
     background: #6658d5;
@@ -488,35 +436,15 @@
     width: auto;
     margin: 0 1px 2px; } }
 
-@media all and (min-width: 769px) {
-  /*** PRODUCT PAGE ***/
-  .variant-picture {
-    float: left; }
-  .variant-picture + .variant-overview {
-    width: auto;
-    margin: 0 0 0 240px; }
-  .variant-overview {
-    text-align: left; } }
-
 @media all and (min-width: 1001px) {
   /*** PRODUCT PAGE ***/
   .gallery {
-    float: left;
     width: 400px; }
   .gallery .picture {
     width: auto; }
   .overview {
-    float: left;
     width: 52%;
     margin-left: 3rem; }
-  .rental-attributes {
-    overflow: hidden; }
-  .rental-attributes .attribute-item {
-    float: left;
-    margin: 0 20px 0 0; }
-  .rental-attributes .datepicker {
-    width: 160px;
-    text-align: left; }
   .attribute-squares li {
     margin: 0 10px 10px 0; }
   .product-details-page .add-to-cart {

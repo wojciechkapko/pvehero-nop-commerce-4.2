@@ -7,10 +7,6 @@
     border-bottom: 1px solid rgba(255,255,255,.15);
 }
 
-.order-progress ul {
-    font-size: 0;
-}
-
 .order-progress li {
     display: inline-block;
     margin: 10px;
@@ -19,7 +15,6 @@
 .order-progress a {
     display: block;
     min-width: 70px;
-    font-size: 14px; /*reset zeroing*/
 }
 
 .order-progress li.active-step a {
@@ -197,7 +192,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
     font-weight: 900;
     border-radius: 50%;
     box-shadow: 0 0 0 4px #7e57c2, inset 0 2px 0 rgba(0,0,0,.08), 0 3px 0 4px rgba(0,0,0,.05);
@@ -296,9 +290,5 @@
     .cart-footer .cart-collaterals {
         width: 760px;
         margin: 0;
-    }
-
-    .cart-footer .cart-collaterals .deals {
-        width: 360px;
     }
 }

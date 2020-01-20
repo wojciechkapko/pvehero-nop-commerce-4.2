@@ -90,7 +90,7 @@
                     <tbody>
                         @foreach (var item in Model.Items)
                         {
-                            <tr>
+                            <tr class="d-flex md-d-tablerow flex-column">
                                 @if (Model.IsEditable)
                                 {
                                 <td class="remove-from-cart">
@@ -169,9 +169,11 @@
                                     </td>
                                 }
                                 <td class="unit-price">
+                                    <label class="td-title mr-1">@T("ShoppingCart.UnitPrice"):</label>
                                     <span class="product-unit-price">@item.UnitPrice</span>
                                 </td>
-                                <td class="quantity">
+                                <td class="quantity d-flex md-d-tablecell justify-content-center align-items-center">
+                                    <label class="td-title mr-1">@T("ShoppingCart.Quantity"):</label>
                                     @if (Model.IsEditable)
                                     {
                                         if (item.AllowedQuantities.Count > 0)
@@ -185,7 +187,7 @@
                                         }
                                         else
                                         {
-                                            <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="text" value="@(item.Quantity)" class="qty-input"/>
+                                            <input name="itemquantity@(item.Id)" id="itemquantity@(item.Id)" type="text" value="@(item.Quantity)" class="qty-input" />
                                         }
                                     }
                                     else
@@ -194,6 +196,7 @@
                                     }
                                 </td>
                                 <td class="subtotal">
+                                    <label class="td-title mr-1">@T("ShoppingCart.ItemTotal"):</label>
                                     <span class="product-subtotal">@item.SubTotal</span>
                                     @if (!string.IsNullOrEmpty(item.Discount))
                                     {

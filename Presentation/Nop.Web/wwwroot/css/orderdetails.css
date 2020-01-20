@@ -121,7 +121,4 @@
   .order-details-page .selected-checkout-attributes {
     padding: 0 10px; }
   .order-details-page .tax-shipping-info {
-    text-align: right; }
-  .order-details-page .totals {
-    float: right;
-    clear: both; } }
+    text-align: right; } }

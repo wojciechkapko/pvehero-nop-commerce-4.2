@@ -23,9 +23,31 @@ $border-radius-5: .5rem;
 }
 
 html {
+    font-family: Cabin;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
     margin: 0;
     -webkit-text-size-adjust: none;
 }
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #30295c;
+    background: -moz-linear-gradient(top, #30295c 950px, #1c1835 100%);
+    background: -webkit-linear-gradient(top, #30295c 950px,#1c1835 100%);
+    background: linear-gradient(to bottom, #30295c 950px,#1c1835 100%);
+}
+
+input[type="button"],
+.btn, .button-1, .button-2, .button-3, .cart-qty, .block-category-navigation .list a {
+    font-family: 'Open Sans',sans-serif;
+}
+
 
 ol, ul {
     list-style: none;
@@ -63,18 +85,6 @@ script {
 }
 
 /*********** GLOBAL STYLES **********/
-html {
-    font: normal 16px 'Cabin',Helvetica,sans-serif;
-}
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-    color: #fff;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    color: #fff;
-}
 
 a {
     color: inherit;
@@ -112,14 +122,13 @@ input[type="button"],
     line-height: 1.5;
     font-size: .875rem;
     font-weight: 600;
+    color: #fff;
     text-transform: uppercase;
     letter-spacing: .025em;
     border: 1px transparent;
     padding: .5rem 1rem;
     border-radius: .25rem;
     box-shadow: 0 3px 5px rgba(0,0,0,.2);
-    color: #fff;
-    font-family: 'Open Sans',sans-serif;
     text-shadow: 0.0625em 0.0625em 0.0625em #333;
     white-space: nowrap;
     justify-content: center;
@@ -1102,16 +1111,6 @@ label, label + * {
 @import "keyframes";
 @import "utility";
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: #30295c;
-    background: -moz-linear-gradient(top, #30295c 950px, #1c1835 100%);
-    background: -webkit-linear-gradient(top, #30295c 950px,#1c1835 100%);
-    background: linear-gradient(to bottom, #30295c 950px,#1c1835 100%);
-}
-
 .footer {
     background-color: rgba(0, 0, 0, 0.2);
     text-align: center;
@@ -1168,6 +1167,9 @@ body {
 
 input, textarea {
     color: #777;
+}
+input {
+    font-size: 1rem;
 }
 
 input, textarea {
@@ -1475,7 +1477,6 @@ input.search-box-text::placeholder {
     background: #c52c8d;
     display: inline !important;
     align-items: center;
-    font-family: 'Open Sans',sans-serif;
     color: #fff !important;
     font-size: 12px !important;
     padding: .2rem .5rem;
@@ -1826,8 +1827,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
         }
 
         a {
-            top: 0;
-            left: 0;
             background: #26214a;
             display: inline-block;
             line-height: 1.5;
@@ -1839,10 +1838,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
             padding: .5rem 1rem;
             border-radius: .25rem;
             box-shadow: 0 3px 5px rgba(0,0,0,.2);
-            color: #fff;
-            font-family: 'Open Sans',sans-serif;
             text-shadow: 0.0625em 0.0625em 0.0625em #333;
-            white-space: nowrap;
         }
 
         .active {

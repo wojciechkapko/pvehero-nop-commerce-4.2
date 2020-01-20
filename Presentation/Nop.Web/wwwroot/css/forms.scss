@@ -11,7 +11,6 @@ textarea, select {
     vertical-align: middle;
     border-radius: .25rem;
     background: #fff;
-    font-size: 1rem;
     font-weight: 500;
 }
 
@@ -38,7 +37,7 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
 .section .title {
     margin: 0 0 15px;
     padding: 0 10px;
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 .form-fields {
@@ -50,13 +49,6 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
     position: relative;
     margin: 0 0 15px;
     text-align: center;
-    font-size: 0;
-}
-
-.inputs:after {
-    content: "";
-    display: block;
-    clear: both;
 }
 
 .inputs label {
@@ -64,7 +56,7 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
     width: 100%;
     margin: 0 0 10px;
     text-align: center;
-    font-size: 14px; /*reset zeroing*/
+    font-size: .875rem;
 }
 
 .inputs input[type="text"],
@@ -109,7 +101,7 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
 .required {
     margin: 0 -8px 0 3px; /*siblings offset*/
     vertical-align: top;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: normal;
     color: #e4434b;
 }
@@ -122,7 +114,7 @@ input::-moz-placeholder, input:-ms-input-placeholder, input::-ms-input-placehold
     /* margin: 1rem 0; */
     margin-top: 1rem;
     color: #e4444c !important;
-    font-size: 14px !important;
+    font-size: .875rem !important;
     padding: 0 1.45rem;
     border-radius: .25rem;
     font-weight: 500;
