@@ -159,7 +159,7 @@ namespace Nop.Web.Factories
                 PageSize = orders.PageSize,
                 TotalRecords = orders.TotalCount,
                 PageIndex = orders.PageIndex,
-                ShowTotalSummary = true,
+                ShowTotalSummary = false,
                 RouteActionName = "CustomerOrdersListPaged",
                 UseRouteLinks = true,
                 RouteValues = new OrdersListRouteValues { pageNumber = page ?? 0 }
