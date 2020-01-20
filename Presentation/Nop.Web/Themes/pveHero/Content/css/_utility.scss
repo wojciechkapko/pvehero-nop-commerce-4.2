@@ -197,6 +197,10 @@ flex-wrap {
     font-size: 1.25rem !important
 }
 
+.font-bold {
+    font-weight: 600!important;
+}
+
 @media all and (min-width: 481px) {
     .xs-flex-row {
         -ms-flex-direction: row !important;

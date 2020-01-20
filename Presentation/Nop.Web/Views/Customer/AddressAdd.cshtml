@@ -27,11 +27,13 @@
         </div>
         <div class="page-body">
             <div asp-validation-summary="ModelOnly" class="message-error"></div>
-            @{
-                var dataDictAddress = new ViewDataDictionary(ViewData);
-                dataDictAddress.TemplateInfo.HtmlFieldPrefix = "Address";
-                @await Html.PartialAsync("_CreateOrUpdateAddress", Model.Address, dataDictAddress)
-            }
+            <div class="card default">
+                @{
+                    var dataDictAddress = new ViewDataDictionary(ViewData);
+                    dataDictAddress.TemplateInfo.HtmlFieldPrefix = "Address";
+                    @await Html.PartialAsync("_CreateOrUpdateAddress", Model.Address, dataDictAddress)
+                }
+            </div>
         </div>
     </div>
 </form>

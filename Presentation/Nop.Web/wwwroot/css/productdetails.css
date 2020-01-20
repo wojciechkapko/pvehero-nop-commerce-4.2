@@ -189,8 +189,8 @@
   height: 43px;
   padding: 0 12px;
   text-align: center;
-  font-size: 15px;
-  color: #444; }
+  border-radius: .5rem;
+  border: none; }
 
 .overview .qty-dropdown,
 .variant-overview .qty-dropdown {

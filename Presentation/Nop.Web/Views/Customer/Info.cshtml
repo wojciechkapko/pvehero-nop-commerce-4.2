@@ -123,23 +123,26 @@
                         }
                     }
                 </div>
-                    <div class="title">
-                        <strong>@T("Account.Options")</strong>
+                <div class="title">
+                    <strong>@T("Account.Options")</strong>
+                </div>
+                <div class="form-fields">
+                    <div class="inputs">
+                        <div class="checkbox">
+                            <input class="d-none" type="checkbox" data-val="true" data-val-required="The Newsletter field is required." id="Newsletter" name="Newsletter" value="true" checked="@Model.Newsletter">
+                            <label for="Newsletter" class="checkbox-style"></label>
+                            <label for="Newsletter" class="checkbox-label">Newsletter:</label>
+                        </div>
+                        <span asp-validation-for="Newsletter"></span>
                     </div>
-                    <div class="form-fields">
-                            <div class="inputs">
-                                <div class="checkbox">
-                                    <input class="d-none" type="checkbox" data-val="true" data-val-required="The Newsletter field is required." id="Newsletter" name="Newsletter" value="true" checked="@Model.Newsletter">
-                                    <label for="Newsletter" class="checkbox-style"></label>
-                                    <label for="Newsletter" class="checkbox-label">Newsletter:</label>
-                                </div>
-                                <span asp-validation-for="Newsletter"></span>
-                            </div>
-                        @if (Model.CustomerAttributes.Count > 0)
-                        {
-                            @await Html.PartialAsync("_CustomerAttributes", Model.CustomerAttributes)
-                        }
-                    </div>
+                    @if (Model.CustomerAttributes.Count > 0)
+                    {
+                        @await Html.PartialAsync("_CustomerAttributes", Model.CustomerAttributes)
+                    }
+                </div>
+                <div class="buttons mb-0">
+                    <button type="submit" id="save-info-button" name="save-info-button" class="button-1 save-customer-info-button">@T("Common.Save")</button>
+                </div>
             </div>
             @if (Model.CompanyEnabled || Model.DisplayVatNumber)
             {
@@ -175,11 +178,11 @@
                 </div>
             }
             @if (Model.StreetAddressEnabled ||
-       Model.StreetAddress2Enabled ||
-       Model.ZipPostalCodeEnabled ||
-       Model.CityEnabled ||
-       Model.CountyEnabled ||
-       Model.CountryEnabled)
+      Model.StreetAddress2Enabled ||
+      Model.ZipPostalCodeEnabled ||
+      Model.CityEnabled ||
+      Model.CountyEnabled ||
+      Model.CountryEnabled)
             {
                 <div class="fieldset">
                     <div class="title">
@@ -444,9 +447,6 @@
                     </div>
                 </div>
             }
-            <div class="buttons">
-                <input type="submit" id="save-info-button" value="@T("Common.Save")" name="save-info-button" class="button-1 save-customer-info-button" />
-            </div>
         </form>
     </div>
 </div>

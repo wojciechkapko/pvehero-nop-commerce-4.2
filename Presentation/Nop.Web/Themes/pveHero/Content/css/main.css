@@ -982,6 +982,9 @@ flex-wrap {
 .font-size-xl {
   font-size: 1.25rem !important; }
 
+.font-bold {
+  font-weight: 600 !important; }
+
 @media all and (min-width: 481px) {
   .xs-flex-row {
     -ms-flex-direction: row !important;
@@ -1210,8 +1213,8 @@ button.big, .btn.big, .button-1.big, .button-2.big, .button-3.big {
   padding: .75rem 2rem; }
 
 button.huge, .btn.huge, .button-1.huge, .button-2.huge, .button-3.huge {
-  padding: 1rem 2.5rem;
-  font-size: 1rem; }
+  padding: 1rem 2.5rem !important;
+  font-size: 1rem !important; }
 
 button.btn-danger, .btn.btn-danger, .button-1.btn-danger, .button-2.btn-danger, .button-3.btn-danger {
   background-color: #d41451; }

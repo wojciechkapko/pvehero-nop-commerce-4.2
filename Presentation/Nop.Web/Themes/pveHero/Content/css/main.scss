@@ -1292,8 +1292,8 @@ button, .btn, .button-1, .button-2, .button-3 {
     }
 
     &.huge {
-        padding: 1rem 2.5rem;
-        font-size: 1rem;
+        padding: 1rem 2.5rem!important;
+        font-size: 1rem!important;
     }
 
     &.btn-danger {
