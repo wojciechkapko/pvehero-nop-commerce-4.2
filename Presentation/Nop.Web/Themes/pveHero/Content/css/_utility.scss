@@ -231,7 +231,7 @@ flex-wrap {
         margin-left: auto !important;
     }
 
-    .sm-mr-3, .md-mr-3 {
+    .sm-mr-3, .sm-mx-3 {
         margin-right: 1rem !important;
     }
 
@@ -307,6 +307,11 @@ flex-wrap {
     .md-justify-content-start {
         -ms-flex-pack: start !important;
         justify-content: flex-start !important;
+    }
+
+    .md-justify-content-end {
+        -ms-flex-pack: end !important;
+        justify-content: flex-end !important;
     }
 
     .md-mt-0, .md-my-0 {

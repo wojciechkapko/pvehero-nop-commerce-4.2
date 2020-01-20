@@ -225,8 +225,8 @@
         <div class="cart-options">
             @if (Model.IsEditable)
             {
-                <div class="common-buttons">
-                    <button type="submit" name="updatecart" class="button-1 update-cart-button">@T("ShoppingCart.UpdateCart")</button>
+                <div class="common-buttons d-flex flex-column md-flex-row md-justify-content-end">
+                    <button type="submit" name="updatecart" class="button-1 update-cart-button mr-0 mb-4 md-mb-0 md-mr-3">@T("ShoppingCart.UpdateCart")</button>
                     <button type="submit" name="continueshopping" class="button-2 continue-shopping-button">@T("ShoppingCart.ContinueShopping")</button>
                 </div>
             }
