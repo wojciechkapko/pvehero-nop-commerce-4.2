@@ -1167,6 +1167,8 @@ input, textarea {
     font-size: 2rem !important; }
   .icon.size-3x {
     font-size: 3rem !important; }
+  .icon.red {
+    color: #e4444c !important; }
 
 .header-upper-wrapper {
   background: rgba(0, 0, 0, 0.4); }
