@@ -73,6 +73,10 @@
     margin-bottom: 1rem !important;
 }
 
+.pb-3, .py-3 {
+    padding-bottom: 1rem !important;
+}
+
 .mb-4, .my-4 {
     margin-bottom: 1.5rem !important;
 }
@@ -191,7 +195,7 @@
     display: flex !important;
 }
 
-flex-wrap {
+.flex-wrap {
     flex-wrap: wrap !important;
     -ms-flex-wrap: wrap !important;
 }

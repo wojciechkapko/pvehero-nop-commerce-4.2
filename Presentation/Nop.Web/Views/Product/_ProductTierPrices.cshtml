@@ -5,35 +5,47 @@
 }
 @if (displayTierPrices)
 {
-    <div class="tier-prices mt-4 pt-4 border-top-1 border-default">
-        <div class="title mb-4 xl-text-left">
+    <div class="d-flex flex-column mt-4 text-center tier-pricing">
+        <div class="title font-size-xl mb-4">
             <strong>@T("Products.TierPrices")</strong>
         </div>
-        <div class="table-wrapper">
-            <table class="prices-table">
-                <tr>
-                    <td class="field-header">
-                        @T("Products.TierPrices.Quantity")
-                    </td>
-                    @foreach (var tierPrice in Model)
-                    {
-                        <td class="item-quantity">
-                            @(tierPrice.Quantity)+
-                        </td>
-                    }
-                </tr>
-                <tr class="tier-prices">
-                    <td class="field-header">
-                        @T("Products.TierPrices.Price")
-                    </td>
-                    @foreach (var tierPrice in Model)
-                    {
-                        <td class="item-price font-bold">
-                            @tierPrice.Price
-                        </td>
-                    }
-                </tr>
-            </table>
+        <div class="d-flex flex-column sm-flex-row flex-wrap justify-content-center align-items-center">
+            @foreach (var tierPrice in Model)
+            {
+                <div class="p-4 box mx-0 mb-3 sm-mb-0 xl-mx-3">
+                    <div class="font-bold mb-3 pb-3 border-default border-bottom-1" style="font-size: 1.75rem">x @tierPrice.Quantity</div>
+                    <div class="font-bold tier-price d-flex align-items-end justify-content-center" style="font-size: 1.75rem">
+                        @tierPrice.Price
+                        <span class="white font-size-base ml-1" style="padding-bottom: .25rem;">each</span>
+                    </div>
+                </div>
+            }
         </div>
     </div>
+
 }
+
+<style>
+    .tier-pricing .box {
+    background: rgb(30, 24, 62);
+    box-shadow: 0 7px 15px rgba(0,0,0,.2);
+    border-radius: .5rem;
+}
+    .tier-pricing .box:first-child{
+        margin-left:0!important;
+    }
+        .tier-pricing .box:last-child{
+        margin-right:0!important;
+    }
+
+    .tier-pricing .box:nth-child(1) .tier-price {
+        color: #9bffb3;
+    }
+    .tier-pricing .box:nth-child(2) .tier-price {
+        color: #fff440;
+    }
+    .tier-pricing .box:nth-child(3) .tier-price {
+        color: #be85ff;
+    }
+
+</style>

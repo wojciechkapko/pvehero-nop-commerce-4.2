@@ -101,17 +101,9 @@
   /*reset zeroing*/
   color: #666; }
 
-.prices-table tbody tr:not(.tier-prices) td {
-  padding-bottom: .5rem; }
-
-tr.tier-prices td:nth-child(2) {
-  color: #9bffb3; }
-
-tr.tier-prices td:nth-child(3) {
-  color: #fff440; }
-
-tr.tier-prices td:nth-child(4) {
-  color: #be85ff; }
+@media all and (min-width: 769px) and (max-width: 1367px) {
+  .tier-pricing .box {
+    margin: 0 .75rem; } }
 
 .overview .button-2:hover,
 .variant-overview .button-2:hover {
@@ -371,10 +363,9 @@ tr.tier-prices td:nth-child(4) {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); }
 
 .attributes .option-list.radio label {
-  margin: 8px 0 0;
+  margin: .5rem;
   display: flex;
   align-items: center;
-  margin-right: 1rem;
   text-align: center;
   cursor: pointer;
   border: 2px solid transparent;
@@ -435,6 +426,10 @@ tr.tier-prices td:nth-child(4) {
 .product-reviews-overview {
   display: flex;
   align-items: center; }
+
+@media all and (max-width: 399px) {
+  .product-name h1 {
+    font-size: 1.5em; } }
 
 @media all and (min-width: 481px) {
   /*** PRODUCT PAGE ***/
