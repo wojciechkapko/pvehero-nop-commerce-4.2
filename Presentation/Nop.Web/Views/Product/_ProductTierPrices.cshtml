@@ -12,7 +12,7 @@
         <div class="d-flex flex-column sm-flex-row flex-wrap justify-content-center align-items-center">
             @foreach (var tierPrice in Model)
             {
-                <div class="p-4 box mx-0 mb-3 sm-mb-0 xl-mx-3">
+                <div class="p-4 box waves-effect waves-light mx-0 mb-3 sm-mb-0 xl-mx-3" onclick="$('.qty-dropdown').val('@tierPrice.Quantity.ToString()');$('#add-to-cart-button-1').click();">
                     <div class="font-bold mb-3 pb-3 border-default border-bottom-1" style="font-size: 1.75rem">x @tierPrice.Quantity</div>
                     <div class="font-bold tier-price d-flex align-items-end justify-content-center" style="font-size: 1.75rem">
                         @tierPrice.Price
@@ -22,7 +22,6 @@
             }
         </div>
     </div>
-
 }
 
 <style>
@@ -30,6 +29,8 @@
     background: rgb(30, 24, 62);
     box-shadow: 0 7px 15px rgba(0,0,0,.2);
     border-radius: .5rem;
+    cursor:pointer;
+    position: relative;
 }
     .tier-pricing .box:first-child{
         margin-left:0!important;

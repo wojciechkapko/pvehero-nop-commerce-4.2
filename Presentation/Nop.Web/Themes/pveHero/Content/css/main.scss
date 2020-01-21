@@ -39,7 +39,6 @@ input[type="button"],
     font-family: 'Open Sans',sans-serif;
 }
 
-
 ol, ul {
     list-style: none;
 }
@@ -109,12 +108,9 @@ input[type="button"],
     border-radius: .25rem !important;
 }
 
-.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .ui-autocomplete, .ui-autocomplete a, .product-item, .product-item::before  {
+.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .ui-autocomplete, .ui-autocomplete a, .product-item, .product-item::before, .tier-pricing .box::before {
     border-radius: .5rem !important;
 }
-
-
-
 
 input[type="button"],
 .btn, .button-1, .button-2, .button-3 {
@@ -884,7 +880,6 @@ label, label + * {
         line-height: 20px;
     }
 
-
     /*** FOOTER ***/
 
     .footer-upper {
@@ -1069,6 +1064,7 @@ label, label + * {
 input, textarea {
     color: #777;
 }
+
 input {
     font-size: 1rem;
 }
@@ -1141,7 +1137,7 @@ input, textarea {
     }
 
     &.red {
-        color: #e4444c!important;
+        color: #e4444c !important;
     }
 }
 
@@ -1170,8 +1166,8 @@ button, .btn, .button-1, .button-2, .button-3 {
     }
 
     &.huge {
-        padding: 1rem 2.5rem!important;
-        font-size: 1rem!important;
+        padding: 1rem 2.5rem !important;
+        font-size: 1rem !important;
     }
 
     &.btn-danger {
@@ -1620,8 +1616,8 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .bar-notification-container .close {
     display: none;
     position: fixed;
-    right: 1.5rem;
-    top: 1.5rem;
+    right: 1rem;
+    top: .75rem;
     font-size: 2em;
     z-index: 10000;
     cursor: pointer;
@@ -1710,6 +1706,15 @@ label:not(.checkbox-style):not(.checkbox-label) {
     opacity: 0;
     text-align: left;
 
+    .details {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+    }
+}
+
+.product-item, .tier-pricing .box {
     &::before {
         transition: opacity .15s ease-in-out;
         content: '';
@@ -1728,13 +1733,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
 
     &:hover::before {
         opacity: 1;
-    }
-
-    .details {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 100%;
     }
 }
 
@@ -1813,7 +1811,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
     letter-spacing: .035rem;
     font-weight: 500;
     padding: .25rem 1rem;
-
 }
 
 .ribbon, .badge {
