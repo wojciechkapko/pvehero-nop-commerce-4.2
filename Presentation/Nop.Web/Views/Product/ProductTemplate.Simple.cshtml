@@ -127,8 +127,8 @@
                             @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
                         }
                         <!--price & add to cart-->
-                        <div class="card default d-flex flex-column">
-                            <div class="summary d-flex flex-column sm-flex-row sm-justify-around md-justify-content-center" id="summary">
+                        <div class="card default d-flex flex-column" id="summary">
+                            <div class="summary d-flex flex-column sm-flex-row sm-justify-around md-justify-content-center" >
                                 @{
                                     var dataDictAddToCart = new ViewDataDictionary(ViewData);
                                     dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
