@@ -195,24 +195,13 @@
 
 
     <style>
-        .html-category-page.class-@(Model.SeName).webp  .master-wrapper-page::before
+        .html-category-page.class-@(Model.CategoryBreadcrumb[0].SeName).webp  .master-wrapper-page::before
         {
-            background-image: url(/images/categories/@Model.SeName-bg.webp) !important;
+            background-image: url(/images/categories/@Model.CategoryBreadcrumb[0].SeName-bg.webp) !important;
         }
-        .html-category-page.class-@(Model.SeName).no-webp .master-wrapper-page::before
+        .html-category-page.class-@(Model.CategoryBreadcrumb[0].SeName).no-webp .master-wrapper-page::before
         {
-            background-image: url(/images/categories/@Model.SeName-bg.jpg) !important;
-        }
-    </style>
-
-    <style>
-        .html-category-page.class-@(Model.ParentName).webp  .master-wrapper-page::before
-        {
-            background-image: url(/images/categories/@Model.ParentName-bg.webp) !important;
-        }
-        .html-category-page.class-@(Model.ParentName).no-webp .master-wrapper-page::before
-        {
-            background-image: url(/images/categories/@Model.ParentName-bg.jpg) !important;
+            background-image: url(/images/categories/@Model.CategoryBreadcrumb[0].SeName-bg.jpg) !important;
         }
     </style>
 

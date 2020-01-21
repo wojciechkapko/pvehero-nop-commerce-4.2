@@ -11,7 +11,7 @@
     Html.AddMetaDescriptionParts(Model.MetaDescription);
     Html.AddMetaKeywordParts(Model.MetaKeywords);
     //page class
-    Html.AppendPageCssClassParts("html-product-details-page");
+    Html.AppendPageCssClassParts("html-product-details-page" + " class-" + @Model.Breadcrumb.CategoryBreadcrumb[0].SeName);
 
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
@@ -76,7 +76,7 @@
                                 @Model.Name
                             </h1>
                         </div>
-                        @await Html.PartialAsync("_ProductDetailsPictures", Model)                        
+                        @await Html.PartialAsync("_ProductDetailsPictures", Model)
 
                         @if (!string.IsNullOrEmpty(Model.FullDescription))
                         {
@@ -95,12 +95,12 @@
                         @await Html.PartialAsync("_Discontinued", Model)
 
                         @*
-                                    @if (!string.IsNullOrEmpty(Model.ShortDescription))
-        {
-            <div class="short-description">
-                @Html.Raw(Model.ShortDescription)
-            </div>
-        }
+                                                        @if (!string.IsNullOrEmpty(Model.ShortDescription))
+                            {
+                                <div class="short-description">
+                                    @Html.Raw(Model.ShortDescription)
+                                </div>
+                            }
                         *@
 
                         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewTop, additionalData = Model })
@@ -150,16 +150,16 @@
 
 
                         @*
-                            <div class="overview-buttons">
-                                        @{
-            var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
-            dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-            @await Html.PartialAsync("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
-        }
-                            @await Html.PartialAsync("_CompareProductsButton", Model)
-                        @await Html.PartialAsync("_ProductEmailAFriendButton", Model)
+                                                <div class="overview-buttons">
+                                                            @{
+                                var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
+                                dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
+                                @await Html.PartialAsync("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
+                            }
+                                                @await Html.PartialAsync("_CompareProductsButton", Model)
+                                            @await Html.PartialAsync("_ProductEmailAFriendButton", Model)
 
-                    </div>
+                                        </div>
                         *@
 
 
@@ -167,8 +167,8 @@
                         @await Html.PartialAsync("_ShareButton", Model)
                         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewBottom, additionalData = Model })
                     </div>
-                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsEssentialBottom, additionalData = Model })
-                    </div>
+                    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsEssentialBottom, additionalData = Model })
+                </div>
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
                 @*
                                       <div class="product-collateral">
@@ -193,3 +193,13 @@
     <script type="text/javascript" asp-location="Footer">var whTooltips = { colorLinks: true, iconizeLinks: true, renameLinks: true };</script>
     <script type="text/javascript" asp-location="Footer" src="//wow.zamimg.com/widgets/power.js"></script>
 }
+<style>
+        .html-product-details-page.class-@(Model.Breadcrumb.CategoryBreadcrumb[0].SeName).webp  .master-wrapper-page::before
+        {
+            background-image: url(/images/categories/@Model.Breadcrumb.CategoryBreadcrumb[0].SeName-bg.webp) !important;
+        }
+        .html-product-details-page.class-@(Model.Breadcrumb.CategoryBreadcrumb[0].SeName).no-webp .master-wrapper-page::before
+        {
+            background-image: url(/images/categories/@Model.Breadcrumb.CategoryBreadcrumb[0].SeName-bg.jpg) !important;
+        }
+</style>
