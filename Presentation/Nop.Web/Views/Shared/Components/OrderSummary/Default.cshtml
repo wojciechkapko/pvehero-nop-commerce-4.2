@@ -265,56 +265,9 @@
                     }
                     @if (Model.IsEditable)
                     {
-                        if (Model.TermsOfServiceOnShoppingCartPage)
-                        {
-                            <div id="terms-of-service-warning-box" title="@T("Checkout.TermsOfService")" style="display: none;">
-                                <p>@T("Checkout.TermsOfService.PleaseAccept")</p>
-                            </div>
-                            <div class="terms-of-service">
-                                <input id="termsofservice" type="checkbox" name="termsofservice" />
-                                <label for="termsofservice">@T("Checkout.TermsOfService.IAccept")</label>
-                                @if (Model.TermsOfServicePopup)
-                                {
-                                    <a class="read" id="read-terms">@T("Checkout.TermsOfService.Read")</a>
-                                    <script asp-location="Footer">
-                                        $(document).ready(function() {
-                                            $('#read-terms').on('click',
-                                                function(e) {
-                                                    e.preventDefault();
-                                                    displayPopupContentFromUrl(
-                                                        '@Url.RouteUrl("TopicPopup", new {SystemName = "conditionsofuse"})',
-                                                        '@T("Checkout.TermsOfService")');
-                                                });
-                                        });
-                                    </script>
-                                }
-                                else
-                                {
-                                    <a class="read" id="read-terms" href="@Url.RouteUrl("Topic", new {SeName = Html.GetTopicSeName("conditionsofuse") })">@T("Checkout.TermsOfService.Read")</a>
-                                }
-                            </div>
-                        }
                         <div class="checkout-buttons">
                             @if (string.IsNullOrEmpty(Model.MinOrderSubtotalWarning) && !Model.HideCheckoutButton)
                             {
-                                <script asp-location="Footer">
-                                    $(document).ready(function () {
-                                        $('#checkout').on('click', function () {
-                                            //terms of service
-                                            var termOfServiceOk = true;
-                                            if ($('#termsofservice').length > 0) {
-                                                //terms of service element exists
-                                                if (!$('#termsofservice').is(':checked')) {
-                                                    $("#terms-of-service-warning-box").dialog();
-                                                    termOfServiceOk = false;
-                                                } else {
-                                                    termOfServiceOk = true;
-                                                }
-                                            }
-                                            return termOfServiceOk;
-                                        });
-                                    });
-                                </script>
                                 if (orderSettings.CheckoutDisabled)
                                 {
                                     <div class="checkout-disabled">

@@ -5,21 +5,21 @@
     <div class="footer mt-auto">
         <div class="footer-upper font-size-sm d-flex flex-column md-flex-row">
             <div class="footer-block data">
-                <address class="contact-info d-flex flex-column">
-                    <span>
-                        <svg class="icon svg-baseline"><use href="#skype"></use></svg>Skype: <a href="skype:contact.pvehero?chat" data-toggle="tooltip" title="Click to chat">contact.pvehero</a>
+                <address class="contact-info d-flex flex-column" style="font-style: normal">
+                    <span class="mb-3">
+                        <svg class="icon svg-baseline accent-color font-size-xl mr-3"><use href="#skype"></use></svg>Skype: <a href="skype:contact.pvehero?chat" data-toggle="tooltip" title="Click to chat">contact.pvehero</a>
                     </span>
-                    <span>
-                        <svg class="icon svg-baseline"><use href="#whatsapp"></use></svg>Whatsapp: <a href="https://api.whatsapp.com/send?phone=48691019390">+48691019390</a>
+                    <span class="mb-3">
+                        <svg class="icon svg-baseline accent-color font-size-xl mr-3"><use href="#whatsapp"></use></svg>Whatsapp: <a href="https://api.whatsapp.com/send?phone=48691019390">+48691019390</a>
                     </span>
-                    <span>
-                        <svg class="icon svg-baseline"><use href="#discord"></use></svg>Discord: <a href="https://discord.gg/YYeuMSe">pveHero</a>
+                    <span class="mb-3">
+                        <svg class="icon svg-baseline accent-color font-size-xl mr-3"><use href="#discord"></use></svg>Discord: <a href="https://discord.gg/YYeuMSe">pveHero</a>
                     </span>
-                    <span>
-                        <svg class="icon svg-baseline"><use href="#mail"></use></svg>Mail: <a href="mailto:contact@pvehero.com">contact@pvehero.com</a>
+                    <span class="mb-3">
+                        <svg class="icon svg-baseline accent-color font-size-xl mr-3"><use href="#mail"></use></svg>Mail: <a href="mailto:contact@pvehero.com">contact@pvehero.com</a>
                     </span>
-                    <span>
-                        <svg class="icon svg-baseline"><use href="#clock"></use></svg>Workhours: Mon. - Sun.: 11:00 - 23:00 <span class="font-size-xs">GMT+1</span>
+                    <span class="mb-3">
+                        <svg class="icon svg-baseline accent-color font-size-xl mr-3"><use href="#clock"></use></svg>Workhours: Mon. - Sun.: 11:00 - 23:00 <span class="font-size-xs">GMT+1</span>
                     </span>
                 </address>
                 <div class="social">
@@ -29,7 +29,7 @@
             </div>
             <div class="footer-block information">
                 <div class="title">
-                    <strong class="font-size-lg">@T("Footer.Information")</strong>
+                    <strong class="font-size-lg text-upper accent-color">@T("Footer.Information")</strong>
                 </div>
                 <ul class="list">
                     <li><a href="@Url.RouteUrl("HowItWorks")">How it works</a></li>
@@ -45,7 +45,7 @@
             </div>
             <div class="footer-block games">
                 <div class="title">
-                    <strong class="font-size-lg">Games</strong>
+                    <strong class="font-size-lg text-upper accent-color">Games</strong>
                 </div>
                 <ul class="list">
                     <li><a href="@Url.RouteUrl("Category", new { SeName = "world-of-warcraft" })">World of Warcraft</a></li>
@@ -57,7 +57,7 @@
             </div>
             <div class="footer-block my-account">
                 <div class="title">
-                    <strong class="font-size-lg">Navigation</strong>
+                    <strong class="font-size-lg text-upper accent-color">Navigation</strong>
                 </div>
                 <ul class="list">
                     @if (Model.DisplayCustomerInfoFooterItem)

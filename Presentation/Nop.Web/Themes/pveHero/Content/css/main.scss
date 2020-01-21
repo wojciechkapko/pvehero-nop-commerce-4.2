@@ -1,13 +1,4 @@
-﻿$accent-color-3: #2a3f6f;
-$accent-color-2: #e55b6a;
-$accent-color-4: #385494;
-$box-shadow-small: 0 3px 3px 0 rgba(0,0,0,.2);
-$box-shadow-regular: 0 7px 15px rgba(0,0,0,.2);
-$box-shadow-big: 0 3px 16px rgba(0,0,0,.65);
-$border-radius-25: .25rem;
-$border-radius-5: .5rem;
-
-/*********** CSS RESET **********/
+﻿/*********** CSS RESET **********/
 
 * {
     margin: 0;
@@ -114,6 +105,18 @@ input[type="radio"] + * {
 }
 
 input[type="button"],
+.btn, .button-1, .button-2, .button-3, .cart-qty, .card, .fieldset, .tooltip-inner, .result, .block-category-navigation .list a, .badge {
+    border-radius: .25rem !important;
+}
+
+.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .ui-autocomplete, .ui-autocomplete a, .product-item, .product-item::before  {
+    border-radius: .5rem !important;
+}
+
+
+
+
+input[type="button"],
 .btn, .button-1, .button-2, .button-3 {
     cursor: pointer;
     position: relative;
@@ -127,7 +130,6 @@ input[type="button"],
     letter-spacing: .025em;
     border: 1px transparent;
     padding: .5rem 1rem;
-    border-radius: .25rem;
     box-shadow: 0 3px 5px rgba(0,0,0,.2);
     text-shadow: 0.0625em 0.0625em 0.0625em #333;
     white-space: nowrap;
@@ -271,26 +273,7 @@ label, label + * {
     width: 32px;
     height: 32px;
     margin: 7px;
-    background: #fff url('../images/close.png') center no-repeat;
     cursor: pointer;
-}
-
-.popup-notification {
-    border-radius: 5px;
-    padding: 3px;
-    margin: 5px 0;
-}
-
-.popup-notification.success {
-    border: 2px rgba( 75,176,122,.5) solid;
-}
-
-.popup-notification.error {
-    border: 2px rgba( 228,68,76,.5) solid;
-}
-
-.popup-notification.warning {
-    border: 2px rgba( 243,156,18,.5) solid;
 }
 
 .noscript {
@@ -318,37 +301,19 @@ label, label + * {
 
 .eu-cookie-bar-notification {
     position: fixed;
-    bottom: 3%;
-    left: 6%;
+    bottom: 5%;
+    left: 5%;
     z-index: 1050;
     width: 320px;
     height: 180px;
-    margin: -90px 0 0 -160px;
-    box-shadow: 0 3px 3px rgba(0,0,0,0.15);
     box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
     background-color: #26214a;
-    border-radius: .5rem;
     padding: 20px;
-    text-align: center;
 }
 
 .eu-cookie-bar-notification .text {
     margin-bottom: 20px;
     line-height: 20px;
-}
-
-.eu-cookie-bar-notification button {
-    min-width: 60px;
-    margin: 5px 0 10px;
-    border: none;
-    background-color: #4ab2f1;
-    padding: 8px 12px;
-    color: #fff;
-}
-
-.eu-cookie-bar-notification a {
-    display: block;
-    color: #b79bff;
 }
 
 .eu-cookie-bar-notification a:hover {
@@ -394,7 +359,7 @@ label, label + * {
     text-transform: uppercase;
 }
 
-.header-links a:hover {
+.header-links a:hover, .footer-block .list a:hover, .block-recently-viewed-products li:hover .product-name {
     color: #b79bff;
 }
 
@@ -416,20 +381,21 @@ label, label + * {
     line-height: 0; /*firefox line-height bug fix*/
 }
 
-.search-box form {
-    display: inline-block;
-}
+.search-box {
+    form {
+        display: inline-block;
+    }
 
-.search-box input.search-box-text {
-    width: 288px;
-    height: 50px;
-    margin: 0 -1px 0 0;
-    padding: 1rem;
-    border-radius: .5rem;
-}
+    input.search-box-text {
+        width: 288px;
+        height: 50px;
+        margin: 0 -1px 0 0;
+        padding: 1rem;
+    }
 
-.search-box .search-box-button {
-    display: none;
+    .search-box-button {
+        display: none;
+    }
 }
 
 .ui-helper-hidden-accessible {
@@ -462,7 +428,6 @@ label, label + * {
     /*override jQuery UI styles, do not delete doubled properties*/
     margin: 0 !important;
     border: none !important;
-    border-radius: 0 !important;
     background: none !important;
     padding: 15px !important;
     line-height: normal !important;
@@ -497,18 +462,12 @@ label, label + * {
 
 .footer-block .title strong {
     margin: 0 0 15px;
-    color: #b79bff;
-    text-transform: uppercase;
 }
 
 .footer-block .list a {
     display: block;
     padding: 10px 15px;
     line-height: 20px;
-}
-
-.footer-block .list a:hover {
-    color: #b79bff;
 }
 
 .footer-lower {
@@ -538,27 +497,26 @@ label, label + * {
     min-height: 50px;
     margin: auto;
     text-align: left;
-}
 
-.block .listbox {
-    display: none;
-}
+    .listbox {
+        display: none;
+    }
 
-.block .list a {
-    display: inline-block;
-    position: relative;
-    padding: .75rem 0 .75rem 15px;
-    border-radius: .5rem;
-    -webkit-transition: all 0.1s ease;
-    transition: all 0.1s ease;
+    .list a {
+        display: inline-block;
+        position: relative;
+        padding: .75rem 0 .75rem 15px;
+        -webkit-transition: all 0.1s ease;
+        transition: all 0.1s ease;
+    }
+
+    .sublist {
+        margin: 15px 0 15px 45px;
+    }
 }
 
 .block-account-navigation .list a:hover {
     background: #6658d5;
-}
-
-.block .sublist {
-    margin: 15px 0 15px 45px;
 }
 
 @media all and (max-width: 1000px) {
@@ -574,10 +532,8 @@ label, label + * {
 
     .menu-toggle {
         padding: 15px;
-        text-transform: uppercase;
         cursor: pointer;
         background-color: rgba(0, 0, 0, 0.3);
-        border-radius: .5rem;
         position: relative;
     }
 
@@ -621,7 +577,6 @@ label, label + * {
     .top-menu.mobile {
         margin-top: .5rem;
         background-color: rgba(0, 0, 0, 0.3);
-        border-radius: .5rem;
     }
 
     .sublist-toggle {
@@ -1160,7 +1115,6 @@ input, textarea {
 .header-menu > ul > li a {
     letter-spacing: 0.035rem;
     cursor: pointer;
-    text-transform: uppercase;
 }
 
 .icon {
@@ -1308,7 +1262,6 @@ button, .btn, .button-1, .button-2, .button-3 {
     background-color: #30295c;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.15);
-    border-radius: .5rem;
     box-shadow: rgba(0, 0, 0, 0.2) 0 7px 15px;
 
     &.show {
@@ -1381,7 +1334,6 @@ input.search-box-text {
     font-size: 1.25rem;
     color: #fff;
     font-weight: 500;
-    border-radius: .5rem;
 
     &:focus {
         background: rgba(0, 0, 0, 0.4);
@@ -1402,7 +1354,6 @@ input.search-box-text::placeholder {
     color: #fff !important;
     font-size: 12px !important;
     padding: .2rem .5rem;
-    border-radius: .25rem;
     white-space: nowrap;
 }
 
@@ -1418,25 +1369,16 @@ input.search-box-text::placeholder {
     word-wrap: break-word;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
-    border-radius: 0.25rem;
     box-shadow: 0 7px 15px rgba(0,0,0,.2);
 
     &.default {
         padding: 2.25rem 2.5rem 2.5rem;
         border: none;
         background-color: #1e183e;
-        border-radius: .5rem;
     }
 
     &.dark {
         background-color: rgba(0, 0, 0, 0.35);
-    }
-
-    &.secondary {
-        border-radius: .5rem;
-        border: none;
-        background: rgba(0,0,0,.35);
-        padding: 1rem 0;
     }
 
     .card-body {
@@ -1457,9 +1399,7 @@ input.search-box-text::placeholder {
 }
 
 .product-picture img, .mini-shopping-cart .picture img {
-    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
     box-shadow: 0 11px 15px -8px rgba(0, 0, 0, 0.6);
-    border-radius: .5rem;
     overflow: hidden;
 }
 
@@ -1493,7 +1433,6 @@ input.search-box-text::placeholder {
 .spinner-bg {
     background: #000;
     opacity: 0.5;
-    border-radius: .5rem
 }
 
 .tooltip {
@@ -1601,7 +1540,6 @@ input.search-box-text::placeholder {
     color: #fff;
     text-align: center;
     background-color: #000;
-    border-radius: 0.25rem;
 }
 
 label:not(.checkbox-style):not(.checkbox-label) {
@@ -1626,7 +1564,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .result {
     margin: 1rem 0;
     padding: .5rem 1.45rem;
-    border-radius: .25rem;
     font-weight: 500;
     letter-spacing: .015rem;
     text-align: center;
@@ -1639,22 +1576,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
     padding: 12px 30px .25rem 0;
     font-size: 20px;
     font-weight: bold;
-}
-
-// FOOTER //
-
-.contact-info {
-    font-style: normal;
-
-    span {
-        margin-bottom: 1rem
-    }
-
-    .icon {
-        font-size: 1.25rem;
-        color: #b79bff;
-        margin-right: .75rem
-    }
 }
 
 #notification-icon {
@@ -1713,14 +1634,12 @@ label:not(.checkbox-style):not(.checkbox-label) {
     border: none;
     background-color: rgba(0, 0, 0, 0.5);
     text-align: left;
-    border-radius: .5rem;
     box-shadow: rgba(0, 0, 0, 0.2) 0 7px 15px;
 }
 
 .ui-autocomplete a {
     display: flex;
     padding: 1rem;
-    border-radius: .5rem;
     align-items: center;
 }
 
@@ -1750,11 +1669,9 @@ label:not(.checkbox-style):not(.checkbox-label) {
             background: #26214a;
             display: inline-block;
             line-height: 1.5;
-            text-transform: uppercase;
             letter-spacing: .025em;
             border: 1px transparent;
             padding: .5rem 1rem;
-            border-radius: .25rem;
             box-shadow: 0 3px 5px rgba(0,0,0,.2);
             text-shadow: 0.0625em 0.0625em 0.0625em #333;
         }
@@ -1783,7 +1700,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
     overflow: hidden;
     border: none;
     box-shadow: 0 9px 15px -8px rgba(0,0,0,.5);
-    border-radius: .5rem;
     max-width: 276px;
     margin: 0 auto;
     height: 380px;
@@ -1805,7 +1721,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
         left: 0;
         bottom: 0;
         right: 0;
-        border-radius: .5rem;
         box-shadow: 0 7px 15px rgba(0,0,0,.2), inset 0 0 0 1px #6657d4;
         pointer-events: none;
         z-index: 1;
@@ -1873,12 +1788,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
         .price {
             margin-top: .25rem;
         }
-
-        &:hover {
-            .product-name {
-                color: #b79bff;
-            }
-        }
     }
 
     a.link {
@@ -1897,13 +1806,10 @@ label:not(.checkbox-style):not(.checkbox-label) {
     z-index: 13;
     border-bottom-left-radius: .5rem;
     border-top-left-radius: .5rem;
-    font-weight: 600;
-    text-transform: uppercase;
     padding: .75rem 2.5rem;
 }
 
 .badge {
-    border-radius: .25rem;
     letter-spacing: .035rem;
     font-weight: 500;
     padding: .25rem 1rem;

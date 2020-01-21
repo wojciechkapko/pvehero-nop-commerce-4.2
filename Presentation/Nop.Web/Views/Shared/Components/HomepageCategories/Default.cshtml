@@ -8,7 +8,7 @@
                 var category = item.SeName.Replace("-", string.Empty);
                 //@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeBestSellers })
             <div class="item-box category">
-                <h2 class="title d-block md-d-flex align-items-end">
+                <h2 class="title d-block md-d-flex align-items-end text-upper mb-3">
                     <svg class='icon shadow svg-baseline mr-0 md-mr-2'><use href='#@item.SeName'></use></svg>
                     @item.Name
                     <a class="button-3 font-size-base d-none md-d-inline-flex ml-auto" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>

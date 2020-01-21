@@ -46,15 +46,6 @@
         }
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderLinksAfter })
     </ul>
-    @if (Model.AllowPrivateMessages && !string.IsNullOrEmpty(Model.AlertMessage))
-    {
-        //new private message notification
-        <script asp-location="Footer">
-            $(document).ready(function () {
-                displayPopupNotification('@Html.Raw(JavaScriptEncoder.Default.Encode(Model.AlertMessage))', 'success', false);
-            });
-        </script>
-    }
     @if (Model.ShoppingCartEnabled)
     {
         <script asp-location="Footer">

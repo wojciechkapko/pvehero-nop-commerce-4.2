@@ -1,6 +1,6 @@
 ﻿@model TopMenuModel.CategoryLineModel
 <li class="md-font-size-lg">
-    <a href="@Url.RouteUrl("Category", new { SeName = Model.Category.SeName })" class="font-bold d-flex align-items-center">
+    <a href="@Url.RouteUrl("Category", new { SeName = Model.Category.SeName })" class="font-bold d-flex align-items-center text-upper">
         <svg class='icon shadow svg-baseline mr-2' @(Model.Category.SeName == "world-of-warcraft" ? "style=font-size:2rem!important" : "style=font-size:1.75rem!important")><use href='#@Model.Category.SeName'></use></svg>
         @Model.Category.Name
         @if (Model.Category.NumberOfProducts.HasValue)

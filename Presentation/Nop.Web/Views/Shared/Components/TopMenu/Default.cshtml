@@ -53,7 +53,7 @@
     var rootCategoriesResponsive = Model.Categories.ToList();
     //name it "Categories" if we have only categories. Otherwise, "Menu"
     var responsiveMenuTitle = Model.HasOnlyCategories ? T("Categories") : T("Menu");
-    <div class="menu-toggle font-size-lg font-bold">@responsiveMenuTitle<svg class="icon font-size-base white"><use href="#bars"></use></svg></div>
+    <div class="menu-toggle font-size-lg font-bold text-upper">@responsiveMenuTitle<svg class="icon font-size-base white"><use href="#bars"></use></svg></div>
     <ul class="top-menu mobile">
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MobHeaderMenuBefore })
         @if (Model.DisplayHomepageMenuItem)
