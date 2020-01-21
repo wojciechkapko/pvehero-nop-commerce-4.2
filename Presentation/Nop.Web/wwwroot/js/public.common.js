@@ -27,8 +27,8 @@ function displayAjaxLoading(display) {
 }
 
 function displayPopupContentFromUrl(url, title, modal, width) {
-    var isModal = (modal ? true : false);
-    var targetWidth = (width ? width : 550);
+    var isModal = modal ? true : false;
+    var targetWidth = width ? width : 550;
     var maxHeight = $(window).height() - 20;
 
     $('<div></div>').load(url)

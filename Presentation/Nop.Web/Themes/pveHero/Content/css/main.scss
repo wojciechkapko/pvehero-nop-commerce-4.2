@@ -112,6 +112,18 @@ input[type="button"],
     border-radius: .5rem !important;
 }
 
+.eu-cookie-bar-notification, .dropdown-menu, .card, .fieldset, .ui-autocomplete {
+    box-shadow: 0 7px 15px rgba(0, 0, 0, .2);
+}
+.product-item, .product-picture img, .mini-shopping-cart .picture img {
+    box-shadow: 0 9px 15px -8px rgba(0,0,0,.5);
+}
+
+input[type="button"],
+.btn, .button-1, .button-2, .result, .block-category-navigation .list a, .ribbon, .badge {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+}
+
 input[type="button"],
 .btn, .button-1, .button-2, .button-3 {
     cursor: pointer;
@@ -126,7 +138,6 @@ input[type="button"],
     letter-spacing: .025em;
     border: 1px transparent;
     padding: .5rem 1rem;
-    box-shadow: 0 3px 5px rgba(0,0,0,.2);
     text-shadow: 0.0625em 0.0625em 0.0625em #333;
     white-space: nowrap;
     justify-content: center;
@@ -302,7 +313,6 @@ label, label + * {
     z-index: 1050;
     width: 320px;
     height: 180px;
-    box-shadow: 0 7px 15px rgba(0, 0, 0, 0.2);
     background-color: #26214a;
     padding: 20px;
 }
@@ -321,7 +331,6 @@ label, label + * {
 .header {
     position: relative;
     z-index: 10;
-    width: 100%;
     text-align: center;
 }
 
@@ -332,10 +341,6 @@ label, label + * {
 
 .header-selectors-wrapper > div {
     margin: 10px auto;
-}
-
-.header-selectors-wrapper select {
-    width: 100%;
 }
 
 .header-links-wrapper {
@@ -400,14 +405,14 @@ label, label + * {
 
 .ui-autocomplete {
     width: 288px !important;
-    border: 1px solid #ddd;
-    border-top: none;
     overflow: hidden;
-    text-align: left;
-    /*override jQuery UI styles, do not delete doubled properties*/
-    border-radius: 0;
     margin-top: .5rem;
-    padding: 0;
+    position: absolute !important;
+    top: 3.75rem !important;
+    /* width: 100% !important; */
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: left;
 }
 
 .ui-autocomplete li {
@@ -419,14 +424,15 @@ label, label + * {
 }
 
 .ui-autocomplete a {
-    display: block;
-    padding: 15px;
     /*override jQuery UI styles, do not delete doubled properties*/
     margin: 0 !important;
     border: none !important;
     background: none !important;
     padding: 15px !important;
     line-height: normal !important;
+    display: flex;
+    padding: 1rem;
+    align-items: center;
 }
 
 .ui-autocomplete a:hover,
@@ -577,15 +583,11 @@ label, label + * {
 
     .sublist-toggle {
         position: absolute;
-        top: 0;
+        top: 0.25rem;
         right: 0;
         width: 55px;
         height: 55px;
-        padding: 15px;
-        display: flex;
         cursor: pointer;
-        align-items: center;
-        justify-content: center;
     }
 
     .sublist .sublist-toggle {
@@ -747,7 +749,7 @@ label, label + * {
         width: 300px;
         background: #1f1b3c;
         border-radius: 0 0 .5rem .5rem;
-        box-shadow: 0 15px 10px -5px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 15px 10px -5px rgba(0, 0, 0, .3);
     }
 
     .flyout-cart.active {
@@ -1076,7 +1078,7 @@ input, textarea {
     &:focus {
         border-color: #6658d5;
         outline: 0;
-        box-shadow: 0 0 0 0.2rem #6658d5;
+        box-shadow: 0 0 .2rem #6658d5;
     }
 }
 
@@ -1230,7 +1232,6 @@ button, .btn, .button-1, .button-2, .button-3 {
     .btn {
         box-shadow: none;
         background: none;
-        font-size: .875rem !important;
     }
 }
 
@@ -1258,7 +1259,6 @@ button, .btn, .button-1, .button-2, .button-3 {
     background-color: #30295c;
     background-clip: padding-box;
     border: 1px solid rgba(0,0,0,.15);
-    box-shadow: rgba(0, 0, 0, 0.2) 0 7px 15px;
 
     &.show {
         display: block;
@@ -1365,7 +1365,6 @@ input.search-box-text::placeholder {
     word-wrap: break-word;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 0.125);
-    box-shadow: 0 7px 15px rgba(0,0,0,.2);
 
     &.default {
         padding: 2.25rem 2.5rem 2.5rem;
@@ -1395,7 +1394,6 @@ input.search-box-text::placeholder {
 }
 
 .product-picture img, .mini-shopping-cart .picture img {
-    box-shadow: 0 11px 15px -8px rgba(0, 0, 0, 0.6);
     overflow: hidden;
 }
 
@@ -1563,7 +1561,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
     font-weight: 500;
     letter-spacing: .015rem;
     text-align: center;
-    box-shadow: 0 3px 5px rgba(0,0,0,.2);
     background: #3e905c;
 }
 
@@ -1623,22 +1620,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
     cursor: pointer;
 }
 
-.ui-autocomplete {
-    position: absolute !important;
-    top: 3.75rem !important;
-    /* width: 100% !important; */
-    border: none;
-    background-color: rgba(0, 0, 0, 0.5);
-    text-align: left;
-    box-shadow: rgba(0, 0, 0, 0.2) 0 7px 15px;
-}
-
-.ui-autocomplete a {
-    display: flex;
-    padding: 1rem;
-    align-items: center;
-}
-
 .ui-autocomplete a:hover,
 .ui-autocomplete a.ui-state-focus {
     background-color: #6c56d7 !important;
@@ -1668,7 +1649,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
             letter-spacing: .025em;
             border: 1px transparent;
             padding: .5rem 1rem;
-            box-shadow: 0 3px 5px rgba(0,0,0,.2);
             text-shadow: 0.0625em 0.0625em 0.0625em #333;
         }
 
@@ -1695,11 +1675,9 @@ label:not(.checkbox-style):not(.checkbox-label) {
     position: relative;
     overflow: hidden;
     border: none;
-    box-shadow: 0 9px 15px -8px rgba(0,0,0,.5);
     max-width: 276px;
     margin: 0 auto;
     height: 380px;
-    /* min-width: 285px; */
     background-size: 276px auto !important;
     background-position: 50% 0 !important;
     background-repeat: no-repeat !important;
@@ -1726,7 +1704,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
         left: 0;
         bottom: 0;
         right: 0;
-        box-shadow: 0 7px 15px rgba(0,0,0,.2), inset 0 0 0 1px #6657d4;
+        box-shadow: inset 0 0 0 1px #6657d4;
         pointer-events: none;
         z-index: 1;
     }
@@ -1815,7 +1793,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
 
 .ribbon, .badge {
     display: inline-flex;
-    box-shadow: 0 3px 5px rgba(0,0,0,.2);
     justify-content: center;
     align-items: center;
     text-shadow: 0.0625em 0.0625em 0.0625em #333;

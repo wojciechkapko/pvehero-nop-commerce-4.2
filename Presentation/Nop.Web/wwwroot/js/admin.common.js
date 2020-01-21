@@ -67,7 +67,7 @@ function checkOverriddenStoreValue(obj, selector) {
                 kenoduiElement.enable();
             }
         });
-    };
+    }
 }
 
 function bindBootstrapTabSelectEvent(tabsId, inputId) {
@@ -79,7 +79,7 @@ function bindBootstrapTabSelectEvent(tabsId, inputId) {
 
 function display_nop_error(e) {
   if (e.error) {
-    if ((typeof e.error) == 'string') {
+    if (typeof e.error == 'string') {
       //single error
       //display the message
       alert(e.error);
@@ -114,7 +114,7 @@ function addAntiForgeryToken(data) {
         data.__RequestVerificationToken = tokenInput.val();
     }
     return data;
-};
+}
 
 function saveUserPreferences(url, name, value) {
     var postData = {
@@ -135,8 +135,7 @@ function saveUserPreferences(url, name, value) {
           $("#ajaxBusy span").removeClass("no-ajax-loader");
         }        
   });
-
-};
+}
 
 function warningValidation(validationUrl, warningElementName, passedParameters) {
     addAntiForgeryToken(passedParameters);
@@ -169,7 +168,7 @@ function warningValidation(validationUrl, warningElementName, passedParameters) 
             messageElement.html('');
         }
     });
-};
+}
 
 function toggleNestedSetting(parentSettingName, parentFormGroupId) {
     if ($('input[name="' + parentSettingName + '"]').is(':checked')) {
@@ -221,7 +220,7 @@ function initNestedSetting(parentSettingName, parentSettingId, nestedSettingId) 
         backBtn.click(function () {
             $("html, body").animate({ scrollTop: 0 }, 900);
         });
-    }
+    };
 }(jQuery));
 
 // Ajax activity indicator bound to ajax start/stop document events
