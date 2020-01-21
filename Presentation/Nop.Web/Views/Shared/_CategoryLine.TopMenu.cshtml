@@ -1,7 +1,7 @@
 ﻿@model TopMenuModel.CategoryLineModel
 <li class="md-font-size-lg">
-    <a href="@Url.RouteUrl("Category", new { SeName = Model.Category.SeName })">
-        <svg class='icon shadow size-1-75x svg-baseline mr-2' @(Model.Category.SeName == "world-of-warcraft" ? "style=font-size:2rem!important" : null)><use href='#@Model.Category.SeName'></use></svg>
+    <a href="@Url.RouteUrl("Category", new { SeName = Model.Category.SeName })" class="font-bold d-flex align-items-center">
+        <svg class='icon shadow svg-baseline mr-2' @(Model.Category.SeName == "world-of-warcraft" ? "style=font-size:2rem!important" : "style=font-size:1.75rem!important")><use href='#@Model.Category.SeName'></use></svg>
         @Model.Category.Name
         @if (Model.Category.NumberOfProducts.HasValue)
         {
@@ -24,7 +24,7 @@
         if (subCategories.Count > 0)
         {
         <div class="sublist-toggle">
-            <svg class="icon size-1x white"><use href="#chevron-down"></use></svg>
+            <svg class="icon font-size-base white"><use href="#chevron-down"></use></svg>
         </div>
             <ul class="sublist @levelClass">
                 @foreach (var subCategory in subCategories)

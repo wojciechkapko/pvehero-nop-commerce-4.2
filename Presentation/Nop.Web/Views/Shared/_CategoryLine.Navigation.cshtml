@@ -30,8 +30,8 @@
     }
 }
 <li class="@liClass">
-    <a class="waves-effect waves-light" href="@Url.RouteUrl("Category", new { SeName = Model.Category.SeName })">
-        <svg class='icon shadow size-1x mr-2 svg-baseline'><use href='#@Model.Category.SeName'></use></svg>
+    <a class="waves-effect waves-light font-bold font-size-xs" href="@Url.RouteUrl("Category", new { SeName = Model.Category.SeName })">
+        <svg class='icon shadow font-size-base mr-2 svg-baseline'><use href='#@Model.Category.SeName'></use></svg>
         @Model.Category.Name
         @if (Model.Category.NumberOfProducts.HasValue)
         {

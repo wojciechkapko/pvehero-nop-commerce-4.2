@@ -8,7 +8,7 @@
             }
             else
             {
-                @Html.Raw(string.Format(T("ShoppingCart.Mini.ItemsText").Text, $"<a href=\"{Url.RouteUrl("ShoppingCart")}\">{string.Format(T("ShoppingCart.Mini.Items").Text, Model.TotalProducts)}</a>"))
+                @Html.Raw(string.Format(T("ShoppingCart.Mini.ItemsText").Text, $"<a href=\"{Url.RouteUrl("ShoppingCart")}\" class='font-bold'>{string.Format(T("ShoppingCart.Mini.Items").Text, Model.TotalProducts)}</a>"))
             }
         </div>
         @if (Model.TotalProducts > 0)
@@ -28,7 +28,7 @@
                         }
                         <div class="product d-flex flex-column flex-wrap">
                             <div class="name">
-                                <a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })">@item.ProductName</a>
+                                <a href="@Url.RouteUrl("Product", new { SeName = item.ProductSeName })" class="accent-color font-bold">@item.ProductName</a>
                             </div>
                             @if (!string.IsNullOrEmpty(item.AttributeInfo))
                             {

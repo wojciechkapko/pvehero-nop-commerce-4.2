@@ -357,33 +357,6 @@ label, label + * {
 
 /*********** HEADER ***********/
 
-.admin-header-links {
-    background-color: #333;
-    text-align: center;
-    color: #eee;
-}
-
-.admin-header-links * {
-    display: inline-block;
-    margin: 0 10px;
-    line-height: 35px;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-.admin-header-links .impersonate {
-    display: inline-block;
-}
-
-.admin-header-links .impersonate a {
-    background-color: #555;
-    padding: 0 15px;
-}
-
-.admin-header-links .impersonate a:hover {
-    background-color: #666;
-}
-
 .header {
     position: relative;
     z-index: 10;
@@ -524,7 +497,6 @@ label, label + * {
 
 .footer-block .title strong {
     margin: 0 0 15px;
-    font-weight: bold;
     color: #b79bff;
     text-transform: uppercase;
 }
@@ -545,24 +517,6 @@ label, label + * {
     overflow: hidden;
     padding: 25px 0;
     font-size: 12px;
-}
-
-.footer-tax-shipping a {
-    font-weight: bold;
-    color: #4ab2f1;
-}
-
-.footer-tax-shipping a:hover {
-    text-decoration: underline;
-}
-
-.footer-powered-by a {
-    font-weight: bold;
-    color: #bba0ff;
-}
-
-.footer-powered-by a:hover {
-    text-decoration: underline;
 }
 
 .footer-block {
@@ -620,7 +574,6 @@ label, label + * {
 
     .menu-toggle {
         padding: 15px;
-        font-weight: bold;
         text-transform: uppercase;
         cursor: pointer;
         background-color: rgba(0, 0, 0, 0.3);
@@ -861,7 +814,6 @@ label, label + * {
 
     .mini-shopping-cart .count a {
         margin: 0 2px;
-        font-weight: bold;
         color: #c52c8d;
     }
 
@@ -904,11 +856,6 @@ label, label + * {
 
     .mini-shopping-cart .name {
         margin: 0 0 5px;
-    }
-
-    .mini-shopping-cart .name a {
-        font-weight: bold;
-        color: #b79bff;
     }
 
     .mini-shopping-cart .attributes {
@@ -1211,11 +1158,8 @@ input, textarea {
 }
 
 .header-menu > ul > li a {
-    font-weight: 600;
     letter-spacing: 0.035rem;
     cursor: pointer;
-    align-items: center;
-    display: flex;
     text-transform: uppercase;
 }
 
@@ -1240,26 +1184,6 @@ input, textarea {
 
     &.svg-baseline {
         vertical-align: -.125em;
-    }
-
-    &.size-0-85x {
-        font-size: .85rem !important;
-    }
-
-    &.size-1x {
-        font-size: 1rem !important;
-    }
-
-    &.size-1-75x {
-        font-size: 1.75rem !important;
-    }
-
-    &.size-2x {
-        font-size: 2rem !important;
-    }
-
-    &.size-3x {
-        font-size: 3rem !important;
     }
 
     &.red {
@@ -1475,13 +1399,10 @@ input.search-box-text::placeholder {
     margin: 0 .25rem;
     background: #c52c8d;
     display: inline !important;
-    align-items: center;
     color: #fff !important;
     font-size: 12px !important;
     padding: .2rem .5rem;
     border-radius: .25rem;
-    font-weight: 600;
-    text-align: center;
     white-space: nowrap;
 }
 
@@ -1829,8 +1750,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
             background: #26214a;
             display: inline-block;
             line-height: 1.5;
-            font-size: .875rem;
-            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: .025em;
             border: 1px transparent;
@@ -1946,17 +1865,9 @@ label:not(.checkbox-style):not(.checkbox-label) {
 .block-recently-viewed-products {
     li {
         position: relative;
-        display: flex;
 
         .info {
             padding: 10px 0 10px 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .product-name {
-            font-weight: bold;
         }
 
         .price {
@@ -2067,7 +1978,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
         border-bottom: none;
         padding: 15px;
         font-size: 1.125rem;
-        font-weight: bold;
         text-transform: uppercase;
         background-color: rgba(0, 0, 0, 0.3);
         border-radius: .5rem;

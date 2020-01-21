@@ -292,28 +292,6 @@ label, label + * {
   text-decoration: underline; }
 
 /*********** HEADER ***********/
-.admin-header-links {
-  background-color: #333;
-  text-align: center;
-  color: #eee; }
-
-.admin-header-links * {
-  display: inline-block;
-  margin: 0 10px;
-  line-height: 35px;
-  font-size: 12px;
-  font-weight: bold; }
-
-.admin-header-links .impersonate {
-  display: inline-block; }
-
-.admin-header-links .impersonate a {
-  background-color: #555;
-  padding: 0 15px; }
-
-.admin-header-links .impersonate a:hover {
-  background-color: #666; }
-
 .header {
   position: relative;
   z-index: 10;
@@ -431,7 +409,6 @@ label, label + * {
 
 .footer-block .title strong {
   margin: 0 0 15px;
-  font-weight: bold;
   color: #b79bff;
   text-transform: uppercase; }
 
@@ -449,20 +426,6 @@ label, label + * {
   overflow: hidden;
   padding: 25px 0;
   font-size: 12px; }
-
-.footer-tax-shipping a {
-  font-weight: bold;
-  color: #4ab2f1; }
-
-.footer-tax-shipping a:hover {
-  text-decoration: underline; }
-
-.footer-powered-by a {
-  font-weight: bold;
-  color: #bba0ff; }
-
-.footer-powered-by a:hover {
-  text-decoration: underline; }
 
 .footer-block {
   display: block;
@@ -509,7 +472,6 @@ label, label + * {
     margin: 0 auto 40px; }
   .menu-toggle {
     padding: 15px;
-    font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.3);
@@ -659,7 +621,6 @@ label, label + * {
     padding: 5px 0 15px; }
   .mini-shopping-cart .count a {
     margin: 0 2px;
-    font-weight: bold;
     color: #c52c8d; }
   .mini-shopping-cart .items {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -688,9 +649,6 @@ label, label + * {
     max-width: 100%; }
   .mini-shopping-cart .name {
     margin: 0 0 5px; }
-  .mini-shopping-cart .name a {
-    font-weight: bold;
-    color: #b79bff; }
   .mini-shopping-cart .attributes {
     margin: 5px 0; }
   .mini-shopping-cart .totals {
@@ -937,6 +895,9 @@ label, label + * {
 
 .text-left {
   text-align: left !important; }
+
+.text-center {
+  text-align: center !important; }
 
 .text-shadow {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); }
@@ -1198,11 +1159,8 @@ input, textarea {
   margin-bottom: 41px; }
 
 .header-menu > ul > li a {
-  font-weight: 600;
   letter-spacing: 0.035rem;
   cursor: pointer;
-  align-items: center;
-  display: flex;
   text-transform: uppercase; }
 
 .icon {
@@ -1223,16 +1181,6 @@ input, textarea {
     filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)); }
   .icon.svg-baseline {
     vertical-align: -.125em; }
-  .icon.size-0-85x {
-    font-size: .85rem !important; }
-  .icon.size-1x {
-    font-size: 1rem !important; }
-  .icon.size-1-75x {
-    font-size: 1.75rem !important; }
-  .icon.size-2x {
-    font-size: 2rem !important; }
-  .icon.size-3x {
-    font-size: 3rem !important; }
   .icon.red {
     color: #e4444c !important; }
 
@@ -1399,13 +1347,10 @@ input.search-box-text::placeholder {
   margin: 0 .25rem;
   background: #c52c8d;
   display: inline !important;
-  align-items: center;
   color: #fff !important;
   font-size: 12px !important;
   padding: .2rem .5rem;
   border-radius: .25rem;
-  font-weight: 600;
-  text-align: center;
   white-space: nowrap; }
 
 .card, .fieldset {
@@ -1687,8 +1632,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
   background: #26214a;
   display: inline-block;
   line-height: 1.5;
-  font-size: .875rem;
-  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .025em;
   border: 1px transparent;
@@ -1777,15 +1720,9 @@ label:not(.checkbox-style):not(.checkbox-label) {
     color: #bdbdbd; }
 
 .block-recently-viewed-products li {
-  position: relative;
-  display: flex; }
+  position: relative; }
   .block-recently-viewed-products li .info {
-    padding: 10px 0 10px 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; }
-  .block-recently-viewed-products li .product-name {
-    font-weight: bold; }
+    padding: 10px 0 10px 15px; }
   .block-recently-viewed-products li .price {
     margin-top: .25rem; }
   .block-recently-viewed-products li:hover .product-name {
@@ -1866,7 +1803,6 @@ label:not(.checkbox-style):not(.checkbox-label) {
     border-bottom: none;
     padding: 15px;
     font-size: 1.125rem;
-    font-weight: bold;
     text-transform: uppercase;
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: .5rem;
