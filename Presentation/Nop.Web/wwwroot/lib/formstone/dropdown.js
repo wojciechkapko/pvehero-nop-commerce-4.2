@@ -12,6 +12,7 @@
         factory(jQuery, Formstone);
     }
 }(function ($, Formstone) {
+
     "use strict";
 
     /**
@@ -440,16 +441,6 @@
             data.$dropdown.trigger(Events.focusIn);
 
             data.$dropdown.addClass(RawClasses.open);
-            var transitionIn;
-            if ($(data.$dropdown).hasClass('fs-dropdown-bottom')) {
-                transitionIn = "transition.slideDownIn"
-            } else {
-                transitionIn = "transition.slideUpIn"
-            }
-
-            data.$dropdown.children(".fs-dropdown-options").velocity("transition.slideUpIn", {
-                duration: 200
-            });
             scrollOptions(data);
 
             data.closed = false;
@@ -475,19 +466,7 @@
         if (data && !data.closed) {
             $Body.off(Events.click + data.dotGuid);
 
-            var transitionOut;
-            if ($(data.$dropdown).hasClass('fs-dropdown-bottom')) {
-                transitionOut = "transition.slideUpOut"
-            } else {
-                transitionOut = "transition.slideDownOut"
-            }
-
-            data.$dropdown.children(".fs-dropdown-options").velocity("transition.slideDownOut", {
-                duration: 200, complete: function () {
-                    data.$dropdown.removeClass([RawClasses.open, RawClasses.bottom].join(" "));
-                    $(this).css("display", "");
-                }
-            });
+            data.$dropdown.removeClass([RawClasses.open, RawClasses.bottom].join(" "));
 
             data.closed = true;
         }
@@ -988,6 +967,7 @@
     // Setup
 
     Formstone.Ready(setup);
+
 })
 
 );

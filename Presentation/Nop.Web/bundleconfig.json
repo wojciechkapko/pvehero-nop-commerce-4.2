@@ -3,40 +3,42 @@
     "outputFileName": "wwwroot/js/ajaxreviews.min.js",
     "inputFiles": [
       "wwwroot/js/ajaxreviews.js"
-    ],
-    "sourceMap": false,
-    "sourceMapRootPath": null
+    ]
   },
   {
     "outputFileName": "wwwroot/lib/tiny-slider/tiny-slider.min.js",
     "inputFiles": [
       "wwwroot/lib/tiny-slider/tiny-slider.js"
-    ],
-    "sourceMap": false,
-    "sourceMapRootPath": null
+    ]
   },
   {
     "outputFileName": "wwwroot/lib/tiny-slider/tiny-slider.min.css",
     "inputFiles": [
       "wwwroot/lib/tiny-slider/tiny-slider.css"
-    ],
-    "sourceMap": false,
-    "sourceMapRootPath": null
+    ]
   },
   {
     "outputFileName": "wwwroot/lib/bootstrap-native/bootstrap-native-v4.min.js",
     "inputFiles": [
       "wwwroot/lib/bootstrap-native/bootstrap-native-v4.js"
-    ],
-    "sourceMap": false,
-    "sourceMapRootPath": null
+    ]
   },
   {
     "outputFileName": "wwwroot/lib/waves/waves.min.js",
     "inputFiles": [
       "wwwroot/lib/waves/waves.js"
-    ],
-    "sourceMap": false,
-    "sourceMapRootPath": null
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/formstone/dropdown.min.js",
+    "inputFiles": [
+      "wwwroot/lib/formstone/dropdown.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/formstone/core.min.js",
+    "inputFiles": [
+      "wwwroot/lib/formstone/core.js"
+    ]
   }
 ]
