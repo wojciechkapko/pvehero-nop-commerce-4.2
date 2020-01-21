@@ -7,14 +7,16 @@
     <div class="product-item product-@Model.Id" data-productid="@Model.Id">
         <a class="link waves-effect waves-light" href="@Url.RouteUrl("Product", new {SeName = Model.SeName})"></a>
     <div class="details">
-        @if (Model.MarkAsNew)
-        {
-            <span class="ribbon new">New</span>
-        }
-        @if (Model.ProductPrice.isDiscounted)
-        {
-            <span class="ribbon discount">-@Model.ProductPrice.DiscountValue%</span>
-        }
+        <div class="badges">
+            @if (Model.MarkAsNew)
+            {
+                <span class="badge new mr-2">New</span>
+            }
+            @if (Model.ProductPrice.isDiscounted)
+            {
+                <span class="badge discount">-@Model.ProductPrice.DiscountValue%</span>
+            }
+        </div>
         <h2 class="product-title">@Model.Name</h2>
 
         <div class="prices">

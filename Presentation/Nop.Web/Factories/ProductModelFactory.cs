@@ -373,7 +373,7 @@ namespace Nop.Web.Factories
                     //Check discount value
                     if (isDiscounted)
                     {
-                        priceModel.DiscountValue = ((int)((finalPriceWithDiscountBase / finalPriceWithoutDiscountBase - 1) * 100 * -1)).ToString();
+                        priceModel.DiscountValue = ((int)(Decimal.Floor((finalPriceWithDiscountBase / finalPriceWithoutDiscountBase * 100 - 100)) * -1)).ToString();
                     }
                 }
             }
@@ -635,6 +635,17 @@ namespace Nop.Web.Factories
 
                         model.PriceValue = finalPriceWithDiscount;
 
+                        //Check if there is a discount
+                        var isDiscounted = (finalPriceWithoutDiscountBase != finalPriceWithDiscountBase);
+                        model.isDiscounted = isDiscounted;
+                        //Check discount value
+                        if (isDiscounted)
+                        {
+                            model.DiscountValue = ((int)(Decimal.Floor((finalPriceWithDiscountBase / finalPriceWithoutDiscountBase * 100 - 100)) * -1)).ToString();
+                        }
+
+                        model.DisplayTierPrices = product.HasTierPrices;
+
                         //property for German market
                         //we display tax/shipping info only with "shipping enabled" for this product
                         //we also ensure this it's not free shipping
@@ -646,6 +657,9 @@ namespace Nop.Web.Factories
                         model.BasePricePAngV = _priceFormatter.FormatBasePrice(product, finalPriceWithDiscountBase);
                         //currency code
                         model.CurrencyCode = _workContext.WorkingCurrency.CurrencyCode;
+
+                        //is New
+                        model.isNew = product.MarkAsNew;
 
                         //rental
                         if (product.IsRental)
@@ -731,19 +745,6 @@ namespace Nop.Web.Factories
             }
             //rental
             model.IsRental = product.IsRental;
-
-            //customer entered price
-            model.CustomerEntersPrice = product.CustomerEntersPrice;
-            if (!model.CustomerEntersPrice)
-                return model;
-
-            var minimumCustomerEnteredPrice = _currencyService.ConvertFromPrimaryStoreCurrency(product.MinimumCustomerEnteredPrice, _workContext.WorkingCurrency);
-            var maximumCustomerEnteredPrice = _currencyService.ConvertFromPrimaryStoreCurrency(product.MaximumCustomerEnteredPrice, _workContext.WorkingCurrency);
-
-            model.CustomerEnteredPrice = updatecartitem != null ? updatecartitem.CustomerEnteredPrice : minimumCustomerEnteredPrice;
-            model.CustomerEnteredPriceRange = string.Format(_localizationService.GetResource("Products.EnterProductPrice.Range"),
-                _priceFormatter.FormatPrice(minimumCustomerEnteredPrice, false, false),
-                _priceFormatter.FormatPrice(maximumCustomerEnteredPrice, false, false));
 
             return model;
         }
@@ -1382,7 +1383,6 @@ namespace Nop.Web.Factories
                     model.RentalEndDate = updatecartitem.RentalEndDateUtc;
                 }
             }
-
             //associated products
             if (product.ProductType == ProductType.GroupedProduct)
             {

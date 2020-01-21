@@ -136,13 +136,6 @@ namespace Nop.Web.Models.Catalog
             public string MinimumQuantityNotification { get; set; }
             public List<SelectListItem> AllowedQuantities { get; set; }
 
-            //price entered by customers
-            [NopResourceDisplayName("Products.EnterProductPrice")]
-            public bool CustomerEntersPrice { get; set; }
-            [NopResourceDisplayName("Products.EnterProductPrice")]
-            public decimal CustomerEnteredPrice { get; set; }
-            public string CustomerEnteredPriceRange { get; set; }
-
             public bool DisableBuyButton { get; set; }
             public bool DisableWishlistButton { get; set; }
 
@@ -171,15 +164,18 @@ namespace Nop.Web.Models.Catalog
             public string Price { get; set; }
             public string PriceWithDiscount { get; set; }
             public decimal PriceValue { get; set; }
-
+            public bool isDiscounted { get; set; }
+            public string DiscountValue { get; set; }
             public bool CustomerEntersPrice { get; set; }
+
+            public bool DisplayTierPrices { get; set; }
 
             public bool CallForPrice { get; set; }
 
             public int ProductId { get; set; }
 
             public bool HidePrices { get; set; }
-
+            public bool isNew { get; set; }
             //rental
             public bool IsRental { get; set; }
             public string RentalPrice { get; set; }

@@ -76,7 +76,8 @@
                                 @Model.Name
                             </h1>
                         </div>
-                        @await Html.PartialAsync("_ProductDetailsPictures", Model)
+                        @await Html.PartialAsync("_ProductDetailsPictures", Model)                        
+
                         @if (!string.IsNullOrEmpty(Model.FullDescription))
                         {
                             <div class="card default p-4 mb-3">
@@ -94,25 +95,19 @@
                         @await Html.PartialAsync("_Discontinued", Model)
 
                         @*
-                                                        @if (!string.IsNullOrEmpty(Model.ShortDescription))
-                            {
-                                <div class="short-description">
-                                    @Html.Raw(Model.ShortDescription)
-                                </div>
-                            }
+                                    @if (!string.IsNullOrEmpty(Model.ShortDescription))
+        {
+            <div class="short-description">
+                @Html.Raw(Model.ShortDescription)
+            </div>
+        }
                         *@
 
                         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewTop, additionalData = Model })
-                        <!--manufacturers-->
-                        @await Html.PartialAsync("_ProductManufacturers", Model.ProductManufacturers)
+
                         <!--availability-->
                         @await Html.PartialAsync("_Availability", Model)
-                        <!--SKU, MAN, GTIN, vendor-->
-                        @await Html.PartialAsync("_SKU_Man_GTIN_Ven", Model)
-                        <!--delivery-->
-                        @await Html.PartialAsync("_DeliveryInfo", Model)
-                        <!--sample download-->
-                        @await Html.PartialAsync("_DownloadSample", Model)
+
                         <!--attributes-->
                         @{
                             var dataDictAttributes = new ViewDataDictionary(ViewData);
@@ -132,39 +127,48 @@
                             @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
                         }
                         <!--price & add to cart-->
-                        <div class="card default summary xl-flex-row" id="summary">
-                            @{
-                                var dataDictAddToCart = new ViewDataDictionary(ViewData);
-                                dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                                @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
+                        <div class="card default d-flex flex-column">
+                            <div class="summary d-flex flex-column sm-flex-row sm-justify-around md-justify-content-center" id="summary">
+                                @{
+                                    var dataDictAddToCart = new ViewDataDictionary(ViewData);
+                                    dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
+                                    @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
 
-                                var dataDictPrice = new ViewDataDictionary(ViewData);
-                                dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
-                                @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
-                                @await Html.PartialAsync("_ProductTierPrices", Model.TierPrices)
-                            }
-                        </div>
-
-                        <!--wishlist, compare, email a friend-->
-                        <div class="overview-buttons">
-                            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsBefore, additionalData = Model })
-                            @*
-                                                                @{
-                                    var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
-                                    dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                                    @await Html.PartialAsync("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
+                                    var dataDictPrice = new ViewDataDictionary(ViewData);
+                                    dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
+                                    @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
                                 }
+                            </div>
+                            <div class="w-100">
+                                @{
+                                    @await Html.PartialAsync("_ProductTierPrices", Model.TierPrices)
+                                }
+                            </div>
+                        </div>
+                        <!--wishlist, compare, email a friend-->
+                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsBefore, additionalData = Model })
+                        
+
+                            @*
+                                <div class="overview-buttons">
+                                            @{
+                var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
+                dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
+                @await Html.PartialAsync("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
+            }
+                                @await Html.PartialAsync("_CompareProductsButton", Model)
+                            @await Html.PartialAsync("_ProductEmailAFriendButton", Model)
+
+                        </div>
                             *@
 
-                            @await Html.PartialAsync("_CompareProductsButton", Model)
-                            @await Html.PartialAsync("_ProductEmailAFriendButton", Model)
+
                             @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsAfter, additionalData = Model })
+                            @await Html.PartialAsync("_ShareButton", Model)
+                            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewBottom, additionalData = Model })
                         </div>
-                        @await Html.PartialAsync("_ShareButton", Model)
-                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewBottom, additionalData = Model })
+                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsEssentialBottom, additionalData = Model })
                     </div>
-                    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsEssentialBottom, additionalData = Model })
-                </div>
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
                 @*
                                       <div class="product-collateral">

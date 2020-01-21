@@ -354,7 +354,7 @@ select {
   padding: 5px !important; }
 
 .add-to-cart .fs-dropdown.fs-light .fs-dropdown-selected {
-  padding: .5rem 2rem; }
+  text-align: center; }
 
 .quantity .fs-dropdown.fs-light .fs-dropdown-selected {
   padding: .5rem 1.75rem; }

@@ -11,11 +11,8 @@
   box-sizing: border-box; }
 
 html {
-  font-family: Cabin;
-  font-size: 16px;
-  font-weight: 400;
+  font: normal 16px 'Cabin',Helvetica,sans-serif;
   color: #fff;
-  margin: 0;
   -webkit-text-size-adjust: none; }
 
 body {
@@ -829,8 +826,23 @@ label, label + * {
   100% {
     opacity: 1; } }
 
+.border-bottom-1 {
+  border-bottom: 1px solid !important; }
+
+.border-top-1 {
+  border-top: 1px solid !important; }
+
+.border-left-1 {
+  border-left: 1px solid !important; }
+
+.border-right-1 {
+  border-right: 1px solid !important; }
+
 .d-block {
   display: block !important; }
+
+.pt-4, .py-4 {
+  padding-top: 1.5rem !important; }
 
 .mr-0, .mx-0 {
   margin-right: 0 !important; }
@@ -852,6 +864,9 @@ label, label + * {
 
 .p-4 {
   padding: 1.5rem !important; }
+
+.mb-auto, .mx-auto {
+  margin-bottom: auto !important; }
 
 .mb-0, .mx-0 {
   margin-bottom: 0 !important; }
@@ -1002,6 +1017,9 @@ flex-wrap {
     text-align: left; } }
 
 @media all and (min-width: 769px) {
+  .sm-justify-around {
+    -ms-flex-pack: distribute !important;
+    justify-content: space-around !important; }
   .sm-font-size-lg {
     font-size: 1.125rem !important; }
   .sm-mb-3, .sm-my-3 {
@@ -1029,6 +1047,8 @@ flex-wrap {
     margin-top: 0 !important; } }
 
 @media all and (min-width: 1001px) {
+  .md-border-left-1 {
+    border-left: 1px solid !important; }
   .md-d-none {
     display: none !important; }
   .md-d-inline-flex {
@@ -1053,6 +1073,8 @@ flex-wrap {
     margin-right: 1rem !important; }
   .md-ml-3, .md-mx-3 {
     margin-left: 1rem !important; }
+  .md-ml-4, .md-mx-4 {
+    margin-left: 1.5rem !important; }
   .md-mr-4, .md-mr-4 {
     margin-right: 1.5rem !important; }
   .md-mb-0 {
@@ -1066,19 +1088,37 @@ flex-wrap {
   .md-justify-content-end {
     -ms-flex-pack: end !important;
     justify-content: flex-end !important; }
+  .md-justify-content-center {
+    -ms-flex-pack: center !important;
+    justify-content: center !important; }
   .md-mt-0, .md-my-0 {
-    margin-top: 0 !important; } }
+    margin-top: 0 !important; }
+  .md-pl-3, .md-px-3 {
+    padding-left: 1rem !important; }
+  .md-pl-4, .md-px-4 {
+    padding-left: 1.5rem !important; } }
 
 @media all and (min-width: 1367px) {
+  .xl-text-left {
+    text-align: left !important; }
   .xl-flex-row {
     -ms-flex-direction: row !important;
     flex-direction: row !important; }
   .xl-ml-3, .xl-mx-3 {
     margin-left: 1rem !important; }
+  .xl-ml-4, .xl-mx-4 {
+    margin-left: 1.5rem !important; }
   .xl-mt-0, .xl-my-0 {
     margin-top: 0 !important; }
   .xl-mb-0, .xl-my-0 {
-    margin-bottom: 0 !important; } }
+    margin-bottom: 0 !important; }
+  .xl-pl-3, .xl-px-3 {
+    padding-left: 1rem !important; }
+  .xl-pl-4, .xl-px-4 {
+    padding-left: 1.5rem !important; } }
+
+.border-default {
+  border-color: rgba(255, 255, 255, 0.15) !important; }
 
 .footer {
   background-color: rgba(0, 0, 0, 0.2);
@@ -1717,19 +1757,12 @@ label:not(.checkbox-style):not(.checkbox-label) {
   bottom: 0;
   z-index: 1; }
 
-.product-item .ribbon {
+.product-item .badges {
   z-index: 0;
-  font-weight: 500;
-  padding: .25rem 1rem;
   margin: 2rem;
   position: absolute;
   top: -4.5rem;
-  left: 0;
-  border-radius: .25rem;
-  letter-spacing: .035rem;
-  text-transform: none; }
-  .product-item .ribbon.discount {
-    left: 5rem; }
+  left: 0; }
 
 .product-item .product-title {
   font-size: 1.5rem;
@@ -1769,20 +1802,28 @@ label:not(.checkbox-style):not(.checkbox-label) {
 
 .ribbon {
   position: absolute;
-  display: flex;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   z-index: 13;
   border-bottom-left-radius: .5rem;
   border-top-left-radius: .5rem;
-  justify-content: center;
-  align-items: center;
-  text-shadow: 0.0625em 0.0625em 0.0625em #333;
   font-weight: 600;
   text-transform: uppercase;
   padding: .75rem 2.5rem; }
-  .ribbon.new {
+
+.badge {
+  border-radius: .25rem;
+  letter-spacing: .035rem;
+  font-weight: 500;
+  padding: .25rem 1rem; }
+
+.ribbon, .badge {
+  display: inline-flex;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  justify-content: center;
+  align-items: center;
+  text-shadow: 0.0625em 0.0625em 0.0625em #333; }
+  .ribbon.new, .badge.new {
     background: #d46; }
-  .ribbon.discount {
+  .ribbon.discount, .badge.discount {
     background: #6c56d7; }
 
 .item-box .product-title {

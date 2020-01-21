@@ -1,7 +1,28 @@
 ﻿$accent-color: #b79bff;
 
+
+.border-bottom-1 {
+    border-bottom: 1px solid !important;
+}
+
+.border-top-1 {
+    border-top: 1px solid !important;
+}
+
+.border-left-1 {
+    border-left: 1px solid !important;
+}
+
+.border-right-1 {
+    border-right: 1px solid !important;
+}
+
 .d-block {
     display: block !important;
+}
+
+.pt-4, .py-4 {
+    padding-top: 1.5rem!important;
 }
 
 .mr-0, .mx-0 {
@@ -30,6 +51,10 @@
 
 .p-4 {
     padding: 1.5rem !important;
+}
+
+.mb-auto, .mx-auto {
+    margin-bottom: auto !important;
 }
 
 .mb-0, .mx-0 {
@@ -230,6 +255,11 @@ flex-wrap {
 
 @media all and (min-width: 769px) {
 
+    .sm-justify-around {
+        -ms-flex-pack: distribute !important;
+        justify-content: space-around !important;
+    }
+
     .sm-font-size-lg {
         font-size: 1.125rem !important;
     }
@@ -282,6 +312,10 @@ flex-wrap {
 
 @media all and (min-width: 1001px) {
 
+    .md-border-left-1 {
+        border-left: 1px solid !important;
+    }
+
     .md-d-none {
         display: none !important;
     }
@@ -329,6 +363,10 @@ flex-wrap {
         margin-left: 1rem !important;
     }
 
+    .md-ml-4, .md-mx-4 {
+        margin-left: 1.5rem !important;
+    }
+
     .md-mr-4, .md-mr-4 {
         margin-right: 1.5rem !important;
     }
@@ -352,12 +390,29 @@ flex-wrap {
         justify-content: flex-end !important;
     }
 
+    .md-justify-content-center {
+        -ms-flex-pack: center !important;
+        justify-content: center !important;
+    }
+
     .md-mt-0, .md-my-0 {
         margin-top: 0 !important;
+    }
+
+    .md-pl-3, .md-px-3 {
+        padding-left: 1rem !important;
+    }
+
+    .md-pl-4, .md-px-4 {
+        padding-left: 1.5rem !important;
     }
 }
 
 @media all and (min-width: 1367px) {
+    .xl-text-left {
+        text-align: left !important;
+    }
+
     .xl-flex-row {
         -ms-flex-direction: row !important;
         flex-direction: row !important;
@@ -367,6 +422,10 @@ flex-wrap {
         margin-left: 1rem !important;
     }
 
+    .xl-ml-4, .xl-mx-4 {
+        margin-left: 1.5rem !important;
+    }
+
     .xl-mt-0, .xl-my-0 {
         margin-top: 0 !important;
     }
@@ -374,4 +433,14 @@ flex-wrap {
     .xl-mb-0, .xl-my-0 {
         margin-bottom: 0 !important;
     }
+    .xl-pl-3, .xl-px-3 {
+        padding-left: 1rem !important;
+    }
+    .xl-pl-4, .xl-px-4 {
+        padding-left: 1.5rem !important;
+    }
+}
+
+.border-default {
+    border-color: rgba(255,255,255,.15) !important;
 }

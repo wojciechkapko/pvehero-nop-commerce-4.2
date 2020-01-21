@@ -101,6 +101,18 @@
   /*reset zeroing*/
   color: #666; }
 
+.prices-table tbody tr:not(.tier-prices) td {
+  padding-bottom: .5rem; }
+
+tr.tier-prices td:nth-child(2) {
+  color: #9bffb3; }
+
+tr.tier-prices td:nth-child(3) {
+  color: #fff440; }
+
+tr.tier-prices td:nth-child(4) {
+  color: #be85ff; }
+
 .overview .button-2:hover,
 .variant-overview .button-2:hover {
   background-color: #ddd; }
@@ -157,13 +169,12 @@
 .variant-overview .old-product-price,
 .overview .non-discounted-price,
 .variant-overview .non-discounted-price {
-  font-size: 14px;
   color: #999;
   text-decoration: line-through; }
 
 .overview .product-price,
 .variant-overview .product-price {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: bold; }
 
 .overview .tax-shipping-info a,
@@ -178,10 +189,6 @@
 .variant-overview .add-to-cart-panel {
   display: inline-block;
   position: relative; }
-
-.overview .qty-label,
-.variant-overview .qty-label {
-  display: none !important; }
 
 .overview .qty-input,
 .variant-overview .qty-input {
