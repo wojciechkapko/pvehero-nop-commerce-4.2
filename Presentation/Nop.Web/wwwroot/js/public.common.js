@@ -77,10 +77,10 @@ function displayBarNotification(message, messagetype, timeout) {
     $('#bar-notification')
         .append(htmlcode);
 
-    $('.bar-notification-container .close').velocity("transition.expandIn", { delay: 100, duration: 200 });
+    $('.bar-notification-container .close').fadeIn('slow');
 
     $(htmlcode)
-        .velocity('transition.slideDownIn', { duration: 200, display: 'block' })
+        .fadeIn('slow')
         .on('mouseenter', function() {
             clearTimeout(notificationTimeout);
         });
@@ -91,14 +91,14 @@ function displayBarNotification(message, messagetype, timeout) {
     };
 
     $('#close-button').on('click', function () {
-        $('.bar-notification-container .close').velocity("transition.expandOut", { duration: 200 });
-        $(htmlcode).velocity('transition.slideUpOut', { duration: 200, complete: function () { removeNoteItem(); } });
+        $('.bar-notification-container .close').fadeOut('slow');
+        $(htmlcode).fadeOut('slow');
     });
 
     //timeout (if set)
     if (timeout > 0) {
         notificationTimeout = setTimeout(function () {
-            $(htmlcode).velocity('transition.slideUpOut', { duration: 200 });
+            $(htmlcode).fadeOut('slow');
         }, timeout);
     }
 }
@@ -127,14 +127,6 @@ function addAntiForgeryToken(data) {
 }
 
 var utility = (function () {
-
-    var ScrolltoElement = function (el, offset) {
-        $(el).velocity('scroll', {
-            duration: 500,
-            offset: offset,
-            easing: 'ease-in-out'
-        });
-    };
 
     var addSpinner = function (id, zindex) {
         var top = $("#" + id).offset().top + $("#" + id).outerHeight() / 2 - 50;
@@ -179,7 +171,6 @@ var utility = (function () {
     };
 
     return {
-        ScrolltoElement: ScrolltoElement,
         addSpinner: addSpinner,
         addButtonSpinner: addButtonSpinner,
         addSpinnerWithBg: addSpinnerWithBg,
