@@ -1164,18 +1164,6 @@ namespace Nop.Web.Factories
                 {
                     model.DefaultPictureModel = PrepareProductOverviewPictureModel(product, productThumbPictureSize);
                 }
-                else
-                {
-                    if (!_workContext.Browser.Equals("safari"))
-                    {
-                        model.WebPSupport = true;
-                    }
-                    else
-                    {
-                        model.WebPSupport = false;
-                    }
-                }
-                //websupport
 
 
                 //specs
@@ -1217,28 +1205,9 @@ namespace Nop.Web.Factories
                 MetaTitle = _localizationService.GetLocalized(product, x => x.MetaTitle),
                 SeName = _urlRecordService.GetSeName(product),
                 ProductType = product.ProductType,
-                ShowSku = _catalogSettings.ShowSkuOnProductDetailsPage,
-                Sku = product.Sku,
-                ShowManufacturerPartNumber = _catalogSettings.ShowManufacturerPartNumber,
-                FreeShippingNotificationEnabled = _catalogSettings.ShowFreeShippingNotification,
-                ManufacturerPartNumber = product.ManufacturerPartNumber,
-                ShowGtin = _catalogSettings.ShowGtin,
-                Gtin = product.Gtin,
-                ManageInventoryMethod = product.ManageInventoryMethod,
                 StockAvailability = _productService.FormatStockMessage(product, ""),
-                HasSampleDownload = product.IsDownload && product.HasSampleDownload,
                 DisplayDiscontinuedMessage = !product.Published && _catalogSettings.DisplayDiscontinuedMessageForUnpublishedProducts
             };
-
-            //webp support
-            if (!_workContext.Browser.Equals("safari"))
-            {
-                model.WebPSupport = true;
-            }
-            else
-            {
-                model.WebPSupport = false;
-            }
 
             //automatically generate product description?
             if (_seoSettings.GenerateProductMetaDescription && string.IsNullOrEmpty(model.MetaDescription))
@@ -1247,64 +1216,8 @@ namespace Nop.Web.Factories
                 model.MetaDescription = model.ShortDescription;
             }
 
-            //shipping info
-            model.IsShipEnabled = product.IsShipEnabled;
-            if (product.IsShipEnabled)
-            {
-                model.IsFreeShipping = product.IsFreeShipping;
-                //delivery date
-                var deliveryDate = _dateRangeService.GetDeliveryDateById(product.DeliveryDateId);
-                if (deliveryDate != null)
-                {
-                    model.DeliveryDate = _localizationService.GetLocalized(deliveryDate, dd => dd.Name);
-                }
-            }
-
-            //email a friend
-            model.EmailAFriendEnabled = _catalogSettings.EmailAFriendEnabled;
-            //compare products
-            model.CompareProductsEnabled = _catalogSettings.CompareProductsEnabled;
             //store name
             model.CurrentStoreName = _localizationService.GetLocalized(_storeContext.CurrentStore, x => x.Name);
-
-            //vendor details
-            if (_vendorSettings.ShowVendorOnProductDetailsPage)
-            {
-                var vendor = _vendorService.GetVendorById(product.VendorId);
-                if (vendor != null && !vendor.Deleted && vendor.Active)
-                {
-                    model.ShowVendor = true;
-
-                    model.VendorModel = new VendorBriefInfoModel
-                    {
-                        Id = vendor.Id,
-                        Name = _localizationService.GetLocalized(vendor, x => x.Name),
-                        SeName = _urlRecordService.GetSeName(vendor),
-                    };
-                }
-            }
-
-            //page sharing
-            if (_catalogSettings.ShowShareButton && !string.IsNullOrEmpty(_catalogSettings.PageShareCode))
-            {
-                var shareCode = _catalogSettings.PageShareCode;
-                if (_webHelper.IsCurrentConnectionSecured())
-                {
-                    //need to change the add this link to be https linked when the page is, so that the page doesn't ask about mixed mode when viewed in https...
-                    shareCode = shareCode.Replace("http://", "https://");
-                }
-                model.PageShareCode = shareCode;
-            }
-
-            //back in stock subscriptions
-            if (product.ManageInventoryMethod == ManageInventoryMethod.ManageStock &&
-                product.BackorderMode == BackorderMode.NoBackorders &&
-                product.AllowBackInStockSubscriptions &&
-                _productService.GetTotalStockQuantity(product) <= 0)
-            {
-                //out of stock
-                model.DisplayBackInStockSubscription = true;
-            }
 
             //breadcrumb
             //do not prepare this model for the associated products. anyway it's not used
@@ -1327,31 +1240,6 @@ namespace Nop.Web.Factories
 
             //'Add to cart' model
             model.AddToCart = PrepareProductAddToCartModel(product, updatecartitem);
-
-            //gift card
-            if (product.IsGiftCard)
-            {
-                model.GiftCard.IsGiftCard = true;
-                model.GiftCard.GiftCardType = product.GiftCardType;
-
-                if (updatecartitem == null)
-                {
-                    model.GiftCard.SenderName = _customerService.GetCustomerFullName(_workContext.CurrentCustomer);
-                    model.GiftCard.SenderEmail = _workContext.CurrentCustomer.Email;
-                }
-                else
-                {
-                    _productAttributeParser.GetGiftCardAttribute(updatecartitem.AttributesXml,
-                        out string giftCardRecipientName, out string giftCardRecipientEmail,
-                        out string giftCardSenderName, out string giftCardSenderEmail, out string giftCardMessage);
-
-                    model.GiftCard.RecipientName = giftCardRecipientName;
-                    model.GiftCard.RecipientEmail = giftCardRecipientEmail;
-                    model.GiftCard.SenderName = giftCardSenderName;
-                    model.GiftCard.SenderEmail = giftCardSenderEmail;
-                    model.GiftCard.Message = giftCardMessage;
-                }
-            }
 
             //product attributes
             model.ProductAttributes = PrepareProductAttributeModels(product, updatecartitem);

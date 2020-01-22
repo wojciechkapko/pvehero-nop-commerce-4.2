@@ -82,7 +82,6 @@
                             </div>
                         </div>
 
-
                         @if (!string.IsNullOrEmpty(Model.FullDescription))
                         {
                             <div class="card default p-4 mb-3">
@@ -108,29 +107,22 @@
                             }
                         *@
 
-                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewTop, additionalData = Model })
-
-                        <!--availability-->
-                        @await Html.PartialAsync("_Availability", Model)
-
                         <!--attributes-->
                         @{
                             var dataDictAttributes = new ViewDataDictionary(ViewData);
                             dataDictAttributes.TemplateInfo.HtmlFieldPrefix = $"attributes_{Model.Id}";
                             @await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
                         }
-                        <!--gift card-->
-                        @{
-                            var dataDictGiftCard = new ViewDataDictionary(ViewData);
-                            dataDictGiftCard.TemplateInfo.HtmlFieldPrefix = $"giftcard_{Model.Id}";
-                            @await Html.PartialAsync("_GiftCardInfo", Model.GiftCard, dataDictGiftCard)
-                        }
+
                         <!--rental info-->
-                        @{
-                            var dataDictRental = new ViewDataDictionary(ViewData);
-                            dataDictRental.TemplateInfo.HtmlFieldPrefix = $"rental_{Model.Id}";
-                            @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
-                        }
+                        @*
+                                                     @{
+                                var dataDictRental = new ViewDataDictionary(ViewData);
+                                dataDictRental.TemplateInfo.HtmlFieldPrefix = $"rental_{Model.Id}";
+                                @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
+                            }
+                        *@
+
                         <!--price & add to cart-->
                         <div class="card default d-flex flex-column" id="summary">
                             <div class="summary d-flex flex-column sm-flex-row sm-justify-around md-justify-content-center">
@@ -150,43 +142,12 @@
                                 @await Html.PartialAsync("_ProductTierPrices", Model.TierPrices)
                             }
                         </div>
-                        <!--wishlist, compare, email a friend-->
-                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsBefore, additionalData = Model })
-
-
-                        @*
-                                                <div class="overview-buttons">
-                                                            @{
-                                var dataDictAddToWishlist = new ViewDataDictionary(ViewData);
-                                dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                                @await Html.PartialAsync("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
-                            }
-                                                @await Html.PartialAsync("_CompareProductsButton", Model)
-                                            @await Html.PartialAsync("_ProductEmailAFriendButton", Model)
-
-                                        </div>
-                        *@
-
-
-                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsInsideOverviewButtonsAfter, additionalData = Model })
-                        @await Html.PartialAsync("_ShareButton", Model)
-                        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsOverviewBottom, additionalData = Model })
                     </div>
-                    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsEssentialBottom, additionalData = Model })
                 </div>
-                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBeforeCollateral, additionalData = Model })
-                @*
-                                      <div class="product-collateral">
-                        @await Html.PartialAsync("_ProductSpecifications", Model.ProductSpecifications)
-
-                    </div>
-                *@
-
                 @await Component.InvokeAsync("ProductsAlsoPurchased", new { productId = Model.Id })
                 @await Component.InvokeAsync("RelatedProducts", new { productId = Model.Id })
             </div>
         </form>
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsBottom, additionalData = Model })
     </div>
 </div>
 

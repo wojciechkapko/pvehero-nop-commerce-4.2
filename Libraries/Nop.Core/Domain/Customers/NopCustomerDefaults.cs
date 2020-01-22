@@ -271,8 +271,6 @@ namespace Nop.Core.Domain.Customers
         /// </summary>
         public static string EuCookieLawAcceptedAttribute => "EuCookieLaw.Accepted";
 
-        public static string Browser => "safari";
-
         #endregion
     }
 }

@@ -45,7 +45,5 @@ namespace Nop.Core
         /// Gets or sets value indicating whether we're in admin area
         /// </summary>
         bool IsAdmin { get; set; }
-
-        string Browser { get; set; }
     }
 }

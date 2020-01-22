@@ -71,10 +71,6 @@ namespace Nop.Web.Framework.Infrastructure.Extensions
             //add accessor to HttpContext
             services.AddHttpContextAccessor();
 
-            //add detection
-            services.AddDetection();
-            services.AddDetectionCore().AddBrowser();
-
             //create default file provider
             CommonHelper.DefaultFileProvider = new NopFileProvider(hostingEnvironment);
 

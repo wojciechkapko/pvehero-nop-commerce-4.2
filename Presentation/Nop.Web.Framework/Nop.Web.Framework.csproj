@@ -16,8 +16,6 @@
   <ItemGroup>
     <PackageReference Include="BundlerMinifier.Core" Version="2.9.406" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
-    <PackageReference Include="Wangkanai.Detection" Version="2.0.0" />
-    <PackageReference Include="Wangkanai.Detection.Browser" Version="2.0.0" />
     <PackageReference Include="WebMarkupMin.AspNetCore2" Version="2.5.0" />
     <PackageReference Include="WebMarkupMin.NUglify" Version="2.5.5" />
   </ItemGroup>
