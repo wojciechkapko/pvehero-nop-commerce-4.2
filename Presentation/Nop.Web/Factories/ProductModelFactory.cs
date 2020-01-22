@@ -576,7 +576,7 @@ namespace Nop.Web.Factories
                 .Select(x => new ProductTagModel
                 {
                     Id = x.Id,
-                    Name = _localizationService.GetLocalized(x, y => y.Name),
+                    TagNameData = _productTagService.CheckTagForIcon(x),
                     SeName = _urlRecordService.GetSeName(x),
                     ProductCount = _productTagService.GetProductCount(x.Id, _storeContext.CurrentStore.Id)
                 })
@@ -1230,6 +1230,16 @@ namespace Nop.Web.Factories
                 DisplayDiscontinuedMessage = !product.Published && _catalogSettings.DisplayDiscontinuedMessageForUnpublishedProducts
             };
 
+            //webp support
+            if (!_workContext.Browser.Equals("safari"))
+            {
+                model.WebPSupport = true;
+            }
+            else
+            {
+                model.WebPSupport = false;
+            }
+
             //automatically generate product description?
             if (_seoSettings.GenerateProductMetaDescription && string.IsNullOrEmpty(model.MetaDescription))
             {
@@ -1305,15 +1315,12 @@ namespace Nop.Web.Factories
 
             //product tags
             //do not prepare this model for the associated products. anyway it's not used
-            if (!isAssociatedProduct)
-            {
-                model.ProductTags = PrepareProductTagModels(product);
-            }
+            model.ProductTags = PrepareProductTagModels(product);
 
             //pictures
-            model.DefaultPictureZoomEnabled = _mediaSettings.DefaultPictureZoomEnabled;
-            model.DefaultPictureModel = PrepareProductDetailsPictureModel(product, isAssociatedProduct, out IList<PictureModel> allPictureModels);
-            model.PictureModels = allPictureModels;
+            //model.DefaultPictureZoomEnabled = _mediaSettings.DefaultPictureZoomEnabled;
+            //model.DefaultPictureModel = PrepareProductDetailsPictureModel(product, isAssociatedProduct, out IList<PictureModel> allPictureModels);
+            //model.PictureModels = allPictureModels;
 
             //price
             model.ProductPrice = PrepareProductPriceModel(product);

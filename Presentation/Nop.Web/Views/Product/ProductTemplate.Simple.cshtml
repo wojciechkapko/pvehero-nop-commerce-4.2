@@ -32,15 +32,16 @@
         var productUrl = Url.RouteUrl("Product", new { SeName = Model.SeName }, webHelper.CurrentRequestProtocol).ToLowerInvariant();
         Html.AddCanonicalUrlParts(productUrl, seoSettings.QueryStringInCanonicalUrlsEnabled);
     }
-
+    var fileExtension = (Model.WebPSupport) ? "-big.webp" : "-big.jpg";
+    var imageUrl = "https://pvehero.com/images/products/" + @Model.SeName + @fileExtension;
     //open graph META tags
     if (seoSettings.OpenGraphMetaTags)
     {
         Html.AddHeadCustomParts("<meta property=\"og:type\" content=\"product\" />");
         Html.AddHeadCustomParts("<meta property=\"og:title\" content=\"" + Html.Encode(Model.Name) + "\" />");
         Html.AddHeadCustomParts("<meta property=\"og:description\" content=\"" + Html.Encode(Nop.Core.Html.HtmlHelper.StripTags(Model.MetaDescription)) + "\" />");
-        Html.AddHeadCustomParts("<meta property=\"og:image\" content=\"" + Model.DefaultPictureModel.ImageUrl + "\" />");
-        Html.AddHeadCustomParts("<meta property=\"og:image:url\" content=\"" + Model.DefaultPictureModel.ImageUrl + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:image\" content=\""+ @imageUrl + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:image:url\" content=\""+ @imageUrl + "\" />");
         Html.AddHeadCustomParts("<meta property=\"og:url\" content=\"" + webHelper.GetThisPageUrl(false) + "\" />");
         Html.AddHeadCustomParts("<meta property=\"og:site_name\" content=\"" + Html.Encode(Model.CurrentStoreName) + "\" />");
     }
@@ -52,7 +53,7 @@
         Html.AddHeadCustomParts("<meta property=\"twitter:site\" content=\"" + Html.Encode(Model.CurrentStoreName) + "\" />");
         Html.AddHeadCustomParts("<meta property=\"twitter:title\" content=\"" + Html.Encode(Model.Name) + "\" />");
         Html.AddHeadCustomParts("<meta property=\"twitter:description\" content=\"" + Html.Encode(Nop.Core.Html.HtmlHelper.StripTags(Model.MetaDescription)) + "\" />");
-        Html.AddHeadCustomParts("<meta property=\"twitter:image\" content=\"" + Model.DefaultPictureModel.ImageUrl + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:image\" content=\""+ @imageUrl + "\" />");
         Html.AddHeadCustomParts("<meta property=\"twitter:url\" content=\"" + webHelper.GetThisPageUrl(false) + "\" />");
     }
 }
@@ -71,12 +72,16 @@
                     @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsEssentialTop, additionalData = Model })
                     <!--product pictures-->
                     <div class="gallery">
-                        <div class="product-name">
-                            <h1 itemprop="name">
-                                @Model.Name
-                            </h1>
+                        <div class="product-details">
+                            <img alt="Picture of @Model.Name" src="~/images/products/@Model.SeName@fileExtension" title="Picture of @Model.Name" itemprop="image" id="main-product-img-@Model.Id" />
+                            <div class="product-name text-left">
+                                @await Html.PartialAsync("_ProductTags", Model.ProductTags)
+                                <h1 itemprop="name">
+                                    @Model.Name
+                                </h1>
+                            </div>
                         </div>
-                        @await Html.PartialAsync("_ProductDetailsPictures", Model)
+
 
                         @if (!string.IsNullOrEmpty(Model.FullDescription))
                         {
@@ -173,7 +178,7 @@
                 @*
                                       <div class="product-collateral">
                         @await Html.PartialAsync("_ProductSpecifications", Model.ProductSpecifications)
-                        @await Html.PartialAsync("_ProductTags", Model.ProductTags)
+
                     </div>
                 *@
 

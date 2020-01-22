@@ -34,19 +34,19 @@
 .product-selectors > div {
   flex-direction: column; }
 
-.html-category-page .page-title, .html-search-page .page-title {
+.html-category-page .page-title, .html-search-page .page-title, .html-product-tag-page .page-title {
   padding: 0;
   margin: 0 0 1rem; }
 
-.html-category-page .category-description p, .html-search-page .category-description p {
+.html-category-page .category-description p, .html-search-page .category-description p, .html-product-tag-page .category-description p {
   margin: 1rem 0;
   color: #bba0ff;
   font-size: 1.25rem; }
 
-.html-category-page .product-item, .html-search-page .product-item {
+.html-category-page .product-item, .html-search-page .product-item, .html-product-tag-page .product-item {
   opacity: 1 !important; }
 
-.html-category-page .block .title, .html-search-page .block .title {
+.html-category-page .block .title, .html-search-page .block .title, .html-product-tag-page .block .title {
   margin: 0 0 10px;
   padding: 12px 30px 15px 15px; }
 
@@ -62,5 +62,5 @@
 @media all and (min-width: 1001px) {
   .block-category-navigation .listbox {
     padding-top: 10px; }
-  .html-category-page .block .title, .html-search-page .block .title {
+  .html-category-page .block .title, .html-search-page .block .title, .html-product-tag-page .block .title {
     padding: 12px 30px 15px 0; } }

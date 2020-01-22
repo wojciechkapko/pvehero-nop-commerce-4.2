@@ -43,7 +43,7 @@
     flex-direction: column;
 }
 
-.html-category-page, .html-search-page {
+.html-category-page, .html-search-page, .html-product-tag-page {
     .page-title {
         padding: 0;
         margin: 0 0 1rem;
@@ -84,7 +84,7 @@
     .block-category-navigation .listbox {
         padding-top: 10px;
     }
-    .html-category-page, .html-search-page {
+    .html-category-page, .html-search-page, .html-product-tag-page {
         .block .title {
             padding: 12px 30px 15px 0;
         }

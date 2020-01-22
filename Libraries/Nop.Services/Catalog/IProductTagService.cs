@@ -8,6 +8,9 @@ namespace Nop.Services.Catalog
     /// </summary>
     public partial interface IProductTagService
     {
+
+        string[] CheckTagForIcon(ProductTag productTag);
+
         /// <summary>
         /// Delete a product tag
         /// </summary>

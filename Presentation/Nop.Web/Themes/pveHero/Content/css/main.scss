@@ -1797,12 +1797,21 @@ label:not(.checkbox-style):not(.checkbox-label) {
     align-items: center;
     text-shadow: 0.0625em 0.0625em 0.0625em #333;
 
-    &.new {
+    &.new, &.tag {
         background: #d46;
     }
 
     &.discount {
         background: #6c56d7;
+    }
+}
+
+.tag {
+    text-transform: capitalize;
+    font-size: 1.25rem;
+
+    &:hover {
+        background: #661d2d;
     }
 }
 

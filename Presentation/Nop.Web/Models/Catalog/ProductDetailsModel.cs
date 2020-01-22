@@ -14,8 +14,6 @@ namespace Nop.Web.Models.Catalog
     {
         public ProductDetailsModel()
         {
-            DefaultPictureModel = new PictureModel();
-            PictureModels = new List<PictureModel>();
             GiftCard = new GiftCardModel();
             ProductPrice = new ProductPriceModel();
             AddToCart = new AddToCartModel();
@@ -30,11 +28,6 @@ namespace Nop.Web.Models.Catalog
             TierPrices = new List<TierPriceModel>();
         }
 
-        //picture(s)
-        public bool DefaultPictureZoomEnabled { get; set; }
-        public PictureModel DefaultPictureModel { get; set; }
-        public IList<PictureModel> PictureModels { get; set; }
-
         public string Name { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
@@ -42,6 +35,8 @@ namespace Nop.Web.Models.Catalog
         public string MetaDescription { get; set; }
         public string MetaTitle { get; set; }
         public string SeName { get; set; }
+
+        public bool WebPSupport { get; set; }
 
         public ProductType ProductType { get; set; }
 

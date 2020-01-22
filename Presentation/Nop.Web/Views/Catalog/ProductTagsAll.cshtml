@@ -6,6 +6,13 @@
     Html.AddTitleParts(T("PageTitle.AllProductTags").Text);
     //page class
     Html.AppendPageCssClassParts("html-product-tags-all-page");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
+    Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+    Html.AppendCssFileParts($"~/css/catalog.min.css");
+    Html.AppendCssFileParts($"~/css/product-grid.min.css");
+    Html.AppendCssFileParts($"~/css/breadcrumb.min.css");
+    Html.AppendCssFileParts($"~/css/pager.min.css");
 }
 <div class="page product-tags-all-page">
     <div class="page-title">

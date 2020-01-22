@@ -764,6 +764,9 @@ label, label + * {
 .pt-4, .py-4 {
   padding-top: 1.5rem !important; }
 
+.m-1 {
+  margin: .25rem !important; }
+
 .mr-0, .mx-0 {
   margin-right: 0 !important; }
 
@@ -1672,10 +1675,16 @@ label:not(.checkbox-style):not(.checkbox-label) {
   justify-content: center;
   align-items: center;
   text-shadow: 0.0625em 0.0625em 0.0625em #333; }
-  .ribbon.new, .badge.new {
+  .ribbon.new, .ribbon.tag, .badge.new, .badge.tag {
     background: #d46; }
   .ribbon.discount, .badge.discount {
     background: #6c56d7; }
+
+.tag {
+  text-transform: capitalize;
+  font-size: 1.25rem; }
+  .tag:hover {
+    background: #661d2d; }
 
 .item-box .product-title {
   color: #fff;

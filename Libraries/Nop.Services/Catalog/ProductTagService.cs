@@ -96,9 +96,33 @@ namespace Nop.Services.Catalog
             });
         }
 
+
+
         #endregion
 
         #region Methods
+
+        public virtual string[] CheckTagForIcon(ProductTag productTag)
+        {
+            var result = new string[2];
+            var tagBaseName = productTag.Name;
+            var tagIcon = "";
+            string tagName;
+            if (tagBaseName.IndexOf("icon") > 0)
+            {
+
+                tagName = tagBaseName.Split("&icon=")[0];
+                tagIcon = tagBaseName.Split("&icon=")[1];
+            }
+            else
+            {
+                tagName = tagBaseName;
+            }
+            result[0] = tagName;
+            result[1] = tagIcon;
+            return result;
+        }
+
 
         /// <summary>
         /// Delete a product tag
@@ -210,6 +234,14 @@ namespace Nop.Services.Catalog
             _productTagRepository.Update(productTag);
 
             var seName = _urlRecordService.ValidateSeName(productTag, string.Empty, productTag.Name, true);
+            string game;
+            if (seName.IndexOf("icon") > 0)
+            {
+                game = seName.Split("icon")[1];
+                seName = seName.Split("icon")[0];
+                seName += "-" + game;
+            }
+
             _urlRecordService.SaveSlug(productTag, seName, 0);
 
             //cache

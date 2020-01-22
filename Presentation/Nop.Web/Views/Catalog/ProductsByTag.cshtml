@@ -8,7 +8,16 @@
     //title
     Html.AddTitleParts(string.Format(T("PageTitle.ProductsByTag").Text, Model.TagName));
     //page class
-    Html.AppendPageCssClassParts("html-product-tag-page");
+    Html.AppendPageCssClassParts("html-product-tag-page" + " class-" + @Model.TagIcon);
+
+
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
+    Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
+    Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
+    Html.AppendCssFileParts($"~/css/catalog.min.css");
+    Html.AppendCssFileParts($"~/css/product-grid.min.css");
+    Html.AppendCssFileParts($"~/css/breadcrumb.min.css");
+    Html.AppendCssFileParts($"~/css/pager.min.css");
 
     //canonical URL
     if (seoSettings.CanonicalUrlsEnabled)
@@ -19,37 +28,58 @@
 }
 <div class="page product-tag-page">
     <div class="page-title">
-        <h1>@string.Format(T("Products.Tags.ProductsTaggedWith").Text, Model.TagName)</h1>
-    </div>
-    <div class="page-body">
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductsByTagTop, additionalData = Model })
-        @if (Model.Products.Count > 0)
-        {
-            @await Html.PartialAsync("_CatalogSelectors", Model.PagingFilteringContext)
-        }
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductsByTagBeforeProductList, additionalData = Model })
-        @if (Model.Products.Count > 0)
-        {
-            <div class="@(Model.PagingFilteringContext.ViewMode == "list" ? "product-list" : "product-grid")">
-                <div class="item-grid">
-                    @foreach (var product in Model.Products)
-                    {
-                        <div class="item-box">
-                            @await Html.PartialAsync("_ProductBox", product)
-                        </div>
-                    }
-                </div>
-            </div>
-        }
-        @{
-            var pager = Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber");
-        }
-        @if (!pager.IsEmpty())
-        {
-            <div class="pager">
-                @pager
-            </div>
-        }
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductsByTagBottom, additionalData = Model })
-    </div>
+        <h1>
+            @T("Products.Tags.ProductsTaggedWith")
+        <span class="badge tag ml-2">
+            @if (!string.IsNullOrEmpty(Model.TagIcon))
+            {
+                <svg class='icon shadow svg-baseline mr-2'><use href='#@Model.TagIcon'></use></svg>
+            }
+            @Model.TagName
+        </span>
+    </h1>
 </div>
+<div class="page-body">
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductsByTagTop, additionalData = Model })
+    @if (Model.Products.Count > 0)
+    {
+        @await Html.PartialAsync("_CatalogSelectors", Model.PagingFilteringContext)
+    }
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductsByTagBeforeProductList, additionalData = Model })
+    @if (Model.Products.Count > 0)
+    {
+        <div class="@(Model.PagingFilteringContext.ViewMode == "list" ? "product-list" : "product-grid")">
+            <div class="item-grid">
+                @foreach (var product in Model.Products)
+                {
+                    <div class="item-box">
+                        @await Html.PartialAsync("_ProductBoxCatalog", product)
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    @{
+        var pager = Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber");
+    }
+    @if (!pager.IsEmpty())
+    {
+        <div class="pager">
+            @pager
+        </div>
+    }
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductsByTagBottom, additionalData = Model })
+</div>
+</div>
+
+
+<style>
+        .html-category-page.class-@(Model.TagIcon).webp  .master-wrapper-page::before
+        {
+            background-image: url(/images/categories/@Model.TagIcon-bg.webp) !important;
+        }
+        .html-category-page.class-@(Model.TagIcon).no-webp .master-wrapper-page::before
+        {
+            background-image: url(/images/categories/@Model.TagIcon-bg.jpg) !important;
+        }
+</style>

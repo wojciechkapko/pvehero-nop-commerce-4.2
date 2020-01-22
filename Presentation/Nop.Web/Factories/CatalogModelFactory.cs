@@ -1158,13 +1158,18 @@ namespace Nop.Web.Factories
                 model.TotalTags = allTags.Count;
 
                 foreach (var tag in tags)
+                {
+                    var tagNames = _productTagService.CheckTagForIcon(tag);
                     model.Tags.Add(new ProductTagModel
                     {
                         Id = tag.Id,
-                        Name = _localizationService.GetLocalized(tag, y => y.Name),
                         SeName = _urlRecordService.GetSeName(tag),
-                        ProductCount = _productTagService.GetProductCount(tag.Id, _storeContext.CurrentStore.Id)
+                        ProductCount = _productTagService.GetProductCount(tag.Id, _storeContext.CurrentStore.Id),
+                        Name = tagNames[0],
+                        Icon = tagNames[1]
                     });
+                }
+
                 return model;
             });
 
@@ -1185,9 +1190,12 @@ namespace Nop.Web.Factories
             var model = new ProductsByTagModel
             {
                 Id = productTag.Id,
-                TagName = _localizationService.GetLocalized(productTag, y => y.Name),
                 TagSeName = _urlRecordService.GetSeName(productTag)
             };
+
+            var tagNames = _productTagService.CheckTagForIcon(productTag);
+            model.TagName = tagNames[0];
+            model.TagIcon = tagNames[1];
 
             //sorting
             PrepareSortingOptions(model.PagingFilteringContext, command);
