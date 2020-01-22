@@ -293,35 +293,20 @@
     z-index: 1;
 }
 */
-.webp .wow {
-    background-image: url(/images/mythic-plus-featured.webp);
+.wow {
+    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto/dpr_auto/featured/mythic-plus-featured.jpg);
 
     &::before {
-        background-image: url(/images/featured-mythic-plus-character.webp);
+        background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto/dpr_auto/featured/featured-mythic-plus-character.png);
     }
 }
 
-.no-webp .wow {
-    background-image: url(/images/mythic-plus-featured.jpg);
+
+.diablo-3 {
+    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto/dpr_auto/featured/diablo-3-featured.jpg);
 
     &::before {
-        background-image: url(/images/featured-mythic-plus-character.png);
-    }
-}
-
-.webp .diablo-3 {
-    background-image: url(/images/diablo-3-featured.webp);
-
-    &::before {
-        background-image: url(/images/diablo3-character2.webp);
-    }
-}
-
-.no-webp .diablo-3 {
-    background-image: url(/images/diablo-3-featured.jpg);
-
-    &::before {
-        background-image: url(/images/diablo3-character2.png);
+        background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto/dpr_auto/featured/diablo3-character2.png);
     }
 }
 

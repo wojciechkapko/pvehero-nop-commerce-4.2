@@ -74,12 +74,8 @@
 
 
 <style>
-        .html-category-page.class-@(Model.TagIcon).webp  .master-wrapper-page::before
+        .html-category-page.class-@(Model.TagIcon) .master-wrapper-page::before
         {
-            background-image: url(/images/categories/@Model.TagIcon-bg.webp) !important;
-        }
-        .html-category-page.class-@(Model.TagIcon).no-webp .master-wrapper-page::before
-        {
-            background-image: url(/images/categories/@Model.TagIcon-bg.jpg) !important;
+            background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_75,f_auto/dpr_auto/products/@Model.TagIcon-bg.jpg) !important;
         }
 </style>

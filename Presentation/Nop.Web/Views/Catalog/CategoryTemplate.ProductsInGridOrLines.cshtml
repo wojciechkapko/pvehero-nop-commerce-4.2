@@ -195,14 +195,8 @@
 
 
     <style>
-        .html-category-page.class-@(Model.CategoryBreadcrumb[0].SeName).webp  .master-wrapper-page::before
+        .html-category-page.class-@(Model.CategoryBreadcrumb[0].SeName) .master-wrapper-page::before
         {
-            background-image: url(/images/categories/@Model.CategoryBreadcrumb[0].SeName-bg.webp) !important;
-        }
-        .html-category-page.class-@(Model.CategoryBreadcrumb[0].SeName).no-webp .master-wrapper-page::before
-        {
-            background-image: url(/images/categories/@Model.CategoryBreadcrumb[0].SeName-bg.jpg) !important;
+            background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_75,f_auto/dpr_auto/products/@Model.CategoryBreadcrumb[0].SeName-bg.jpg) !important;
         }
     </style>
-
-

@@ -481,23 +481,17 @@ namespace Nop.Web.Factories
                 product.Id, pictureSize, true, _workContext.WorkingLanguage.Id, _webHelper.IsCurrentConnectionSecured(),
                 _storeContext.CurrentStore.Id);
 
+            var SeName = _urlRecordService.GetSeName(product);
             var defaultPictureModel = _cacheManager.Get(cacheKey, () =>
             {
-                var picture = _pictureService.GetPicturesByProductId(product.Id, 1).FirstOrDefault();
+                //var picture = _pictureService.GetPicturesByProductId(product.Id, 1).FirstOrDefault();
                 var pictureModel = new PictureModel
                 {
-                    ImageUrl = _pictureService.GetPictureUrl(picture, pictureSize),
-                    FullSizeImageUrl = _pictureService.GetPictureUrl(picture),
+                    ImageUrl = $"https://res.cloudinary.com/pvehero-images/image/upload/q_95,f_auto/w_{pictureSize}/products/{SeName}-square.jpg",
                     //"title" attribute
-                    Title = (picture != null && !string.IsNullOrEmpty(picture.TitleAttribute))
-                        ? picture.TitleAttribute
-                        : string.Format(_localizationService.GetResource("Media.Product.ImageLinkTitleFormat"),
-                            productName),
+                    Title = string.Format(_localizationService.GetResource("Media.Product.ImageLinkTitleFormat"), productName),
                     //"alt" attribute
-                    AlternateText = (picture != null && !string.IsNullOrEmpty(picture.AltAttribute))
-                        ? picture.AltAttribute
-                        : string.Format(_localizationService.GetResource("Media.Product.ImageAlternateTextFormat"),
-                            productName)
+                    AlternateText = string.Format(_localizationService.GetResource("Media.Product.ImageAlternateTextFormat"), productName)
                 };
 
                 return pictureModel;

@@ -1032,12 +1032,8 @@ label, label + * {
     }
 }
 
-.webp .master-wrapper-page::before {
-    background-image: url(/images/categories/world-of-warcraft-bg.webp);
-}
-
-.no-webp .master-wrapper-page::before {
-    background-image: url(/images/categories/world-of-warcraft-bg.jpg);
+.master-wrapper-page::before {
+    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_75,f_auto/dpr_auto/products/world-of-warcraft-bg.jpg) !important;
 }
 
 .pvehero {

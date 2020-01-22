@@ -780,10 +780,12 @@ namespace Nop.Web.Factories
             var model = _cacheManager.Get(pictureCacheKey, () =>
             {
                 //shopping cart item picture
-                var sciPicture = _pictureService.GetProductPicture(sci.Product, sci.AttributesXml);
+                //var sciPicture = _pictureService.GetProductPicture(sci.Product, sci.AttributesXml);
+                var SeName = _urlRecordService.GetSeName(sci.Product);
                 return new PictureModel
                 {
-                    ImageUrl = _pictureService.GetPictureUrl(sciPicture, pictureSize, showDefaultPicture),
+                    //ImageUrl = _pictureService.GetPictureUrl(sciPicture, pictureSize, showDefaultPicture),
+                    ImageUrl = $"https://res.cloudinary.com/pvehero-images/image/upload/q_95,f_auto/w_{pictureSize}/products/{SeName}-square.jpg",
                     Title = string.Format(_localizationService.GetResource("Media.Product.ImageLinkTitleFormat"), productName),
                     AlternateText = string.Format(_localizationService.GetResource("Media.Product.ImageAlternateTextFormat"), productName),
                 };

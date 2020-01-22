@@ -4,7 +4,7 @@
 @using Nop.Core.Domain.Orders
 @using Nop.Core.Domain.Tax
 
-    <div class="product-item product-@Model.Id" data-productid="@Model.Id" style="background: @(Model.WebPSupport ? $"url(/images/products/{Model.SeName}-product.webp)" : $"url(/images/products/{Model.SeName}-product.jpg)")">
+    <div class="product-item product-@Model.Id" data-productid="@Model.Id" style="background: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto,w_276/dpr_auto/products/@(Model.SeName).jpg)">
         <a class="link waves-effect waves-light" href="@Url.RouteUrl("Product", new {SeName = Model.SeName})"></a>
     <div class="details">
         <div class="badges">
