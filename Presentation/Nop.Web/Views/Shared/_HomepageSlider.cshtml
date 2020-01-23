@@ -6,9 +6,9 @@
 @inject ICurrencyService  currencyService
 @inject IWorkContext workContext
 @{
-    var Price = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(10, workContext.WorkingCurrency));
+    var Price = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(20, workContext.WorkingCurrency));
 
-    var diabloPrice = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(5, workContext.WorkingCurrency));
+    var diabloPrice = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(8.99, workContext.WorkingCurrency));
 }
 <div class="slider-wrapper">
     <div class="mt-4 slider">
