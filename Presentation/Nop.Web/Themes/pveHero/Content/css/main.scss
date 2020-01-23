@@ -108,14 +108,14 @@ input[type="button"],
     border-radius: .25rem !important;
 }
 
-.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .ui-autocomplete, .ui-autocomplete a, .product-item, .product-item::before, .tier-pricing .box::before {
+.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .ui-autocomplete, .ui-autocomplete a, .product-item, .product-item::before, .tier-pricing .box::before, .ui-autocomplete img {
     border-radius: .5rem !important;
 }
 
 .eu-cookie-bar-notification, .dropdown-menu, .card, .fieldset, .ui-autocomplete {
     box-shadow: 0 7px 15px rgba(0, 0, 0, .2);
 }
-.product-item, .product-picture img, .mini-shopping-cart .picture img {
+.product-item, .product-picture img, .mini-shopping-cart .picture img, .ui-autocomplete img {
     box-shadow: 0 9px 15px -8px rgba(0,0,0,.5);
 }
 
@@ -782,7 +782,7 @@ label, label + * {
     }
 
     .mini-shopping-cart .picture {
-        width: 70px;
+        width: 80px;
     }
 
     .mini-shopping-cart .picture a {
@@ -1033,7 +1033,7 @@ label, label + * {
 }
 
 .master-wrapper-page::before {
-    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_75,f_auto/dpr_auto/products/world-of-warcraft-bg.jpg) !important;
+    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/bg/world-of-warcraft-bg.jpg) !important;
 }
 
 .pvehero {
@@ -1072,9 +1072,9 @@ input, textarea {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
     &:focus {
-        border-color: #6658d5;
+        border-color: #6658d5!important;
         outline: 0;
-        box-shadow: 0 0 .2rem #6658d5;
+        box-shadow: 0 0 .2rem #6658d5!important;
     }
 }
 
@@ -1322,15 +1322,10 @@ button, .btn, .button-1, .button-2, .button-3 {
 
 input.search-box-text {
     background: rgba(0, 0, 0, 0.4) !important;
-    border: none;
     font-size: 1.25rem;
     color: #fff;
     font-weight: 500;
-
-    &:focus {
-        background: rgba(0, 0, 0, 0.4);
-        color: #fff;
-    }
+    border: 2px solid rgba(255,255,255,.1);
 }
 
 input.search-box-text::placeholder {

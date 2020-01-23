@@ -785,7 +785,7 @@ namespace Nop.Web.Factories
                 return new PictureModel
                 {
                     //ImageUrl = _pictureService.GetPictureUrl(sciPicture, pictureSize, showDefaultPicture),
-                    ImageUrl = $"https://res.cloudinary.com/pvehero-images/image/upload/q_95,f_auto/w_{pictureSize}/products/{SeName}-square.jpg",
+                    ImageUrl = $"https://res.cloudinary.com/pvehero-images/image/upload/f_auto/products/{SeName}-mini.jpg",
                     Title = string.Format(_localizationService.GetResource("Media.Product.ImageLinkTitleFormat"), productName),
                     AlternateText = string.Format(_localizationService.GetResource("Media.Product.ImageAlternateTextFormat"), productName),
                 };

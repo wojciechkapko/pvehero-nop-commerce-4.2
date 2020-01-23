@@ -294,19 +294,19 @@
 }
 */
 .wow {
-    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto/dpr_auto/featured/mythic-plus-featured.jpg);
+    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/mythic-plus-featured.jpg);
 
     &::before {
-        background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto/dpr_auto/featured/featured-mythic-plus-character.png);
+        background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/featured-mythic-plus-character.png);
     }
 }
 
 
 .diablo-3 {
-    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto/dpr_auto/featured/diablo-3-featured.jpg);
+    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/diablo-3-featured.jpg);
 
     &::before {
-        background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto/dpr_auto/featured/diablo3-character2.png);
+        background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/diablo3-character2.png);
     }
 }
 

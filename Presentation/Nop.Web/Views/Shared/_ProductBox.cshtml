@@ -90,8 +90,8 @@
 
     $(window).on('load resize scroll', function () {
         var element = '.' + 'product-@Model.Id';
-        //var image = "@(Model.WebPSupport ? $"url(/images/products/{Model.SeName}-product.webp)" : $"url(/images/products/{Model.SeName}-product.jpg)")";
-        var image = "url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto,w_276/dpr_auto/products/@(Model.SeName).jpg)"
+        //var image = "@(Model.WebPSupport ? $"url(/images/products/{Model.SeName}-product.webp)" : $"url(/images/product-details/{Model.SeName}-product.jpg)")";
+        var image = "url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto,w_276,e_sharpen:70/product-details/@(Model.SeName).jpg)"
         if (utility.isInViewport(element) && !$(element).hasClass('loaded')) {
 
             //var jsonModel = 'Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(productBox.Filter))';

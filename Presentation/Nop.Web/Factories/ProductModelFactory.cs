@@ -487,7 +487,7 @@ namespace Nop.Web.Factories
                 //var picture = _pictureService.GetPicturesByProductId(product.Id, 1).FirstOrDefault();
                 var pictureModel = new PictureModel
                 {
-                    ImageUrl = $"https://res.cloudinary.com/pvehero-images/image/upload/q_95,f_auto/w_{pictureSize}/products/{SeName}-square.jpg",
+                    ImageUrl = $"https://res.cloudinary.com/pvehero-images/image/upload/f_auto/products/{SeName}-mini.jpg",
                     //"title" attribute
                     Title = string.Format(_localizationService.GetResource("Media.Product.ImageLinkTitleFormat"), productName),
                     //"alt" attribute

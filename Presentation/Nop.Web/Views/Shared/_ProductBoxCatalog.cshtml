@@ -4,7 +4,7 @@
 @using Nop.Core.Domain.Orders
 @using Nop.Core.Domain.Tax
 
-    <div class="product-item product-@Model.Id" data-productid="@Model.Id" style="background: url(https://res.cloudinary.com/pvehero-images/image/upload/q_auto,f_auto,w_276/dpr_auto/products/@(Model.SeName).jpg)">
+    <div class="product-item product-@Model.Id" data-productid="@Model.Id" style="background: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto,w_276,e_sharpen:70/product-details/@(Model.SeName).jpg)">
         <a class="link waves-effect waves-light" href="@Url.RouteUrl("Product", new {SeName = Model.SeName})"></a>
     <div class="details">
         <div class="badges">
