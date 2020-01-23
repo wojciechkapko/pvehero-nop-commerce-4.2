@@ -47,7 +47,6 @@ namespace Nop.Web.Framework
         private Vendor _cachedVendor;
         private Language _cachedLanguage;
         private Currency _cachedCurrency;
-        private string _cachedBrowser;
         private TaxDisplayType? _cachedTaxDisplayType;
 
 
