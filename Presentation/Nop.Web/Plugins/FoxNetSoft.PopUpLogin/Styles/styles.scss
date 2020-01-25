@@ -1,0 +1,187 @@
+﻿.fnspoploginform {
+    width: 90vw !important;
+    z-index: 9999 !important;
+    background: #30295c;
+    box-shadow: 0 7px 35px rgba(0,0,0,.45);
+    overflow: hidden;
+
+    &::before {
+        top: -3rem;
+        left: 0rem;
+        right: 0;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        background-repeat: no-repeat;
+        height: 100%;
+        z-index: -1;
+        border-radius: .5rem;
+        background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/bg/modal-bg.jpg);
+    }
+
+    .modal {
+        padding: 0 .75rem;
+    }
+}
+
+@media all and (min-width: 451px) {
+    .fnspoploginform .modal {
+        padding: 0 4rem;
+    }
+}
+
+@media all and (max-width: 490px) {
+    .fnspoploginform {
+        width: 90vw !important;
+    }
+}
+
+
+
+@media all and (min-width: 491px) {
+    .fnspoploginform {
+        width: 450px!important;
+    }
+}
+
+/* registration page */
+#fnspopupregistration .registration-page {
+    text-align: left;
+}
+#fnspopupregistration .registration-page .form-fields {
+    background-color: #f9f9f9;
+    border-top: 1px solid #e6e6e6;
+    padding: 30px 15px;
+    position: relative;
+}
+#fnspopupregistration .registration-page .page-title, #fnspopupregistration .registration-page .title {
+    text-align: center;
+}
+#fnspopupregistration .registration-page .page-body {
+    background-color: inherit;
+    color: #555;
+    margin: 0;
+    padding: 0;
+}
+#fnspopupregistration .inputs input[type="text"],
+#fnspopupregistration .inputs input[type="password"],
+#fnspopupregistration .inputs input[type="email"],
+#fnspopupregistration .inputs select,
+#fnspopupregistration .inputs textarea {
+    background-color: #fff;
+    max-width: 100%;
+    width: 400px;
+    display: inline;
+    font-size: 14px;
+}
+
+@media all and (min-width: 1000px) {
+    #fnspopupregistration .registration-page .inputs label {
+        width: 110px;
+    }
+}
+
+#fnspopupregistration .registration-page .message-error {
+    margin-bottom: 20px;
+}
+
+
+#fnspopupregistrationresult .registration-result-page .page-body {
+    background-color: inherit;
+    color: #555;
+    margin: 0;
+    padding: 0;
+}
+#fnspopupregistrationresult .registration-result-page .buttons {
+    clear: both;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+/*password recovery page*/
+#fnspopupforgotpassword .password-recovery-page {
+    text-align: left;
+}
+#fnspopupforgotpassword .password-recovery-page .page-title {
+}
+#fnspopupforgotpassword .password-recovery-page .page-title h1 {
+    text-align:center;
+}
+#fnspopupforgotpassword .password-recovery-page .page-body {
+    background-color: inherit;
+    color: #555;
+    margin: 0;
+    padding: 0;
+}
+#fnspopupforgotpassword .password-recovery-page .email {
+    width: 250px;
+    font-size: 14px;
+}
+#fnspopupforgotpassword .password-recovery-page .result {
+    color: red;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+}
+#fnspopupforgotpassword .password-recovery-page .buttons {
+    clear: both;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-align:center;
+}
+
+@media all and (min-width: 1001px) {
+    .footer-block {
+        float: left;
+        width: 220px;
+        margin: 0;
+    }
+}
+
+.facebook-btn {
+    background: #39579A;
+}
+.google-btn {
+    background: #DF4A32;
+}
+
+.ExtendedAuthentication a {
+    display: flex;
+    width: 220px;
+    height: 35px;
+    box-shadow: 0 3px 5px rgba(0,0,0,.2);
+    align-items: center;
+    padding: 0 .75rem;
+}
+
+
+.ui-widget-overlay.ui-front {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.ui-dialog{
+    display:none;
+}
+
+.ui-dialog-titlebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+button.ui-dialog-titlebar-close {
+    font-size: 1.5rem !important;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: .5rem .5rem .75rem .75rem;
+
+    &:hover {
+        color: #bba0ff;
+    }
+}

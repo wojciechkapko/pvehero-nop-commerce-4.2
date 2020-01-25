@@ -1,0 +1,116 @@
+﻿<Language Name="English" IsRightToLeft="false">
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.showDebugInfo">
+    <Value>Enable Debugging</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.showDebugInfo.Hint">
+    <Value>Write debugging information into file. In ~/App_Data/ folder</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.SerialNumber">
+    <Value>Serial number</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.SerialNumber.Hint">
+    <Value>Serial number.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.IsRegisted">
+    <Value>Registered version.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.IsNoRegisted">
+    <Value>Unregistered version is fully operational. There is only one limitation – only 50 registrations on the site.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.IsExpired">
+    <Value>Your license has expired, you should renew the license with a 50% discount.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.StoreUrl">
+    <Value>Website address (for registration)</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.StoreUrl.Hint">
+    <Value>Website address (for registration).</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.Enabled">
+    <Value>Enable plugin</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.Enabled.Hint">
+    <Value>Enable PopUp Login Form Plugin.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginForm">
+    <Value>Enable pop-up for Login Form</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginForm.Hint">
+    <Value>Enable pop-up for Login Form.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowRegistrationForm">
+    <Value>Enable pop-up for Registration Form</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowRegistrationForm.Hint">
+    <Value>Enable pop-up for Registration Form.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowForgotPasswordForm">
+    <Value>Enable pop-up for Password Recovery Form</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowForgotPasswordForm.Hint">
+    <Value>Enable pop-up for Password Recovery Form.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.AllowtoClosePopup">
+    <Value>Allow to close pop-up window</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.AllowtoClosePopup.Hint">
+    <Value>Allow to close pop-up window.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.GoogleEventTracking">
+    <Value>Google Analytics Event Tracking</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.GoogleEventTracking.Hint">
+    <Value>Add auto-generated Google Analytics Event Tracking code on popup form buttons.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.AffiliateTrackingCode">
+    <Value>Affiliate Tracking Code</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.AffiliateTrackingCode.Hint">
+    <Value>This code will be executed after each successfull registration.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginFormForGuest">
+    <Value>Show pop-up Login/Registration form for new visitors</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginFormForGuest.Hint">
+    <Value>Show pop-up Login/Registration form for new visitors.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginFormForGuestSeconds">
+    <Value>Delay time for Login form displaying for new visitors</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginFormForGuestSeconds.Hint">
+    <Value>Delay time for Login form displaying for new visitors.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginFormForGuestForAllPages">
+    <Value>Enable for each opening the page (debug mode)</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginFormForGuestForAllPages.Hint">
+    <Value>Show pop-up Login/Registration form for each opening the page (each refresh the page) (this is for debugging).</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginFormForHomePages">
+    <Value>Enable for Home page</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.ShowLoginFormForHomePages.Hint">
+    <Value>Show pop-up Login/Registration form only for Home page.</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.UseCache">
+    <Value>Enable form caching for improve performance</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.UseCache.Hint">
+    <Value>Enable form caching for improve performance.</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.ActivityLog.Login">
+    <Value>PopUpLogin</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.ClearLogFile">
+    <Value>Clear log-file</Value>
+  </LocaleResource>
+  <LocaleResource Name="FoxNetSoft.Plugin.Misc.PopUpLogin.GetLogFile">
+    <Value>Download log-file</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.Menu.Brand">
+    <Value>FoxNetSoft</Value>
+  </LocaleResource>
+  <LocaleResource Name="Admin.FoxNetSoft.Plugin.Misc.PopUpLogin.Menu.Name">
+    <Value>PopUp Login Form</Value>
+  </LocaleResource>
+</Language>

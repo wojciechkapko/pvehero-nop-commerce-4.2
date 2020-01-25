@@ -1,0 +1,230 @@
+﻿@model FoxNetSoft.Plugin.Misc.PopUpLogin.Models.PopUpLoginSettingsModel
+@{
+    Layout = "_ConfigurePlugin";
+    Html.SetActiveMenuItemSystemName("FoxNetSoft.PopUpLogin.Configure");
+}
+
+@await Component.InvokeAsync("StoreScopeConfiguration")
+<form asp-controller="PopUpLoginSettings" asp-action="Configure" method="post">
+    <script>
+        $(document).ready(function () {
+            $("#@Html.IdFor(model => model.ShowLoginFormForGuest)").click(toggleRequireShowLoginFormForGuest);
+            $("#@Html.IdFor(model => model.showDebugInfo)").click(toggleshowDebugInfo);
+
+            toggleRequireShowLoginFormForGuest();
+            toggleshowDebugInfo();
+        });
+
+        function toggleRequireShowLoginFormForGuest() {
+            if ($('#@Html.IdFor(model => model.ShowLoginFormForGuest)').is(':checked')) {
+                $('#pnlShowLoginFormForGuestForAllPages, #pnlShowLoginFormForGuestSeconds').show();
+            }
+            else {
+                $('#pnlShowLoginFormForGuestForAllPages, #pnlShowLoginFormForGuestSeconds').hide();
+            }
+        }
+
+        function toggleshowDebugInfo() {
+            if ($('#@Html.IdFor(model => model.showDebugInfo)').is(':checked')) {
+                $('#pnlclearlogfile, #pnlgetlogfile').show();
+            }
+            else {
+                $('#pnlclearlogfile, #pnlgetlogfile').hide();
+            }
+        }
+    </script>
+
+    <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    @if (Model.IsRegisted == true)
+                    {
+                        @T("FoxNetSoft.Plugin.Misc.PopUpLogin.IsRegisted")
+                    }
+                    else
+                    {
+                        @T("FoxNetSoft.Plugin.Misc.PopUpLogin.IsNoRegisted")
+                        <br />
+                        <a href="https://www.foxnetsoft.com/nopcommerce-popuplogin" target="blank">Buy It Now</a>
+                    }
+                </p>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="Enabled_OverrideForStore" asp-input="Enabled" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="Enabled" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="Enabled" />
+                        <span asp-validation-for="Enabled"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="UseCache_OverrideForStore" asp-input="UseCache" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="UseCache" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="UseCache" />
+                        <span asp-validation-for="UseCache"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ShowLoginFormForHomePages_OverrideForStore" asp-input="ShowLoginFormForHomePages" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ShowLoginFormForHomePages" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShowLoginFormForHomePages" />
+                        <span asp-validation-for="ShowLoginFormForHomePages"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ShowLoginFormForGuest_OverrideForStore" asp-input="ShowLoginFormForGuest" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ShowLoginFormForGuest" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShowLoginFormForGuest" />
+                        <span asp-validation-for="ShowLoginFormForGuest"></span>
+                    </div>
+                </div>
+                <nop-nested-setting asp-for="ShowLoginFormForGuest">
+                    <div class="form-group" id="pnlShowLoginFormForGuestForAllPages">
+                        <div class="col-md-3">
+                            <nop-override-store-checkbox asp-for="ShowLoginFormForGuestForAllPages_OverrideForStore" asp-input="ShowLoginFormForGuestForAllPages" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                            <nop-label asp-for="ShowLoginFormForGuestForAllPages" />
+                        </div>
+                        <div class="col-md-9">
+                            <nop-editor asp-for="ShowLoginFormForGuestForAllPages" />
+                            <span asp-validation-for="ShowLoginFormForGuestForAllPages"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" id="pnlShowLoginFormForGuestSeconds">
+                        <div class="col-md-3">
+                            <nop-override-store-checkbox asp-for="ShowLoginFormForGuestSeconds_OverrideForStore" asp-input="ShowLoginFormForGuestSeconds" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                            <nop-label asp-for="ShowLoginFormForGuestSeconds" />
+                        </div>
+                        <div class="col-md-9">
+                            <nop-editor asp-for="ShowLoginFormForGuestSeconds" />
+                            <span asp-validation-for="ShowLoginFormForGuestSeconds"></span>
+                        </div>
+                    </div>
+                </nop-nested-setting>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ShowLoginForm_OverrideForStore" asp-input="ShowLoginForm" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ShowLoginForm" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShowLoginForm" />
+                        <span asp-validation-for="ShowLoginForm"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ShowRegistrationForm_OverrideForStore" asp-input="ShowRegistrationForm" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ShowRegistrationForm" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShowRegistrationForm" />
+                        <span asp-validation-for="ShowRegistrationForm"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="ShowForgotPasswordForm_OverrideForStore" asp-input="ShowForgotPasswordForm" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="ShowForgotPasswordForm" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="ShowForgotPasswordForm" />
+                        <span asp-validation-for="ShowForgotPasswordForm"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="AllowtoClosePopup_OverrideForStore" asp-input="AllowtoClosePopup" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="AllowtoClosePopup" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="AllowtoClosePopup" />
+                        <span asp-validation-for="AllowtoClosePopup"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-override-store-checkbox asp-for="GoogleEventTracking_OverrideForStore" asp-input="GoogleEventTracking" asp-store-scope="@Model.ActiveStoreScopeConfiguration" />
+                        <nop-label asp-for="GoogleEventTracking" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="GoogleEventTracking" />
+                        <span asp-validation-for="GoogleEventTracking"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="showDebugInfo" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="showDebugInfo" />
+                        <span asp-validation-for="showDebugInfo"></span>
+                        <div id="pnlclearlogfile">
+                            <a href="@Url.Action("ClearLogFile")" class="k-button">@T("FoxNetSoft.Plugin.Misc.PopUpLogin.ClearLogFile")</a>
+                        </div>
+                        <div id="pnlgetlogfile">
+                            <a href="@Url.Action("GetLogFile")" class="k-button">@T("FoxNetSoft.Plugin.Misc.PopUpLogin.GetLogFile")</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="StoreUrl" />
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control text-box single-line" id="StoreUrl" name="StoreUrl" value="@Model.StoreUrl" type="text" readonly="readonly">
+                        <span asp-validation-for="StoreUrl"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <nop-label asp-for="SerialNumber" />
+                    </div>
+                    <div class="col-md-9">
+                        <nop-editor asp-for="SerialNumber" />
+                        <span asp-validation-for="SerialNumber"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-9 col-md-offset-3">
+                        <input type="submit" name="save" class="btn bg-primary" value="@T("Admin.Common.Save")" />
+                    </div>
+                </div>
+                <p>
+                    Installation and configuring plug-in at Youtube <a href="http://www.youtube.com/foxnetsoft" target="blank">www.youtube.com/foxnetsoft</a>
+                    <br />
+                    Installation and configuring plug-in at our site <a href="https://www.foxnetsoft.com/documentation-noppopuplogin" target="blank">https://www.foxnetsoft.com/documentation-noppopuplogin</a>
+                    <br />
+                    <a href="https://www.foxnetsoft.com" target="blank">www.foxnetsoft.com</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</form>
+

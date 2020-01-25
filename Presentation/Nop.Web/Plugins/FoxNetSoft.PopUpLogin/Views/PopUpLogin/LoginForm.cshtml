@@ -1,0 +1,67 @@
+﻿@model Nop.Web.Models.Customer.LoginModel
+@{
+    Layout = "_ModalLayout";
+}
+
+@section Header
+{
+    <h1>@T("Account.Login")</h1>
+}
+@section Body
+{
+    @await Component.InvokeAsync("ExternalMethods", "ExternalAuthentication")
+    <script>
+        document.addEventListener("DOMContentLoaded", function (event) {
+            $(".external-authentication > a").click(function () {
+                fns_googleEventTracking("Login", "ExternalAuthentication", location.href)
+                var url = $(this).attr("href");
+                if (url.indexOf('?') == -1)
+                    url = url + '?';
+                else
+                    url = url + '&';
+                window.top.location = url + "returnurl=" + encodeURIComponent(window.top.location);
+                return false;
+            });
+        });
+    </script>
+    <form action="javascript:void(null);" data-contoller='@Url.Action("LoginPOST", "PopUpLogin")' method="post" id="form-fns-pupuplogin-login" class="d-flex flex-column mt-4" onsubmit="fns_popuplogin_sendform(fnspopuplogin_login_form_selector)">
+        <div asp-validation-summary="ModelOnly" class="message-error">@T("Account.Login.Unsuccessful")</div>
+        <div class="inputs">
+            <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#envelope"></use></svg></div></div>
+            <input asp-for="Email" class="email form-input" placeholder="Email" />
+        </div>
+        <span asp-validation-for="Email"></span>
+        <div class="inputs">
+            <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#lock-alt"></use></svg></div></div>
+            <input asp-for="Password" class="password form-input" placeholder="Password" />
+        </div>
+        <span asp-validation-for="Password"></span>
+        <div class="inputs my-4 flex-column align-items-center xs-flex-row">
+            <div class="checkbox mb-3 xs-mb-0">
+                <input class="d-none" type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" value="true">
+                <label for="RememberMe" class="checkbox-style"></label>
+                <label for="RememberMe" class="checkbox-label">Remember me?</label>
+            </div>
+            <span class="forgot-password xs-ml-auto">
+                <a asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
+            </span>
+        </div>
+        @if (Model.DisplayCaptcha)
+        {
+            <div id="fnspopuplogincaptchabox" class="captcha-box">
+            </div>
+        }
+        <button class="button-2 login-button" type="submit">@T("Account.Login.LoginButton")</button>
+    </form>
+}
+@section Footer
+{
+    <p class="my-2">Don't have an account yet?</p>
+    <div class="d-flex flex-column">
+        <div class="checkout-as-guest-or-register-block" style="display:none">
+            <button type="button" class="button-1 checkout-as-guest-button w-100" onclick="location.href='@Url.RouteUrl("Checkout")'">@T("Account.Login.CheckoutAsGuest")</button>
+            <p class="my-3">Or</p>
+        </div>
+        <button type="button" class="button-1 register-button">@T("Account.Register")</button>
+    </div>
+}

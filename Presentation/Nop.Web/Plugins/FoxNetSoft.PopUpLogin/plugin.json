@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Misc",
+  "FriendlyName": "PopUp Login Form",
+  "SystemName": "FoxNetSoft.PopUpLogin",
+  "Version": "3.10",
+  "SupportedVersions": [ "4.20" ],
+  "Author": "FoxNetSoft",
+  "DisplayOrder": 1,
+  "FileName": "FoxNetSoft.Plugin.Misc.PopUpLogin.dll",
+  "Description": ""
+}
