@@ -10,7 +10,6 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
-    Html.AppendCssFileParts($"~/css/forms.min.css");
     Html.AppendCssFileParts($"~/css/cart.min.css");
     Html.AppendCssFileParts($"~/css/checkout.min.css");
     Html.AppendCssFileParts($"~/css/tables.min.css");
@@ -91,17 +90,17 @@
                                             </li>
                                         }
                                         @if (item.CityEnabled && !string.IsNullOrEmpty(item.City) ||
-                                         item.CountyEnabled && !string.IsNullOrEmpty(item.County) ||
-                                         item.StateProvinceEnabled && !string.IsNullOrEmpty(item.StateProvinceName) ||
-                                         item.ZipPostalCodeEnabled && !string.IsNullOrEmpty(item.ZipPostalCode))
+                                        item.CountyEnabled && !string.IsNullOrEmpty(item.County) ||
+                                        item.StateProvinceEnabled && !string.IsNullOrEmpty(item.StateProvinceName) ||
+                                        item.ZipPostalCodeEnabled && !string.IsNullOrEmpty(item.ZipPostalCode))
                                         {
                                             <li class="city-state-zip">
                                                 @if (item.CityEnabled && !string.IsNullOrEmpty(item.City))
                                                 {
                                                     @item.City
                                                     @if (item.CountyEnabled && !string.IsNullOrEmpty(item.County) ||
-                                                     item.StateProvinceEnabled && !string.IsNullOrEmpty(item.StateProvinceName) ||
-                                                     item.ZipPostalCodeEnabled && !string.IsNullOrEmpty(item.ZipPostalCode))
+                                                    item.StateProvinceEnabled && !string.IsNullOrEmpty(item.StateProvinceName) ||
+                                                    item.ZipPostalCodeEnabled && !string.IsNullOrEmpty(item.ZipPostalCode))
                                                     {
                                                         <text>,</text>
                                                     }
@@ -110,7 +109,7 @@
                                                 {
                                                     @item.County
                                                     @if (item.StateProvinceEnabled && !string.IsNullOrEmpty(item.StateProvinceName) ||
-                                                     item.ZipPostalCodeEnabled && !string.IsNullOrEmpty(item.ZipPostalCode))
+                                                    item.ZipPostalCodeEnabled && !string.IsNullOrEmpty(item.ZipPostalCode))
                                                     {
                                                         <text>,</text>
                                                     }
@@ -162,8 +161,9 @@
                         </div>
                     </div>
                 }
+            <div class="d-flex flex-column xl-flex-row">
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutBillingAddressMiddle })
-                <div class="section new-billing-address">
+                <div class="section new-billing-address w-100">
                     <div class="title">
                         @if (Model.ExistingAddresses.Count > 0)
                         {
@@ -181,19 +181,20 @@
                             dataDictAddress.TemplateInfo.HtmlFieldPrefix = "BillingNewAddress";
                             @await Html.PartialAsync("_CreateOrUpdateAddress", Model.BillingNewAddress, dataDictAddress)
                         }
-                        <div class="buttons mb-0">
-                            <button type="submit" name="nextstep" class="button-1 huge new-address-next-step-button">@T("Checkout.NextButton")</button>
-                        </div>
+                        <button type="submit" name="nextstep" class="button-1 huge w-100 mb-3 new-address-next-step-button">@T("Checkout.NextButton")</button>
                     </div>
                 </div>
                 @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutBillingAddressBottom })
+                <div class="section order-summary mt-4 xl-mt-0 xl-ml-4">
+                    <div class="title">
+                        <strong>@T("Checkout.OrderSummary")</strong>
+                    </div>
+                    @await Component.InvokeAsync("OrderSummary")
+                </div>
+            </div>
+
             </div>
         </form>
-        <div class="section order-summary">
-            <div class="title">
-                <strong>@T("Checkout.OrderSummary")</strong>
-            </div>
-            @await Component.InvokeAsync("OrderSummary")
-        </div>
+
     </div>
 </div>

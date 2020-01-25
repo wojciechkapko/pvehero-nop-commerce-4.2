@@ -26,23 +26,6 @@ function displayAjaxLoading(display) {
     }
 }
 
-function displayPopupContentFromUrl(url, title, modal, width) {
-    var isModal = modal ? true : false;
-    var targetWidth = width ? width : 550;
-    var maxHeight = $(window).height() - 20;
-
-    $('<div></div>').load(url)
-        .dialog({
-            modal: isModal,
-            width: targetWidth,
-            maxHeight: maxHeight,
-            title: title,
-            close: function(event, ui) {
-                $(this).dialog('destroy').remove();
-            }
-        });
-}
-
 function displayBarNotification(message, messagetype, timeout) {
     var notificationTimeout;
 
@@ -170,12 +153,59 @@ var utility = (function () {
         return elementBottom > viewportTop && elementTop < viewportBottom;
     };
 
+    var addOverlay = function (selector) {
+        if (!$('#overlay').length) {
+            $('#fnspopuploginblock').append('<div id="overlay" class="overlay"></div>');
+            $('#overlay').fadeIn(250);
+            $('body').css('overflow', 'hidden');
+        }
+
+        $('#overlay').off('click').on('click', function () {
+            closeModal(selector);
+        });
+    };
+
+    var removeOverlay = function () {
+        $('#overlay').fadeOut(250, function () { $('#overlay').remove(); $('body').css('overflow', 'visible'); }); 
+    };
+
+    var openModal = function (selector) {
+        addOverlay(selector);
+
+        if (!$('#close-modal').length) {
+            $('.fnspoploginform').prepend('<button id="close-modal" class="close" aria-label="Close">&#10006;</button>');
+        }
+
+        $('#close-modal').off('click').on('click', function () {
+            closeModal(selector);
+        });
+
+        $(document).off('keydown').on("keydown", function (e) {
+            if (e.keyCode === 27) {
+                closeModal(selector);
+            }
+        });
+
+
+        $(selector).css('display', 'flex');
+        $('#fnspopuploginblock').fadeIn({ start: function () { $('#fnspopuploginblock').css('display', 'flex'); } });
+    };
+
+    var closeModal = function (selector) {
+        removeOverlay();
+        $('#fnspopuploginblock').fadeOut({ complete: function () { $(selector + ' #close-modal').remove(); $(selector).css('display', 'none'); $('#fnspopuploginblock').css('display', 'none'); $(document).off("keydown"); } });
+    };
+
     return {
         addSpinner: addSpinner,
         addButtonSpinner: addButtonSpinner,
         addSpinnerWithBg: addSpinnerWithBg,
         removeSpinner: removeSpinner,
-        isInViewport: isInViewport
+        isInViewport: isInViewport,
+        addOverlay: addOverlay,
+        removeOverlay: removeOverlay,
+        openModal: openModal,
+        closeModal: closeModal
     };
 })();
 

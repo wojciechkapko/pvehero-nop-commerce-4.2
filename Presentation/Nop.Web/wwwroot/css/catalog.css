@@ -64,3 +64,7 @@
     padding-top: 10px; }
   .html-category-page .block .title, .html-search-page .block .title, .html-product-tag-page .block .title {
     padding: 12px 30px 15px 0; } }
+
+@media all and (max-width: 1000px) {
+  .block-recently-viewed-products + .block-popular-tags {
+    margin-top: 2rem; } }

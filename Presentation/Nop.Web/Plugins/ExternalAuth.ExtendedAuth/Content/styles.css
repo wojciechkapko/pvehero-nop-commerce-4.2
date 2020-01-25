@@ -23,9 +23,13 @@
     background-repeat: no-repeat;
 }
 
-@media (min-width: 1001px) .footer-block {
-    float: left; width: 220px; margin: 0;
-}
+@media (min-width: 1001px) {
+    .footer-block {
+        float: left;
+        width: 220px;
+        margin: 0;
+    }
+} 
 
 .ExtendedAuthentication .social ul {
     margin: 0 0 30px;

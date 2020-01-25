@@ -1,15 +1,15 @@
 ﻿@model ExternalAuthSettings
 @{
     Layout = "";
-    Html.AddCssFileParts("~/Plugins/ExternalAuth.ExtendedAuth/Content/styles.css");
 }
-<div class="ExtendedAuthentication">
-    <div class="social">
+<div class="ExtendedAuthentication" style="margin: 0 auto 1rem auto">
         <ul class="networks">
             @if (Model.FacebookEnable && !string.IsNullOrEmpty(Model.FacebookClientId) && !string.IsNullOrEmpty(Model.FacebookClientSecret))
             {
-                <li>
-                    <a asp-controller="authentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" asp-route-authentication="@ExternalAuthEnum.Facebook.ToString()" class="exoauth_btn @ExternalAuthEnum.Facebook.ToString().ToLower()-btn"></a>
+                <li class="mb-3">
+                    <a asp-controller="authentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" asp-route-authentication="@ExternalAuthEnum.Facebook.ToString()" class="exoauth_btn @ExternalAuthEnum.Facebook.ToString().ToLower()-btn waves-effect waves-light">
+                        <svg class="icon mr-4 m-2"><use href="#facebook"></use></svg> <span>Sign in with Facebook</span>
+                    </a>
                 </li>
             }
             @if (Model.TwitterEnable && !string.IsNullOrEmpty(Model.TwitterClientId) && !string.IsNullOrEmpty(Model.TwitterClientSecret))
@@ -21,7 +21,9 @@
             @if (Model.GoogleEnable && !string.IsNullOrEmpty(Model.GoogleClientId) && !string.IsNullOrEmpty(Model.GoogleClientSecret))
             {
                 <li>
-                    <a asp-controller="authentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" asp-route-authentication="@ExternalAuthEnum.Google.ToString()" class="exoauth_btn @ExternalAuthEnum.Google.ToString().ToLower()-btn"></a>
+                    <a asp-controller="authentication" asp-action="login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" asp-route-authentication="@ExternalAuthEnum.Google.ToString()" class="exoauth_btn @ExternalAuthEnum.Google.ToString().ToLower()-btn waves-effect waves-light">
+                        <svg class="icon mr-4 m-2"><use href="#google"></use></svg> <span>Sign in with Google</span>
+                    </a>
                 </li>
             }
             @if (Model.MicrosoftEnable && !string.IsNullOrEmpty(Model.MicrosoftClientId) && !string.IsNullOrEmpty(Model.MicrosoftClientSecret))
@@ -37,6 +39,4 @@
                 </li>
             }
         </ul>
-    </div>
 </div>
-

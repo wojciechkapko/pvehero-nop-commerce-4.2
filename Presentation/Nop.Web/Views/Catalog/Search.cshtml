@@ -37,9 +37,7 @@
         <div class="search-input mb-4">
             <form asp-route="ProductSearch" method="get" class="d-flex">
                 <input asp-for="q" class="search-box-text" />
-                <div class="buttons d-flex mb-0">
-                    <button type="submit" class="button-1 search-button" style="border-radius: 0 .5rem .5rem 0">@T("Search.Button")</button>
-                </div>
+                <button type="submit" class="button-1 search-button" style="border-radius: 0 .5rem .5rem 0!important">@T("Search.Button")</button>
             </form>
         </div>
         @if (Model.Products.Count > 0)

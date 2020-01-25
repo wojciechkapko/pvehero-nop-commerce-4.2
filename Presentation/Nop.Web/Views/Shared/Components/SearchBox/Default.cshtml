@@ -20,37 +20,21 @@
     {
         <script asp-location="Footer">
             $(document).ready(function() {
-                var showLinkToResultSearch;
-                var searchText;
-                $('#small-searchterms').autocomplete({
-                        delay: 500,
-                        minLength: @(Model.SearchTermMinimumLength.ToString()),
-                        source: '@(Url.RouteUrl("ProductSearchAutoComplete"))',
-                        appendTo: '.search-box',
-                        select: function(event, ui) {
-                            $("#small-searchterms").val(ui.item.label);
-                            setLocation(ui.item.producturl);
-                            return false;
+                $('#small-searchterms').autoComplete({
+                    delay: 500,
+                    minChars: 3,
+                    source: function (term, response) {
+                        var term = $('#small-searchterms').val();
+                        console.log(term);
+                        $.getJSON('@(Url.RouteUrl("ProductSearchAutoComplete"))', { term }, function (data) { response(data) });
                     },
-                    //append link to the end of list
-                    open: function(event, ui) {
-                        //display link to search page
-                        if (showLinkToResultSearch) {
-                            searchText = document.getElementById("small-searchterms").value;
-                            $(".ui-autocomplete").append("<li class=\"ui-menu-item\" role=\"presentation\"><a href=\"/search?q=" + searchText + "\">@T("Search.SearchBox.SearchPageLink")</a></li>");
-                        }
+                    renderItem: function (item, search) {
+                        search = search.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+                        $(".autocomplete-suggestions").css('display', 'flex');
+
+                        return '<a href="' + item.producturl + '" class="w-100 p-3 d-flex align-items-center"><img class="mr-2" src=' + item.productpictureurl + '><span>' + item.label + '</span></a>';
                     }
-                })
-                .data("ui-autocomplete")._renderItem = function(ul, item) {
-                    var t = item.label;
-                    showLinkToResultSearch = item.showlinktoresultsearch;
-                    //html encode
-                    t = htmlEncode(t);
-                    return $("<li></li>")
-                        .data("item.autocomplete", item)
-                        .append("<a>@(Model.ShowProductImagesInSearchAutoComplete ? Html.Raw("<img src='\" + item.productpictureurl + \"'>") : null)<span>" + t + "</span></a>")
-                        .appendTo(ul);
-                };
+                });
             });
         </script>
     }

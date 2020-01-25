@@ -11,7 +11,6 @@
     //page class
     Html.AppendPageCssClassParts("html-product-reviews-page");
         Html.AppendCssFileParts($"~/css/stars.min.css");
-        Html.AppendCssFileParts($"~/css/forms.min.css");
         Html.AppendCssFileParts($"~/css/reviews.min.css");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/ajaxreviews.min.js");
 }
@@ -44,12 +43,13 @@
             <span asp-validation-for="AddProductReview.Title"></span>
         </div>
                                 *@
-
+                                <label asp-for="AddProductReview.ReviewText" class="mb-2"></label>
                                 <div class="inputs">
-                                    <label asp-for="AddProductReview.ReviewText" asp-postfix=":"></label>
-                                    <textarea asp-for="AddProductReview.ReviewText" class="review-text" asp-disabled="@(!Model.AddProductReview.CanCurrentCustomerLeaveReview)" placeholder="Write a review..."></textarea>
-                                    <span asp-validation-for="AddProductReview.ReviewText"></span>
+
+                                    <textarea asp-for="AddProductReview.ReviewText" class="review-text form-input" asp-disabled="@(!Model.AddProductReview.CanCurrentCustomerLeaveReview)" placeholder="Write a review..."></textarea>
+                                    
                                 </div>
+                                <span asp-validation-for="AddProductReview.ReviewText"></span>
                                 <div class="review-rating">
                                     <div class="label first"><svg class='icon'><use href='#thumbs-down'></use></svg></div>
                                     <div class="rating-options d-none">

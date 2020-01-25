@@ -13,12 +13,12 @@
     //page class
     Html.AppendPageCssClassParts("html-product-details-page" + " class-" + @Model.Breadcrumb.CategoryBreadcrumb[0].SeName);
 
-    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
+
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
+    Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
     Html.AppendCssFileParts($"~/css/productdetails.min.css");
-    Html.AppendCssFileParts($"~/css/checkbox.min.css");
     Html.AppendCssFileParts($"~/css/stars.min.css");
     Html.AppendCssFileParts($"~/css/breadcrumb.min.css");
     Html.AppendCssFileParts($"~/css/product-grid.min.css");

@@ -90,5 +90,9 @@
   {
     "outputFile": "wwwroot/css/product-grid.css",
     "inputFile": "wwwroot/css/product-grid.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/contactus.css",
+    "inputFile": "wwwroot/css/contactus.scss"
   }
 ]

@@ -201,6 +201,7 @@ select {
     color: #fff;
     font-family: 'Open Sans',sans-serif;
     text-shadow: 0.0625em 0.0625em 0.0625em #333;
+    height: 100%;
 }
 
 .fs-dropdown.fs-light .fs-dropdown-selected:after {
@@ -438,9 +439,7 @@ select {
 }
 
 .checkout-data .fs-dropdown, .address-edit-page .fs-dropdown {
-    width: 400px;
-    display: inline-block;
-    vertical-align: middle;
+    min-height: 46px;
 }
 
 @media all and (min-width: 481px) {

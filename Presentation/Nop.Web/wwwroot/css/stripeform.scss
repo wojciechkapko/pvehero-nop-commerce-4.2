@@ -59,15 +59,16 @@ General
 // Form wrapper styling
 #my-sample-form {
     background: #5045a5;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 7px 15px rgba(0,0,0,.2);
     padding: 1.5em 3em 1.5em;
     border-radius: .5rem;
-    width: 30em;
+    width: 100%;
     transition: all 600ms $bouncy;
     animation: cardIntro 500ms $bouncy;
     z-index: 1;
     overflow: hidden;
     position: relative;
+    margin-bottom: 1.5rem;
 
     &::before {
         content: '';

@@ -1,0 +1,53 @@
+﻿.contact-page {
+    p {
+        line-height: 1.1 !important;
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    .card {
+        justify-content: space-evenly;
+        overflow:hidden;
+
+        .topic-block {
+            z-index: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .pvehero-axe {
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,.5));
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            position: absolute;
+            z-index: 0;
+            opacity: .5;
+        }
+
+        .left.pvehero-axe {
+            left: -10rem;
+            top: 40%;
+            transform: translateY(-50%);
+            height: 20rem;
+            width: 20rem;
+        }
+
+        .right.pvehero-axe {
+            right: -10rem;
+            bottom: -9rem;
+            height: 20rem;
+            width: 20rem;
+        }
+    }
+
+    form {
+        max-width: 500px;
+        width: 100%;
+        z-index: 1;
+    }
+}
+
+@media all and (min-width: 1001px) {
+    .card {padding: 6rem!important}
+}

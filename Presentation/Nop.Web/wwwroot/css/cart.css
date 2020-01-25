@@ -223,3 +223,7 @@
   .cart-footer .cart-collaterals {
     width: 760px;
     margin: 0; } }
+
+.discount-coupon-code {
+  height: 36px;
+  width: 60%; }

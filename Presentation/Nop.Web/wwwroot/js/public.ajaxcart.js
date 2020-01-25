@@ -54,24 +54,12 @@ var AjaxCart = {
         if (response.message) {
             //display notification
             if (response.success == true) {
-                //success
-                if (AjaxCart.usepopupnotifications == true) {
-                    displayPopupNotification(response.message, 'success', true);
-                }
-                else {
                     //specify timeout for success messages
                     displayBarNotification(response.message, 'success', 3500);
-                }
             }
             else {
-                //error
-                if (AjaxCart.usepopupnotifications == true) {
-                    displayPopupNotification(response.message, 'error', true);
-                }
-                else {
                     //no timeout for errors
                     displayBarNotification(response.message, 'error', 0);
-                }
             }
             return false;
         }

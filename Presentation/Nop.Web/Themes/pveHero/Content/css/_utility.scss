@@ -25,8 +25,17 @@
     padding-top: 1.5rem!important;
 }
 
+.m-0 {
+    margin: 0 !important;
+}
+
+
 .m-1 {
     margin: .25rem !important;
+}
+
+.m-3 {
+    margin: 1rem !important;
 }
 
 .mr-0, .mx-0 {
@@ -53,11 +62,19 @@
     margin-top: 1.5rem !important;
 }
 
+.pb-0 {
+    padding-bottom: 0 !important;
+}
+
+.p-3 {
+    padding: 1rem !important;
+}
+
 .p-4 {
     padding: 1.5rem !important;
 }
 
-.mb-auto, .mx-auto {
+.mb-auto, .my-auto {
     margin-bottom: auto !important;
 }
 
@@ -77,8 +94,23 @@
     margin-bottom: 1rem !important;
 }
 
+.pb-2, .py-2 {
+    padding-bottom: .5rem !important;
+}
+
+.pt-2, .py-2 {
+    padding-top: .5rem !important;
+}
+.pt-3, .py-3 {
+    padding-top: 1rem !important;
+}
+
 .pb-3, .py-3 {
     padding-bottom: 1rem !important;
+}
+
+.pb-4, .py-4 {
+    padding-bottom: 1.5rem !important;
 }
 
 .mb-4, .my-4 {
@@ -175,7 +207,7 @@
     margin-top: 1rem !important;
 }
 
-.mt-auto {
+.mt-auto, .my-auto {
     margin-top: auto !important;
 }
 
@@ -205,7 +237,7 @@
 }
 
 .w-100 {
-    width: 100%;
+    width: 100% !important;
 }
 
 .user-select-none {
@@ -438,9 +470,16 @@
         -ms-flex-direction: row !important;
         flex-direction: row !important;
     }
+    .xl-ml-0, .xl-mx-0 {
+        margin-left: 0 !important;
+    }
 
     .xl-ml-3, .xl-mx-3 {
         margin-left: 1rem !important;
+    }
+
+    .xl-ml-auto, .xl-mx-auto {
+        margin-left: auto !important;
     }
 
     .xl-ml-4, .xl-mx-4 {

@@ -168,7 +168,8 @@ select {
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
   color: #fff;
   font-family: 'Open Sans',sans-serif;
-  text-shadow: 0.0625em 0.0625em 0.0625em #333; }
+  text-shadow: 0.0625em 0.0625em 0.0625em #333;
+  height: 100%; }
 
 .fs-dropdown.fs-light .fs-dropdown-selected:after {
   height: 0;
@@ -363,9 +364,7 @@ select {
   padding: .5rem 2rem .5rem .75rem !important; }
 
 .checkout-data .fs-dropdown, .address-edit-page .fs-dropdown {
-  width: 400px;
-  display: inline-block;
-  vertical-align: middle; }
+  min-height: 46px; }
 
 @media all and (min-width: 481px) {
   .product-selectors div span:first-child, .product-page-size .fs-dropdown {

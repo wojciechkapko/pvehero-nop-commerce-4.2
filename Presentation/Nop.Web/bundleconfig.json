@@ -40,5 +40,23 @@
     "inputFiles": [
       "wwwroot/lib/formstone/core.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/jquery-ui/jquery-ui-1.12.1/jquery-ui.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery-ui/jquery-ui-1.12.1/jquery-ui.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/lib/autocomplete/jquery.auto-complete.min.js",
+    "inputFiles": [
+      "wwwroot/lib/autocomplete/jquery.auto-complete.js"
+    ]
+  },
+  {
+    "outputFileName": "wwwroot/css/logo-icon.min.css",
+    "inputFiles": [
+      "wwwroot/css/logo-icon.css"
+    ]
   }
 ]

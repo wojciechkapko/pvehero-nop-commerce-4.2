@@ -8,7 +8,6 @@
     Html.AppendPageCssClassParts("html-checkout-page");
     Html.AppendPageCssClassParts("html-payment-info-page");
     Html.AppendCssFileParts($"~/css/stripeform.min.css");
-    Html.AppendCssFileParts($"~/css/forms.min.css");
     Html.AppendCssFileParts($"~/css/cart.min.css");
     Html.AppendCssFileParts($"~/css/checkout.min.css");
     Html.AppendCssFileParts($"~/css/tables.min.css");
@@ -16,28 +15,31 @@
 }
 <div class="page checkout-page payment-info-page">
     @await Component.InvokeAsync("CheckoutProgress", new { step = CheckoutProgressStep.Payment })
-    <div class="page-title">
-        <h1>@T("Checkout.PaymentInfo")</h1>
-    </div>
-    <div class="page-body checkout-data">
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentInfoTop })
-        <div class="section card default payment-info">
-            <form asp-route="CheckoutPaymentInfo" method="post">
-                <div asp-validation-summary="ModelOnly" class="message-error"></div>
-                <div class="info">
-                    @await Component.InvokeAsync(Model.PaymentViewComponentName)
+    <h1 class="sr-only">@T("Checkout.PaymentInfo")</h1>
+    <div class="page-body checkout-data mt-4">
+        <div class="d-flex flex-column xl-flex-row">
+            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentInfoTop })
+            <div class="section payment-info w-100">
+                <div class="title">
+                    <strong>@T("Checkout.PaymentInfo")</strong>
                 </div>
-                <div class="buttons mb-0">
-                    <button type="submit" name="nextstep" class="button-1 huge payment-info-next-step-button">@T("admin.customers.customers.impersonate.button")</button>
-                </div>
-            </form>
-        </div>
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentInfoBottom })
-        <div class="section order-summary">
-            <div class="title">
-                <strong>@T("Checkout.OrderSummary")</strong>
+                <form asp-route="CheckoutPaymentInfo" method="post">
+                    <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                    <div class="info">
+                        @await Component.InvokeAsync(Model.PaymentViewComponentName)
+                    </div>
+                    <div class="buttons mb-0">
+                        <button type="submit" name="nextstep" class="button-1 huge payment-info-next-step-button w-100">@T("admin.customers.customers.impersonate.button")</button>
+                    </div>
+                </form>
             </div>
-            @await Component.InvokeAsync("OrderSummary", "ShoppingCart")
+            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentInfoBottom })
+            <div class="section order-summary mt-4 xl-mt-0 xl-ml-4">
+                <div class="title">
+                    <strong>@T("Checkout.OrderSummary")</strong>
+                </div>
+                @await Component.InvokeAsync("OrderSummary", "ShoppingCart")
+            </div>
         </div>
     </div>
 </div>

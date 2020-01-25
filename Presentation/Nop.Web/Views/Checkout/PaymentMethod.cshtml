@@ -7,28 +7,30 @@
     //page class
     Html.AppendPageCssClassParts("html-checkout-page");
     Html.AppendPageCssClassParts("html-payment-method-page");
-    Html.AppendCssFileParts($"~/css/forms.min.css");
     Html.AppendCssFileParts($"~/css/cart.min.css");
     Html.AppendCssFileParts($"~/css/checkout.min.css");
     Html.AppendCssFileParts($"~/css/tables.min.css");
 }
 <div class="page checkout-page payment-method-page">
     @await Component.InvokeAsync("CheckoutProgress", new { step = CheckoutProgressStep.Payment })
-    <div class="page-title">
-        <h1>@T("Checkout.SelectPaymentMethod")</h1>
-    </div>
-    <div class="page-body checkout-data">
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentMethodTop })
-        <div class="section card default payment-method">
-            <form asp-route="CheckoutPaymentMethod" method="post">
-                @if (Model.DisplayRewardPoints && Model.PaymentMethods.Count > 0)
-                {
-                    <div class="use-reward-points">
-                        <input asp-for="UseRewardPoints"/>
-                        <label asp-for="UseRewardPoints">@string.Format(T("Checkout.UseRewardPoints").Text, Model.RewardPointsBalance, Model.RewardPointsAmount)</label>
-                        @if (Model.RewardPointsEnoughToPayForOrder)
-                        {
-                        <script asp-location="Footer">
+        <h1 class="sr-only">@T("Checkout.SelectPaymentMethod")</h1>
+    <div class="page-body checkout-data mt-4">
+        <div class="d-flex flex-column xl-flex-row">
+            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentMethodTop })
+
+            <div class="section payment-method w-100">
+                <div class="title">
+                    <strong>@T("Checkout.SelectPaymentMethod")</strong>
+                </div>
+                <form asp-route="CheckoutPaymentMethod" method="post" class="card default">
+                    @if (Model.DisplayRewardPoints && Model.PaymentMethods.Count > 0)
+                    {
+                        <div class="use-reward-points">
+                            <input asp-for="UseRewardPoints" />
+                            <label asp-for="UseRewardPoints">@string.Format(T("Checkout.UseRewardPoints").Text, Model.RewardPointsBalance, Model.RewardPointsAmount)</label>
+                            @if (Model.RewardPointsEnoughToPayForOrder)
+                            {
+                                <script asp-location="Footer">
                                 $(document).ready(function() {
                                     $("#@Html.IdFor(model => model.UseRewardPoints)")
                                         .on('change', toggleUseRewardPoints);
@@ -42,57 +44,57 @@
                                         $('#payment-method-block').show();
                                     }
                                 }
-                        </script>
-                        }
-                    </div>
-                }
-                @if (Model.PaymentMethods.Count > 0)
-                {
-                    <ul class="method-list" id="payment-method-block">
-                        @for (var i = 0; i < Model.PaymentMethods.Count; i++)
-                        {
-                            var paymentMethod = Model.PaymentMethods[i];
-                            var paymentMethodName = paymentMethod.Name.Replace(" ", string.Empty).ToLower();
-                            var paymentMethodFee = paymentMethod.Fee;
-                            <li id="method_@(i)" onclick="$('.method-list li').removeClass('active'); $(this).addClass('active');$('#' + 'paymentmethod_' + @(i)).prop('checked', true );">
-                                <svg class="icon check"><use href="#check"></use></svg>
-                                <div class="method-name">
+                                </script>
+                            }
+                        </div>
+                    }
+                    @if (Model.PaymentMethods.Count > 0)
+                    {
+                        <ul class="method-list mb-3 d-flex justify-content-center align-items-center flex-wrap" id="payment-method-block">
+                            @for (var i = 0; i < Model.PaymentMethods.Count; i++)
+                            {
+                                var paymentMethod = Model.PaymentMethods[i];
+                                var paymentMethodName = paymentMethod.Name.Replace(" ", string.Empty).ToLower();
+                                var paymentMethodFee = paymentMethod.Fee;
+                                <li class="d-inline-flex text-center justify-content-center align-items-center p-3 m-3 font-size-xs" id="method_@(i)" onclick="$('.method-list li').removeClass('active'); $(this).addClass('active');$('#' + 'paymentmethod_' + @(i)).prop('checked', true );">
+                                    <svg class="icon check"><use href="#check"></use></svg>
+                                    <div class="method-name">
                                         <div class="payment-logo">
                                             <label for="paymentmethod_@(i)">
                                                 <svg class="icon white"><use href="#@paymentMethodName"></use></svg>
                                             </label>
                                         </div>
-                                    <div class="payment-details">
-                                        <input class="d-none" id="paymentmethod_@(i)" type="radio" name="paymentmethod" value="@(paymentMethod.PaymentMethodSystemName)" checked="@paymentMethod.Selected" />
-                                        <label for="paymentmethod_@(i)">Fee: @paymentMethodFee</label>
-                                        @if (!string.IsNullOrEmpty(paymentMethod.Description))
-                                        {
-                                            <div class="payment-description">@paymentMethod.Description</div>
-                                        }
+                                        <div class="payment-details">
+                                            <input class="d-none" id="paymentmethod_@(i)" type="radio" name="paymentmethod" value="@(paymentMethod.PaymentMethodSystemName)" checked="@paymentMethod.Selected" />
+                                            <label for="paymentmethod_@(i)" class="font-size-xs font-bold accent-color">Fee: @paymentMethodFee</label>
+                                            @if (!string.IsNullOrEmpty(paymentMethod.Description))
+                                            {
+                                                <div class="payment-description">@paymentMethod.Description</div>
+                                            }
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                    <div class="buttons mb-0">
-                        <button type="submit" name="nextstep" class="button-1 huge payment-method-next-step-button">@T("Checkout.NextButton")</button>
-                    </div>
-                }
-                else
-                {
-                    <div class="message-error">
-                        @T("Checkout.NoPaymentMethods")
-                    </div>
-                }
-            </form>
-        </div>
-        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentMethodBottom })
-        <div class="section order-summary">
-            <div class="title">
-                <strong>@T("Checkout.OrderSummary")</strong>
+                                </li>
+                            }
+                        </ul>
+                            <button type="submit" name="nextstep" class="button-1 huge payment-method-next-step-button w-100">@T("Checkout.NextButton")</button>
+                    }
+                    else
+                    {
+                        <div class="message-error">
+                            @T("Checkout.NoPaymentMethods")
+                        </div>
+                    }
+                </form>
             </div>
-            @await Component.InvokeAsync("OrderSummary")
+            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.CheckoutPaymentMethodBottom })
+            <div class="section order-summary mt-4 xl-mt-0 xl-ml-4">
+                <div class="title">
+                    <strong>@T("Checkout.OrderSummary")</strong>
+                </div>
+                @await Component.InvokeAsync("OrderSummary")
+            </div>
         </div>
+
     </div>
 </div>
 
