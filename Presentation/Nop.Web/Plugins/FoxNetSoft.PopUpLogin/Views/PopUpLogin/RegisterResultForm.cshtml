@@ -1,17 +1,19 @@
 ﻿@model Nop.Web.Models.Customer.RegisterResultModel
 @{
-    Layout = "";
+    Layout = "_ModalLayout";
 }
-<div class="page registration-result-page">
-    <div class="page-title">
-        <h1>@T("Account.Register")</h1>
+
+@section Header
+    {
+    <h1>@T("Account.Register")</h1>
+}
+
+@section Body
+    {
+    <div class="result">
+        @Model.Result
     </div>
-    <div class="page-body">
-        <div class="result">
-            @Model.Result
-        </div>
-        <div class="buttons">
-            <input type="button" class="button-1 register-continue-button" onclick="window.location.reload(true)" value="@T("Account.Register.Result.Continue")" />
-        </div>
-    </div>
-</div>
+}
+@section Footer
+    {
+}

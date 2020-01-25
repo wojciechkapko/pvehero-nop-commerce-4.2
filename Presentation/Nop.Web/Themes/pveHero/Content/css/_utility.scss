@@ -33,7 +33,9 @@
 .m-1 {
     margin: .25rem !important;
 }
-
+.m-2 {
+    margin: .5rem !important;
+}
 .m-3 {
     margin: 1rem !important;
 }
@@ -133,7 +135,9 @@
     -ms-flex-direction: row !important;
     flex-direction: row !important;
 }
-
+.mr-auto, .mx-auto {
+    margin-right: auto !important;
+}
 .ml-auto, .mx-auto {
     margin-left: auto !important;
 }

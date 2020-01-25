@@ -66,6 +66,7 @@
         padding: 0;
         cursor: pointer;
         text-shadow: 0 1px 1px rgba(32,35,67,.2);
+        white-space: nowrap;
     }
 
     input[type=checkbox]:checked + .checkbox-style + .checkbox-label {

@@ -21,7 +21,7 @@
     </div>
     @await Html.PartialAsync("_ExternalAuthentication.Errors")
 <div class="page-body">
-    <div class="external-authentication">
+    <div class="external-authentication d-flex justify-content-center">
         @await Component.InvokeAsync("ExternalMethods", "ExternalAuthentication")
     </div>
     <div class="customer-blocks">
@@ -73,48 +73,38 @@
                 <div class="title">
                     <strong>@T("Account.Login.ReturningCustomer")</strong>
                 </div>
-                <div class="form-fields">
-                    @if (Model.UsernamesEnabled)
-                    {
-                        <div class="inputs">
-                            <label asp-for="Username" asp-postfix=":"></label>
-                            <input asp-for="Username" class="username" autofocus="autofocus" />
-                            <span asp-validation-for="Username"></span>
-                        </div>
-                    }
-                    else
-                    {
-                        <div class="inputs">
-                            <label asp-for="Email" asp-postfix=":"></label>
-                            <input asp-for="Email" class="email" autofocus="autofocus" />
-                            <span asp-validation-for="Email"></span>
-                        </div>
-                    }
+           
+
                     <div class="inputs">
-                        <label asp-for="Password" asp-postfix=":"></label>
-                        <input asp-for="Password" class="password" />
-                        <span asp-validation-for="Password"></span>
+                        <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#envelope"></use></svg></div></div>
+                        <input asp-for="Email" class="email form-input" placeholder="Email" />
                     </div>
-                    <div class="inputs reversed">
-                        <div class="checkbox">
+                    <span asp-validation-for="Email"></span>
+                    <div class="inputs">
+                        <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#lock-alt"></use></svg></div></div>
+                        <input asp-for="Password" class="password form-input" placeholder="Password" />
+                    </div>
+                    <span asp-validation-for="Password"></span>
+                    <div class="inputs justify-content-center">
+                        <div class="checkbox m-2">
                             <input class="d-none" type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" value="true">
                             <label for="RememberMe" class="checkbox-style"></label>
                             <label for="RememberMe" class="checkbox-label">Remember me?</label>
                         </div>
-                        <span class="forgot-password">
+                        <span class="forgot-password m-2">
                             <a asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
                         </span>
                     </div>
                     @if (Model.DisplayCaptcha)
                     {
-                        <div class="captcha-box">
-                            <nop-captcha />
-                        </div>
-                    }
-                    <div class="buttons mb-0">
-                        <button class="button-1 login-button" type="submit">@T("Account.Login.LoginButton")</button>
+                    <div class="captcha-box">
+                        <nop-captcha />
                     </div>
-                </div>
+                    }
+              
+                        <button class="button-1 login-button w-100 mt-4" type="submit">@T("Account.Login.LoginButton")</button>
+              
+       
 
             </form>
         </div>
