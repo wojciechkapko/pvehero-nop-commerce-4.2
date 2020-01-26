@@ -62,6 +62,6 @@
                 <button type="button" class="button-1 checkout-as-guest-button w-100" onclick="location.href='@Url.RouteUrl("Checkout")'">@T("Account.Login.CheckoutAsGuest")</button>
                 <p class="my-3">Or</p>
             </div>
-        <a asp-action="RegisterForm" asp-controller="Customer" class="button-1 register-button" data-ajax="true" data-ajax-method="GET" data-ajax-mode="REPLACE-WITH" data-ajax-begin="$('#modal').fadeOut(); utility.addSpinner('target');" data-ajax-complete="utility.removeSpinner('target'); $('#modal').fadeIn();" data-ajax-update="#target">@T("Account.Register")</a>
+        <a asp-action="RegisterForm" asp-controller="Customer" class="button-1 register-button" data-ajax="true" data-ajax-method="GET" data-ajax-mode="REPLACE-WITH" data-ajax-begin="$('#modal').fadeOut(150, utility.addSpinner('overlay'));" data-ajax-complete="$('#modal').fadeIn(150, utility.removeSpinner('overlay'));" data-ajax-update="#target">@T("Account.Register")</a>
     </div>
 }

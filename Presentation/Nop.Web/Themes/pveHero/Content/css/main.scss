@@ -109,7 +109,7 @@ input[type="button"],
     border-radius: .25rem !important;
 }
 
-.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .autocomplete-suggestions, .autocomplete-suggestions a, .product-item, .product-item::before, .tier-pricing .box::before, .autocomplete-suggestions img, .fnspoploginform {
+.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .autocomplete-suggestions, .autocomplete-suggestions a, .product-item, .product-item::before, .tier-pricing .box::before, .autocomplete-suggestions img, .modal-element {
     border-radius: .5rem !important;
 }
 
@@ -1837,7 +1837,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
 
 
 
-.fnspoploginform {
+.modal-element {
     width: 90vw !important;
     z-index: 9999 !important;
     background: #30295c;
@@ -1869,25 +1869,25 @@ label:not(.checkbox-style):not(.checkbox-label) {
 }
 
 @media smartphone {
-    .fnspoploginform {
+    .modal-element {
         overflow-y: scroll;
     }
 }
 
 @media all and (min-width: 451px) {
-    .fnspoploginform .modal {
+    .modal-element .modal {
         padding: 0 4rem;
     }
 }
 
 @media all and (max-width: 490px) {
-    .fnspoploginform {
+    .modal-element {
         width: 90vw !important;
     }
 }
 
 @media all and (min-width: 491px) {
-    .fnspoploginform {
+    .modal-element {
         width: 450px !important;
     }
 }
@@ -1926,7 +1926,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
     display: none;
 }
 
-.fnspoploginform button.close {
+.modal-element button.close {
     position: absolute;
     top: 0;
     right: 0;

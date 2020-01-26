@@ -1,7 +1,7 @@
 ﻿@model Nop.Web.Models.Customer.RegisterModel
 @using System.Text.Encodings.Web
 @using Nop.Web.Extensions
-@using FoxNetSoft.Plugin.Misc.PopUpLogin.Helpers;
+
 @{
     Layout = "_ModalLayout";
 }
@@ -53,6 +53,6 @@
 {
     <div class="d-flex flex-column">
         <p class="my-2">Already have an account?</p>
-        <a type="button" asp-route="LoginForm" class="button-1 back-to-login-button w-100" data-ajax="true" data-ajax-method="GET" data-ajax-mode="REPLACE-WITH" data-ajax-begin="$('#modal').fadeOut(); utility.addSpinner('target');" data-ajax-complete="utility.removeSpinner('target'); $('#modal').fadeIn();" data-ajax-update="#target">@T("Account.Login.LoginButton")</a>
+        <a type="button" asp-route="LoginForm" class="button-1 back-to-login-button w-100" data-ajax="true" data-ajax-method="GET" data-ajax-mode="REPLACE-WITH" data-ajax-begin="$('#modal').fadeOut(150, utility.addSpinner('overlay')); " data-ajax-complete="$('#modal').fadeIn(150, utility.removeSpinner('overlay'));" data-ajax-update="#target">@T("Account.Login.LoginButton")</a>
     </div>
 }

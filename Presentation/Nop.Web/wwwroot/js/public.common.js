@@ -112,6 +112,7 @@ function addAntiForgeryToken(data) {
 var utility = (function () {
 
     var addSpinner = function (id, zindex) {
+
         if (id.indexOf('#') > -1) {
             id = id.replace('#', '');
         }
@@ -173,7 +174,6 @@ var utility = (function () {
 
         if (spinner) {
             //$('#overlay').append('<div id="overlay-spinner" class="spinner" style="position:absolute; top:50%; left:50%; z-index:9999; margin: 0;"></div>');
-            console.log('adding spinner');
             utility.addSpinner("overlay", 9999);
         }
     };
@@ -191,7 +191,7 @@ var utility = (function () {
             $('#flyout-cart').removeClass('active');
         }
         if (modalType === 'register') {
-            modalUrl = '/RegisterForm';
+            modalUrl = '/registerform';
         }
         if (modalType === 'forgotpassword') {
             modalUrl = '/PasswordRecoveryForm';
@@ -214,7 +214,6 @@ var utility = (function () {
                 }
             }
             removeSpinner('overlay');
-            console.log('removing spinner');
             $('#modal').fadeIn({ duration: 250, start: function () { $('#modal-wrapper').css('pointer-events', 'all'); } });
         });
 

@@ -400,7 +400,7 @@ namespace Nop.Web.Controllers
             var model = new RegisterModel();
             model = _customerModelFactory.PrepareRegisterModel(model, false, setDefaultValues: true);
 
-            return View(model);
+            return PartialView("RegisterForm", model);
         }
 
         //login modal page

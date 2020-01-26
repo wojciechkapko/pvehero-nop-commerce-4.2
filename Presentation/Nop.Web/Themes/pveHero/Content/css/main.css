@@ -88,7 +88,7 @@ input[type="button"],
 .btn, .button-1, .button-2, .button-3, .cart-qty, .card, .fieldset, .tooltip-inner, .result, .block-category-navigation .list a, .badge {
   border-radius: .25rem !important; }
 
-.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .autocomplete-suggestions, .autocomplete-suggestions a, .product-item, .product-item::before, .tier-pricing .box::before, .autocomplete-suggestions img, .fnspoploginform {
+.eu-cookie-bar-notification, .search-box input.search-box-text, .block .list a, .menu-toggle, .top-menu.mobile, .dropdown-menu, .card.default, .fieldset.default, .product-picture img, .mini-shopping-cart .picture img, .spinner-bg, .autocomplete-suggestions, .autocomplete-suggestions a, .product-item, .product-item::before, .tier-pricing .box::before, .autocomplete-suggestions img, .modal-element {
   border-radius: .5rem !important; }
 
 .eu-cookie-bar-notification, .dropdown-menu, .card, .fieldset, .autocomplete-suggestions {
@@ -1722,7 +1722,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
   .block-account-navigation .title .icon, .block-recently-viewed-products .title .icon, .block-popular-tags .title .icon {
     display: none; } }
 
-.fnspoploginform {
+.modal-element {
   width: 90vw !important;
   z-index: 9999 !important;
   background: #30295c;
@@ -1730,7 +1730,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
   overflow: hidden;
   position: relative;
   display: none; }
-  .fnspoploginform::before {
+  .modal-element::before {
     top: -3rem;
     left: 0rem;
     right: 0;
@@ -1741,25 +1741,25 @@ label:not(.checkbox-style):not(.checkbox-label) {
     z-index: -1;
     border-radius: .5rem;
     background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/bg/modal-bg.jpg); }
-  .fnspoploginform .modal {
+  .modal-element .modal {
     padding: 0 .75rem; }
-  .fnspoploginform > div {
+  .modal-element > div {
     justify-content: center; }
 
 @media smartphone {
-  .fnspoploginform {
+  .modal-element {
     overflow-y: scroll; } }
 
 @media all and (min-width: 451px) {
-  .fnspoploginform .modal {
+  .modal-element .modal {
     padding: 0 4rem; } }
 
 @media all and (max-width: 490px) {
-  .fnspoploginform {
+  .modal-element {
     width: 90vw !important; } }
 
 @media all and (min-width: 491px) {
-  .fnspoploginform {
+  .modal-element {
     width: 450px !important; } }
 
 @media all and (min-width: 1001px) {
@@ -1790,7 +1790,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
   z-index: 9998;
   display: none; }
 
-.fnspoploginform button.close {
+.modal-element button.close {
   position: absolute;
   top: 0;
   right: 0;
@@ -1800,7 +1800,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
   border: none;
   cursor: pointer;
   padding: .75rem 1rem; }
-  .fnspoploginform button.close:hover {
+  .modal-element button.close:hover {
     color: #bba0ff; }
 
 div#modal-wrapper {
