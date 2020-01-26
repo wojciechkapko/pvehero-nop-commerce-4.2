@@ -20,22 +20,22 @@
         <div class="card default justify-content-center">
             <form asp-route="Register" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post" class="mx-auto" style="width: 350px">
                 <div asp-validation-summary="ModelOnly" class="message-error"></div>
-
+                <input class="d-none" type="hidden" id="NotModal" name="NotModal" value="true">
 
 
                 @*
-                                   <div class="inputs">
-                <label asp-for="FirstName" asp-postfix=":"></label>
-                <input asp-for="FirstName" />
-                <nop-required />
-                <span asp-validation-for="FirstName"></span>
-            </div>
-            <div class="inputs">
-                <label asp-for="LastName" asp-postfix=":"></label>
-                <input asp-for="LastName" />
-                <nop-required />
-                <span asp-validation-for="LastName"></span>
-            </div>
+                               <div class="inputs">
+            <label asp-for="FirstName" asp-postfix=":"></label>
+            <input asp-for="FirstName" />
+            <nop-required />
+            <span asp-validation-for="FirstName"></span>
+        </div>
+        <div class="inputs">
+            <label asp-for="LastName" asp-postfix=":"></label>
+            <input asp-for="LastName" />
+            <nop-required />
+            <span asp-validation-for="LastName"></span>
+        </div>
                 *@
 
                 <div class="inputs">
@@ -96,11 +96,11 @@
                     </div>
                 }
                 @if (Model.StreetAddressEnabled ||
-               Model.StreetAddress2Enabled ||
-               Model.ZipPostalCodeEnabled ||
-               Model.CityEnabled ||
-               Model.CountyEnabled ||
-               Model.CountryEnabled)
+              Model.StreetAddress2Enabled ||
+              Model.ZipPostalCodeEnabled ||
+              Model.CityEnabled ||
+              Model.CountyEnabled ||
+              Model.CountryEnabled)
                 {
                     <div class="title">
                         <strong>@T("Account.YourAddress")</strong>

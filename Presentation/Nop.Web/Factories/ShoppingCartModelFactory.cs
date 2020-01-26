@@ -899,6 +899,7 @@ namespace Nop.Web.Factories
             }
             //hide "Checkout" button if we have only "Button" payment methods
             model.HideCheckoutButton = !nonButtonPaymentMethods.Any() && model.ButtonPaymentMethodViewComponentNames.Any();
+            model.isAuthenticated = _workContext.CurrentCustomer.IsRegistered();
 
             //order review data
             if (prepareAndDisplayOrderReviewData)

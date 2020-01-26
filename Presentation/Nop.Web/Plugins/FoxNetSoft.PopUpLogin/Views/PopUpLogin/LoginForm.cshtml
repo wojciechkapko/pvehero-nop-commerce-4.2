@@ -24,7 +24,7 @@
             });
         });
     </script>
-    <form action="javascript:void(null);" data-contoller='@Url.Action("LoginPOST", "PopUpLogin")' method="post" id="form-fns-pupuplogin-login" class="d-flex flex-column mt-4" onsubmit="fns_popuplogin_sendform($(this).attr('id'))">
+    <form action="javascript:void(null);" data-contoller='@Url.Action("Login", "Customer")' method="post" id="form-fns-pupuplogin-login" class="d-flex flex-column mt-4" onsubmit="fns_popuplogin_sendform($(this).attr('id'))">
         <div asp-validation-summary="ModelOnly" class="message-error">@T("Account.Login.Unsuccessful")</div>
         <div class="inputs">
             <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#envelope"></use></svg></div></div>

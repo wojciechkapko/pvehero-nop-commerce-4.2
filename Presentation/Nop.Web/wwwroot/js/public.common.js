@@ -162,14 +162,19 @@ var utility = (function () {
 
     var addOverlay = function (spinner) {
         if (!$('#overlay').length) {
-            $('#fnspopuploginblock').append('<div id="overlay" class="overlay"></div>');
+            $('#modal-wrapper').append('<div id="overlay" class="overlay"></div>');
             $('#overlay').fadeIn(250);
             $('body').css('overflow', 'hidden');
+            $('#overlay').off('click').on('click', function () {
+                closeModal();
+            });
         }
 
 
-        if (spinner && !$('#overlay-spinner').length) {
-            $('#overlay').append('<div id="overlay-spinner" class="spinner" style="position:absolute; top:50%; left:50%; z-index:9999; margin: 0;"></div>');
+        if (spinner) {
+            //$('#overlay').append('<div id="overlay-spinner" class="spinner" style="position:absolute; top:50%; left:50%; z-index:9999; margin: 0;"></div>');
+            console.log('adding spinner');
+            utility.addSpinner("overlay", 9999);
         }
     };
 
@@ -177,11 +182,45 @@ var utility = (function () {
         $('#overlay').fadeOut(250, function () { $('#overlay').remove(); $('body').css('overflow', 'visible'); }); 
     };
 
-    var openModal = function () {
-        
-        $('#overlay').off('click').on('click', function () {
-            closeModal();
+    var openModal = function (modalType, guestCheckout) {
+        var modal = "#modal";
+        addOverlay(true);
+        var modalUrl;
+        if (modalType === 'login') {
+            modalUrl = '/LoginForm';
+            $('#flyout-cart').removeClass('active');
+        }
+        if (modalType === 'register') {
+            modalUrl = '/RegisterForm';
+        }
+        if (modalType === 'forgotpassword') {
+            modalUrl = '/PasswordRecoveryForm';
+        }
+        if (modalType === 'registerresult') {
+            modalUrl = '/RegisterResultForm';
+        }
+        if (modalType === 'forgotpasswordresult') {
+            modalUrl = '/PasswordRecoveryForm';
+        }
+
+        $(modal).load(modalUrl, function () {
+
+            if (modalType === 'login') {
+                if (guestCheckout) {
+                    $(modal).find('.checkout-as-guest-or-register-block').show();  
+                }
+                else {
+                    $(modal).find('.checkout-as-guest-or-register-block').hide();
+                }
+            }
+            removeSpinner('overlay');
+            console.log('removing spinner');
+            $('#modal').fadeIn({ duration: 250, start: function () { $('#modal-wrapper').css('pointer-events', 'all'); } });
         });
+
+
+
+
 
         $(document).off('keydown').on("keydown", function (e) {
             if (e.keyCode === 27) {
@@ -189,12 +228,12 @@ var utility = (function () {
             }
         });
         
-        $('#modal').fadeIn({ duration: 250, start: function () { $('#overlay-spinner').remove();  $('#fnspopuploginblock').css('pointer-events', 'all'); } });
+        
     };
 
     var closeModal = function () {
         removeOverlay();
-        $('#modal').fadeOut({ duration: 250, complete: function () { $('#modal').removeClass("loaded").html(""); $('#fnspopuploginblock').css('pointer-events', 'none'); $(document).off("keydown"); } });
+        $('#modal').fadeOut({ duration: 250, complete: function () { $('#modal').removeClass("loaded").html(""); $('#modal-wrapper').css('pointer-events', 'none'); $(document).off("keydown"); } });
     };
 
     var reloadModalContent = function (selector) {

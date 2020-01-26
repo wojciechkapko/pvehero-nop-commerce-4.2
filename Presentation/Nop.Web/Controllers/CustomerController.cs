@@ -40,6 +40,7 @@ using Nop.Web.Framework.Mvc.Filters;
 using Nop.Web.Framework.Security;
 using Nop.Web.Framework.Security.Captcha;
 using Nop.Web.Framework.Validators;
+using Nop.Web.Models.Common;
 using Nop.Web.Models.Customer;
 
 namespace Nop.Web.Controllers
@@ -383,7 +384,7 @@ namespace Nop.Web.Controllers
         public virtual IActionResult LoginForm(bool? checkoutAsGuest)
         {
             var model = _customerModelFactory.PrepareLoginModel(checkoutAsGuest);
-            return View(model);
+            return PartialView("LoginForm", model);
         }
 
         //login modal page
@@ -394,7 +395,7 @@ namespace Nop.Web.Controllers
         {
             //check whether registration is allowed
             if (_customerSettings.UserRegistrationType == UserRegistrationType.Disabled)
-                return RedirectToRoute("RegisterResult", new { resultId = (int)UserRegistrationType.Disabled });
+                return PartialView("RegisterResultForm", new { resultId = (int)UserRegistrationType.Disabled });
 
             var model = new RegisterModel();
             model = _customerModelFactory.PrepareRegisterModel(model, false, setDefaultValues: true);
@@ -411,7 +412,7 @@ namespace Nop.Web.Controllers
 
             var model = _customerModelFactory.PrepareRegisterResultModel(resultId);
 
-            return View(model);
+            return PartialView("RegisterResultForm", model);
         }
 
         //login modal page
@@ -441,18 +442,12 @@ namespace Nop.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                if (_customerSettings.UsernamesEnabled && model.Username != null)
-                {
-                    model.Username = model.Username.Trim();
-                }
-                var loginResult = _customerRegistrationService.ValidateCustomer(_customerSettings.UsernamesEnabled ? model.Username : model.Email, model.Password);
+                var loginResult = _customerRegistrationService.ValidateCustomer(model.Email, model.Password);
                 switch (loginResult)
                 {
                     case CustomerLoginResults.Successful:
                         {
-                            var customer = _customerSettings.UsernamesEnabled
-                                ? _customerService.GetCustomerByUsername(model.Username)
-                                : _customerService.GetCustomerByEmail(model.Email);
+                            var customer = _customerService.GetCustomerByEmail(model.Email);
 
                             //migrate shopping cart
                             _shoppingCartService.MigrateShoppingCart(_workContext.CurrentCustomer, customer, true);
@@ -467,10 +462,24 @@ namespace Nop.Web.Controllers
                             _customerActivityService.InsertActivity(customer, "PublicStore.Login",
                                 _localizationService.GetResource("ActivityLog.PublicStore.Login"), customer);
 
-                            if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
-                                return RedirectToRoute("Homepage");
+                            if (model.NotModal)
+                            {
+                                if (string.IsNullOrEmpty(returnUrl) || !Url.IsLocalUrl(returnUrl))
+                                {
+                                    returnUrl = Url.RouteUrl("HomePage");
+                                }
 
-                            return Redirect(returnUrl);
+                                return Redirect(returnUrl);
+                            }
+                            else
+                            {
+                                var closeModal = new CloseModal
+                                {
+                                    Reload = true
+                                };
+
+                                return PartialView("_CloseModal", closeModal);
+                            }
                         }
                     case CustomerLoginResults.CustomerNotExist:
                         ModelState.AddModelError("", _localizationService.GetResource("Account.Login.WrongCredentials.CustomerNotExist"));
@@ -496,7 +505,14 @@ namespace Nop.Web.Controllers
 
             //If we got this far, something failed, redisplay form
             model = _customerModelFactory.PrepareLoginModel(model.CheckoutAsGuest);
-            return View(model);
+            if (model.NotModal)
+            {
+                return View(model);
+            }
+            else
+            {
+                return PartialView("LoginForm", model);
+            }
         }
 
         //available even when a store is closed
@@ -602,11 +618,26 @@ namespace Nop.Web.Controllers
                     model.Result = _localizationService.GetResource("Account.PasswordRecovery.EmailNotFound");
                 }
 
-                return View(model);
+                if (model.NotModal)
+                {
+                    //If we got this far, something failed, redisplay form
+                    return View(model);
+                }
+                else
+                {
+                    return PartialView("PasswordRecoveryForm", model);
+                }
             }
 
-            //If we got this far, something failed, redisplay form
-            return View(model);
+            if (model.NotModal)
+            {
+                //If we got this far, something failed, redisplay form
+                return View(model);
+            }
+            else
+            {
+                return PartialView("PasswordRecoveryForm", model);
+            }
         }
 
         [HttpsRequirement(SslRequirement.Yes)]
@@ -757,15 +788,11 @@ namespace Nop.Web.Controllers
 
             if (ModelState.IsValid)
             {
-                if (_customerSettings.UsernamesEnabled && model.Username != null)
-                {
-                    model.Username = model.Username.Trim();
-                }
 
                 var isApproved = _customerSettings.UserRegistrationType == UserRegistrationType.Standard;
                 var registrationRequest = new CustomerRegistrationRequest(customer,
                     model.Email,
-                    _customerSettings.UsernamesEnabled ? model.Username : model.Email,
+                    model.Email,
                     model.Password,
                     _customerSettings.DefaultPasswordFormat,
                     _storeContext.CurrentStore.Id,
@@ -790,37 +817,20 @@ namespace Nop.Web.Controllers
                             _workflowMessageService.SendNewVatSubmittedStoreOwnerNotification(customer, model.VatNumber, vatAddress, _localizationSettings.DefaultAdminLanguageId);
                     }
 
-                    //form fields
-                    if (_customerSettings.GenderEnabled)
-                        _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.GenderAttribute, model.Gender);
-                    //_genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.FirstNameAttribute, model.FirstName);
-                    //_genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.LastNameAttribute, model.LastName);
-                    if (_customerSettings.DateOfBirthEnabled)
-                    {
-                        var dateOfBirth = model.ParseDateOfBirth();
-                        _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.DateOfBirthAttribute, dateOfBirth);
-                    }
+
+
                     if (_customerSettings.CompanyEnabled)
                         _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CompanyAttribute, model.Company);
                     if (_customerSettings.StreetAddressEnabled)
                         _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.StreetAddressAttribute, model.StreetAddress);
-                    if (_customerSettings.StreetAddress2Enabled)
-                        _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.StreetAddress2Attribute, model.StreetAddress2);
+
                     if (_customerSettings.ZipPostalCodeEnabled)
                         _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.ZipPostalCodeAttribute, model.ZipPostalCode);
                     if (_customerSettings.CityEnabled)
                         _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CityAttribute, model.City);
-                    if (_customerSettings.CountyEnabled)
-                        _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CountyAttribute, model.County);
                     if (_customerSettings.CountryEnabled)
                         _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CountryIdAttribute, model.CountryId);
-                    if (_customerSettings.CountryEnabled && _customerSettings.StateProvinceEnabled)
-                        _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.StateProvinceIdAttribute,
-                            model.StateProvinceId);
-                    if (_customerSettings.PhoneEnabled)
-                        _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.PhoneAttribute, model.Phone);
-                    if (_customerSettings.FaxEnabled)
-                        _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.FaxAttribute, model.Fax);
+
 
                     //newsletter
                     if (_customerSettings.NewsletterEnabled)
@@ -960,13 +970,18 @@ namespace Nop.Web.Controllers
                                 _workflowMessageService.SendCustomerEmailValidationMessage(customer, _workContext.WorkingLanguage.Id);
 
                                 //result
-                                return RedirectToRoute("RegisterResult",
-                                    new { resultId = (int)UserRegistrationType.EmailValidation });
-                            }
-                        case UserRegistrationType.AdminApproval:
-                            {
-                                return RedirectToRoute("RegisterResult",
-                                    new { resultId = (int)UserRegistrationType.AdminApproval });
+
+                                if (model.NotModal)
+                                {
+                                    return RedirectToRoute("RegisterResult", new { resultId = (int)UserRegistrationType.EmailValidation });
+                                }
+                                else
+                                {
+                                    var resultId = (int)UserRegistrationType.EmailValidation;
+                                    var modelResult = _customerModelFactory.PrepareRegisterResultModel(resultId);
+                                    return PartialView("RegisterResultForm", modelResult);
+                                }
+
                             }
                         case UserRegistrationType.Standard:
                             {
@@ -990,8 +1005,16 @@ namespace Nop.Web.Controllers
             }
 
             //If we got this far, something failed, redisplay form
+
             model = _customerModelFactory.PrepareRegisterModel(model, true, customerAttributesXml);
-            return View(model);
+            if (model.NotModal)
+            {
+                return View(model);
+            }
+            else
+            {
+                return PartialView("RegisterForm", model);
+            }
         }
 
         //available even when navigation is not allowed

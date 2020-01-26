@@ -24,7 +24,7 @@
             });
         });
     </script>
-    <form action="javascript:void(null);" data-contoller='@Url.Action("LoginPOST", "PopUpLogin")' method="post" id="form-fns-pupuplogin-login" class="d-flex flex-column mt-4" onsubmit="fns_popuplogin_sendform($(this).attr('id'))">
+    <form asp-route="Login" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-mode="REPLACE-WITH" data-ajax-update="#target" id="login-form" class="d-flex flex-column mt-4">
         <div asp-validation-summary="ModelOnly" class="message-error">@T("Account.Login.Unsuccessful")</div>
         <div class="inputs">
             <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#envelope"></use></svg></div></div>
@@ -43,7 +43,7 @@
                 <label for="RememberMe" class="checkbox-label">Remember me?</label>
             </div>
             <span class="forgot-password xs-ml-auto">
-                <a asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
+                <a asp-action="PasswordRecoveryForm" asp-controller="Customer" data-ajax="true" data-ajax-method="GET" data-ajax-mode="REPLACE-WITH" data-ajax-begin="$('#modal').fadeOut(150, utility.addSpinner('overlay')); " data-ajax-complete="$('#modal').fadeIn(150, utility.removeSpinner('overlay'));  " data-ajax-update="#target">@T("Account.Login.ForgotPassword")</a>
             </span>
         </div>
         @if (Model.DisplayCaptcha)
@@ -51,17 +51,17 @@
             <div id="fnspopuplogincaptchabox" class="captcha-box">
             </div>
         }
-        <button class="button-2 login-button" type="submit">@T("Account.Login.LoginButton")</button>
+        <button href="javascript:void(0)" id="login-button" class="button-2 login-button" onclick="utility.addButtonSpinner($(this));$('#login-form').submit();">@T("Account.Login.LoginButton")</button>
     </form>
 }
 @section Footer
 {
     <p class="my-2">Don't have an account yet?</p>
     <div class="d-flex flex-column">
-        <div class="checkout-as-guest-or-register-block" style="display:none">
-            <button type="button" class="button-1 checkout-as-guest-button w-100" onclick="location.href='@Url.RouteUrl("Checkout")'">@T("Account.Login.CheckoutAsGuest")</button>
-            <p class="my-3">Or</p>
-        </div>
-        <button type="button" class="button-1 register-button">@T("Account.Register")</button>
+            <div class="checkout-as-guest-or-register-block" style="display:none">
+                <button type="button" class="button-1 checkout-as-guest-button w-100" onclick="location.href='@Url.RouteUrl("Checkout")'">@T("Account.Login.CheckoutAsGuest")</button>
+                <p class="my-3">Or</p>
+            </div>
+        <a asp-action="RegisterForm" asp-controller="Customer" class="button-1 register-button" data-ajax="true" data-ajax-method="GET" data-ajax-mode="REPLACE-WITH" data-ajax-begin="$('#modal').fadeOut(); utility.addSpinner('target');" data-ajax-complete="utility.removeSpinner('target'); $('#modal').fadeIn();" data-ajax-update="#target">@T("Account.Register")</a>
     </div>
 }

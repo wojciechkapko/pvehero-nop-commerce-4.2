@@ -21,7 +21,8 @@ namespace Nop.Web.Models.Customer
         [DataType(DataType.EmailAddress)]
         [NopResourceDisplayName("Account.Fields.Email")]
         public string Email { get; set; }
-        
+        public bool NotModal { get; set; }
+
         public bool EnteringEmailTwice { get; set; }
         [DataType(DataType.EmailAddress)]
         [NopResourceDisplayName("Account.Fields.ConfirmEmail")]

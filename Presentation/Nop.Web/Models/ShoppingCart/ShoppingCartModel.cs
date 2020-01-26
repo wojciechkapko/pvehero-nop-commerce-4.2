@@ -23,6 +23,8 @@ namespace Nop.Web.Models.ShoppingCart
 
         public bool OnePageCheckoutEnabled { get; set; }
 
+        public bool isAuthenticated { get; set; }
+
         public bool ShowSku { get; set; }
         public bool ShowProductImages { get; set; }
         public bool IsEditable { get; set; }

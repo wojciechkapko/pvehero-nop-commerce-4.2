@@ -15,6 +15,8 @@ namespace Nop.Web.Models.Customer
 
         public bool UsernamesEnabled { get; set; }
 
+        public bool NotModal { get; set; }
+
         public UserRegistrationType RegistrationType { get; set; }
 
         [NopResourceDisplayName("Account.Login.Fields.Username")]

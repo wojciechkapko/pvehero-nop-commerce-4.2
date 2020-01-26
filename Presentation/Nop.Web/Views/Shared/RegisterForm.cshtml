@@ -14,44 +14,45 @@
 @section Body
 {
     @await Component.InvokeAsync("ExternalMethods", "ExternalAuthentication")
-    <form action="javascript:void(null);" data-contoller='@Url.Action("RegisterPOST", "PopUpLogin")' method="post" id="form-fns-pupuplogin-registration" class="d-flex flex-column mt-4" onsubmit="fns_popuplogin_sendform($(this).attr('id'))">
-        <div asp-validation-summary="ModelOnly" class="message-error"></div>
-        <div class="inputs">
-            <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#envelope"></use></svg></div></div>
-            <input asp-for="Email" class="form-input" placeholder="Email" />
-        </div>
-        <span asp-validation-for="Email"></span>
-        @if (Model.NewsletterEnabled || Model.CustomerAttributes.Count > 0)
+<form asp-route="Register" method="post" data-ajax="true" data-ajax-method="POST" data-ajax-mode="REPLACE-WITH" data-ajax-update="#target" id="register-form" class="d-flex flex-column mt-4">
+    <div asp-validation-summary="ModelOnly" class="message-error"></div>
+    <div class="inputs">
+        <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#envelope"></use></svg></div></div>
+        <input asp-for="Email" class="form-input" placeholder="Email" />
+    </div>
+    <span asp-validation-for="Email"></span>
+    @if (Model.NewsletterEnabled || Model.CustomerAttributes.Count > 0)
+    {
+        @if (Model.NewsletterEnabled)
         {
-            @if (Model.NewsletterEnabled)
-            {
-                <input asp-for="Newsletter" class="d-none" />
-            }
+            <input asp-for="Newsletter" type="hidden" class="d-none" value="true" />
         }
-        <div class="inputs">
-            <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#lock-alt"></use></svg></div></div>
-            <input asp-for="Password" class="form-input" placeholder="Password" />
-        </div>
-        <span asp-validation-for="Password"></span>
-        <div class="inputs">
-            <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#lock-alt"></use></svg></div></div>
-            <input asp-for="ConfirmPassword" class="form-input" placeholder="Password repeat" />
-        </div>
-        <span asp-validation-for="ConfirmPassword"></span>
+    }
+    <div class="inputs">
+        <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#lock-alt"></use></svg></div></div>
+        <input asp-for="Password" class="form-input" placeholder="Password" />
+    </div>
+    <span asp-validation-for="Password"></span>
+    <div class="inputs">
+        <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#lock-alt"></use></svg></div></div>
+        <input asp-for="ConfirmPassword" class="form-input" placeholder="Password repeat" />
+    </div>
+    <span asp-validation-for="ConfirmPassword"></span>
 
-        @if (Model.DisplayCaptcha)
-        {
-            <div id="fnspopupregistrationcaptchabox" class="captcha-box">
-            </div>
-        }
-        <button type="submit" id="register-button" class="mt-3 button-2 register-next-step-button w-100" name="register-button">@T("Account.Register.Button")</button>
-    </form>
+    @if (Model.DisplayCaptcha)
+    {
+        <div class="captcha-box my-3">
+            <nop-captcha />
+        </div>
+    }
+    <button type="button" href="javascript:void(0)" id="register-button" class="button-2 mt-3 register-next-step-button w-100" onclick="utility.addButtonSpinner($(this));$('#register-form').submit();">@T("Account.Register.Button")</button>
+</form>
 }
 
 @section Footer
 {
     <div class="d-flex flex-column">
         <p class="my-2">Already have an account?</p>
-        <button type="button" class="button-1 back-to-login-button w-100">@T("Account.Login.LoginButton")</button>
+        <a type="button" asp-route="LoginForm" class="button-1 back-to-login-button w-100" data-ajax="true" data-ajax-method="GET" data-ajax-mode="REPLACE-WITH" data-ajax-begin="$('#modal').fadeOut(); utility.addSpinner('target');" data-ajax-complete="utility.removeSpinner('target'); $('#modal').fadeIn();" data-ajax-update="#target">@T("Account.Login.LoginButton")</a>
     </div>
 }

@@ -1844,6 +1844,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
     box-shadow: 0 7px 35px rgba(0,0,0,.45);
     overflow: hidden;
     position: relative;
+    display:none;
 
     &::before {
         top: -3rem;
@@ -1941,7 +1942,7 @@ label:not(.checkbox-style):not(.checkbox-label) {
     }
 }
 
-div#fnspopuploginblock {
+div#modal-wrapper {
     position: fixed;
     width: 100%;
     height: 100%;

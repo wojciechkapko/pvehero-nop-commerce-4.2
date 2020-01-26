@@ -44,24 +44,15 @@
             </div>
             <div class="totals">@T("ShoppingCart.Totals.SubTotal"): <strong>@Model.SubTotal</strong></div>
             <div class="buttons">
-                @if (Model.DisplayShoppingCartButton)
-                {
                 <button type="button" class="button-1 cart-button" onclick="setLocation('@(Url.RouteUrl("ShoppingCart"))')">@T("ShoppingCart.Mini.ViewCart")</button>
-                    
-                }
-                @if (true)
-                {
-                    var checkoutUrl = "";
-                    if (Model.AnonymousCheckoutAllowed && Model.CurrentCustomerIsGuest)
+                    @if (Model.AnonymousCheckoutAllowed && Model.CurrentCustomerIsGuest)
                     {
-                        checkoutUrl = Url.RouteUrl("LoginCheckoutAsGuest", new { returnUrl = Url.RouteUrl("ShoppingCart") });
+                        <button href="javascript:void(0)" class="button-1 checkout-button" onclick="utility.openModal('login', true);">@T("Checkout.Button")</button>
                     }
                     else
                     {
-                        checkoutUrl = Url.RouteUrl("Checkout");
+                        <button class="button-1 checkout-button" onclick="setLocation('@(Url.RouteUrl("Checkout"))')">@T("Checkout.Button")</button>
                     }
-                    <button type="button" class="button-1 checkout-button" onclick="setLocation('@checkoutUrl')">@T("Checkout.Button")</button>
-                }
             </div>
         }
     </div>

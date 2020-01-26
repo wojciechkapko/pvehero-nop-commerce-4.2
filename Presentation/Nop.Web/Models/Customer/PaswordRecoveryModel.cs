@@ -13,5 +13,7 @@ namespace Nop.Web.Models.Customer
         public string Result { get; set; }
 
         public bool DisplayCaptcha { get; set; }
+
+        public bool NotModal { get; set; }
     }
 }

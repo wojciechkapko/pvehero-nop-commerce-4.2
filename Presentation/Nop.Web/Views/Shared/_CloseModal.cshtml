@@ -1,0 +1,51 @@
+﻿@model CloseModal
+
+@if (Model.ShouldClose)
+{
+    <script type="text/javascript">
+        $(function () {
+            $('#modal-container').modal('hide');
+        });
+    </script>
+}
+
+@if (Model.Redirect)
+{
+    <script type="text/javascript">
+        $(function () {
+            window.location.replace("@Model.TargetUrl");
+        });
+    </script>
+}
+
+@if (Model.Reload)
+{
+    <script type="text/javascript">
+        $(function () {
+            window.location.reload(true);
+        });
+    </script>
+}
+
+@if (Model.DisplayNotification)
+{
+    <script type="text/javascript">
+        $(function () {
+            if (@Model.Success.ToString().ToLower()) {
+                displayBarNotification('@Model.Message', 'success', 3500, '@Model.Icon');
+            } else {
+                displayBarNotification('@Model.Message', 'error', 0, '@Model.Icon');
+            }
+        });
+    </script>
+}
+
+@if (Model.ReloadAfterAction)
+{
+    <script type="text/javascript">
+        $(function () {
+            utility.addSpinnerWithBg('@Model.ElementTobeReloaded');
+            loader.reloadContent({ id: '@Model.ElementTobeReloaded', callback: function () { selectList.initDropdowns(); } });
+    });
+    </script>
+}

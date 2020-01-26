@@ -70,41 +70,42 @@
         <div class="returning-wrapper fieldset">
             <form asp-route="Login" asp-route-returnurl="@Context.Request.Query["ReturnUrl"]" method="post">
                 <div asp-validation-summary="ModelOnly" class="message-error">@T("Account.Login.Unsuccessful")</div>
+                <input class="d-none" type="hidden" id="NotModal" name="NotModal" value="true">
                 <div class="title">
                     <strong>@T("Account.Login.ReturningCustomer")</strong>
                 </div>
-           
 
-                    <div class="inputs">
-                        <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#envelope"></use></svg></div></div>
-                        <input asp-for="Email" class="email form-input" placeholder="Email" />
+
+                <div class="inputs">
+                    <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#envelope"></use></svg></div></div>
+                    <input asp-for="Email" class="email form-input" placeholder="Email" />
+                </div>
+                <span asp-validation-for="Email"></span>
+                <div class="inputs">
+                    <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#lock-alt"></use></svg></div></div>
+                    <input asp-for="Password" class="password form-input" placeholder="Password" />
+                </div>
+                <span asp-validation-for="Password"></span>
+                <div class="inputs justify-content-center">
+                    <div class="checkbox m-2">
+                        <input class="d-none" type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" value="true">
+                        <label for="RememberMe" class="checkbox-style"></label>
+                        <label for="RememberMe" class="checkbox-label">Remember me?</label>
                     </div>
-                    <span asp-validation-for="Email"></span>
-                    <div class="inputs">
-                        <div class="input-prepend"><div class="input-content"><svg class="icon"><use href="#lock-alt"></use></svg></div></div>
-                        <input asp-for="Password" class="password form-input" placeholder="Password" />
-                    </div>
-                    <span asp-validation-for="Password"></span>
-                    <div class="inputs justify-content-center">
-                        <div class="checkbox m-2">
-                            <input class="d-none" type="checkbox" data-val="true" data-val-required="The Remember me? field is required." id="RememberMe" name="RememberMe" value="true">
-                            <label for="RememberMe" class="checkbox-style"></label>
-                            <label for="RememberMe" class="checkbox-label">Remember me?</label>
-                        </div>
-                        <span class="forgot-password m-2">
-                            <a asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
-                        </span>
-                    </div>
-                    @if (Model.DisplayCaptcha)
-                    {
+                    <span class="forgot-password m-2">
+                        <a asp-route="PasswordRecovery">@T("Account.Login.ForgotPassword")</a>
+                    </span>
+                </div>
+                @if (Model.DisplayCaptcha)
+                {
                     <div class="captcha-box">
                         <nop-captcha />
                     </div>
-                    }
-              
-                        <button class="button-1 login-button w-100 mt-4" type="submit">@T("Account.Login.LoginButton")</button>
-              
-       
+                }
+
+                <button class="button-1 login-button w-100 mt-4" type="submit">@T("Account.Login.LoginButton")</button>
+
+
 
             </form>
         </div>

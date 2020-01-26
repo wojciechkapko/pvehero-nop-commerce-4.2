@@ -265,23 +265,30 @@
                     }
                     @if (Model.IsEditable)
                     {
-                        <div class="checkout-buttons">
-                            @if (string.IsNullOrEmpty(Model.MinOrderSubtotalWarning) && !Model.HideCheckoutButton)
+                <div class="checkout-buttons">
+                    @if (string.IsNullOrEmpty(Model.MinOrderSubtotalWarning) && !Model.HideCheckoutButton)
+                    {
+                        if (orderSettings.CheckoutDisabled)
+                        {
+                            <div class="checkout-disabled">
+                                @T("Checkout.Disabled")
+                            </div>
+                        }
+                        else
+                        {
+                            if (Model.isAuthenticated)
                             {
-                                if (orderSettings.CheckoutDisabled)
-                                {
-                                    <div class="checkout-disabled">
-                                        @T("Checkout.Disabled")
-                                    </div>
-                                }
-                                else
-                                {
-                                    <button type="submit" id="checkout" name="checkout" value="checkout" class="big button-1 checkout-button w-100">
-                                        @T("Checkout.Button")
-                                    </button>
-                                }
+                                <button type="submit" id="checkout" name="checkout" class="big button-1 checkout-button w-100">
+                                    @T("Checkout.Button")
+                                </button>
                             }
-                        </div>
+                            else
+                            {
+                                <button type="button" id="checkout" name="checkout" href="javascript:void(0)" class="big button-1 checkout-button w-100" onclick="utility.openModal('login', true);">@T("Checkout.Button")</button>
+                            }
+                        }
+                    }
+                </div>
                         <div class="addon-buttons">
                             @*Payment method buttons (e.g. GoogleCheckoutButton, Paypal Express)*@
                             @foreach (var pm in Model.ButtonPaymentMethodViewComponentNames)
