@@ -7,46 +7,46 @@
             {
                 var category = item.SeName.Replace("-", string.Empty);
                 //@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeBestSellers })
-            <div class="item-box category">
-                <h2 class="title d-block md-d-flex align-items-end text-upper mb-3">
-                    <svg class='icon shadow svg-baseline mr-0 md-mr-2'><use href='#@item.SeName'></use></svg>
-                    @item.Name
-                    <a class="button-3 font-size-base d-none md-d-inline-flex ml-auto" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
-                </h2>
+                <div class="item-box @item.SeName category ">
+                    <h2 class="title d-block md-d-flex align-items-end text-upper mb-3">
+                        <svg class='icon shadow svg-baseline mr-0 md-mr-2'><use href='#@item.SeName'></use></svg>
+                        @item.Name
+                        <a class="button-3 font-size-base d-none md-d-inline-flex ml-auto" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
+                    </h2>
 
-                <div class="category-details d-flex flex-column md-flex-row">
-                    <div class="side-2">
-                        @await Component.InvokeAsync("HomepageBestSellers", item.Id)
-                    </div>
-                    <div class="center-2 md-ml-auto">
-                        <div class="product-grid home-page-product-grid carousel">
-                            <div class="title">
-                                <strong>Featured</strong>
-                                <a class="button-3 font-size-base ml-auto d-inline-flex md-d-none" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
+                    <div class="category-details d-flex flex-column md-flex-row">
+                        <div class="side-2">
+                            @await Component.InvokeAsync("HomepageBestSellers", item.Id)
+                        </div>
+                        <div class="center-2 md-ml-auto">
+                            <div class="product-grid home-page-product-grid carousel">
+                                <div class="title">
+                                    <strong>Featured</strong>
+                                    <a class="button-3 font-size-base ml-auto d-inline-flex md-d-none" href="@Url.RouteUrl("Category", new { SeName = item.SeName })">See all</a>
+                                </div>
+
+                                @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeProducts })*@
+                                <div class="featured-slider @category">
+                                    @await Component.InvokeAsync("HomepageProducts", item.Id)
+                                </div>
+
+
+
+                                @*
+                                                               <div class="item-grid">
+                                @foreach (var product in item.Products)
+                                {
+                                    <div class="item-box">
+                                        @await Html.PartialAsync("_ProductBox", product)
+                                    </div>
+                                }
                             </div>
+                                *@
 
-                            @*@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeProducts })*@
-                            <div class="featured-slider @category">
-                                @await Component.InvokeAsync("HomepageProducts", item.Id)
                             </div>
-
-
-
-                            @*
-                                                       <div class="item-grid">
-                        @foreach (var product in item.Products)
-                        {
-                            <div class="item-box">
-                                @await Html.PartialAsync("_ProductBox", product)
-                            </div>
-                        }
-                    </div>
-                            *@
-
                         </div>
                     </div>
                 </div>
-            </div>
 
                 <script type="module" asp-location="Footer">
             var sliderCat_@category = tns({
@@ -68,6 +68,25 @@
                     }
                 }
             });
+                </script>
+                <script asp-location="Footer">
+                    $(window).on('load resize scroll', function () {
+                        var element = '.' + 'item-box' + '.' + '@item.SeName';
+                        if (utility.isInViewport(element) && !$(element).hasClass('loaded')) {
+
+                            [].forEach.call(document.querySelectorAll(".item-box.@item.SeName .product-item"), function (el) {
+                                let image = 'url(' + $(el).children('.url').text() + ')';
+
+                                $(el).css("background", image).addClass('visible');
+                            });
+                                                        [].forEach.call(document.querySelectorAll(".item-box.@item.SeName .product-picture"), function (el) {
+                                let image = $(el).children('.url').text();
+
+                                $(el).children('img').attr('src', image).addClass('visible');
+                            });
+                            $(element).addClass('loaded')
+                        }
+                    });
                 </script>
             }
         </div>

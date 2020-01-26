@@ -18,57 +18,22 @@
     <form method="post" id="form-fns-pupuplogin-antiforgerytoken" action="javascript:void(null);">
         <nop-antiforgery-token />
     </form>
-    <div class="fnspoploginform">
-
-
-        @if (Model.ShowLoginForm)
-        {
-            <div id="fnspopuplogin" style="display:none;">
-                @Html.Raw(Model.htmlLoginForm)
-            </div>
-        }
-        @if (Model.ShowRegistrationForm)
-        {
-            <div id="fnspopupregistration" title="@T("PageTitle.Register")" style="display:none;">
-                @Html.Raw(Model.htmlRegistrationForm)
-            </div>
-        }
-        @if (Model.ShowForgotPasswordForm)
-        {
-            <div id="fnspopupforgotpassword" title="@T("PageTitle.Account")" style="display:none;">
-                @Html.Raw(Model.htmlForgotPasswordForm)
-            </div>
-        }
-        <div id="fnspopupregistrationresult" title="@T("Account.Register")" style="display:none;">
-        </div>
-        <div id="fnspopupforgotpasswordresult" title="@T("Account.PasswordRecovery")" style="display:none;">
-        </div>
+    <div id="modal" class="fnspoploginform" style="display:none;">
     </div>
 </div>
-@if (Model.DisplayCaptcha)
-{
-    <script asp-location="Footer">
-        var fnspopuplogin_recaptcha_widget_login;
-        var fnspopuplogin_recaptcha_widget_registration;
-        var fnspopuplogin_recaptcha_widget_passwordrecovery;
 
-        var onloadCallbackLoginPopUpCaptcha = function () {
-            if ($('#fnspopuplogincaptchabox').length>0 && fnspopuplogin_recaptcha_widget_login == undefined)
-                fnspopuplogin_recaptcha_widget_login = grecaptcha.render('fnspopuplogincaptchabox', {
-                    'sitekey': '@captchaSettings.ReCaptchaPublicKey', 'theme': '@(captchaSettings.ReCaptchaTheme?? "light")'
-                });
-            if ($('#fnspopupregistrationcaptchabox').length > 0 && fnspopuplogin_recaptcha_widget_registration == undefined)
-                fnspopuplogin_recaptcha_widget_registration = grecaptcha.render('fnspopupregistrationcaptchabox', {
-                    'sitekey': '@captchaSettings.ReCaptchaPublicKey', 'theme': '@(captchaSettings.ReCaptchaTheme?? "light")'
-                });
-            if ($('#fnspopuppasswordrecoverycaptchabox').length > 0 && fnspopuplogin_recaptcha_widget_passwordrecovery == undefined)
-                fnspopuplogin_recaptcha_widget_passwordrecovery = grecaptcha.render('fnspopuppasswordrecoverycaptchabox', {
-                    'sitekey': '@captchaSettings.ReCaptchaPublicKey', 'theme': '@(captchaSettings.ReCaptchaTheme?? "light")'
-                });
-        };
+<script asp-location="Footer">
+    var fnspopuplogin_recaptcha_widget_registration;
+
+    var onloadCallbackLoginPopUpCaptcha = function () {
+        if ($('#fnspopupregistrationcaptchabox').length > 0 && fnspopuplogin_recaptcha_widget_registration == undefined)
+            fnspopuplogin_recaptcha_widget_registration = grecaptcha.render('fnspopupregistrationcaptchabox', {
+                'sitekey': '@captchaSettings.ReCaptchaPublicKey', 'theme': '@(captchaSettings.ReCaptchaTheme?? "light")'
+            });
+    };
 </script>
-    <script async="" defer="" src="https://www.google.com/recaptcha/api.js?onload=onloadCallbackLoginPopUpCaptcha&amp;render=explicit"></script>
-}
+<script async="" defer="" src="https://www.google.com/recaptcha/api.js?onload=onloadCallbackLoginPopUpCaptcha&amp;render=explicit"></script>
+
 <script asp-location="Footer">
     var fnspopuplogin_login_selector= "#fnspopuplogin";
     var fnspopuplogin_registration_selector= "#fnspopupregistration";
@@ -76,56 +41,59 @@
     var fnspopuplogin_registrationresult_selector= "#fnspopupregistrationresult";
     var fnspopuplogin_forgotpasswordresult_selector= "#fnspopupforgotpasswordresult";
 
-    var fnspopuplogin_login_form_selector= "#form-fns-pupuplogin-login";
-    var fnspopuplogin_registration_form_selector= "#form-fns-pupuplogin-registration";
-    var fnspopuplogin_forgotpassword_form_selector= "#form-fns-pupuplogin-passwordrecovery";
+    var modal = "#modal";
 
-    var fnspopuplogin_allowtoclose=@Model.AllowtoClosePopup.ToString().ToLower();
 
-    function fns_popupdialog(selector) {
-        
-        utility.openModal(selector);
+    function fns_popupdialog(selector, checkGuest) {
 
-        @if (Model.DisplayCaptcha)
-        {
-            <text>
-            if (selector == "#fnspopuplogin")
-            {
-                if (fnspopuplogin_recaptcha_widget_login != undefined)
-                    grecaptcha.reset(fnspopuplogin_recaptcha_widget_login);
-                else
-                    onloadCallbackLoginPopUpCaptcha();
+            utility.addOverlay(true);
+        if (selector == '#fnspopuplogin') {
+            if (!$(modal).hasClass('loaded')) {
+                $(modal).load('/LoginForm', function () {
+                    fns_popuplogin_refreshlink();
+                    if (checkGuest)
+                    {
+                        $(modal).find('.checkout-as-guest-or-register-block').show();
+                    }
+                    else
+                    {
+                        $(modal).find('.checkout-as-guest-or-register-block').hide();
+                    }
+                    $('#flyout-cart').removeClass('active');
+
+
+
+                    utility.openModal();
+                    $(modal).addClass('loaded');
+                });
             }
-            if (selector == "#fnspopupregistration")
-            {
-                if (fnspopuplogin_recaptcha_widget_registration != undefined)
-                    grecaptcha.reset(fnspopuplogin_recaptcha_widget_registration);
-                else
-                    onloadCallbackLoginPopUpCaptcha();
+        }
+        if (selector == '#fnspopupregistration') {
+            if (!$(modal).hasClass('loaded')) {
+                $(modal).load('/RegisterForm', function () {
+                    fns_popuplogin_refreshlink();
+                    utility.openModal();
+                    $(modal).addClass('loaded');
+                    if (fnspopuplogin_recaptcha_widget_registration != undefined) {
+                        grecaptcha.reset(fnspopuplogin_recaptcha_widget_registration);
+                    }
+                    else {
+                        onloadCallbackLoginPopUpCaptcha();
+                    }
+                });
             }
-            if (selector == "#fnspopupforgotpassword") {
-                if (fnspopuplogin_recaptcha_widget_passwordrecovery != undefined)
-                    grecaptcha.reset(fnspopuplogin_recaptcha_widget_passwordrecovery);
-                else
-                    onloadCallbackLoginPopUpCaptcha();
+        }
+        if (selector == '#fnspopupforgotpassword') {
+            if (!$(modal).hasClass('loaded')) {
+                $(modal).load('/PasswordRecoveryForm', function () {
+                    fns_popuplogin_refreshlink(); utility.openModal(); $(modal).addClass('loaded');
+                });
             }
-            </text>
         }
     }
     function fns_popuplogin(checkGuest)
     {
-        fns_popupdialog(fnspopuplogin_login_selector);
-        if (checkGuest)
-        {
-            $(fnspopuplogin_login_selector).find('.checkout-as-guest-or-register-block').show();
-            $(fnspopuplogin_login_selector).find('.register-block').hide();
-        }
-        else
-        {
-            $(fnspopuplogin_login_selector).find('.checkout-as-guest-or-register-block').hide();
-            $(fnspopuplogin_login_selector).find('.register-block').show();
-        }
-        $('#flyout-cart').removeClass('active');
+        fns_popupdialog(fnspopuplogin_login_selector, checkGuest);
     }
     function fns_popuplogin_refreshlink()
     {
@@ -167,53 +135,34 @@
                 });
                 $(".register-button").off("click").on("click", function () {
                     event.preventDefault(); // cancel default behavior
-                    fns_popuplogin_destroyform(fnspopuplogin_login_selector);
-                    fns_popupdialog(fnspopuplogin_registration_selector);
+                    utility.reloadModalContent(fnspopuplogin_registration_selector);
                     return false;
                 });
                 $(".back-to-login-button").off("click").on("click", function () {
                     event.preventDefault(); // cancel default behavior
-                    fns_popuplogin_destroyform(fnspopuplogin_registration_selector);
-                    fns_popupdialog(fnspopuplogin_login_selector);
+                    utility.reloadModalContent(fnspopuplogin_login_selector);
                     return false;
                 });
             </text>
         }
-        else
-        {
-            <text>
-                $(".register-button").off("click").on("click", function () {
-                    location.href='@registerUrl'
-                    return false;
-                });
-            </text>
-        }
+
         @if (Model.ShowForgotPasswordForm)
         {
             <text>
                 $(".forgot-password a").off("click").on("click", function () {
                     event.preventDefault(); // cancel default behavior
-                fns_popuplogin_destroyform(fnspopuplogin_login_selector);
-                fns_popupdialog(fnspopuplogin_forgotpassword_selector);
+                    //fns_popuplogin_destroyform(fnspopuplogin_login_selector);
+                    utility.reloadModalContent(fnspopuplogin_forgotpassword_selector);
                 return false;
                 });
-            </text>
-        }
-    }
-    function fns_googleEventTracking(action, label, returnurl) {
-        @if (Model.GoogleEventTracking)
-        {
-            <text>
-                if (typeof parent._gaq !== 'undefined' && parent._gaq !== false) {
-                    parent._gaq.push(['_trackEvent', 'Popup Login', action, label.replace(/(<([^>]+)>)/ig, '')]);
-                }
             </text>
         }
     }
 
     function fns_popuplogin_sendform(idform)
     {
-        var form=$(idform);
+        debugger;
+        var form=$('#' + idform);
         var controller = form.attr("data-contoller");
         var msg = form.serialize();
         msg=addAntiForgeryTokenForPopUp(msg)
@@ -222,8 +171,9 @@
             url: controller,
             data: msg,
             success: function (response) {
+
                 if (response.redirect) {
-                    fns_googleEventTracking(response.nameGoogleEventTracking, "Success", location.href)
+
                     if (response.message != undefined && response.message.length > 0) {
                         alert(response.message);
                         }
@@ -231,43 +181,14 @@
                 }
 
                 if (response.success) {
-                    var selectordiv=fnspopuplogin_login_selector;
-                    var selectordiv2=fnspopuplogin_login_selector;
-                    if (response.action=="Register")
-                    {
-                        selectordiv=fnspopuplogin_registration_selector;
-                        selectordiv2=fnspopuplogin_registration_selector;
-                    }
-                    if (response.action=="PasswordRecovery")
-                    {
-                        selectordiv=fnspopuplogin_forgotpassword_selector;
-                        selectordiv2=fnspopuplogin_forgotpassword_selector;
-                    }
-                    if (response.action=="RegisterResult")
-                    {
-                        selectordiv=fnspopuplogin_registration_selector;
-                        selectordiv2=fnspopuplogin_registrationresult_selector;
-                    }
-                    if (response.action=="PasswordRecoveryResult")
-                    {
-                        selectordiv=fnspopuplogin_forgotpassword_selector;
-                        selectordiv2=fnspopuplogin_forgotpasswordresult_selector;
-                    }
-
-                    if (response.updatesectionhtml != undefined && response.updatesectionhtml.length > 0) {
-                        fns_popuplogin_destroyform(selectordiv);
-                        $(selectordiv2).html(response.updatesectionhtml);
-                        if (response.action == "Login")
-                            fnspopuplogin_recaptcha_widget_login = undefined;
-                        else if (response.action == "Register")
-                            fnspopuplogin_recaptcha_widget_registration = undefined;
-                        else if (response.action == "PasswordRecoveryResult")
-                            fnspopuplogin_recaptcha_widget_passwordrecovery = undefined;
-                        fns_popupdialog(selectordiv2);
-                    }
-                    if (response.errorEventTrackingText != undefined && response.errorEventTrackingText.length > 0) {
-                        fns_googleEventTracking(response.nameGoogleEventTracking, response.errorEventTrackingText, location.href)
-                    }
+                    $('#modal').html(response.updatesectionhtml);
+                    if (response.action == "Login")
+                        fnspopuplogin_recaptcha_widget_login = undefined;
+                    else if (response.action == "Register")
+                        fnspopuplogin_recaptcha_widget_registration = undefined;
+                    else if (response.action == "PasswordRecoveryResult")
+                        fnspopuplogin_recaptcha_widget_passwordrecovery = undefined;
+              
                     fns_popuplogin_refreshlink();
                 }
                 return false;
@@ -276,23 +197,6 @@
                 alert('Failed to save data to server. ErrorCode: ' + xhr.responseCode);
             }
         });
-    }
-    function fns_popuplogin_destroyform(idform)
-    {
-        var isOpen = $(idform).is(":visible");
-        if (isOpen)
-        {
-            $(idform).hide();
-            $(idform+" .captcha-box").html="";
-        }
-    }
-    function fns_popuplogin_destroyallform()
-    {
-        fns_popuplogin_destroyform(fnspopuplogin_login_selector);
-        fns_popuplogin_destroyform(fnspopuplogin_registration_selector);
-        fns_popuplogin_destroyform(fnspopuplogin_forgotpassword_selector);
-        fns_popuplogin_destroyform(fnspopuplogin_registrationresult_selector);
-        fns_popuplogin_destroyform(fnspopuplogin_forgotpasswordresult_selector);
     }
 
     // CSRF (XSRF) security for PopUpForm
@@ -312,13 +216,6 @@
            antiForgentokenPopUp.attr("name","__RequestVerificationTokenPopUp");
        }
         fns_popuplogin_refreshlink();
-        @if (Model.ShowLoginFormForGuest && Model.ShowLoginForm)
-        {
-            <text>
-                fns_popuplogin(false);
-                setTimeout(fns_popuplogin_destroyallform, @Model.ShowLoginFormForGuestSeconds*1000)
-            </text>
-        }
     });
     </script>
 

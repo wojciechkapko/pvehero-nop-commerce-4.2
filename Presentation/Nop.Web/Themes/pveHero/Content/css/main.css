@@ -1810,8 +1810,8 @@ div#fnspopuploginblock {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  display: none;
-  z-index: 10; }
+  z-index: 10;
+  pointer-events: none; }
 
 .autocomplete-suggestions {
   position: absolute;

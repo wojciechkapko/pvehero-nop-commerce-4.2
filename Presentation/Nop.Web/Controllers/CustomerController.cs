@@ -376,6 +376,54 @@ namespace Nop.Web.Controllers
             return View(model);
         }
 
+        //login modal page
+        [HttpsRequirement(SslRequirement.Yes)]
+        //available even when a store is closed
+        [CheckAccessClosedStore(true)]
+        public virtual IActionResult LoginForm(bool? checkoutAsGuest)
+        {
+            var model = _customerModelFactory.PrepareLoginModel(checkoutAsGuest);
+            return View(model);
+        }
+
+        //login modal page
+        [HttpsRequirement(SslRequirement.Yes)]
+        //available even when a store is closed
+        [CheckAccessClosedStore(true)]
+        public virtual IActionResult RegisterForm()
+        {
+            //check whether registration is allowed
+            if (_customerSettings.UserRegistrationType == UserRegistrationType.Disabled)
+                return RedirectToRoute("RegisterResult", new { resultId = (int)UserRegistrationType.Disabled });
+
+            var model = new RegisterModel();
+            model = _customerModelFactory.PrepareRegisterModel(model, false, setDefaultValues: true);
+
+            return View(model);
+        }
+
+        //login modal page
+        [HttpsRequirement(SslRequirement.Yes)]
+        //available even when a store is closed
+        [CheckAccessClosedStore(true)]
+        public virtual IActionResult RegisterResultForm(int resultId)
+        {
+
+            var model = _customerModelFactory.PrepareRegisterResultModel(resultId);
+
+            return View(model);
+        }
+
+        //login modal page
+        [HttpsRequirement(SslRequirement.Yes)]
+        //available even when a store is closed
+        [CheckAccessClosedStore(true)]
+        public virtual IActionResult PasswordRecoveryForm(bool? checkoutAsGuest)
+        {
+            var model = _customerModelFactory.PreparePasswordRecoveryModel();
+            return View(model);
+        }
+
         [HttpPost]
         [ValidateCaptcha]
         //available even when a store is closed

@@ -1,11 +1,12 @@
 ﻿<div class="modal d-flex flex-column w-100">
+    <button id="close-modal" class="close" aria-label="Close" onclick="utility.closeModal();">&#10006;</button>
     <div class="modal-header text-center p-4 pb-0 border-bottom-1 border-default">
         @RenderSection("Header")
     </div>
     <div class="modal-body mb-4 d-flex flex-column justify-content-center p-4 text-center">
         @RenderSection("Body")
     </div>
-    <div class="modal-footer text-center mt-auto border-top-1 border-default pb-4">
+    <div class="modal-footer text-center mt-auto border-top-1 border-default pb-4 pt-2">
         @RenderSection("Footer")
     </div>
 </div>

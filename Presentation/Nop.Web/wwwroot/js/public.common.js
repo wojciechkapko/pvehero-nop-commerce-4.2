@@ -112,6 +112,10 @@ function addAntiForgeryToken(data) {
 var utility = (function () {
 
     var addSpinner = function (id, zindex) {
+        if (id.indexOf('#') > -1) {
+            id = id.replace('#', '');
+        }
+
         var top = $("#" + id).offset().top + $("#" + id).outerHeight() / 2 - 50;
         var left = $("#" + id).offset().left + $("#" + id).outerWidth() / 2 - 50;
 
@@ -132,6 +136,9 @@ var utility = (function () {
     };
 
     var removeSpinner = function (id) {
+        if (id.indexOf('#') > -1) {
+            id = id.replace('#', '');
+        }
         $("#" + id + "_spinner_bg").remove();
         $("#" + id + "_spinner").remove();
     };
@@ -153,47 +160,67 @@ var utility = (function () {
         return elementBottom > viewportTop && elementTop < viewportBottom;
     };
 
-    var addOverlay = function (selector) {
+    var addOverlay = function (spinner) {
         if (!$('#overlay').length) {
             $('#fnspopuploginblock').append('<div id="overlay" class="overlay"></div>');
             $('#overlay').fadeIn(250);
             $('body').css('overflow', 'hidden');
         }
 
-        $('#overlay').off('click').on('click', function () {
-            closeModal(selector);
-        });
+
+        if (spinner && !$('#overlay-spinner').length) {
+            $('#overlay').append('<div id="overlay-spinner" class="spinner" style="position:absolute; top:50%; left:50%; z-index:9999; margin: 0;"></div>');
+        }
     };
 
     var removeOverlay = function () {
         $('#overlay').fadeOut(250, function () { $('#overlay').remove(); $('body').css('overflow', 'visible'); }); 
     };
 
-    var openModal = function (selector) {
-        addOverlay(selector);
-
-        if (!$('#close-modal').length) {
-            $('.fnspoploginform').prepend('<button id="close-modal" class="close" aria-label="Close">&#10006;</button>');
-        }
-
-        $('#close-modal').off('click').on('click', function () {
-            closeModal(selector);
+    var openModal = function () {
+        
+        $('#overlay').off('click').on('click', function () {
+            closeModal();
         });
 
         $(document).off('keydown').on("keydown", function (e) {
             if (e.keyCode === 27) {
-                closeModal(selector);
+                closeModal();
             }
+        });
+        
+        $('#modal').fadeIn({ duration: 250, start: function () { $('#overlay-spinner').remove();  $('#fnspopuploginblock').css('pointer-events', 'all'); } });
+    };
+
+    var closeModal = function () {
+        removeOverlay();
+        $('#modal').fadeOut({ duration: 250, complete: function () { $('#modal').removeClass("loaded").html(""); $('#fnspopuploginblock').css('pointer-events', 'none'); $(document).off("keydown"); } });
+    };
+
+    var reloadModalContent = function (selector) {
+        let modal = '#modal';
+        $(modal).fadeOut(250, function () {
+            addSpinner('overlay');
+            if (selector === '#fnspopuplogin') {
+                $(modal).load('/LoginForm', function () { fns_popuplogin_refreshlink(); removeSpinner('overlay'); $(modal).fadeIn(250);});
+            }
+            if (selector === '#fnspopupregistration') {
+                $(modal).load('/RegisterForm', function () { fns_popuplogin_refreshlink(); removeSpinner('overlay'); $(modal).fadeIn(250);});
+            }
+            if (selector === '#fnspopupforgotpassword') {
+                $(modal).load('/PasswordRecoveryForm', function () { fns_popuplogin_refreshlink(); removeSpinner('overlay'); $(modal).fadeIn(250);});
+            }
+            if (selector === '#fnspopupregistrationresult') {
+                $(modal).load('/RegisterResultForm', function () { fns_popuplogin_refreshlink(); removeSpinner('overlay'); $(modal).fadeIn(250); });
+            }
+            if (selector === '#fnspopupforgotpasswordresult') {
+                $(modal).load('/PasswordRecoveryForm', function () { fns_popuplogin_refreshlink(); removeSpinner('overlay'); $(modal).fadeIn(250); });
+            }
+
         });
 
 
-        $(selector).css('display', 'flex');
-        $('#fnspopuploginblock').fadeIn({ start: function () { $('#fnspopuploginblock').css('display', 'flex'); } });
-    };
 
-    var closeModal = function (selector) {
-        removeOverlay();
-        $('#fnspopuploginblock').fadeOut({ complete: function () { $(selector + ' #close-modal').remove(); $(selector).css('display', 'none'); $('#fnspopuploginblock').css('display', 'none'); $(document).off("keydown"); } });
     };
 
     return {
@@ -205,7 +232,8 @@ var utility = (function () {
         addOverlay: addOverlay,
         removeOverlay: removeOverlay,
         openModal: openModal,
-        closeModal: closeModal
+        closeModal: closeModal,
+        reloadModalContent: reloadModalContent
     };
 })();
 

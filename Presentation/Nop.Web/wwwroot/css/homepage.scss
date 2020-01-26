@@ -171,6 +171,10 @@
     padding-bottom: 1rem;
 }
 
+.category .product-picture img {
+    opacity: 0;
+}
+
 @media all and (max-width: 1366px) {
     .slider {
         .images {
@@ -293,7 +297,7 @@
     z-index: 1;
 }
 */
-.wow {
+.wow-featured {
     background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/mythic-plus-featured.jpg);
 
     &::before {
@@ -302,7 +306,7 @@
 }
 
 
-.diablo-3 {
+.diablo-3-featured {
     background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/diablo-3-featured.jpg);
 
     &::before {

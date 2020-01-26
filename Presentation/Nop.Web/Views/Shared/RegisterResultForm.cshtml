@@ -1,0 +1,19 @@
+﻿@model Nop.Web.Models.Customer.RegisterResultModel
+@{
+    Layout = "_ModalLayout";
+}
+
+@section Header
+    {
+    <h1>@T("Account.Register")</h1>
+}
+
+@section Body
+    {
+    <div class="result">
+        @Model.Result
+    </div>
+}
+@section Footer
+    {
+}

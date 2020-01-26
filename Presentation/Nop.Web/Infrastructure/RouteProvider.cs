@@ -31,6 +31,22 @@ namespace Nop.Web.Infrastructure
             routeBuilder.MapLocalizedRoute("Login", "login/",
 				new { controller = "Customer", action = "Login" });
 
+            //login modal
+            routeBuilder.MapLocalizedRoute("LoginForm", "loginform/",
+                new { controller = "Customer", action = "LoginForm" });
+
+            //register modal
+            routeBuilder.MapLocalizedRoute("RegisterForm", "registerform/",
+                new { controller = "Customer", action = "RegisterForm" });
+
+            //password recovery modal
+            routeBuilder.MapLocalizedRoute("PasswordRecoveryForm", "passwordrecoveryform/",
+                new { controller = "Customer", action = "PasswordRecoveryForm" });
+
+            //password recovery modal
+            routeBuilder.MapLocalizedRoute("RegisterResultForm", "registerresultform/",
+                new { controller = "Customer", action = "RegisterResultForm" });
+
             //register
             routeBuilder.MapLocalizedRoute("Register", "register/",
 				new { controller = "Customer", action = "Register" });
