@@ -17,6 +17,12 @@
     Html.AppendScriptParts(ResourceLocation.Footer, "~/lib/formstone/core.min.js");
     Html.AddScriptParts(ResourceLocation.Footer, "~/lib/formstone/dropdown.min.js");
     Html.AppendScriptParts(ResourceLocation.Footer, "~/js/public.ajaxcart.js");
+
+    if (Model.AddToCart.CustomerEntersPrice)
+    {
+        Html.AppendScriptParts(ResourceLocation.Footer, "~/js/diablo3-custom-price.min.js");
+    }
+
     Html.AppendCssFileParts($"~/lib/formstone/dropdown.min.css");
     Html.AppendCssFileParts($"~/css/productdetails.min.css");
     Html.AppendCssFileParts($"~/css/stars.min.css");
@@ -178,3 +184,30 @@
         }
 </style>
 
+
+@if (Model.AddToCart.CustomerEntersPrice)
+{
+    <script asp-location="Footer">
+        $(document).ready(function () {
+            customPrices.initCustomPrice();
+        });
+    </script>
+}
+
+
+
+<script type="application/ld+json">
+    {
+    "@@context" : "http://schema.org",
+    "@@type" : "Product",
+    "name" : "@Model.Name",
+    "image" : "@imageUrl",
+    "description" : "@Model.FullDescription",
+    "offers" : {
+    "@@type" : "Offer",
+    "price" : "@Model.ProductPrice.PriceValue.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)",
+    "priceCurrency" : "@Model.ProductPrice.CurrencyCode",
+    "url" : "https://pvehero.com/@Model.SeName"
+    }
+    }
+</script>

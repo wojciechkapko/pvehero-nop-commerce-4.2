@@ -134,6 +134,13 @@ namespace Nop.Web.Models.Catalog
             public bool DisableBuyButton { get; set; }
             public bool DisableWishlistButton { get; set; }
 
+            //price entered by customers
+            [NopResourceDisplayName("Products.EnterProductPrice")]
+            public bool CustomerEntersPrice { get; set; }
+            [NopResourceDisplayName("Products.EnterProductPrice")]
+            public decimal CustomerEnteredPrice { get; set; }
+            public string CustomerEnteredPriceRange { get; set; }
+
             //rental
             public bool IsRental { get; set; }
 

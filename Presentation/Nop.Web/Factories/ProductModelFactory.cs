@@ -740,6 +740,19 @@ namespace Nop.Web.Factories
             //rental
             model.IsRental = product.IsRental;
 
+            //customer entered price
+            model.CustomerEntersPrice = product.CustomerEntersPrice;
+            if (!model.CustomerEntersPrice)
+                return model;
+
+            var minimumCustomerEnteredPrice = _currencyService.ConvertFromPrimaryStoreCurrency(product.MinimumCustomerEnteredPrice, _workContext.WorkingCurrency);
+            var maximumCustomerEnteredPrice = _currencyService.ConvertFromPrimaryStoreCurrency(product.MaximumCustomerEnteredPrice, _workContext.WorkingCurrency);
+
+            model.CustomerEnteredPrice = updatecartitem != null ? updatecartitem.CustomerEnteredPrice : minimumCustomerEnteredPrice;
+            model.CustomerEnteredPriceRange = string.Format(_localizationService.GetResource("Products.EnterProductPrice.Range"),
+                _priceFormatter.FormatPrice(minimumCustomerEnteredPrice, false, false),
+                _priceFormatter.FormatPrice(maximumCustomerEnteredPrice, false, false));
+
             return model;
         }
 

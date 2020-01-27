@@ -2,6 +2,10 @@
 
 .product-details-page {
     padding: 20px 0 0;
+
+    .fs-dropdown.fs-light .fs-dropdown-selected, .fs-dropdown.fs-light .fs-dropdown-options {
+        max-width: 350px;
+    }
 }
 
 .gallery {
@@ -202,9 +206,17 @@
 }
 
 .overview .product-price,
-.variant-overview .product-price {
+.variant-overview .product-price, .overview .enter-price-input, .overview .customer-entered-price {
     font-size: 1.8rem;
     font-weight: bold;
+    pointer-events: none;
+}
+
+.overview .enter-price-input {
+    width: 150px;
+    background: none;
+    border: none;
+    color: #fff;
 }
 
 .overview .tax-shipping-info a,
@@ -269,9 +281,14 @@
     padding: 10px;
 }
 
-.attributes dl {
-    padding: 0 2px; /* fix for Chrome in Mac, the checkboxes get cut off */
-}
+.attributes {
+    dl {
+        padding: 0 2px; /* fix for Chrome in Mac, the checkboxes get cut off */
+    }
+    .form-input {
+        max-width: 350px;
+    }
+} 
 
 .attributes dd,
 .attribute-data {

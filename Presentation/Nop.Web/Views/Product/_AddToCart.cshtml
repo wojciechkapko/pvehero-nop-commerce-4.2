@@ -1,14 +1,33 @@
-﻿@model ProductDetailsModel.AddToCartModel
+﻿@using Nop.Core;
 @using Nop.Core.Domain.Orders
+
+@model ProductDetailsModel.AddToCartModel
+@inject IWorkContext workContext
+
+@{
+    var currency = "";
+    if (@workContext.WorkingCurrency.CurrencyCode == "USD")
+    {
+        currency = "$";
+    }
+    else
+    {
+        currency = "€";
+    }
+}
+
+
 @if (Model.UpdatedShoppingCartItemId > 0)
 {
     <input asp-for="UpdatedShoppingCartItemId" type="hidden" />
 }
 @if (!Model.DisableBuyButton)
 {
+
+
+
     <div class="add-to-cart d-flex flex-column">
         <div>
-
             @if (!string.IsNullOrEmpty(Model.MinimumQuantityNotification))
             {
                 <div class="min-qty-notification">@Model.MinimumQuantityNotification</div>
@@ -16,15 +35,21 @@
             @if (!Model.DisableBuyButton)
             {
                 <div class="qty d-flex w-100 align-items-center">
-                    <label asp-for="EnteredQuantity" asp-postfix=":" class="qty-label mr-2"></label>
-                    @if (Model.AllowedQuantities.Count > 0)
+                    @if (Model.CustomerEntersPrice)
                     {
-                        <select asp-for="EnteredQuantity" asp-items="Model.AllowedQuantities" class="qty-dropdown w-100"></select>
+                        <input type="hidden" asp-for="EnteredQuantity" class="d-none" value="1" />
                     }
                     else
                     {
-                        <input asp-for="EnteredQuantity" class="qty-input font-bold" type="text" />
-                        <script asp-location="Footer">
+                        <label asp-for="EnteredQuantity" asp-postfix=":" class="qty-label mr-2"></label>
+                        @if (Model.AllowedQuantities.Count > 0)
+                        {
+                            <select asp-for="EnteredQuantity" asp-items="Model.AllowedQuantities" class="qty-dropdown w-100"></select>
+                        }
+                        else
+                        {
+                            <input asp-for="EnteredQuantity" class="qty-input font-bold" type="text" />
+                            <script asp-location="Footer">
                             //when a customer clicks 'Enter' button we submit the "add to cart" button (if visible)
                             $(document).ready(function() {
                                 $("#@Html.IdFor(model => model.EnteredQuantity)").on("keydown", function(event) {
@@ -34,8 +59,10 @@
                                     }
                                 });
                             });
-                        </script>
+                            </script>
+                        }
                     }
+
                 </div>
 
                 {
@@ -70,4 +97,16 @@
             @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductDetailsAddInfo, additionalData = Model })
         </div>
     </div>
+
+    @if (Model.CustomerEntersPrice)
+    {
+        <div class="customer-entered-price mt-3 md-mt-0 md-ml-4 md-pl-4 d-inline-flex flex-column justify-content-center md-border-left-1 border-default">
+            <div class="d-flex">
+                <label class="enter-price-label mr-2">Your Price:&nbsp;&nbsp;@currency</label>
+                @*round price*@
+                <input asp-for="CustomerEnteredPrice" value="@Convert.ToInt32(Math.Ceiling(Model.CustomerEnteredPrice))" class="enter-price-input" />
+                <input type="hidden" id="currency-rate" class="d-none" value="@workContext.WorkingCurrency.Rate"/>
+            </div>
+        </div>
+    }
 }

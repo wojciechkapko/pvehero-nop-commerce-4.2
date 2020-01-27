@@ -10,6 +10,7 @@
 
 <div class="page home-page">
     <div class="page-body">
+        <h1 class="sr-only">Home Page</h1>
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageTop })
         @await Component.InvokeAsync("TopicBlock", new { systemName = "HomepageText" })
         @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HomepageBeforeCategories })
@@ -49,4 +50,41 @@
     });
 
     $('.slider-wrapper').addClass('visible');
+</script>
+
+<script type="application/ld+json">
+    { "@@context": "http://schema.org",
+    "@@type": "Organization",
+    "name": "PVE HERO",
+    "legalName" : "Tishaia Justyna Domanska",
+    "url": "https://pvehero.com",
+    "logo": "https://pvehero.com/images/logo/logo.png",
+    "foundingDate": "2014",
+    "founders": [
+    {
+    "@@type": "Person",
+    "name": "Wojciech Kapko"
+    },
+    {
+    "@@type": "Person",
+    "name": "Justyna Domanska"
+    } ],
+    "address": {
+    "@@type": "PostalAddress",
+    "streetAddress": "Kozmiana 6",
+    "addressLocality": "Krakow",
+    "addressRegion": "Malopolska",
+    "postalCode": "30-698",
+    "addressCountry": "PL"
+    },
+    "contactPoint": {
+    "@@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://pvehero.com/contactus",
+    "email": "contact@pvehero.com"
+    },
+    "sameAs": [
+    "https://www.facebook.com/PveHero",
+    "https://twitter.com/pvehero_com"
+    ]}
 </script>

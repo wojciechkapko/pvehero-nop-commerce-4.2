@@ -147,6 +147,10 @@ namespace Nop.Services.Catalog
                             {
                                 //other attributes (textbox, datepicker)
                                 formattedAttribute = $"{_localizationService.GetLocalized(attribute.ProductAttribute, a => a.Name, _workContext.WorkingLanguage.Id)}: {value}";
+                                if (attribute.TextPrompt != null)
+                                {
+                                    formattedAttribute = $"{attribute.TextPrompt}: {value}";
+                                }
 
                                 //encode (if required)
                                 if (htmlEncode)

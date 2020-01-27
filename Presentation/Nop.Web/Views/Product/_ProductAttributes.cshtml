@@ -149,7 +149,7 @@
                             break;
                         case AttributeControlType.TextBox:
                             {
-                <input name="@(controlId)" type="text" class="textbox" id="@(controlId)" value="@attribute.DefaultValue" />
+                <input name="@(controlId)" type="text" class="textbox form-input @(attribute.TextPrompt.Replace(" ","").ToLower())" id="@(controlId)" value="@attribute.DefaultValue" />
                             }
                             break;
                         case AttributeControlType.MultilineTextbox:

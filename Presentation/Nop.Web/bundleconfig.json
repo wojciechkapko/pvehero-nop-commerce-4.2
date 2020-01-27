@@ -58,5 +58,11 @@
     "inputFiles": [
       "wwwroot/css/logo-icon.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/diablo3-custom-price.min.js",
+    "inputFiles": [
+      "wwwroot/js/diablo3-custom-price.js"
+    ]
   }
 ]
