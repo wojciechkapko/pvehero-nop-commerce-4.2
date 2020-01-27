@@ -555,6 +555,11 @@
     .product-details-page .add-to-cart {
         align-items: flex-end;
     }
+    .sticky {
+        position: sticky;
+        position: -webkit-sticky;
+        top: 40px;
+    }
 }
 
 @media all and (max-width: 1000px){

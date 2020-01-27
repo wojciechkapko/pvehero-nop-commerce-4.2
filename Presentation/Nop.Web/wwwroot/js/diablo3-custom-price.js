@@ -1,11 +1,11 @@
 ﻿var customPrices = (function () {
     var paragon_start = $(".currentparagon");
     var paragon_end = $(".targetparagon");
-    var price = $("#addtocart_2_CustomerEnteredPrice");
+    var price = $(".enter-price-input");
     
 
     var initCustomPrice = function () {
-        $("#add-to-cart-button-2").removeClass("mt-4");
+        $(".huge.add-to-cart-button").removeClass("mt-4");
 
         paragon_start.attr('placeholder', '1-2999 max').on("keyup", function () {
             customPrices.reCalculate();

@@ -100,48 +100,48 @@
                         }
                     </div>
                     <div class="overview">
-                        @await Html.PartialAsync("_Discontinued", Model)
+                        <div class="sticky">
+                            @await Html.PartialAsync("_Discontinued", Model)
 
-                        @*
-                                                        @if (!string.IsNullOrEmpty(Model.ShortDescription))
-                            {
-                                <div class="short-description">
-                                    @Html.Raw(Model.ShortDescription)
-                                </div>
-                            }
-                        *@
+                            @*
+                                    @if (!string.IsNullOrEmpty(Model.ShortDescription))
+        {
+            <div class="short-description">
+                @Html.Raw(Model.ShortDescription)
+            </div>
+        }
+                            *@
 
-                        <!--attributes-->
-                        @{
+                            <!--attributes-->
+                            @{
                             var dataDictAttributes = new ViewDataDictionary(ViewData);
                             dataDictAttributes.TemplateInfo.HtmlFieldPrefix = $"attributes_{Model.Id}";
-                            @await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
-                        }
-
-                        <!--rental info-->
-                        @*
-                                                     @{
-                                var dataDictRental = new ViewDataDictionary(ViewData);
-                                dataDictRental.TemplateInfo.HtmlFieldPrefix = $"rental_{Model.Id}";
-                                @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
+                                @await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
                             }
-                        *@
 
-                        <!--price & add to cart-->
-                        <div class="card default d-flex flex-column" id="summary">
-                            <div class="summary d-flex flex-column sm-flex-row sm-justify-around md-justify-content-center">
-                                @{
+                            <!--rental info-->
+                            @*
+                                 @{
+            var dataDictRental = new ViewDataDictionary(ViewData);
+            dataDictRental.TemplateInfo.HtmlFieldPrefix = $"rental_{Model.Id}";
+            @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
+        }
+                            *@
+
+                            <!--price & add to cart-->
+                            <div class="card default d-flex flex-column" id="summary">
+                                <div class="summary d-flex flex-column sm-flex-row sm-justify-around md-justify-content-center">
+                                    @{
                                     var dataDictAddToCart = new ViewDataDictionary(ViewData);
                                     dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
-                                    @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
+                                        @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
 
                                     var dataDictPrice = new ViewDataDictionary(ViewData);
                                     dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
-                                    @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
-                                }
+                                        @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
+                                    }
+                                </div>
                             </div>
-                        </div>
-                        <div class="w-100">
                             @{
                                 @await Html.PartialAsync("_ProductTierPrices", Model.TierPrices)
                             }
@@ -163,20 +163,7 @@
     <script type="text/javascript" asp-location="Footer">var whTooltips = { colorLinks: true, iconizeLinks: true, renameLinks: true };</script>
     <script type="text/javascript" asp-location="Footer" src="//wow.zamimg.com/widgets/power.js"></script>
 }
-<script asp-location="Footer">
-    $(window).on('load resize scroll', function () {
-        var element = '.' + 'related-products-grid';
-        if (utility.isInViewport(element) && !$(element).hasClass('loaded')) {
 
-            [].forEach.call(document.querySelectorAll(".item-box .product-item"), function (el) {
-                let image = 'url(' + $(el).children('.url').text() + ')';
-
-                $(el).css("background", image).addClass('visible');
-            });
-            $(element).addClass('loaded')
-        }
-    });
-</script>
 <style>
         .html-product-details-page.class-@(Model.Breadcrumb.CategoryBreadcrumb[0].SeName)  .master-wrapper-page::before
         {

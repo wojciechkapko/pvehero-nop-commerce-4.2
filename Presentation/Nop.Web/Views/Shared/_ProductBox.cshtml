@@ -25,7 +25,14 @@
             {
                 <span class="price old-price">@Model.ProductPrice.OldPrice</span>
             }
-            <span class="price actual-price">From: @Model.ProductPrice.Price</span>
+            @if (!string.IsNullOrEmpty(Model.ProductPrice.Price))
+            {
+                <span class="price actual-price">From: @Model.ProductPrice.Price</span>
+            }
+            else
+            {
+                <span class="price actual-price">Click to choose options</span>
+            }
         </div>
     </div>
 </div>

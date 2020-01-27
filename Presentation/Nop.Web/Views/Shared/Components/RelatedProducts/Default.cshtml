@@ -12,4 +12,19 @@
             }
         </div>
     </div>
+
+    <script asp-location="Footer">
+    $(window).on('load resize scroll', function () {
+        var element = '.' + 'related-products-grid';
+        if (utility.isInViewport(element) && !$(element).hasClass('loaded')) {
+
+            [].forEach.call(document.querySelectorAll(".item-box .product-item"), function (el) {
+                let image = 'url(' + $(el).children('.url').text() + ')';
+
+                $(el).css("background", image).addClass('visible');
+            });
+            $(element).addClass('loaded')
+        }
+    });
+    </script>
 }
