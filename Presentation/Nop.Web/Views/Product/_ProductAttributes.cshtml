@@ -14,7 +14,7 @@
             {
                 var controlId = $"{NopAttributePrefixDefaults.Product}{attribute.Id}";
                 var textPrompt = !string.IsNullOrEmpty(attribute.TextPrompt) ? attribute.TextPrompt : attribute.Name;
-            <dt id="@($"{NopAttributePrefixDefaults.Product}label_{attribute.Id}")" class="@(attribute.HasCondition ? "d-none" : "")">
+            <dt id="@($"{NopAttributePrefixDefaults.Product}label_{attribute.Id}")" class="justify-content-center md-justify-content-start @(attribute.HasCondition ? "d-none" : "")">
                 <label class="text-prompt">
                     @textPrompt
                 </label>
@@ -97,7 +97,7 @@
                         case AttributeControlType.Checkboxes:
                         case AttributeControlType.ReadonlyCheckboxes:
                             {
-            <ul class="option-list">
+            <ul class="option-list mt-3">
                 @foreach (var attributeValue in attribute.Values)
                 {
                     var optionName = "";

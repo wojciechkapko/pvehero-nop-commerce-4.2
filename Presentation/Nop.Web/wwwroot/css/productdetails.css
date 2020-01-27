@@ -359,7 +359,8 @@
 
 .attributes dt, .attribute-label {
   margin: 0 0 5px;
-  font-size: 1.3rem; }
+  font-size: 1.3rem;
+  display: flex; }
 
 .attributes .text-prompt {
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); }
