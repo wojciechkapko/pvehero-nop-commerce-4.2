@@ -333,6 +333,13 @@ namespace Nop.Services.Catalog
                 }
 
                 var seName = _urlRecordService.ValidateSeName(productTag, string.Empty, productTag.Name, true);
+                string game;
+                if (seName.IndexOf("icon") > 0)
+                {
+                    game = seName.Split("icon")[1];
+                    seName = seName.Split("icon")[0];
+                    seName += "-" + game;
+                }
                 _urlRecordService.SaveSlug(productTag, seName, 0);
             }
 
