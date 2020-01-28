@@ -5,78 +5,6 @@
     Layout = "";
 }
 
-@*
-       <style>
-        #stripe-payment-form {
-            width: 100%;
-            padding: 0 5px 0 5px;
-            margin: auto;
-            max-width: 430px;
-        }
-
-        .payment-stripe-next-step-button {
-            margin-top: 10px;
-        }
-
-        .form-sprite-payment-cardholder {
-            text-align: left;
-        }
-
-            .form-sprite-payment-cardholder label {
-                display: inline-block;
-                margin: 0 10px 0 0;
-                text-align: left;
-            }
-
-            .form-sprite-payment-cardholder input[type="text"] {
-                min-height: 40px;
-                max-width: 430px;
-                width: 100%;
-            }
-
-        #stripe-cardholder-name {
-            margin-top: 15px;
-            margin-bottom: 15px;
-        }
-        /**
-        * The CSS shown here will not be introduced in the Quickstart guide, but shows
-        * how you can use CSS to style your Element's container.
-        */
-        .StripeElement {
-            box-sizing: border-box;
-            height: 40px;
-            padding: 10px 12px;
-            border: 1px solid transparent;
-            border-radius: 4px;
-            background-color: white;
-            box-shadow: 0 1px 3px 0 #e6ebf1;
-            -webkit-transition: box-shadow 150ms ease;
-            transition: box-shadow 150ms ease;
-        }
-
-        .StripeElement--focus {
-            box-shadow: 0 1px 3px 0 #cfd7df;
-        }
-
-        .StripeElement--invalid {
-            border-color: #fa755a;
-        }
-
-        .StripeElement--webkit-autofill {
-            background-color: #fefde5 !important;
-        }
-
-        #stripe-card-errors {
-            color: red;
-            padding: 10px;
-        }
-
-        .form-sprite-payment-button {
-            text-align: center;
-        }
-    </style>
-*@
-
 @if (Model.Warnings.Any())
 {
     <div class="message-error">
@@ -93,37 +21,6 @@ else
     <div id="stripe-payment-was-sent" style="display:none;">
         @T("FoxNetSoft.Plugin.Payments.StripeDirect.PaymentWasSent")
     </div>
-    @*
-                <div id="stripe-payment-form">
-            <input type="hidden" asp-for="StripeErrors">
-            <input type="hidden" asp-for="StripePaymentIntentId">
-
-            <div class="form-sprite-payment">
-                <div class="form-sprite-payment-cardholder">
-                    <label for="card-number">
-                        @T("FoxNetSoft.Plugin.Payments.StripeDirect.CardHolder")
-                    </label>
-                    <input id="stripe-cardholder-name" type="text" value="@Model.CardholderName">
-                </div>
-                <div id="card-number">
-                    <!-- A Stripe Element will be inserted here. -->
-                </div>
-                <div id="card-expiry">
-                    <!-- A Stripe Element will be inserted here. -->
-                </div>
-                <div id="card-cvc">
-                    <!-- A Stripe Element will be inserted here. -->
-                </div>
-                <!-- Used to display Element errors. -->
-                <div id="stripe-direct-payment-pay-button">
-                    <!-- A Stripe Element will be inserted here. -->
-                </div>
-                <div id="stripe-card-errors" role="alert"></div>
-            </div>
-        </div>
-    *@
-
-
 
     <div class="form-container" id="stripe-payment-form">
         <input type="hidden" asp-for="StripeErrors">
@@ -270,7 +167,6 @@ else
 
                 cardNumber.on('change', function (event) {
                     if (event.complete) {
-                        console.log(event.brand);
                         $("#my-sample-form").removeClass().addClass(event.brand);
                         $('#card-image').removeClass().addClass(event.brand);
                   } else if (event.error) {

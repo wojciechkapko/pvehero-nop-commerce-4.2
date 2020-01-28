@@ -108,12 +108,6 @@ else
                     handleStripeServerConfirmResponse(json);
                 })
             });
-            @if (!Model.OnePageCheckoutPlugin)
-            {
-                <text>
-            event.preventDefault();
-                </text>
-            }
             return false;
         }
 
