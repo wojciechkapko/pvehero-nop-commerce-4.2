@@ -19,11 +19,12 @@
         if (utility.isInViewport(element) && !$(element).hasClass('loaded')) {
 
             [].forEach.call(document.querySelectorAll(".item-box .product-item"), function (el) {
-                let image = 'url(' + $(el).children('.url').text() + ')';
+                let image = $(el).children('.url').val();
 
-                $(el).css("background", image).addClass('visible');
+                $(el).children('img').attr('src', image);
+                $(el).addClass('visible');
             });
-            $(element).addClass('loaded')
+            $(element).addClass('loaded');
         }
     });
     </script>

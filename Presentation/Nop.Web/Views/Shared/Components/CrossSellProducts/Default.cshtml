@@ -14,4 +14,20 @@
             }
         </div>
     </div>
+
+    <script asp-location="Footer">
+    $(window).on('load resize scroll', function () {
+        var element = '.' + 'cross-sells';
+        if (utility.isInViewport(element) && !$(element).hasClass('loaded')) {
+
+            [].forEach.call(document.querySelectorAll(".item-box .product-item"), function (el) {
+                let image = $(el).children('.url').val();
+
+                $(el).children('img').attr('src', image);
+                $(el).addClass('visible');
+            });
+            $(element).addClass('loaded');
+        }
+    });
+    </script>
 }

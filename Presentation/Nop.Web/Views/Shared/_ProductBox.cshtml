@@ -4,9 +4,10 @@
 @using Nop.Core.Domain.Orders
 @using Nop.Core.Domain.Tax
 
-<div class="product-item product-@Model.Id" data-productid="@Model.Id">
-    <div class="url d-none">https://res.cloudinary.com/pvehero-images/image/upload/f_auto,w_276,e_sharpen:70/product-details/@(Model.SeName).jpg</div>
+<div class="product-item product-@Model.Id d-flex justify-content-center" data-productid="@Model.Id">
+    <input type="hidden" class="url d-none" value="https://res.cloudinary.com/pvehero-images/image/upload/f_auto,w_276,e_sharpen:70/product-details/@(Model.SeName).jpg">
     <a class="link waves-effect waves-light" href="@Url.RouteUrl("Product", new { SeName = Model.SeName })"></a>
+    <img alt="Picture of @Model.Name" src="" title="Picture of @Model.Name" />
     <div class="details">
         <div class="badges">
             @if (Model.MarkAsNew)

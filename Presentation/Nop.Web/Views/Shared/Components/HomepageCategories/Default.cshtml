@@ -75,9 +75,10 @@
                         if (utility.isInViewport(element) && !$(element).hasClass('loaded')) {
 
                             [].forEach.call(document.querySelectorAll(".item-box.@item.SeName .product-item"), function (el) {
-                                let image = 'url(' + $(el).children('.url').text() + ')';
+                                let image = $(el).children('.url').val();
 
-                                $(el).css("background", image).addClass('visible');
+                                $(el).children('img').attr('src', image);
+                                $(el).addClass('visible');
                             });
                                                         [].forEach.call(document.querySelectorAll(".item-box.@item.SeName .product-picture"), function (el) {
                                 let image = $(el).children('.url').text();
