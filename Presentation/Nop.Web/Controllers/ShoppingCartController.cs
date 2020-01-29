@@ -932,7 +932,7 @@ namespace Nop.Web.Controllers
         //currently we use this method on the product details pages
         [HttpPost]
         public virtual IActionResult ProductDetails_AttributeChange(int productId, bool validateAttributeConditions,
-            bool loadPicture, IFormCollection form)
+            IFormCollection form)
         {
             var product = _productService.GetProductById(productId);
             if (product == null)
@@ -948,11 +948,6 @@ namespace Nop.Web.Controllers
             {
                 ParseRentalDates(product, form, out rentalStartDate, out rentalEndDate);
             }
-
-            //sku, mpn, gtin
-            var sku = _productService.FormatSku(product, attributeXml);
-            var mpn = _productService.FormatMpn(product, attributeXml);
-            var gtin = _productService.FormatGtin(product, attributeXml);
 
             // calculating weight adjustment
             var attributeValues = _productAttributeParser.ParseProductAttributeValues(attributeXml);
@@ -978,7 +973,7 @@ namespace Nop.Web.Controllers
             //price
             var price = "";
             //base price
-            var basepricepangv = "";
+            var notdiscountedprice = "";
             if (_permissionService.Authorize(StandardPermissionProvider.DisplayPrices) && !product.CustomerEntersPrice)
             {
                 //we do not calculate price of "customer enters price" option is enabled
@@ -990,9 +985,16 @@ namespace Nop.Web.Controllers
                     rentalStartDate, rentalEndDate,
                     true, out decimal _, out scDiscounts);
                 var finalPriceWithDiscountBase = _taxService.GetProductPrice(product, finalPrice, out decimal _);
+                var minPossiblePriceWithoutDiscount = _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: false);
+                var minPossiblePriceWithDiscount = _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: true);
                 var finalPriceWithDiscount = _currencyService.ConvertFromPrimaryStoreCurrency(finalPriceWithDiscountBase, _workContext.WorkingCurrency);
+
                 price = _priceFormatter.FormatPrice(finalPriceWithDiscount);
-                basepricepangv = _priceFormatter.FormatBasePrice(product, finalPriceWithDiscountBase, totalWeight);
+                if(minPossiblePriceWithoutDiscount != minPossiblePriceWithDiscount)
+                {
+                    var discount = minPossiblePriceWithoutDiscount / minPossiblePriceWithDiscount;
+                    notdiscountedprice = _priceFormatter.FormatPrice(finalPrice * discount);
+                }
             }
 
             //stock
@@ -1017,40 +1019,6 @@ namespace Nop.Web.Controllers
                 }
             }
 
-            //picture. used when we want to override a default product picture when some attribute is selected
-            var pictureFullSizeUrl = string.Empty;
-            var pictureDefaultSizeUrl = string.Empty;
-            if (loadPicture)
-            {
-                //first, try to get product attribute combination picture
-                var pictureId = _productAttributeParser.FindProductAttributeCombination(product, attributeXml)?.PictureId ?? 0;
-
-                //then, let's see whether we have attribute values with pictures
-                if (pictureId == 0)
-                {
-                    pictureId = _productAttributeParser.ParseProductAttributeValues(attributeXml)
-                        .FirstOrDefault(attributeValue => attributeValue.PictureId > 0)?.PictureId ?? 0;
-                }
-
-                if (pictureId > 0)
-                {
-                    var productAttributePictureCacheKey = string.Format(NopModelCacheDefaults.ProductAttributePictureModelKey,
-                        pictureId, _webHelper.IsCurrentConnectionSecured(), _storeContext.CurrentStore.Id);
-                    var pictureModel = _cacheManager.Get(productAttributePictureCacheKey, () =>
-                    {
-                        var picture = _pictureService.GetPictureById(pictureId);
-                        return picture == null ? new PictureModel() : new PictureModel
-                        {
-                            FullSizeImageUrl = _pictureService.GetPictureUrl(picture),
-                            ImageUrl = _pictureService.GetPictureUrl(picture, _mediaSettings.ProductDetailsPictureSize)
-                        };
-                    });
-                    pictureFullSizeUrl = pictureModel.FullSizeImageUrl;
-                    pictureDefaultSizeUrl = pictureModel.ImageUrl;
-                }
-
-            }
-
             var isFreeShipping = product.IsFreeShipping;
             if (isFreeShipping && !string.IsNullOrEmpty(attributeXml))
             {
@@ -1062,16 +1030,11 @@ namespace Nop.Web.Controllers
 
             return Json(new
             {
-                gtin,
-                mpn,
-                sku,
                 price,
-                basepricepangv,
+                notdiscountedprice,
                 stockAvailability,
                 enabledattributemappingids = enabledAttributeMappingIds.ToArray(),
                 disabledattributemappingids = disabledAttributeMappingIds.ToArray(),
-                pictureFullSizeUrl,
-                pictureDefaultSizeUrl,
                 isFreeShipping,
                 message = errors.Any() ? errors.ToArray() : null
             });

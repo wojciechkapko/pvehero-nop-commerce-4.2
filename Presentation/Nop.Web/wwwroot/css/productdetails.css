@@ -379,7 +379,8 @@
   border-radius: 5rem;
   box-shadow: 0 2px 3px 0px rgba(0, 0, 0, 0.7);
   opacity: .9;
-  min-height: 40px; }
+  min-height: 40px;
+  user-select: none; }
   .attributes .option-list.radio label.active {
     background: #6658d5;
     opacity: 1; }

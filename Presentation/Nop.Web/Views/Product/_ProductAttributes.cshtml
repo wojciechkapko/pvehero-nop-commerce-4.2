@@ -438,16 +438,16 @@
 
                 $.ajax({
                     cache: false,
-                    url: "@Html.Raw(Url.Action("productdetails_attributechange", "shoppingcart", new {productId = productId, validateAttributeConditions = attributesHaveConditions, loadPicture = attributesHaveAssociatedPictures }))",
+                    url: "@Html.Raw(Url.Action("productdetails_attributechange", "shoppingcart", new {productId = productId, validateAttributeConditions = attributesHaveConditions }))",
                     data: $('#product-details-form').serialize(),
                     type: "POST",
                     success: function (data, textStatus, jqXHR) {
                         utility.removeSpinner('summary');
                         if (data.price) {
-                            $('.price-value-@productId').text(data.price);
+                            $('#price').text(data.price);
                         }
                         if (data.notdiscountedprice) {
-                            $('.non-discounted-price.@productId span').text(data.notdiscountedprice);
+                            $('.non-discounted-price span').text(data.notdiscountedprice);
                         }
                         if (data.enabledattributemappingids) {
                             for (var i = 0; i < data.enabledattributemappingids.length; i++) {
@@ -460,12 +460,6 @@
                                 $('#@(NopAttributePrefixDefaults.Product)label_' + data.disabledattributemappingids[i]).addClass("d-none");
                                 $('#@(NopAttributePrefixDefaults.Product)input_' + data.disabledattributemappingids[i]).addClass("d-none");
                             }
-                        }
-                        if (data.pictureDefaultSizeUrl) {
-                            $('#main-product-img-@productId').attr("src", data.pictureDefaultSizeUrl);
-                        }
-                        if (data.pictureFullSizeUrl) {
-                            $('#main-product-img-lightbox-anchor-@productId').attr("href", data.pictureFullSizeUrl);
                         }
                         if (data.message) {
                             alert(data.message);

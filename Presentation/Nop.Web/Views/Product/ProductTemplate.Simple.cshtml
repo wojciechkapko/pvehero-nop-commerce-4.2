@@ -104,40 +104,40 @@
                             @await Html.PartialAsync("_Discontinued", Model)
 
                             @*
-                                    @if (!string.IsNullOrEmpty(Model.ShortDescription))
-        {
-            <div class="short-description">
-                @Html.Raw(Model.ShortDescription)
-            </div>
-        }
+                                                            @if (!string.IsNullOrEmpty(Model.ShortDescription))
+                                {
+                                    <div class="short-description">
+                                        @Html.Raw(Model.ShortDescription)
+                                    </div>
+                                }
                             *@
 
                             <!--attributes-->
                             @{
-                            var dataDictAttributes = new ViewDataDictionary(ViewData);
-                            dataDictAttributes.TemplateInfo.HtmlFieldPrefix = $"attributes_{Model.Id}";
+                                var dataDictAttributes = new ViewDataDictionary(ViewData);
+                                dataDictAttributes.TemplateInfo.HtmlFieldPrefix = $"attributes_{Model.Id}";
                                 @await Html.PartialAsync("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
                             }
 
                             <!--rental info-->
                             @*
-                                 @{
-            var dataDictRental = new ViewDataDictionary(ViewData);
-            dataDictRental.TemplateInfo.HtmlFieldPrefix = $"rental_{Model.Id}";
-            @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
-        }
+                                                         @{
+                                    var dataDictRental = new ViewDataDictionary(ViewData);
+                                    dataDictRental.TemplateInfo.HtmlFieldPrefix = $"rental_{Model.Id}";
+                                    @await Html.PartialAsync("_RentalInfo", Model, dataDictRental)
+                                }
                             *@
 
                             <!--price & add to cart-->
                             <div class="card default d-flex flex-column" id="summary">
                                 <div class="summary d-flex flex-column sm-flex-row sm-justify-around md-justify-content-center">
                                     @{
-                                    var dataDictAddToCart = new ViewDataDictionary(ViewData);
-                                    dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
+                                        var dataDictAddToCart = new ViewDataDictionary(ViewData);
+                                        dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = $"addtocart_{Model.Id}";
                                         @await Html.PartialAsync("_AddToCart", Model.AddToCart, dataDictAddToCart)
 
-                                    var dataDictPrice = new ViewDataDictionary(ViewData);
-                                    dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
+                                        var dataDictPrice = new ViewDataDictionary(ViewData);
+                                        dataDictPrice.TemplateInfo.HtmlFieldPrefix = $"price_{Model.Id}";
                                         @await Html.PartialAsync("_ProductPrice", Model.ProductPrice, dataDictPrice)
                                     }
                                 </div>
@@ -180,21 +180,3 @@
         });
     </script>
 }
-
-
-
-<script type="application/ld+json">
-    {
-    "@@context" : "http://schema.org",
-    "@@type" : "Product",
-    "name" : "@Model.Name",
-    "image" : "@imageUrl",
-    "description" : "@Model.FullDescription",
-    "offers" : {
-    "@@type" : "Offer",
-    "price" : "@Model.ProductPrice.PriceValue.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture)",
-    "priceCurrency" : "@Model.ProductPrice.CurrencyCode",
-    "url" : "https://pvehero.com/@Model.SeName"
-    }
-    }
-</script>

@@ -35,8 +35,7 @@
                 }
             </div>
             @*hidden microdata info*@
-            var ratingValue = ratingPercent / (decimal)20;
-            <span itemprop="ratingValue" style="display: none;">@ratingValue.ToString("0.0", new CultureInfo("en-US"))</span>
+            <span itemprop="ratingValue" style="display: none;">@ratingPercent.ToString()</span>
             <span itemprop="reviewCount" style="display: none;">@Model.TotalReviews</span>
         }
         else

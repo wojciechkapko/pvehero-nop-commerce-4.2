@@ -181,15 +181,6 @@ namespace Nop.Web.Models.Catalog
             //rental
             public bool IsRental { get; set; }
             public string RentalPrice { get; set; }
-
-            /// <summary>
-            /// A value indicating whether we should display tax/shipping info (used in Germany)
-            /// </summary>
-            public bool DisplayTaxShippingInfo { get; set; }
-            /// <summary>
-            /// PAngV baseprice (used in Germany)
-            /// </summary>
-            public string BasePricePAngV { get; set; }
         }
 
         public partial class GiftCardModel : BaseNopModel
@@ -221,6 +212,7 @@ namespace Nop.Web.Models.Catalog
             public string Price { get; set; }
 
             public int Quantity { get; set; }
+            public string Discount { get; set; }
         }
 
         public partial class ProductAttributeModel : BaseNopEntityModel

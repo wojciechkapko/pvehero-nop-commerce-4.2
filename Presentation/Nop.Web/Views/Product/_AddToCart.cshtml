@@ -28,10 +28,6 @@
 
     <div class="add-to-cart d-flex flex-column">
         <div>
-            @if (!string.IsNullOrEmpty(Model.MinimumQuantityNotification))
-            {
-                <div class="min-qty-notification">@Model.MinimumQuantityNotification</div>
-            }
             @if (!Model.DisableBuyButton)
             {
                 <div class="qty d-flex w-100 align-items-center">
@@ -105,7 +101,7 @@
                 <label class="enter-price-label mr-2">Your Price:&nbsp;&nbsp;@currency</label>
                 @*round price*@
                 <input asp-for="CustomerEnteredPrice" value="@Convert.ToInt32(Math.Ceiling(Model.CustomerEnteredPrice))" class="enter-price-input" />
-                <input type="hidden" id="currency-rate" class="d-none" value="@workContext.WorkingCurrency.Rate"/>
+                <input type="hidden" id="currency-rate" class="d-none" value="@workContext.WorkingCurrency.Rate" />
             </div>
         </div>
     }

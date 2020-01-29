@@ -285,96 +285,74 @@ namespace Nop.Web.Factories
                 if (product.CustomerEntersPrice)
                     return;
 
-                if (product.CallForPrice &&
-                    //also check whether the current user is impersonated
-                    (!_orderSettings.AllowAdminsToBuyCallForPriceProducts ||
-                     _workContext.OriginalCustomerIfImpersonated == null))
+                //prices
+                var minPossiblePriceWithoutDiscount = _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: false);
+                var minPossiblePriceWithDiscount = _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: true);
+
+                if (product.HasTierPrices)
                 {
-                    //call for price
+                    //calculate price for the maximum quantity if we have tier prices, and choose minimal
+                    minPossiblePriceWithoutDiscount = Math.Min(minPossiblePriceWithoutDiscount,
+                        _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: false, quantity: int.MaxValue));
+                    minPossiblePriceWithDiscount = Math.Min(minPossiblePriceWithDiscount,
+                        _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: true, quantity: int.MaxValue));
+                }
+
+                var oldPriceBase = _taxService.GetProductPrice(product, product.OldPrice, out decimal _);
+                var finalPriceWithoutDiscountBase = _taxService.GetProductPrice(product, minPossiblePriceWithoutDiscount, out _);
+                var finalPriceWithDiscountBase = _taxService.GetProductPrice(product, minPossiblePriceWithDiscount, out _);
+
+                var oldPrice = _currencyService.ConvertFromPrimaryStoreCurrency(oldPriceBase, _workContext.WorkingCurrency);
+                var finalPriceWithoutDiscount = _currencyService.ConvertFromPrimaryStoreCurrency(finalPriceWithoutDiscountBase, _workContext.WorkingCurrency);
+                var finalPriceWithDiscount = _currencyService.ConvertFromPrimaryStoreCurrency(finalPriceWithDiscountBase, _workContext.WorkingCurrency);
+
+                //do we have tier prices configured?
+                var tierPrices = new List<TierPrice>();
+                if (product.HasTierPrices)
+                {
+                    tierPrices.AddRange(product.TierPrices.OrderBy(tp => tp.Quantity)
+                        .FilterByStore(_storeContext.CurrentStore.Id)
+                        .FilterForCustomer(_workContext.CurrentCustomer)
+                        .FilterByDate()
+                        .RemoveDuplicatedQuantities());
+                }
+                //When there is just one tier price (with  qty 1), there are no actual savings in the list.
+                var displayFromMessage = tierPrices.Any() && !(tierPrices.Count == 1 && tierPrices[0].Quantity <= 1);
+                if (displayFromMessage)
+                {
                     priceModel.OldPrice = null;
-                    priceModel.Price = _localizationService.GetResource("Products.CallForPrice");
+                    priceModel.Price = _priceFormatter.FormatPrice(finalPriceWithDiscount);
                 }
                 else
                 {
-                    //prices
-                    var minPossiblePriceWithoutDiscount = _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: false);
-                    var minPossiblePriceWithDiscount = _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: true);
+                    var strikeThroughPrice = decimal.Zero;
 
-                    if (product.HasTierPrices)
-                    {
-                        //calculate price for the maximum quantity if we have tier prices, and choose minimal
-                        minPossiblePriceWithoutDiscount = Math.Min(minPossiblePriceWithoutDiscount,
-                            _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: false, quantity: int.MaxValue));
-                        minPossiblePriceWithDiscount = Math.Min(minPossiblePriceWithDiscount,
-                            _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: true, quantity: int.MaxValue));
-                    }
+                    if (finalPriceWithoutDiscountBase != oldPriceBase && oldPriceBase > decimal.Zero)
+                        strikeThroughPrice = oldPrice;
 
-                    var oldPriceBase = _taxService.GetProductPrice(product, product.OldPrice, out decimal _);
-                    var finalPriceWithoutDiscountBase = _taxService.GetProductPrice(product, minPossiblePriceWithoutDiscount, out _);
-                    var finalPriceWithDiscountBase = _taxService.GetProductPrice(product, minPossiblePriceWithDiscount, out _);
+                    if (finalPriceWithoutDiscountBase != finalPriceWithDiscountBase)
+                        strikeThroughPrice = finalPriceWithoutDiscount;
 
-                    var oldPrice = _currencyService.ConvertFromPrimaryStoreCurrency(oldPriceBase, _workContext.WorkingCurrency);
-                    var finalPriceWithoutDiscount = _currencyService.ConvertFromPrimaryStoreCurrency(finalPriceWithoutDiscountBase, _workContext.WorkingCurrency);
-                    var finalPriceWithDiscount = _currencyService.ConvertFromPrimaryStoreCurrency(finalPriceWithDiscountBase, _workContext.WorkingCurrency);
+                    if(strikeThroughPrice > decimal.Zero)
+                        priceModel.OldPrice = _priceFormatter.FormatPrice(strikeThroughPrice);
 
-                    //do we have tier prices configured?
-                    var tierPrices = new List<TierPrice>();
-                    if (product.HasTierPrices)
-                    {
-                        tierPrices.AddRange(product.TierPrices.OrderBy(tp => tp.Quantity)
-                            .FilterByStore(_storeContext.CurrentStore.Id)
-                            .FilterForCustomer(_workContext.CurrentCustomer)
-                            .FilterByDate()
-                            .RemoveDuplicatedQuantities());
-                    }
-                    //When there is just one tier price (with  qty 1), there are no actual savings in the list.
-                    var displayFromMessage = tierPrices.Any() && !(tierPrices.Count == 1 && tierPrices[0].Quantity <= 1);
-                    if (displayFromMessage)
-                    {
-                        priceModel.OldPrice = null;
-                        priceModel.Price = string.Format(_localizationService.GetResource("Products.PriceRangeFrom"), _priceFormatter.FormatPrice(finalPriceWithDiscount));
-                        priceModel.PriceValue = finalPriceWithDiscount;
-                    }
-                    else
-                    {
-                        var strikeThroughPrice = decimal.Zero;
+                    priceModel.Price = _priceFormatter.FormatPrice(finalPriceWithDiscount);
+                }
 
-                        if (finalPriceWithoutDiscountBase != oldPriceBase && oldPriceBase > decimal.Zero)
-                            strikeThroughPrice = oldPrice;
+                if (product.IsRental)
+                {
+                    //rental product
+                    priceModel.OldPrice = _priceFormatter.FormatRentalProductPeriod(product, priceModel.OldPrice);
+                    priceModel.Price = _priceFormatter.FormatRentalProductPeriod(product, priceModel.Price);
+                }
 
-                        if (finalPriceWithoutDiscountBase != finalPriceWithDiscountBase)
-                            strikeThroughPrice = finalPriceWithoutDiscount;
-
-                        if(strikeThroughPrice > decimal.Zero)
-                            priceModel.OldPrice = _priceFormatter.FormatPrice(strikeThroughPrice);
-
-                        priceModel.Price = _priceFormatter.FormatPrice(finalPriceWithDiscount);
-                        priceModel.PriceValue = finalPriceWithDiscount;
-                    }
-
-                    if (product.IsRental)
-                    {
-                        //rental product
-                        priceModel.OldPrice = _priceFormatter.FormatRentalProductPeriod(product, priceModel.OldPrice);
-                        priceModel.Price = _priceFormatter.FormatRentalProductPeriod(product, priceModel.Price);
-                    }
-
-                    //property for German market
-                    //we display tax/shipping info only with "shipping enabled" for this product
-                    //we also ensure this it's not free shipping
-                    priceModel.DisplayTaxShippingInfo = _catalogSettings.DisplayTaxShippingInfoProductBoxes && product.IsShipEnabled && !product.IsFreeShipping;
-
-                    //PAngV default baseprice (used in Germany)
-                    priceModel.BasePricePAngV = _priceFormatter.FormatBasePrice(product, finalPriceWithDiscount);
-
-                    //Check if there is a discount
-                    var isDiscounted = (finalPriceWithoutDiscountBase != finalPriceWithDiscountBase);
-                    priceModel.isDiscounted = isDiscounted;
-                    //Check discount value
-                    if (isDiscounted)
-                    {
-                        priceModel.DiscountValue = ((int)(Decimal.Floor((finalPriceWithDiscountBase / finalPriceWithoutDiscountBase * 100 - 100)) * -1)).ToString();
-                    }
+                //Check if there is a discount
+                var isDiscounted = (finalPriceWithoutDiscountBase != finalPriceWithDiscountBase);
+                priceModel.isDiscounted = isDiscounted;
+                //Check discount value
+                if (isDiscounted)
+                {
+                    priceModel.DiscountValue = ((int)(Decimal.Floor((finalPriceWithDiscountBase / finalPriceWithoutDiscountBase * 100 - 100)) * -1)).ToString();
                 }
             }
             else
@@ -447,10 +425,6 @@ namespace Nop.Web.Factories
 
                     priceModel.OldPrice = null;
                     priceModel.Price = string.Format(_localizationService.GetResource("Products.PriceRangeFrom"),_priceFormatter.FormatPrice(finalPrice));
-                    priceModel.PriceValue = finalPrice;
-
-                    //PAngV default baseprice (used in Germany)
-                    priceModel.BasePricePAngV = _priceFormatter.FormatBasePrice(product, finalPriceBase);
                 }
             }
             else
@@ -640,15 +614,6 @@ namespace Nop.Web.Factories
 
                         model.DisplayTierPrices = product.HasTierPrices;
 
-                        //property for German market
-                        //we display tax/shipping info only with "shipping enabled" for this product
-                        //we also ensure this it's not free shipping
-                        model.DisplayTaxShippingInfo = _catalogSettings.DisplayTaxShippingInfoProductDetailsPage
-                            && product.IsShipEnabled &&
-                            !product.IsFreeShipping;
-
-                        //PAngV baseprice (used in Germany)
-                        model.BasePricePAngV = _priceFormatter.FormatBasePrice(product, finalPriceWithDiscountBase);
                         //currency code
                         model.CurrencyCode = _workContext.WorkingCurrency.CurrencyCode;
 
@@ -982,10 +947,15 @@ namespace Nop.Web.Factories
                        _workContext.CurrentCustomer, decimal.Zero, _catalogSettings.DisplayTierPricesWithDiscounts, tierPrice.Quantity), out decimal _);
                        var price = _currencyService.ConvertFromPrimaryStoreCurrency(priceBase, _workContext.WorkingCurrency);
 
+                       var regularPrice = _taxService.GetProductPrice(product, _priceCalculationService.GetFinalPrice(product, _workContext.CurrentCustomer, includeDiscounts: true), out _);
+                       var discount = _priceFormatter.FormatPrice(((tierPrice.Quantity * regularPrice) - (tierPrice.Quantity * priceBase)), true, false);
+
+
                        return new ProductDetailsModel.TierPriceModel
                        {
                            Quantity = tierPrice.Quantity,
-                           Price = _priceFormatter.FormatPrice(price, false, false)
+                           Price = _priceFormatter.FormatPrice(price, false, false),
+                           Discount = discount
                        };
                    }).ToList();
 
