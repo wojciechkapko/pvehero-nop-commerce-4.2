@@ -197,6 +197,11 @@
   .wow-featured::before {
     background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/featured-mythic-plus-character.png); }
 
+.nyalotha-featured {
+  background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/nyalotha-featured.jpg); }
+  .nyalotha-featured::before {
+    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/nyalotha-featured-character.png); }
+
 .diablo-3-featured {
   background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/diablo-3-featured.jpg); }
   .diablo-3-featured::before {

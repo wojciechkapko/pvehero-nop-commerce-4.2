@@ -305,6 +305,14 @@
     }
 }
 
+.nyalotha-featured {
+    background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/nyalotha-featured.jpg);
+
+    &::before {
+        background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/nyalotha-featured-character.png);
+    }
+}
+
 
 .diablo-3-featured {
     background-image: url(https://res.cloudinary.com/pvehero-images/image/upload/f_auto/featured/diablo-3-featured.jpg);
