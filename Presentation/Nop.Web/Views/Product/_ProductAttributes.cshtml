@@ -313,7 +313,7 @@
                             break;
                         case AttributeControlType.ImageSquares:
                             {
-                <ul class="option-list attribute-squares image-squares" id="image-squares-@(attribute.Id)">
+                <ul class="option-list mt-3 attribute-squares image-squares @attribute.TextPrompt.ToLower()" id="image-squares-@(attribute.Id)">
                     @foreach (var attributeValue in attribute.Values)
                                     {
                                         var attributeName = string.IsNullOrEmpty(attributeValue.PriceAdjustment) ?
@@ -322,15 +322,11 @@
                     <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null)>
                         <label for="@(controlId)_@(attributeValue.Id)">
                             <span class="attribute-square-container">
-                                <span class="attribute-square" style="background: url('@(attributeValue.ImageSquaresPictureModel.ImageUrl)') 50% 50% no-repeat;">&nbsp;</span>
+                                <img src="@(attributeValue.ImageSquaresPictureModel.FullSizeImageUrl)" alt="@attributeName" />
                             </span>
                             <input id="@(controlId)_@(attributeValue.Id)" type="radio" name="@(controlId)" value="@attributeValue.Id" checked="@attributeValue.IsPreSelected"
                                    @(attribute.Values.Any(value => value.CustomerEntersQty) ? Html.Raw($"onclick=\"showHideRadioQuantity('{controlId}', true)\"") : null) />
                         </label>
-                        <div class="tooltip-container">
-                            <div class="tooltip-header">@attributeName</div>
-                            <div class="tooltip-body"><img src="@(attributeValue.ImageSquaresPictureModel.FullSizeImageUrl)" alt="@attributeName" /></div>
-                        </div>
                     </li>
                                     }
                 </ul>
