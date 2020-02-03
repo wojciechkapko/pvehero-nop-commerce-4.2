@@ -256,6 +256,14 @@
 .full-description {
     line-height: 24px;
     padding: 1rem 2rem;
+
+    a {
+        color: #bba0ff;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }
 
 .product-collateral {

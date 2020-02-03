@@ -210,6 +210,10 @@
 .full-description {
   line-height: 24px;
   padding: 1rem 2rem; }
+  .full-description a {
+    color: #bba0ff; }
+    .full-description a:hover {
+      text-decoration: underline; }
 
 .product-collateral {
   margin: 0 0 75px; }
