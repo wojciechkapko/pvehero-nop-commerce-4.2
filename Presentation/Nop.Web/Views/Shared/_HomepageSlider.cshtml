@@ -7,14 +7,14 @@
 @inject IWorkContext workContext
 @{
     var Price = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(20, workContext.WorkingCurrency));
-    var nyalotha = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(250, workContext.WorkingCurrency));
+    var nyalotha = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(150, workContext.WorkingCurrency));
     var diabloPrice = priceFormatter.FormatPrice(currencyService.ConvertFromPrimaryStoreCurrency(9, workContext.WorkingCurrency));
 }
 <div class="slider-wrapper">
     <div class="mt-4 slider">
         <div class="slide">
             <div class="card mb-3 mt-4 images nyalotha-featured border-0">
-                <h2 class="text-upper mb-4 shadow">Nyalotha Heroic<br />Now Available</h2>
+                <h2 class="text-upper mb-4 shadow">Nyalotha Heroic<br />New lower price</h2>
                 <div class="elements">
                     <div class="buttons mb-0">
                         <a href="/nyalotha-heroic-raid" class="button-1 big">Learn more</a>
