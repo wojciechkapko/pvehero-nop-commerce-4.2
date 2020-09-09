@@ -320,7 +320,7 @@
                                             attributeValue.Name :
                                             T("Products.ProductAttributes.PriceAdjustment", attributeValue.Name, attributeValue.PriceAdjustment, string.Empty).Text;
                     <li @(attributeValue.IsPreSelected ? @Html.Raw(" class=\"selected-value\"") : null)>
-                        <label for="@(controlId)_@(attributeValue.Id)">
+                        <label for="@(controlId)_@(attributeValue.Id)" data-toggle="tooltip" title="@attributeName">
                             <span class="attribute-square-container">
                                 <img src="@(attributeValue.ImageSquaresPictureModel.FullSizeImageUrl)" alt="@attributeName" />
                             </span>
